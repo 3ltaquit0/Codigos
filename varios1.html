@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serpientes y Escaleras - Explicación del Código</title>
+    <link rel="stylesheet" href="varios.css">
+    <style>
+        /* Estilo para desactivar la selección de texto */
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Permitir selección de texto en el área de código */
+        #codigoJava {
+            user-select: text;
+        }
+    </style>
+</head>
+<body>
+    <h1>Explicación del Código de Serpientes y Escaleras</h1>
+    <p>
+        El siguiente código en Java implementa el juego clásico de "Serpientes y Escaleras", permitiendo
+        que varios jugadores compitan hasta alcanzar la posición final del tablero.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton">Volver</button>
+    </div>
+
+    <pre id="codigoJava">
+<code>
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class SerpientesEscaleras {
+    // Clase interna para representar un nodo en el tablero
+    class Nodo {
+        int posicion;
+        Nodo siguiente;
+        int destino;
+
+        Nodo(int posicion) {
+            this.posicion = posicion;
+            this.siguiente = null;
+            this.destino = posicion;
+        }
+    }
+
+    // Clase interna para representar a un jugador
+    class Jugador {
+        String nombre;
+        Nodo posicionActual;
+
+        Jugador(String nombre, Nodo inicio) {
+            this.nombre = nombre;
+            this.posicionActual = inicio;
+        }
+    }
+
+    Nodo inicioTablero;
+    LinkedList&lt;Jugador&gt; jugadores;
+    Random dado;
+    final int META = 100;
+
+    public SerpientesEscaleras() {
+        jugadores = new LinkedList&lt;&gt;();
+        dado = new Random();
+        construirTablero();
+    }
+
+    private void construirTablero() {
+        Nodo actual = new Nodo(1);
+        inicioTablero = actual;
+
+        for (int i = 2; i &lt;= META; i++) {
+            Nodo nuevo = new Nodo(i);
+            actual.siguiente = nuevo;
+            actual = nuevo;
+        }
+
+        asignarSerpientesEscaleras(16, 6); 
+        asignarSerpientesEscaleras(47, 26);
+        asignarSerpientesEscaleras(49, 11);
+        asignarSerpientesEscaleras(62, 19);
+        asignarSerpientesEscaleras(1, 38);  
+        asignarSerpientesEscaleras(4, 14);  
+        asignarSerpientesEscaleras(9, 31);  
+        asignarSerpientesEscaleras(28, 84);
+    }
+
+    private void asignarSerpientesEscaleras(int origen, int destino) {
+        Nodo actual = inicioTablero;
+        while (actual != null) {
+            if (actual.posicion == origen) {
+                actual.destino = destino;
+                break;
+            }
+            actual = actual.siguiente;
+        }
+    }
+
+    public void agregarJugadores(int cantidad) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            for (int i = 1; i &lt;= cantidad; i++) {
+                System.out.print("Ingrese el nombre del jugador " + i + ": ");
+                String nombre = scanner.nextLine();
+                if (nombre != null && !nombre.trim().isEmpty()) {
+                    jugadores.add(new Jugador(nombre, inicioTablero));
+                } else {
+                    System.out.println("No se ha ingresado un nombre válido.");
+                    i--;
+                }
+            }
+        }
+    }
+
+    public void iniciarJuego() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("¿Cuántos jugadores (2-10)? ");
+            int cantidad = scanner.nextInt();
+            if (cantidad &lt; 2 || cantidad &gt; 10) {
+                System.out.println("Número de jugadores inválido. Debe ser entre 2 y 10.");
+                return;
+            }
+
+            agregarJugadores(cantidad);
+            System.out.println("¡El juego ha comenzado!");
+
+            boolean juegoTerminado = false;
+
+            while (!juegoTerminado) {
+                for (Jugador jugador : jugadores) {
+                    System.out.println("\nTurno de " + jugador.nombre);
+                    int avance = lanzarDado();
+                    System.out.println(jugador.nombre + " ha sacado un " + avance);
+                    jugador.posicionActual = moverJugador(jugador.posicionActual, avance);
+
+                    if (jugador.posicionActual.posicion >= META) {
+                        System.out.println("¡" + jugador.nombre + " ha ganado el juego!");
+                        juegoTerminado = true;
+                        break;
+                    } else {
+                        System.out.println(jugador.nombre + " está en la posición " + jugador.posicionActual.posicion);
+                    }
+                }
+            }
+        }
+    }
+
+    private Nodo moverJugador(Nodo posicionActual, int pasos) {
+        Nodo actual = posicionActual;
+
+        for (int i = 0; i &lt; pasos && actual.siguiente != null; i++) {
+            actual = actual.siguiente;
+        }
+
+        if (actual.destino != actual.posicion) {
+            System.out.println("¡" + (actual.destino &gt; actual.posicion ? "Escalera" : "Serpiente") + "! " + 
+                               "Avanza a la posición " + actual.destino);
+            actual = obtenerNodoPorPosicion(actual.destino);
+        }
+
+        return actual;
+    }
+
+    private Nodo obtenerNodoPorPosicion(int posicion) {
+        Nodo actual = inicioTablero;
+        while (actual != null) {
+            if (actual.posicion == posicion) {
+                return actual;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
+    }
+
+    private int lanzarDado() {
+        return dado.nextInt(6) + 1;
+    }
+
+    public static void main(String[] args) {
+        SerpientesEscaleras juego = new SerpientesEscaleras();
+        juego.iniciarJuego();
+    }
+}
+</code>
+    </pre>
+
+    <script>
+        // Función para copiar el contenido del código
+        document.getElementById("copyButton").addEventListener("click", function () {
+            const codeContent = document.getElementById("codigoJava").innerText;
+            navigator.clipboard.writeText(codeContent).then(
+                function () {
+                    alert("Código copiado al portapapeles");
+                },
+                function (err) {
+                    alert("Error al copiar el código: ", err);
+                }
+            );
+        });
+
+        // Función para volver a la selección de página
+        document.getElementById("backButton").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+
+        // Deshabilitar clic derecho
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
