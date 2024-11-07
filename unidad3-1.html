@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- Metadatos básicos del documento HTML -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ecuaciones balanceadas con entrada de datos</title>
+    
+    <!-- Enlace a una hoja de estilos CSS externa (estilos.css) -->
     <link rel="stylesheet" href="unidad3.css" />
-    <style>
-      /* Desactivar selección de texto en toda la página */
-      body {
-        user-select: none; /* Para navegadores modernos */
-        -webkit-user-select: none; /* Para Safari */
-        -moz-user-select: none; /* Para Firefox */
-        -ms-user-select: none; /* Para Internet Explorer/Edge */
-      }
-
-      /* Activar selección de texto solo en el área del código */
-      #codigoJava {
-        user-select: text; /* Permitir selección de texto en el área de código */
-      }
-    </style>
+    
   </head>
   <body>
+    <!-- Título principal de la página y descripción del código -->
     <h1>Explicación del Código</h1>
     <p>
       El siguiente código en Java verifica si los paréntesis en una ecuación
@@ -28,11 +19,13 @@
       una ecuación desde la consola.
     </p>
 
+    <!-- Contenedor de botones para copiar el código y regresar -->
     <div id="buttonContainer">
       <button id="copyButton">Copiar Código</button>
       <button id="backButton">Volver</button>
     </div>
 
+    <!-- Área donde se muestra el código Java, usando la etiqueta <pre> para formato -->
     <pre id="codigoJava">
 package Pila;
 
@@ -74,7 +67,8 @@ public class EcuacionBalanceada {
     }
 }
     </pre>
-
+      
+    <!-- Explicación de las Clases y Métodos -->
     <h2>Método balanceado</h2>
     <p>
       El método <code>balanceado</code> verifica si los paréntesis en una
@@ -95,78 +89,9 @@ public class EcuacionBalanceada {
       ecuación está balanceada. Muestra el resultado en la consola y cierra el
       <code>Scanner</code>.
     </p>
-
-    <script>
-      // Verificar si la página fue abierta desde otra página
-      if (document.referrer === "") {
-        window.location.href = "index.html"; // Redirigir si no hay referencia
-      }
-
-      // Redirigir al index.html si se intenta copiar la URL de la página
-      document.addEventListener("beforecopy", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-      });
-
-      // Función para copiar el texto del contenido
-      document
-        .getElementById("copyButton")
-        .addEventListener("click", function () {
-          const codeContent = document.getElementById("codigoJava").innerText;
-          navigator.clipboard.writeText(codeContent).then(
-            function () {
-              alert("Código copiado al portapapeles");
-            },
-            function (err) {
-              alert("Error al copiar el código: ", err);
-            }
-          );
-        });
-
-      // Función para volver a la selección de página
-      document
-        .getElementById("backButton")
-        .addEventListener("click", function () {
-          window.location.href = "index.html";
-        });
-
-      // Deshabilitar clic derecho
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
-
-      // Deshabilitar teclas de acceso directo como F12, Ctrl+Shift+I, etc.
-      document.addEventListener("keydown", function (e) {
-        // F12
-        if (e.key === "F12") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+I
-        if (e.ctrlKey && e.shiftKey && e.key === "I") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && e.key === "C") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+J
-        if (e.ctrlKey && e.shiftKey && e.key === "J") {
-          e.preventDefault();
-        }
-
-        // Ctrl+U (ver fuente)
-        if (e.ctrlKey && e.key === "u") {
-          e.preventDefault();
-        }
-      });
-
-      // Desactivar arrastre de elementos
-      document.addEventListener("dragstart", function (e) {
-        e.preventDefault();
-      });
-    </script>
+      
+      <!-- Funcionalidades en JavaScript -->
+      <script src="funciones.js"></script>
+    
   </body>
 </html>

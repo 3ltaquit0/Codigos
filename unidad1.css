@@ -10,6 +10,20 @@ body {
     min-height: 100vh;
 }
 
+/* Desactivar selección de texto en toda la página */
+body {
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+
 /* Estilos para encabezados relacionados con "Unidad 1" */
 h1, h2 {
     color: #00695c; /* Color relacionado con la unidad 1 */

@@ -5,62 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selección de Página</title>
     <link rel="stylesheet" href="index.css">
-        <style>
-        /* Desactivar selección de texto en toda la página */
-        body {
-            user-select: none; /* Para navegadores modernos */
-            -webkit-user-select: none; /* Para Safari */
-            -moz-user-select: none; /* Para Firefox */
-            -ms-user-select: none; /* Para Internet Explorer/Edge */
-        }
-        
-        /* Activar selección de texto solo en el área del código */
-        #codigoJava {
-            user-select: text; /* Permitir selección de texto en el área de código */
-        }
-        </style>
 </head>
 <body>
-
-    <script>
-        // Deshabilitar clic derecho
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // Deshabilitar teclas de acceso directo como F12, Ctrl+Shift+I, etc.
-        document.addEventListener('keydown', function(e) {
-            // F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+I
-            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+C
-            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+J
-            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-                e.preventDefault();
-            }
-
-            // Ctrl+U (ver fuente)
-            if (e.ctrlKey && e.key === 'u') {
-                e.preventDefault();
-            }
-        });
-
-        // Desactivar arrastre de elementos
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-        });
-    </script>
 
     <h1>Selección de Página</h1>
     <div id="content">
@@ -103,11 +49,11 @@
         <button type="button" onclick="goToWebsite('unidad2-8.html')">Inversión de Números sin entrada de datos</button>
         <button type="button" onclick="goToWebsite('unidad2-9.html')">Contador de Caracteres Recursivo con entrada de datos</button>
         <button type="button" onclick="goToWebsite('unidad2-10.html')">Contador de Caracteres Recursivo sin entrada de datos</button>
-        
+
         <h3>Examen</h3>
         <button type="button" onclick="goToWebsite('examenUnidad2-1.html')">Suma de Dígitos Recursiva con entrada de datos</button>
         <button type="button" onclick="goToWebsite('examenUnidad2-2.html')">Suma Recursiva de Dígitos sin entrada de datos</button>
-        
+
 
 
         <h2>Unidad3</h2>
@@ -121,15 +67,10 @@
         <h2>Varios</h2>
         <h3>Clase Varios</h3>
         <button type="button" onclick="goToWebsite('varios1.html')">Explicación de serpientes y escaleras</button>
-        
+
     </div>
 
-    <script>
-        function goToWebsite(website) {
-            if (website) {
-                window.location.href = website; // Redirige al sitio seleccionado
-            }
-        }
-    </script>
+    <script src="funciones.js"></script>
+    
 </body>
 </html>

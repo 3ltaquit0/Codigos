@@ -3,13 +3,23 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
-h1 {
+/* Desactivar selección de texto en toda la página */
+body {
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+
+h1, h2 {
     color: #333;
     text-align: center;
 }
@@ -51,8 +61,4 @@ pre {
 code {
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
-}
-
-#codigoJava {
-    user-select: text;
 }

@@ -6,94 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suma Recursiva de Dígitos</title>
     <link rel="stylesheet" href="examen.css">
-    <style>
-        /* Desactivar selección de texto en toda la página */
-        body {
-            user-select: none;
-            /* Para navegadores modernos */
-            -webkit-user-select: none;
-            /* Para Safari */
-            -moz-user-select: none;
-            /* Para Firefox */
-            -ms-user-select: none;
-            /* Para Internet Explorer/Edge */
-        }
-
-        /* Activar selección de texto solo en el área del código */
-        #codigoJava {
-            user-select: text;
-            /* Permitir selección de texto en el área de código */
-        }
-    </style>
 </head>
 
 <body>
-
-    <script>
-        // Verificar si la página fue abierta desde otra página
-        if (document.referrer === "") {
-            window.location.href = 'index.html'; // Redirigir si no hay referencia
-        }
-
-        // Redirigir al index.html si se intenta copiar la URL de la página
-        document.addEventListener('beforecopy', function (e) {
-            e.preventDefault();
-            window.location.href = 'index.html';
-        });
-
-        // Función para copiar el texto del contenido
-        document.getElementById('copyButton').addEventListener('click', function () {
-            const codeContent = document.getElementById('codigoJava').innerText;
-            navigator.clipboard.writeText(codeContent).then(function () {
-                alert('Código copiado al portapapeles');
-            }, function (err) {
-                alert('Error al copiar el código: ', err);
-            });
-        });
-
-        // Función para volver a la selección de página
-        document.getElementById('backButton').addEventListener('click', function () {
-            window.location.href = 'index.html';
-        });
-
-        // Deshabilitar clic derecho
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
-
-        // Deshabilitar teclas de acceso directo como F12, Ctrl+Shift+I, etc.
-        document.addEventListener('keydown', function (e) {
-            // F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+I
-            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+C
-            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-                e.preventDefault();
-            }
-
-            // Ctrl+Shift+J
-            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-                e.preventDefault();
-            }
-
-            // Ctrl+U (ver fuente)
-            if (e.ctrlKey && e.key === 'u') {
-                e.preventDefault();
-            }
-        });
-
-        // Desactivar arrastre de elementos
-        document.addEventListener('dragstart', function (e) {
-            e.preventDefault();
-        });
-    </script>
 
     <h1>Explicación del Código</h1>
     <p>El siguiente código en Java suma los dígitos de un número de manera recursiva, es decir, descompone el número en
@@ -110,33 +25,33 @@
 package unidad2;
 
 public class examen{
-	
-	// Elaborar un programa que sume los dígitos de un número de forma recursiva
 
-	public static int sumaDigitos(int numero) {
-		if (numero == 0) {
-			return 0;
-		}
-		return numero % 10 + sumaDigitos(numero / 10);
-	}
+        // Elaborar un programa que sume los dígitos de un número de forma recursiva
 
-	public static void main(String[] args) {
-		int numero = 123;
-		int resultado = sumaDigitos(numero);
-		System.out.println("La suma de los dígitos de " + numero + " es: " + resultado);
-		
-		int numero1 = 3457;
-		int resultado1 = sumaDigitos(numero1);
-		System.out.println("La suma de los dígitos de " + numero1 + " es: " + resultado1);
-		
-		int numero2 = 987654321;
-		int resultado2 = sumaDigitos(numero2);
-		System.out.println("La suma de los dígitos de " + numero2 + " es: " + resultado2);
-		
-		int numero3 = 999999999;
-		int resultado3 = sumaDigitos(numero3);
-		System.out.println("La suma de los dígitos de " + numero3 + " es: " + resultado3);
-	}
+        public static int sumaDigitos(int numero) {
+                if (numero == 0) {
+                        return 0;
+                }
+                return numero % 10 + sumaDigitos(numero / 10);
+        }
+
+        public static void main(String[] args) {
+                int numero = 123;
+                int resultado = sumaDigitos(numero);
+                System.out.println("La suma de los dígitos de " + numero + " es: " + resultado);
+
+                int numero1 = 3457;
+                int resultado1 = sumaDigitos(numero1);
+                System.out.println("La suma de los dígitos de " + numero1 + " es: " + resultado1);
+
+                int numero2 = 987654321;
+                int resultado2 = sumaDigitos(numero2);
+                System.out.println("La suma de los dígitos de " + numero2 + " es: " + resultado2);
+
+                int numero3 = 999999999;
+                int resultado3 = sumaDigitos(numero3);
+                System.out.println("La suma de los dígitos de " + numero3 + " es: " + resultado3);
+        }
 }
 </code>
     </pre>
@@ -165,6 +80,8 @@ public class examen{
             <code>999999999</code>.</li>
         <li>Para cada número, invoca el método <code>sumaDigitos</code> y muestra el resultado en la consola.</li>
     </ol>
+    
+    <script src="funciones.js"></script>
 
 </body>
 

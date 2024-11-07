@@ -5,20 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verificación de Palíndromo - Predefinido</title>
     <link rel="stylesheet" href="unidad2.css" />
-    <style>
-      /* Desactivar selección de texto en toda la página */
-      body {
-        user-select: none; /* Para navegadores modernos */
-        -webkit-user-select: none; /* Para Safari */
-        -moz-user-select: none; /* Para Firefox */
-        -ms-user-select: none; /* Para Internet Explorer/Edge */
-      }
-
-      /* Activar selección de texto solo en el área del código */
-      #codigoJava {
-        user-select: text; /* Permitir selección de texto en el área de código */
-      }
-    </style>
   </head>
   <body>
     <h1>Explicación del Código</h1>
@@ -34,97 +20,24 @@
       <button id="backButton">Volver</button>
     </div>
 
-    <script>
-      // Verificar si la página fue abierta desde otra página
-      if (document.referrer === "") {
-        window.location.href = "index.html"; // Redirigir si no hay referencia
-      }
-
-      // Redirigir al index.html si se intenta copiar la URL de la página
-      document.addEventListener("beforecopy", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-      });
-
-      // Función para copiar el texto del contenido
-      document
-        .getElementById("copyButton")
-        .addEventListener("click", function () {
-          const codeContent = document.getElementById("codigoJava").innerText;
-          navigator.clipboard.writeText(codeContent).then(
-            function () {
-              alert("Código copiado al portapapeles");
-            },
-            function (err) {
-              alert("Error al copiar el código: ", err);
-            }
-          );
-        });
-
-      // Función para volver a la selección de página
-      document
-        .getElementById("backButton")
-        .addEventListener("click", function () {
-          window.location.href = "index.html";
-        });
-
-      // Deshabilitar clic derecho
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
-
-      // Deshabilitar teclas de acceso directo como F12, Ctrl+Shift+I, etc.
-      document.addEventListener("keydown", function (e) {
-        // F12
-        if (e.key === "F12") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+I
-        if (e.ctrlKey && e.shiftKey && e.key === "I") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && e.key === "C") {
-          e.preventDefault();
-        }
-
-        // Ctrl+Shift+J
-        if (e.ctrlKey && e.shiftKey && e.key === "J") {
-          e.preventDefault();
-        }
-
-        // Ctrl+U (ver fuente)
-        if (e.ctrlKey && e.key === "u") {
-          e.preventDefault();
-        }
-      });
-
-      // Desactivar arrastre de elementos
-      document.addEventListener("dragstart", function (e) {
-        e.preventDefault();
-      });
-    </script>
-
     <h2>Clase Palindromo</h2>
     <pre id="codigoJava">
 <code>
 public class Palindromo {
-    
+
     // Método recursivo para verificar si una palabra es un palíndromo
     static boolean esPalindromo(String palabra) {
         // Caso base: si la palabra tiene 1 o 0 caracteres, es un palíndromo
         if (palabra.length() <= 1) {
             return true;
         }
-        
+
         // Verifica si el primer y último carácter son iguales
         if (palabra.charAt(0) == palabra.charAt(palabra.length() - 1)) {
             // Llama recursivamente al método con la subcadena sin el primer y último carácter
             return esPalindromo(palabra.substring(1, palabra.length() - 1));
         }
-   
+
         // Si los caracteres no coinciden, no es un palíndromo
         return false;
     }
@@ -195,5 +108,8 @@ public class Palindromo {
       </li>
       <li>Muestra el resultado en la consola.</li>
     </ol>
+      
+      <script src="funciones.js"></script>
+      
   </body>
 </html>
