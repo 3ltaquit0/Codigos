@@ -1,0 +1,74 @@
+/* estilo-unidad3.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    color: #004d40;
+    margin: 0;
+    padding: 0;
+}
+
+/* Desactivar selección de texto en toda la página */
+body {
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+
+h1, h2 {
+    color: #00796b;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+p {
+    margin: 20px;
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+pre {
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+    overflow-x: auto;
+    border-left: 5px solid #00796b;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #d32f2f;
+    background-color: #e0f2f1;
+    padding: 2px 4px;
+    border-radius: 3px;
+}

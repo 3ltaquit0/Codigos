@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #35424a;
+    border-bottom: 2px solid #e8491d;
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: #35424a;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border-left: 3px solid #e8491d;
+    overflow-x: auto;
+}
+
+pre code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+strong {
+    color: #e8491d;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #e8491d; /* Nuevo color de fondo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #35424a; /* Nuevo color de fondo al pasar el cursor */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}

@@ -1,0 +1,78 @@
+/* General styles */
+body {
+
+    background-color: #e0f7fa; /* Changed background color */
+    color: #006064; /* Changed text color */
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+/* Header styles */
+header {
+    background: #00796b; /* Changed background color */
+
+}
+
+header h1 {
+
+    color: #ffffff; /* Ensure text color is white */
+}
+
+header p {
+
+    color: #b2dfdb; /* Changed text color */
+}
+
+/* Section styles */
+section {
+
+    background: #ffffff; /* Ensure background color is white */
+
+}
+
+section h2 {
+    color: #004d40; /* Changed color */
+    border-bottom: 2px solid #004d40; /* Changed border color */
+
+}
+
+section h3 {
+    color: #00796b; /* Changed color */
+}
+
+
+
+/* Code block styles */
+pre {
+    background: #e0f2f1; /* Changed background color */
+
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #00796b; /* Nuevo color de fondo */
+    color: #ffffff; /* Nuevo color de texto */
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40; /* Nuevo color de fondo al pasar el cursor */
+}

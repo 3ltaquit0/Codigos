@@ -1,0 +1,113 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* Changed background color */
+    color: #004d40; /* Changed text color */
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+/* Header styles */
+header {
+    background: #00796b; /* Changed background color */
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ffffff; /* Ensure text color is white */
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+    color: #b2dfdb; /* Changed text color */
+}
+
+/* Section styles */
+section {
+    padding: 20px;
+    margin: 20px;
+    background: #ffffff; /* Ensure background color is white */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #004d40; /* Changed color */
+    border-bottom: 2px solid #e8491d;
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: #00796b; /* Changed color */
+}
+
+ul {
+    list-style-type: square;
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* Code block styles */
+pre {
+    background: #004d40; /* Changed background color */
+    color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #00796b; /* Updated background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40; /* Updated hover background color */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    section {
+        margin: 10px 0;
+    }
+}

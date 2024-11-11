@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+h1, h2 {
+    color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+}
+
+p {
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+ul {
+    margin: 10px 0;
+    padding: 0 40px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+pre {
+    background-color: #e8e8e8;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #0056b3; /* Nuevo color de fondo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #003d80; /* Nuevo color de fondo al pasar el cursor */
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+    user-select: text; /* Permitir selección de texto en el área de código */
+}
