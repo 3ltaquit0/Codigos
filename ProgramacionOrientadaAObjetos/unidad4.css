@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f0e68c; /* Khaki background */
+  user-select: none; /* Para navegadores modernos */
+  -webkit-user-select: none; /* Para Safari */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para Internet Explorer/Edge */
+}
+
+header {
+  background: #8b4513; /* SaddleBrown background */
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+section h2 {
+  color: #8b4513; /* SaddleBrown color */
+  border-bottom: 2px solid #8b4513; /* SaddleBrown border */
+  padding-bottom: 5px;
+}
+
+section p, section ul {
+  margin: 10px 0;
+}
+
+section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+pre {
+  background: #d2b48c; /* Tan background */
+  padding: 10px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Activar selección de texto solo en el área del código */
+#codigoJava {
+  user-select: text; /* Permitir selección de texto en el área de código */
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d08413;
+}

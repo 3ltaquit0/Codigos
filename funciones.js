@@ -38,6 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 }
 
+  const backButton3 = document.getElementById("backButton3");
+  if (backButton3) {
+      backButton3.addEventListener("click", function () {
+          window.location.href = "../programacionorientadaaobjetos.html"; // Adjusted path to index in CodigosMain
+      });
+}
+
 // Deshabilitar clic derecho
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
@@ -74,5 +81,11 @@ function goToWebsite1(page) {
 function goToWebsite2(page) {
   if (page) {
       window.location.href = 'EstructuraDeDatos/' + page;
+  }
+}
+
+function goToWebsite3(page) {
+  if (page) {
+      window.location.href = 'ProgramacionOrientadaAObjetos/' + page;
   }
 }
