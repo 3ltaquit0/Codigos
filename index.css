@@ -1,0 +1,64 @@
+body {
+font-family: Arial, sans-serif;
+background-color: #f0f0f0;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+position: relative;
+overflow: hidden;
+}
+
+/* Pseudo-elemento para la animación de fondo */
+body::before {
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background-size: cover;
+background-position: center;
+transform: translate(-50%, -50%);
+transition: width 0.5s ease-out, height 0.5s ease-out;
+border-radius: 50%;
+z-index: -1;
+}
+
+/* Botones */
+button {
+background-color: #4CAF50;
+color: white;
+padding: 15px 20px;
+margin: 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+}
+
+button:hover {
+background-color: #45a049;
+}
+
+/* Fondos de cada materia con efecto de carga */
+.fundamentos-bg::before {
+background-image: url('Imagenes/Img1.jpg');
+width: 150vw;
+height: 150vh;
+}
+
+.poo-bg::before {
+background-image: url('Imagenes/Img2.png');
+width: 150vw;
+height: 150vh;
+}
+
+.ed-bg::before {
+background-image: url('Imagenes/ed.jpg');
+width: 150vw;
+height: 150vh;
+}
+
