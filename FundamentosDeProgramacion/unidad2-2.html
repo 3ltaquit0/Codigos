@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Características del Lenguaje de Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Características del Lenguaje de Programación</h1>
+      <p>En esta sección exploramos las principales características que definen a un lenguaje de programación.</p>
+    </header>
+
+    <section>
+      <h2>1. Legibilidad</h2>
+      <p>
+        La legibilidad es una de las características más importantes de un lenguaje de programación. Un lenguaje de programación debe ser fácil de leer y entender para los programadores. Esto facilita el mantenimiento del código y la colaboración entre desarrolladores. Ejemplos de lenguajes legibles son Python y Ruby, que tienen una sintaxis clara y sencilla.
+      </p>
+      <pre>
+        # Ejemplo de código legible en Python
+        def saludar(nombre):
+            print(f"Hola, {nombre}!")
+      </pre>
+    </section>
+
+    <section>
+      <h2>2. Abstracción</h2>
+      <p>
+        La abstracción es la capacidad de ocultar los detalles complejos del sistema y mostrar solo lo necesario. Los lenguajes de programación de alto nivel como Python y Java permiten a los programadores trabajar con conceptos abstractos sin preocuparse por los detalles de la memoria y el hardware.
+      </p>
+      <pre>
+        # Ejemplo de abstracción en Python
+        class Persona:
+            def __init__(self, nombre, edad):
+                self.nombre = nombre
+                self.edad = edad
+
+            def saludar(self):
+                print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años.")
+      </pre>
+    </section>
+
+    <section>
+      <h2>3. Eficiencia</h2>
+      <p>
+        La eficiencia se refiere a la capacidad de un lenguaje para ejecutar tareas de manera rápida y con el menor uso de recursos posible. Lenguajes como C y C++ se utilizan para sistemas que requieren un rendimiento muy alto, como videojuegos o sistemas embebidos.
+      </p>
+      <pre>
+        # Ejemplo de eficiencia en C
+        # Calculando la suma de un arreglo de enteros
+        int suma(int arr[], int tamano) {
+            int total = 0;
+            for(int i = 0; i < tamano; i++) {
+                total += arr[i];
+            }
+            return total;
+        }
+      </pre>
+    </section>
+
+    <section>
+      <h2>4. Portabilidad</h2>
+      <p>
+        La portabilidad se refiere a la capacidad de un lenguaje para ejecutar programas en diferentes plataformas o sistemas operativos sin necesidad de realizar grandes modificaciones en el código. Lenguajes como Java son conocidos por su portabilidad debido a su máquina virtual (JVM), que permite que el código sea ejecutado en diferentes plataformas.
+      </p>
+      <pre>
+        # Ejemplo de portabilidad en Java
+        public class HolaMundo {
+            public static void main(String[] args) {
+                System.out.println("¡Hola, Mundo!");
+            }
+        }
+      </pre>
+    </section>
+
+    <section>
+      <h2>5. Facilidad de Uso</h2>
+      <p>
+        La facilidad de uso se refiere a qué tan fácil es aprender y utilizar un lenguaje de programación. Algunos lenguajes como Python y JavaScript se consideran fáciles de aprender debido a su sintaxis simple y abundancia de recursos educativos.
+      </p>
+      <pre>
+        # Ejemplo de facilidad de uso en JavaScript
+        let saludo = "¡Hola, Mundo!";
+        console.log(saludo);
+      </pre>
+    </section>
+
+    <section>
+      <h2>6. Flexibilidad</h2>
+      <p>
+        Un lenguaje flexible permite a los programadores adaptarse a diferentes paradigmas de programación, como la programación orientada a objetos (OOP), la programación funcional, o la programación imperativa. Python es un ejemplo de lenguaje flexible que permite múltiples enfoques.
+      </p>
+      <pre>
+        # Ejemplo de flexibilidad en Python (OOP y Funcional)
+        
+        # Programación Orientada a Objetos
+        class Animal:
+            def __init__(self, nombre):
+                self.nombre = nombre
+                
+            def hacer_sonido(self):
+                print(f"{self.nombre} hace un sonido.")
+        
+        # Programación Funcional
+        def sumar(a, b):
+            return a + b
+      </pre>
+    </section>
+
+    <section>
+      <h2>7. Seguridad</h2>
+      <p>
+        La seguridad es crucial en el diseño de lenguajes de programación, especialmente cuando se manejan datos sensibles o se desarrollan aplicaciones críticas. Lenguajes como Rust están diseñados con énfasis en la seguridad de memoria, evitando problemas comunes como los desbordamientos de búfer.
+      </p>
+      <pre>
+        # Ejemplo de seguridad en Rust
+        fn main() {
+            let s = String::from("Hola");
+            let r = &s;  // Referencia segura
+            println!("{}", r);
+        }
+      </pre>
+    </section>
+
+    <script src="../funciones.js"></script>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+  </body>
+</html>

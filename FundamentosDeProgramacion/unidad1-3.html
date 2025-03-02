@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseño de Algoritmos</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+
+    <h1>Diseño de Algoritmos</h1>
+    <p>
+      El diseño de algoritmos es el proceso de crear una secuencia lógica de pasos para resolver un problema específico de forma eficiente.
+    </p>
+
+    <h2>Fases del Diseño de un Algoritmo</h2>
+    <p>El diseño de un algoritmo involucra los siguientes pasos:</p>
+    <ul>
+      <li>Entender el problema.</li>
+      <li>Planificar la solución.</li>
+      <li>Crear el algoritmo.</li>
+      <li>Verificar y mejorar el algoritmo.</li>
+    </ul>
+
+    <h2>Técnicas de Diseño de Algoritmos</h2>
+    <ul>
+      <li>Fuerza Bruta (Brute Force)</li>
+      <li>Divide y Vencerás (Divide and Conquer)</li>
+      <li>Programación Dinámica</li>
+      <li>Búsqueda y Ordenamiento</li>
+    </ul>
+
+    <h2>Ejemplo de Algoritmo: Encontrar el Número Máximo</h2>
+    <p>A continuación se muestra el pseudocódigo para encontrar el número máximo en una lista de números:</p>
+    <pre><code class="language-text">
+Inicio
+   Leer lista de números
+   máximo = lista[0]
+   Para cada número en la lista
+      Si el número es mayor que máximo
+         máximo = número
+   Fin Para
+   Escribir "El número máximo es", máximo
+Fin
+    </code></pre>
+
+    <h2>Implementación en Java</h2>
+    <pre><code class="language-java">
+import java.util.List;
+
+public class Maximo {
+    public static int encontrarMaximo(List<Integer> lista) {
+        int maximo = lista.get(0);
+        for (int numero : lista) {
+            if (numero > maximo) {
+                maximo = numero;
+            }
+        }
+        return maximo;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> lista = List.of(5, 3, 8, 6, 2, 7);
+        int max = encontrarMaximo(lista);
+        System.out.println("El número máximo es: " + max);
+    }
+}
+    </code></pre>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

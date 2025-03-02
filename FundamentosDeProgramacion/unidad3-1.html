@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructuras Secuenciales en Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Estructuras Secuenciales en Programación</h1>
+      <p>Explora el concepto de estructuras secuenciales en la programación y cómo se utilizan para controlar el flujo de ejecución en un programa.</p>
+    </header>
+
+    <section>
+      <h2>1. ¿Qué son las Estructuras Secuenciales?</h2>
+      <p>
+        Las <strong>estructuras secuenciales</strong> son la forma más simple de control de flujo en programación. En ellas, las instrucciones se ejecutan una tras otra en el orden en que están escritas, sin tomar decisiones ni repeticiones. Es decir, el flujo de ejecución es directo y sigue una secuencia lineal.
+      </p>
+      <p>
+        Estas estructuras son ideales para problemas simples donde no se requieren condiciones o ciclos, como leer datos y mostrarlos o realizar cálculos sencillos.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Características de las Estructuras Secuenciales</h2>
+      <ul>
+        <li><strong>Orden estricto:</strong> Las instrucciones se ejecutan de arriba hacia abajo.</li>
+        <li><strong>Simplicidad:</strong> Son fáciles de entender y aplicar en casos sencillos.</li>
+        <li><strong>Sin decisiones ni repeticiones:</strong> No se hacen bifurcaciones ni ciclos, todo sigue una secuencia directa.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Ejemplos de Estructuras Secuenciales</h2>
+
+      <h3>Ejemplo en Python</h3>
+      <pre><code class="language-python">
+# Estructura secuencial en Python
+nombre = input("¿Cuál es tu nombre? ")
+edad = int(input("¿Cuántos años tienes? "))
+
+# Salida en secuencia
+print("Hola", nombre)
+print("Tienes", edad, "años.")
+      </code></pre>
+
+      <h3>Ejemplo en C</h3>
+      <pre><code class="language-c">
+#include <stdio.h>
+
+int main() {
+    char nombre[30];
+    int edad;
+
+    // Entrada de datos
+    printf("¿Cuál es tu nombre? ");
+    scanf("%s", nombre);
+    printf("¿Cuántos años tienes? ");
+    scanf("%d", &edad);
+
+    // Salida en secuencia
+    printf("Hola %s\n", nombre);
+    printf("Tienes %d años.\n", edad);
+
+    return 0;
+}
+      </code></pre>
+
+      <h3>Ejemplo en JavaScript</h3>
+      <pre><code class="language-javascript">
+// Estructura secuencial en JavaScript
+let nombre = prompt("¿Cuál es tu nombre?");
+let edad = prompt("¿Cuántos años tienes?");
+
+// Salida en secuencia
+alert("Hola " + nombre);
+alert("Tienes " + edad + " años.");
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>4. Aplicaciones de las Estructuras Secuenciales</h2>
+      <p>Las estructuras secuenciales son útiles en muchas situaciones, entre las cuales se incluyen:</p>
+      <ul>
+        <li><strong>Cálculos sencillos:</strong> Para realizar operaciones directas como la suma, resta, multiplicación, etc.</li>
+        <li><strong>Interacción básica con el usuario:</strong> Se utilizan para formularios simples donde el usuario ingresa datos y el programa los muestra.</li>
+        <li><strong>Procesamiento de datos lineales:</strong> Para sistemas que procesan información de forma continua sin tomar decisiones o realizar ciclos complejos.</li>
+      </ul>
+    </section>
+
+    <script src="../funciones.js"></script>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Modular con Explicación</title>
+    <link rel="stylesheet" href="fundamentos.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Calculadora Modular</h1>
+        <p>Ejemplo de implementación de modularidad en JavaScript con explicación del código.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Calculadora Básica</h2>
+            <div class="calculadora">
+                <input type="number" id="num1" placeholder="Número 1">
+                <input type="number" id="num2" placeholder="Número 2">
+                <button onclick="mostrarSuma()">Sumar</button>
+                <button onclick="mostrarResta()">Restar</button>
+                <p id="resultado"></p>
+            </div>
+
+            <!-- Cuadro de código y explicación -->
+            <h2>Explicación del Código</h2>
+            <div id="codigoExplicacion" style="border: 1px solid #ddd; padding: 10px; margin-top: 20px;">
+                <pre id="codigoJS"></pre>
+                <p id="explicacionJS"></p>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- JavaScript Modular -->
+    <script type="module">
+        // Módulo de operaciones matemáticas
+        const operaciones = {
+            sumar(a, b) {
+                return a + b;
+            },
+            restar(a, b) {
+                return a - b;
+            }
+        };
+
+        // Función para mostrar el resultado de la suma
+        window.mostrarSuma = function() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultado').textContent = 'Introduce dos números válidos.';
+                return;
+            }
+
+            const resultado = operaciones.sumar(num1, num2);
+            document.getElementById('resultado').textContent = `Resultado: ${resultado}`;
+            mostrarCodigo('sumar');
+        }
+
+        // Función para mostrar el resultado de la resta
+        window.mostrarResta = function() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('resultado').textContent = 'Introduce dos números válidos.';
+                return;
+            }
+
+            const resultado = operaciones.restar(num1, num2);
+            document.getElementById('resultado').textContent = `Resultado: ${resultado}`;
+            mostrarCodigo('restar');
+        }
+
+        // Función para mostrar el código ejecutado y su explicación
+        function mostrarCodigo(operacion) {
+            const codigoElement = document.getElementById('codigoJS');
+            const explicacionElement = document.getElementById('explicacionJS');
+            
+            let codigo = '';
+            let explicacion = '';
+
+            if (operacion === 'sumar') {
+                codigo = `function sumar(a, b) {\n    return a + b;\n}\n\n// Uso de la función\nsumar(${document.getElementById('num1').value}, ${document.getElementById('num2').value});`;
+                explicacion = 'La función "sumar" toma dos argumentos (a y b) y retorna su suma. Aquí se usa con los valores ingresados en los campos de entrada.';
+            } else if (operacion === 'restar') {
+                codigo = `function restar(a, b) {\n    return a - b;\n}\n\n// Uso de la función\nrestar(${document.getElementById('num1').value}, ${document.getElementById('num2').value});`;
+                explicacion = 'La función "restar" toma dos argumentos (a y b) y retorna su resta. Aquí se usa con los valores ingresados en los campos de entrada.';
+            }
+
+            // Mostrar el código y la explicación en el cuadro
+            codigoElement.textContent = codigo;
+            explicacionElement.textContent = explicacion;
+        }
+    </script>
+
+<div id="buttonContainer">
+    <button id="backButton1">Volver</button>
+  </div>
+
+<script src="../funciones.js"></script>
+
+</body>
+</html>

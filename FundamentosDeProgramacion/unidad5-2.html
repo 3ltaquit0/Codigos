@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modularidad - Paso de Parámetros o Argumentos</title>
+    <link rel="stylesheet" href="fundamentos.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Modularidad: Paso de Parámetros o Argumentos</h1>
+        <p>En esta sección, exploraremos el concepto de paso de parámetros en las funciones, uno de los aspectos clave de la programación modular.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué son los Parámetros y Argumentos?</h2>
+            <p>
+                Los parámetros y argumentos son conceptos fundamentales en la programación modular. Se usan para permitir que una función reciba datos y realice operaciones sobre ellos. A continuación se detallan estos dos conceptos:
+            </p>
+            <ul>
+                <li><strong>Parámetros:</strong> Son las variables definidas en la cabecera de la función que esperan recibir valores cuando la función es llamada. Actúan como "placeholders" (marcadores de posición) para los datos reales que se pasarán.</li>
+                <li><strong>Argumentos:</strong> Son los valores reales que se pasan a los parámetros cuando se invoca la función. Estos valores son utilizados dentro de la función para ejecutar su lógica.</li>
+            </ul>
+
+            <h2>¿Por qué es importante el Paso de Parámetros?</h2>
+            <p>
+                El paso de parámetros permite que una función sea reutilizada con diferentes datos. Esto mejora la modularidad y facilita la creación de código más limpio y mantenible, ya que no es necesario duplicar funciones para cada conjunto de valores específico.
+            </p>
+
+            <h2>Tipos de Paso de Parámetros</h2>
+            <p>Existen dos métodos principales para pasar parámetros a las funciones:</p>
+            <ul>
+                <li><strong>Paso por Valor:</strong> Se pasa una copia del valor del argumento a la función. Cualquier cambio dentro de la función no afecta el valor original.</li>
+                <li><strong>Paso por Referencia:</strong> Se pasa la dirección de memoria del argumento, lo que permite que la función modifique directamente el valor del argumento original.</li>
+            </ul>
+
+            <h2>Ejemplo Teórico</h2>
+            <p>Considera la siguiente función matemática:</p>
+            <pre>
+function multiplicar(a, b) {
+    return a * b;
+}
+            </pre>
+            <p>En este caso:</p>
+            <ul>
+                <li><strong>a</strong> y <strong>b</strong> son los <strong>parámetros</strong>.</li>
+                <li>Si llamamos a la función como <code>multiplicar(3, 4)</code>, los valores <code>3</code> y <code>4</code> son los <strong>argumentos</strong>.</li>
+            </ul>
+            <p>Gracias al paso de parámetros, podemos utilizar esta misma función con diferentes números, como en <code>multiplicar(10, 20)</code> o <code>multiplicar(5, 8)</code>, sin necesidad de escribir múltiples funciones para cada caso.</p>
+
+            <h2>Ventajas del Uso de Parámetros</h2>
+            <p>El uso de parámetros aporta múltiples beneficios:</p>
+            <ul>
+                <li><strong>Modularidad:</strong> Facilita la organización del código en módulos o funciones pequeñas y manejables.</li>
+                <li><strong>Reutilización de Código:</strong> Una función parametrizada puede reutilizarse en diferentes partes del programa con distintos valores.</li>
+                <li><strong>Legibilidad y Mantenimiento:</strong> El uso de funciones parametrizadas hace que el código sea más limpio y fácil de entender.</li>
+            </ul>
+
+            <h2>Resumen</h2>
+            <p>
+                El paso de parámetros o argumentos es una técnica central en la programación modular. Permite crear funciones reutilizables que pueden trabajar con diferentes entradas, mejorando la eficiencia del desarrollo y la organización del código. El uso adecuado de parámetros es crucial para escribir software mantenible y escalable.
+            </p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton1">Volver</button>
+      </div>
+
+    <script src="../funciones.js"></script>
+    
+</body>
+</html>

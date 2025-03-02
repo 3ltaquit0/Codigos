@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Representación de Algoritmos: Gráfica y Pseudocódigo</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+
+    <h1>Representación de Algoritmos: Gráfica y Pseudocódigo</h1>
+    <p>
+      En el diseño de algoritmos, es esencial representar los pasos que debe seguir el algoritmo para resolver un problema. Las representaciones gráficas y el pseudocódigo son dos de las formas más comunes de hacerlo.
+    </p>
+
+    <h2>Diagrama de Flujo</h2>
+    <p>
+      Un diagrama de flujo es una representación visual de un algoritmo que utiliza símbolos estándar para mostrar el flujo del programa. A continuación se presenta un ejemplo básico:
+    </p>
+    <pre><code class="language-text">
++---------+
+|  Inicio |
++---------+
+     |
++------------------+
+|  Leer número     |
++------------------+
+     |
++-------------------------------+
+| ¿El número es divisible por 2? |
++-------------------------------+
+     |
++--------------------+
+| Sí                 | No
+v                    v
++---------+   +--------------+
+| Es par  |   |  Es impar    |
++---------+   +--------------+
+     |               |
+     +---------------+
+            |
+       +---------+
+       |   Fin   |
+       +---------+
+    </code></pre>
+
+    <h2>Pseudocódigo</h2>
+    <p>
+      El pseudocódigo es una descripción de los pasos del algoritmo utilizando un lenguaje cercano al humano. Aquí tienes un ejemplo del mismo algoritmo usando pseudocódigo:
+    </p>
+    <pre><code class="language-text">
+Inicio
+   Leer número
+   Si (número % 2 == 0) Entonces
+      Escribir "Es par"
+   Sino
+      Escribir "Es impar"
+Fin
+    </code></pre>
+
+    <h2>Comparación</h2>
+    <p>
+      Tanto los diagramas de flujo como el pseudocódigo son representaciones efectivas de un algoritmo. Sin embargo, su elección depende de la situación y la preferencia personal.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

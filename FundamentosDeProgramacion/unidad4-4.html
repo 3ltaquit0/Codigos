@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructuras o Registros en Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Estructuras o Registros en Programación</h1>
+      <p>Explora el concepto, la estructura y las aplicaciones de los registros en la organización de datos.</p>
+    </header>
+
+    <section>
+      <h2>1. ¿Qué es un Registro?</h2>
+      <p>
+        Un <strong>registro</strong> es una estructura de datos compuesta por un conjunto de campos que pueden almacenar diferentes tipos de información. Los registros son útiles para representar entidades o elementos que contienen varias propiedades.
+      </p>
+      <p>
+        En muchos lenguajes de programación, los registros se implementan utilizando estructuras o clases. Cada campo dentro de un registro puede tener un tipo de dato diferente, y su nombre se utiliza para acceder a ellos.
+      </p>
+      <ul>
+        <li>
+          <strong>Definición:</strong> Un registro agrupa varios campos relacionados, cada uno con un tipo de dato específico. Por ejemplo, un registro "Persona" podría tener campos para el nombre, la edad y la dirección.
+        </li>
+        <li>
+          <strong>Ejemplo:</strong> En JavaScript, los registros se pueden representar mediante un objeto:
+          <pre><code class="language-javascript">
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  direccion: "Calle Falsa 123"
+};
+          </code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Operaciones Comunes con Registros</h2>
+      <p>Las operaciones más comunes con registros incluyen:</p>
+      <ul>
+        <li>
+          <strong>Acceso a Campos:</strong> Puedes acceder a los valores de los campos de un registro utilizando su nombre. En JavaScript, puedes usar la notación de punto:
+          <pre><code class="language-javascript">console.log(persona.nombre); // Accede al campo 'nombre'</code></pre>
+        </li>
+        <li>
+          <strong>Modificación de Campos:</strong> Puedes cambiar el valor de un campo en el registro asignando un nuevo valor.
+          <pre><code class="language-javascript">persona.edad = 31; // Cambia el valor del campo 'edad'</code></pre>
+        </li>
+        <li>
+          <strong>Adición de Nuevos Campos:</strong> Puedes agregar nuevos campos a un registro de manera dinámica.
+          <pre><code class="language-javascript">persona.email = "juan@example.com"; // Agrega un nuevo campo 'email'</code></pre>
+        </li>
+        <li>
+          <strong>Eliminación de Campos:</strong> Puedes eliminar campos utilizando la palabra clave <code>delete</code>.
+          <pre><code class="language-javascript">delete persona.direccion; // Elimina el campo 'direccion'</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Aplicaciones de los Registros</h2>
+      <p>Los registros se utilizan en diversas áreas de la programación para representar datos complejos. Algunos ejemplos incluyen:</p>
+      <ul>
+        <li>
+          <strong>Representación de Entidades:</strong> Los registros son ideales para representar objetos del mundo real, como personas, productos, vehículos, etc.
+        </li>
+        <li>
+          <strong>Formularios de Entrada:</strong> Los registros pueden almacenar los datos introducidos por un usuario en un formulario, como su nombre, dirección y teléfono.
+        </li>
+        <li>
+          <strong>Bases de Datos:</strong> En bases de datos, cada fila de una tabla puede considerarse un registro, y cada columna corresponde a un campo del registro.
+        </li>
+        <li>
+          <strong>Gestión de Inventarios:</strong> Los registros se usan para organizar información sobre productos, con campos como nombre, cantidad y precio.
+        </li>
+        <li>
+          <strong>Configuración de Programas:</strong> Los registros pueden almacenar configuraciones o preferencias del usuario, como el color de la interfaz o el idioma de la aplicación.
+        </li>
+      </ul>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

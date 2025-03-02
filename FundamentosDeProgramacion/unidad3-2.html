@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructuras Selectivas en Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Estructuras Selectivas en Programación</h1>
+      <p>Explicación y ejemplos de las estructuras selectivas: simple, doble y múltiple.</p>
+    </header>
+
+    <section>
+      <h2>1. Estructura Selectiva Simple</h2>
+      <p>En una estructura simple, un bloque de código se ejecuta solo si la condición es verdadera.</p>
+      <pre><code class="language-javascript">
+let edad = prompt("¿Cuántos años tienes?");
+if (edad >= 18) {
+    alert("Eres mayor de edad.");
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>2. Estructura Selectiva Doble</h2>
+      <p>En una estructura doble, un bloque de código se ejecuta si la condición es verdadera, y otro si es falsa.</p>
+      <pre><code class="language-javascript">
+let edad = prompt("¿Cuántos años tienes?");
+if (edad >= 18) {
+    alert("Eres mayor de edad.");
+} else {
+    alert("Eres menor de edad.");
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>3. Estructura Selectiva Múltiple</h2>
+      <p>En una estructura múltiple, puedes verificar varias condiciones con múltiples bloques de código.</p>
+      <pre><code class="language-javascript">
+let edad = prompt("¿Cuántos años tienes?");
+if (edad < 13) {
+    alert("Eres un niño.");
+} else if (edad < 18) {
+    alert("Eres un adolescente.");
+} else {
+    alert("Eres un adulto.");
+}
+      </code></pre>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

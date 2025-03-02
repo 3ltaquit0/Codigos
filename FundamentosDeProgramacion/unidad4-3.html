@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organización de Datos Multidimensionales</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Organización de Datos Multidimensionales</h1>
+      <p>Explora los conceptos, operaciones y aplicaciones de los datos multidimensionales en programación.</p>
+    </header>
+
+    <section>
+      <h2>1. Conceptos Básicos</h2>
+      <p>
+        Los datos multidimensionales son estructuras que permiten almacenar datos en más de una dimensión. Son una extensión de los arreglos unidimensionales, y permiten organizar datos en tablas, matrices o incluso más dimensiones, representando tablas de datos o coordenadas espaciales.
+      </p>
+      <ul>
+        <li>
+          <strong>Definición:</strong> Un arreglo multidimensional es una estructura que tiene más de una dimensión, como una matriz (2D), cubo (3D), o estructuras de más dimensiones.
+        </li>
+        <li>
+          <strong>Ejemplo:</strong> Una matriz 2D es un arreglo de arreglos, como una tabla. Por ejemplo, una matriz 3x3 puede representar las puntuaciones de 3 estudiantes en 3 materias:
+          <pre><code class="language-javascript">let matriz = [
+  [85, 90, 88], // Estudiante 1
+  [78, 82, 80], // Estudiante 2
+  [92, 95, 93]  // Estudiante 3
+];</code></pre>
+        </li>
+        <li>
+          <strong>Acceso:</strong> Los elementos en una matriz 2D se acceden mediante dos índices, uno para la fila y otro para la columna. Por ejemplo, para acceder a la puntuación del segundo estudiante en la tercera materia: <code>matriz[1][2]</code>.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Operaciones Comunes con Arreglos Multidimensionales</h2>
+      <p>Las operaciones más comunes en arreglos multidimensionales incluyen:</p>
+      <ul>
+        <li>
+          <strong>Acceso a Elementos:</strong> Puedes acceder a un elemento específico usando múltiples índices.
+          <pre><code class="language-javascript">let puntuacion = matriz[1][2]; // Accede a la puntuación del segundo estudiante en la tercera materia</code></pre>
+        </li>
+        <li>
+          <strong>Modificación de Elementos:</strong> Puedes modificar un elemento específico utilizando sus índices.
+          <pre><code class="language-javascript">matriz[0][1] = 95; // Cambia la puntuación del primer estudiante en la segunda materia</code></pre>
+        </li>
+        <li>
+          <strong>Recorrer el Arreglo:</strong> Puedes usar bucles anidados para recorrer todos los elementos en una matriz 2D.
+          <pre><code class="language-javascript">for (let i = 0; i < matriz.length; i++) {
+  for (let j = 0; j < matriz[i].length; j++) {
+    console.log(matriz[i][j]); // Muestra cada puntuación
+  }
+}</code></pre>
+        </li>
+        <li>
+          <strong>Buscar un Elemento:</strong> Puedes buscar si un valor existe en una matriz.
+          <pre><code class="language-javascript">for (let i = 0; i < matriz.length; i++) {
+  if (matriz[i].includes(90)) {
+    console.log("La puntuación 90 se encuentra en la matriz.");
+  }
+}</code></pre>
+        </li>
+        <li>
+          <strong>Agregar o Eliminar Elementos:</strong> Puedes agregar o eliminar filas o columnas en arreglos multidimensionales, aunque estas operaciones son más complejas que en arreglos unidimensionales.
+          <pre><code class="language-javascript">matriz.push([89, 91, 94]); // Agrega una nueva fila (nuevo estudiante)</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Aplicaciones de los Datos Multidimensionales</h2>
+      <p>Los arreglos multidimensionales tienen diversas aplicaciones en programación. Algunos ejemplos incluyen:</p>
+      <ul>
+        <li>
+          <strong>Tablas de Datos:</strong> Las matrices 2D se utilizan para representar tablas, como bases de datos o informes de resultados. Por ejemplo, una tabla de ventas por mes.
+        </li>
+        <li>
+          <strong>Imágenes y Matrices de Colores:</strong> Las imágenes se pueden representar como matrices de píxeles. Cada píxel tiene un valor asociado con su color (rojo, verde, azul).
+        </li>
+        <li>
+          <strong>Coordenadas Espaciales:</strong> Los arreglos multidimensionales también se utilizan para almacenar coordenadas en sistemas de referencia, como la posición de objetos en un espacio tridimensional.
+        </li>
+        <li>
+          <strong>Juegos y Tableros:</strong> En juegos como ajedrez o damas, los tableros pueden representarse como matrices 2D donde cada elemento corresponde a una casilla del tablero.
+        </li>
+        <li>
+          <strong>Simulaciones de Datos:</strong> Los datos de simulación, como el clima o las simulaciones científicas, a menudo utilizan matrices multidimensionales para representar conjuntos de datos en varias dimensiones.
+        </li>
+      </ul>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

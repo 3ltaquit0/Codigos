@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructura Básica de un Programa</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Estructura Básica de un Programa</h1>
+      <p>Conoce los elementos fundamentales que componen la estructura básica de un programa en cualquier lenguaje de programación.</p>
+    </header>
+
+    <section>
+      <h2>1. Entrada de Datos</h2>
+      <p>
+        Un programa generalmente comienza con la <strong>entrada de datos</strong>, que puede ser proporcionada por el usuario, archivos o sensores. La entrada se utiliza para que el programa trabaje con información específica.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        nombre = input("Introduce tu nombre: ")
+      </pre>
+    </section>
+
+    <section>
+      <h2>2. Proceso</h2>
+      <p>
+        El <strong>proceso</strong> es donde ocurre la lógica del programa. Aquí es donde los datos ingresados se procesan para producir un resultado. Puede implicar cálculos, manipulaciones de cadenas o cualquier otra operación.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        saludo = "Hola, " + nombre + "!"
+      </pre>
+    </section>
+
+    <section>
+      <h2>3. Salida de Datos</h2>
+      <p>
+        Después de procesar los datos, el programa proporciona la <strong>salida de datos</strong>. Esto puede ser en la forma de mensajes al usuario, resultados de cálculos o generación de archivos.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        print(saludo)
+      </pre>
+    </section>
+
+    <section>
+      <h2>4. Estructura General de un Programa</h2>
+      <p>
+        La estructura básica de un programa es generalmente la siguiente:
+      </p>
+      <ul>
+        <li><strong>Entrada de datos</strong>: Capturar información del usuario o de otro origen.</li>
+        <li><strong>Proceso</strong>: Manipular o procesar los datos.</li>
+        <li><strong>Salida de datos</strong>: Mostrar o devolver el resultado del proceso.</li>
+      </ul>
+      <pre>
+        # Ejemplo en Python de estructura básica
+        # Entrada de datos
+        nombre = input("Introduce tu nombre: ")
+        
+        # Proceso
+        saludo = "Hola, " + nombre + "!"
+        
+        # Salida de datos
+        print(saludo)
+      </pre>
+    </section>
+
+    <section>
+      <h2>5. Ejemplo en Otros Lenguajes</h2>
+      <h3>Ejemplo en C</h3>
+      <pre>
+        # Ejemplo en C
+        # Entrada de datos
+        #include <stdio.h>
+        int main() {
+            char nombre[50];
+            printf("Introduce tu nombre: ");
+            scanf("%s", nombre);
+            
+            // Proceso
+            printf("Hola, %s!\n", nombre);
+            
+            // Salida de datos
+            return 0;
+        }
+      </pre>
+
+      <h3>Ejemplo en Java</h3>
+      <pre>
+        # Ejemplo en Java
+        import java.util.Scanner;
+        public class Programa {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+                
+                // Entrada de datos
+                System.out.print("Introduce tu nombre: ");
+                String nombre = sc.nextLine();
+                
+                // Proceso
+                String saludo = "Hola, " + nombre + "!";
+                
+                // Salida de datos
+                System.out.println(saludo);
+            }
+        }
+      </pre>
+    </section>
+
+    <script src="../funciones.js"></script>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+  </body>
+</html>

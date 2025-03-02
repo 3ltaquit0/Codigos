@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elementos del Lenguaje de Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Elementos del Lenguaje de Programación</h1>
+      <p>Conoce los elementos clave que conforman un lenguaje de programación.</p>
+    </header>
+
+    <section>
+      <h2>1. Tipos de Datos</h2>
+      <p>
+        Los <strong>tipos de datos</strong> determinan qué tipo de valores pueden ser almacenados en una variable y qué operaciones se pueden realizar sobre esos valores. Los tipos básicos incluyen:
+      </p>
+      <ul>
+        <li><strong>Enteros (int)</strong>: Números enteros.</li>
+        <li><strong>Decimales (float, double)</strong>: Números con decimales.</li>
+        <li><strong>Booleanos (bool)</strong>: Valores de verdadero (true) o falso (false).</li>
+        <li><strong>Cadenas (String)</strong>: Secuencias de caracteres.</li>
+        <li><strong>Caracteres (char)</strong>: Un solo carácter.</li>
+      </ul>
+      <pre>
+        # Ejemplo en Python
+        numero_entero = 10
+        numero_decimal = 3.14
+        es_verdadero = True
+        saludo = "Hola Mundo"
+      </pre>
+    </section>
+
+    <section>
+      <h2>2. Literales</h2>
+      <p>
+        Los <strong>literales</strong> son valores constantes que se utilizan directamente en el código, sin necesidad de ser almacenados en una variable. Algunos ejemplos son:
+      </p>
+      <ul>
+        <li><strong>Entero:</strong> 42</li>
+        <li><strong>Decimal:</strong> 3.14</li>
+        <li><strong>Booleano:</strong> true</li>
+        <li><strong>Cadena:</strong> "Hola"</li>
+      </ul>
+      <pre>
+        # Ejemplo en Python
+        print(42)  # Literal entero
+        print("Hola")  # Literal cadena
+      </pre>
+    </section>
+
+    <section>
+      <h2>3. Constantes</h2>
+      <p>
+        Las <strong>constantes</strong> son valores que, una vez definidos, no pueden cambiar durante la ejecución del programa. Algunos lenguajes de programación permiten declarar constantes explícitamente.
+      </p>
+      <pre>
+        # Ejemplo en C
+        #define PI 3.14159  // Definición de constante
+        printf("%f", PI);
+      </pre>
+      <p>
+        En Python, no existe un mecanismo nativo para declarar constantes, pero por convención, se utilizan letras mayúsculas:
+      </p>
+      <pre>
+        # Ejemplo en Python
+        PI = 3.14159  # Convención de constante en Python
+      </pre>
+    </section>
+
+    <section>
+      <h2>4. Variables</h2>
+      <p>
+        Las <strong>variables</strong> son contenedores que se utilizan para almacenar datos que pueden cambiar durante la ejecución del programa. En la mayoría de los lenguajes, es necesario declarar el tipo de dato que la variable almacenará.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        edad = 25  # La variable 'edad' almacena un entero
+        nombre = "Juan"  # La variable 'nombre' almacena una cadena
+      </pre>
+    </section>
+
+    <section>
+      <h2>5. Identificadores</h2>
+      <p>
+        Los <strong>identificadores</strong> son los nombres que se asignan a las variables, funciones, clases y otros elementos del programa. Deben cumplir con ciertas reglas, como comenzar con una letra o guion bajo, y no pueden ser palabras reservadas del lenguaje.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        nombre_usuario = "Ana"  # 'nombre_usuario' es un identificador válido
+        _edad = 30  # '_edad' también es un identificador válido
+      </pre>
+    </section>
+
+    <section>
+      <h2>6. Parámetros</h2>
+      <p>
+        Los <strong>parámetros</strong> son valores que se pasan a las funciones para que puedan realizar su tarea. Los parámetros permiten que las funciones trabajen con diferentes datos sin necesidad de cambiar su código interno.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        def saludar(nombre):
+            print(f"Hola, {nombre}!")
+
+        saludar("Carlos")  # "Carlos" es el parámetro
+      </pre>
+    </section>
+
+    <section>
+      <h2>7. Operadores</h2>
+      <p>
+        Los <strong>operadores</strong> son símbolos que realizan operaciones sobre los datos. Existen diferentes tipos de operadores, como los aritméticos, de comparación y lógicos:
+      </p>
+      <ul>
+        <li><strong>Aritméticos:</strong> +, -, *, /, %</li>
+        <li><strong>De comparación:</strong> ==, !=, <, >, <=, >=</li>
+        <li><strong>Lógicos:</strong> and, or, not</li>
+      </ul>
+      <pre>
+        # Ejemplo en Python
+        a = 5
+        b = 3
+        resultado = a + b  # Operador aritmético
+        es_igual = a == b  # Operador de comparación
+        es_verdadero = (a > b) and (b > 1)  # Operador lógico
+      </pre>
+    </section>
+
+    <section>
+      <h2>8. Salida de Datos</h2>
+      <p>
+        La <strong>salida de datos</strong> es la manera en la que un programa muestra la información al usuario. La salida puede ser por pantalla, a través de un archivo, o mediante una interfaz gráfica.
+      </p>
+      <pre>
+        # Ejemplo en Python
+        print("¡Hola Mundo!")  # Imprime un mensaje en la consola
+      </pre>
+    </section>
+
+    <script src="../funciones.js"></script>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+  </body>
+</html>

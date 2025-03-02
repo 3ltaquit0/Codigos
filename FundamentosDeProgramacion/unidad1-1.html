@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos de la Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+
+    <h1>Fundamentos de la Programación</h1>
+    <p>
+      La programación es el proceso de diseñar y crear un conjunto de instrucciones que le dicen a una computadora cómo realizar tareas específicas. A continuación se presentan los conceptos clave que constituyen los fundamentos de la programación.
+    </p>
+
+    <h2>Lenguajes de Programación</h2>
+    <p>
+      Los lenguajes de programación son herramientas esenciales para escribir software. Algunos lenguajes populares incluyen:
+    </p>
+    <ul>
+      <li><strong>Python:</strong> Fácil de aprender y muy usado en ciencia de datos y desarrollo web.</li>
+      <li><strong>Java:</strong> Muy utilizado en aplicaciones empresariales y desarrollo de Android.</li>
+      <li><strong>C++:</strong> Usado en desarrollo de software de alto rendimiento y videojuegos.</li>
+      <li><strong>JavaScript:</strong> Lenguaje clave para el desarrollo web.</li>
+    </ul>
+
+    <h2>Variables y Tipos de Datos</h2>
+    <p>
+      Las <strong>variables</strong> son lugares en memoria donde se almacenan datos. Los tipos comunes incluyen:
+    </p>
+    <ul>
+      <li><strong>Numéricos:</strong> Enteros, flotantes.</li>
+      <li><strong>Texto:</strong> Cadenas de caracteres (strings).</li>
+      <li><strong>Booleanos:</strong> Valores de verdadero o falso.</li>
+    </ul>
+
+    <h2>Operadores</h2>
+    <p>
+      Los operadores permiten realizar operaciones sobre variables y valores. Ejemplos incluyen:
+    </p>
+    <ul>
+      <li><strong>Operadores Aritméticos:</strong> `+`, `-`, `*`, `/`, `%`.</li>
+      <li><strong>Operadores Lógicos:</strong> `AND`, `OR`, `NOT`.</li>
+      <li><strong>Operadores de Comparación:</strong> `==`, `!=`, `>`, `<`.</li>
+    </ul>
+
+    <h2>Estructuras de Control</h2>
+    <p>
+      Las estructuras de control permiten definir el flujo de ejecución del programa:
+    </p>
+    <ul>
+      <li><strong>Condicionales:</strong> Permiten tomar decisiones en el flujo del programa. Ejemplo: `if`, `else`.</li>
+      <li><strong>Bucle:</strong> Permite repetir un bloque de código. Ejemplo: `for`, `while`.</li>
+    </ul>
+
+    <h2>Funciones</h2>
+    <p>
+      Las funciones son bloques de código reutilizables que permiten organizar mejor el programa. Ejemplo en Python:
+    </p>
+    <pre><code class="language-python">
+def suma(a, b):
+    return a + b
+    </code></pre>
+
+    <h2>Arreglos y Listas</h2>
+    <p>
+      Un <strong>arreglo</strong> o <strong>lista</strong> es una colección de elementos. En Python, las listas se pueden declarar de la siguiente manera:
+    </p>
+    <pre><code class="language-python">
+mi_lista = [1, 2, 3, 4]
+    </code></pre>
+
+    <h2>Programación Orientada a Objetos (OOP)</h2>
+    <p>
+      La programación orientada a objetos (OOP) permite organizar el código mediante clases y objetos. Los conceptos clave de OOP son:
+    </p>
+    <ul>
+      <li><strong>Encapsulamiento:</strong> Ocultar los detalles internos de una clase.</li>
+      <li><strong>Herencia:</strong> Permite que una clase herede atributos y métodos de otra.</li>
+      <li><strong>Polimorfismo:</strong> Permite que un mismo método se comporte de diferente manera según el objeto.</li>
+    </ul>
+
+    <h2>Ejemplo de Clase en Python</h2>
+    <p>
+      Un ejemplo básico de una clase en Python:
+    </p>
+    <pre><code class="language-python">
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años.")
+
+persona1 = Persona("Juan", 30)
+persona1.saludar()
+    </code></pre>
+
+    <h2>Comentarios</h2>
+    <p>
+      Los comentarios son notas dentro del código que explican el propósito de ciertas partes del programa. Se utilizan para hacer el código más comprensible. En Python, los comentarios se escriben con el símbolo `#`.
+    </p>
+    <pre><code class="language-python">
+# Este es un comentario
+print("Hola Mundo")  # Imprime un saludo
+    </code></pre>
+
+    <h2>Depuración</h2>
+    <p>
+      La depuración es el proceso de encontrar y corregir errores en el código. Muchas veces se utilizan herramientas como puntos de interrupción o simplemente imprimimos el valor de las variables para detectar el problema.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

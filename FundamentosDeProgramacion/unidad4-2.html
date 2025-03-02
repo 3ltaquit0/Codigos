@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organización de Datos Unidimensionales</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Organización de Datos Unidimensionales</h1>
+      <p>Descubre los conceptos básicos, operaciones y aplicaciones de los datos unidimensionales en programación.</p>
+    </header>
+
+    <section>
+      <h2>1. Conceptos Básicos</h2>
+      <p>
+        Los <strong>datos unidimensionales</strong> son estructuras que almacenan elementos en una sola dimensión. El tipo más común de estructura unidimensional es el <strong>arreglo</strong> o <strong>vector</strong>. Los arreglos unidimensionales permiten almacenar múltiples elementos de un mismo tipo de dato bajo un solo nombre, y cada elemento se identifica por un índice o posición.
+      </p>
+      <ul>
+        <li>
+          <strong>Definición:</strong> Un arreglo unidimensional es una colección de elementos de un tipo determinado, organizados de manera secuencial.
+        </li>
+        <li>
+          <strong>Ejemplo:</strong> Un arreglo de enteros podría almacenar las edades de un grupo de personas: <code>[25, 30, 35, 40, 45]</code>.
+        </li>
+        <li>
+          <strong>Acceso:</strong> Cada elemento en el arreglo se accede utilizando su índice, el cual comienza desde 0. Por ejemplo, <code>edad[0]</code> devolvería el primer valor del arreglo, es decir, 25.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Operaciones Comunes con Arreglos</h2>
+      <p>Las operaciones básicas que se pueden realizar en un arreglo unidimensional son:</p>
+      <ul>
+        <li>
+          <strong>Acceso a Elementos:</strong> Se puede acceder a un elemento del arreglo utilizando su índice.
+          <pre><code class="language-javascript">let edades = [25, 30, 35, 40, 45];
+console.log(edades[2]); // Muestra 35</code></pre>
+        </li>
+        <li>
+          <strong>Modificación de Elementos:</strong> Se puede modificar el valor de un elemento utilizando su índice.
+          <pre><code class="language-javascript">edades[1] = 32; // Cambia el valor en el índice 1 a 32</code></pre>
+        </li>
+        <li>
+          <strong>Recorrer el Arreglo:</strong> Utilizamos un bucle para recorrer todos los elementos.
+          <pre><code class="language-javascript">for (let i = 0; i < edades.length; i++) {
+  console.log(edades[i]);
+}</code></pre>
+        </li>
+        <li>
+          <strong>Buscar un Elemento:</strong> Se puede buscar si un valor existe dentro del arreglo.
+          <pre><code class="language-javascript">if (edades.includes(40)) {
+  console.log("La edad 40 está en el arreglo.");
+}</code></pre>
+        </li>
+        <li>
+          <strong>Agregar Elementos:</strong> Puedes agregar nuevos elementos al final del arreglo.
+          <pre><code class="language-javascript">edades.push(50); // Agrega 50 al final del arreglo</code></pre>
+        </li>
+        <li>
+          <strong>Eliminar Elementos:</strong> Puedes eliminar elementos del final del arreglo.
+          <pre><code class="language-javascript">edades.pop(); // Elimina el último elemento</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Aplicaciones de los Datos Unidimensionales</h2>
+      <p>Los arreglos unidimensionales tienen muchas aplicaciones en programación. Algunos ejemplos incluyen:</p>
+      <ul>
+        <li>
+          <strong>Almacenamiento de Datos Temporales:</strong> Los arreglos son útiles cuando necesitas almacenar un conjunto de datos temporales que se utilizarán en un solo paso o cálculo, como las calificaciones de los estudiantes en un examen.
+        </li>
+        <li>
+          <strong>Ordenación de Elementos:</strong> Los arreglos pueden ser ordenados para organizar la información de manera eficiente, como ordenar los precios de productos o las edades de personas.
+        </li>
+        <li>
+          <strong>Filtrado de Información:</strong> Si tienes una lista de valores y necesitas realizar un filtrado, puedes usar arreglos para almacenar los elementos filtrados, como los números pares de una lista de números.
+        </li>
+        <li>
+          <strong>Gestión de Inventarios:</strong> Un arreglo puede almacenar la cantidad de productos en stock en una tienda, lo que permite un fácil acceso y manipulación de los datos.
+        </li>
+        <li>
+          <strong>Representación de Tablas:</strong> A veces, un arreglo unidimensional puede usarse para representar datos de una sola columna en una tabla, como una lista de temperaturas por día.
+        </li>
+      </ul>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

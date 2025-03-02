@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traducción de un Programa</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Traducción de un Programa: Compilación, Enlace, Ejecución y Errores</h1>
+      <p>Comprende el proceso de convertir un programa de alto nivel en un programa ejecutable.</p>
+    </header>
+
+    <section>
+      <h2>1. Compilación</h2>
+      <p>
+        La <strong>compilación</strong> es el proceso en el que el código fuente escrito por el programador en un lenguaje de alto nivel (como C, Java o C++) se convierte en un código de máquina, que es un lenguaje comprensible por la computadora. Este proceso lo realiza un compilador.
+      </p>
+      <ul>
+        <li>Convierte el código fuente en código intermedio o binario.</li>
+        <li>Detecta errores de sintaxis, como falta de paréntesis o comas.</li>
+      </ul>
+      <pre>
+        // Ejemplo en C
+        #include &lt;stdio.h&gt;
+        
+        int main() {
+            printf("Hola Mundo\n");
+            return 0;
+        }
+      </pre>
+      <p>
+        En este caso, el compilador toma el código en C y lo convierte en un archivo ejecutable (por ejemplo, un archivo `.exe` en Windows o un archivo binario en Linux).
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Enlace</h2>
+      <p>
+        Después de la compilación, el <strong>enlace</strong> es el proceso en el que se unen diferentes partes del programa (por ejemplo, bibliotecas externas) para crear un programa completo y ejecutable.
+      </p>
+      <ul>
+        <li>El <strong>enlazador</strong> (linker) combina los archivos de objeto generados por el compilador.</li>
+        <li>Si el programa usa bibliotecas externas, el enlazador las incluye en el programa final.</li>
+      </ul>
+      <pre>
+        # Ejemplo de enlace
+        // Código compilado y enlace para unir bibliotecas
+        gcc programa.o -o programa_final
+      </pre>
+      <p>
+        El enlazador asegura que todas las dependencias necesarias estén disponibles para la ejecución del programa.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Ejecución</h2>
+      <p>
+        La <strong>ejecución</strong> es el proceso en el que el sistema operativo carga el programa en la memoria y lo pone en marcha, ejecutando las instrucciones contenidas en el código compilado.
+      </p>
+      <ul>
+        <li>Cuando ejecutas el programa, la computadora sigue las instrucciones definidas en el código máquina.</li>
+        <li>El sistema operativo administra la ejecución, brindando recursos como memoria y tiempo de CPU.</li>
+      </ul>
+      <pre>
+        // Ejemplo de ejecución
+        ./programa_final  // En sistemas Linux o Mac
+      </pre>
+      <p>
+        Al ejecutar el programa, se verá el resultado en la consola o en la interfaz gráfica del programa, dependiendo de cómo esté diseñado.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Errores</h2>
+      <p>
+        A lo largo del proceso de compilación, enlace y ejecución, pueden ocurrir varios tipos de <strong>errores</strong>. Estos se dividen en tres categorías principales:
+      </p>
+      <ul>
+        <li><strong>Errores de sintaxis:</strong> Ocurren cuando el código no sigue las reglas del lenguaje de programación. El compilador normalmente detecta estos errores.
+          <pre>
+            // Error de sintaxis
+            if (x > 10  // Falta de paréntesis
+                printf("x es mayor que 10");
+          </pre>
+        </li>
+        <li><strong>Errores de tiempo de ejecución:</strong> Ocurren mientras el programa está en ejecución, como dividir entre cero o intentar acceder a una ubicación de memoria inválida.
+          <pre>
+            // Error de tiempo de ejecución
+            int x = 10 / 0;  // División entre cero
+          </pre>
+        </li>
+        <li><strong>Errores lógicos:</strong> Son errores en la lógica del programa que no son detectados por el compilador. El programa puede compilar y ejecutarse, pero produce resultados incorrectos.
+          <pre>
+            // Error lógico
+            if (a > b) {
+                // El código debería hacer algo diferente
+            }
+          </pre>
+        </li>
+      </ul>
+      <p>
+        Detectar y corregir estos errores es una parte importante del proceso de desarrollo de software.
+      </p>
+    </section>
+
+    <script src="../funciones.js"></script>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+  </body>
+</html>

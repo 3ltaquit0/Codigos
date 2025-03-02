@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructuras Iterativas en Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Estructuras Iterativas en Programación</h1>
+      <p>Explicación y ejemplos de las estructuras iterativas: repetir mientras, hasta, desde.</p>
+    </header>
+
+    <section>
+      <h2>1. Estructura Iterativa "Repetir Mientras" (while)</h2>
+      <p>En esta estructura, el código se repite mientras la condición sea verdadera.</p>
+      <pre><code class="language-javascript">
+let contador = 0;
+while (contador < 5) {
+    console.log("El contador es:", contador);
+    contador++;
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>2. Estructura Iterativa "Repetir Hasta" (do-while)</h2>
+      <p>En esta estructura, el código se ejecuta al menos una vez y luego se repite mientras la condición sea verdadera.</p>
+      <pre><code class="language-javascript">
+let contador = 0;
+do {
+    console.log("El contador es:", contador);
+    contador++;
+} while (contador < 5);
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>3. Estructura Iterativa "Repetir Desde" (for)</h2>
+      <p>En esta estructura, el código se repite un número determinado de veces.</p>
+      <pre><code class="language-javascript">
+for (let contador = 0; contador < 5; contador++) {
+    console.log("El contador es:", contador);
+}
+      </code></pre>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

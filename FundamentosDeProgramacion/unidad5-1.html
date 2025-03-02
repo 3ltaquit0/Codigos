@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modularidad en Programación</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Modularidad en Programación</h1>
+      <p>Aprende cómo dividir tu código en módulos para mejorar la organización, reutilización y mantenimiento.</p>
+    </header>
+
+    <section>
+      <h2>1. ¿Qué es un módulo?</h2>
+      <p>Un módulo es una unidad de código que agrupa funciones, variables y clases relacionadas. Su uso permite mejorar la estructura del código, hacerlo más reutilizable y fácil de mantener.</p>
+    </section>
+
+    <section>
+      <h2>2. Ventajas de la Modularidad</h2>
+      <ul>
+        <li>Reutilización de código</li>
+        <li>Mejor mantenimiento</li>
+        <li>Organización y legibilidad</li>
+        <li>Encapsulamiento de detalles</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Declaración y uso de módulos</h2>
+      <p>Dependiendo del lenguaje de programación, los módulos se declaran de manera diferente. A continuación, algunos ejemplos de cómo declarar y usar módulos en varios lenguajes:</p>
+      <h3>Ejemplo en Python</h3>
+      <pre><code class="language-python">
+# math_utils.py
+def suma(a, b):
+    return a + b
+
+def resta(a, b):
+    return a - b
+      </code></pre>
+      <pre><code class="language-python">
+# main.py
+import math_utils
+
+resultado = math_utils.suma(3, 5)
+print("El resultado de la suma es:", resultado)
+      </code></pre>
+      
+      <h3>Ejemplo en JavaScript (Node.js)</h3>
+      <pre><code class="language-javascript">
+const mathUtils = require('./mathUtils');
+
+let resultado = mathUtils.suma(3, 5);
+console.log("El resultado de la suma es:", resultado);
+      </code></pre>
+    </section>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

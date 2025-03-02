@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseño de Funciones en Algoritmos</title>
+    <link rel="stylesheet" href="fundamentos.css" />
+  </head>
+  <body>
+
+    <h1>Diseño de Funciones</h1>
+    <p>
+      Las funciones son bloques de código que realizan tareas específicas y pueden ser reutilizadas dentro de un programa. Un diseño adecuado de funciones permite escribir código más modular, reutilizable y mantenible.
+    </p>
+
+    <h2>Características de una Función</h2>
+    <ul>
+      <li><strong>Entrada (Parámetros):</strong> Datos que la función recibe para su procesamiento.</li>
+      <li><strong>Proceso:</strong> La tarea que realiza la función con los parámetros.</li>
+      <li><strong>Salida (Valor de Retorno):</strong> El resultado calculado por la función.</li>
+      <li><strong>Encapsulamiento:</strong> La función oculta su implementación interna.</li>
+    </ul>
+
+    <h2>Tipos de Funciones</h2>
+    <ul>
+      <li>Funciones sin parámetros ni retorno.</li>
+      <li>Funciones con parámetros sin retorno.</li>
+      <li>Funciones sin parámetros con retorno.</li>
+      <li>Funciones con parámetros y retorno.</li>
+    </ul>
+
+    <h2>Ejemplo: Calcular el Área de un Círculo</h2>
+    <p>El siguiente pseudocódigo describe una función que calcula el área de un círculo dado su radio:</p>
+    <pre><code class="language-text">
+Inicio
+   Función CalcularÁrea(radio)
+       área = 3.1416 * radio * radio
+       Retornar área
+   Fin Función
+Fin
+    </code></pre>
+
+    <h3>Implementación en Java</h3>
+    <pre><code class="language-java">
+public class Calculadora {
+    public static double calcularArea(double radio) {
+        return Math.PI * radio * radio;
+    }
+
+    public static void main(String[] args) {
+        double radio = 5.0;
+        double area = calcularArea(radio);
+        System.out.println("El área del círculo con radio " + radio + " es: " + area);
+    }
+}
+    </code></pre>
+
+    <div id="buttonContainer">
+      <button id="backButton1">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+  </body>
+</html>

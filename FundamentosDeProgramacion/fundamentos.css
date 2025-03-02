@@ -1,0 +1,154 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+}
+
+/* Encabezado */
+header {
+    background: #6200ea;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #bb86fc;
+}
+
+/* Secciones */
+section {
+    padding: 20px;
+    margin: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    section {
+        background: #1e1e1e;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+}
+
+section h2 {
+    color: #3700b3;
+    border-bottom: 2px solid #6200ea;
+    padding-bottom: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    section h2 {
+        color: #bb86fc;
+        border-bottom: 2px solid #bb86fc;
+    }
+}
+
+section h3 {
+    color: #6200ea;
+    margin-top: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    section h3 {
+        color: #bb86fc;
+    }
+}
+
+/* Listas */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* Código */
+pre {
+    background: #e3f2fd;
+    padding: 10px;
+    border-left: 3px solid #6200ea;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    pre {
+        background: #2c2c2c;
+        border-left: 3px solid #bb86fc;
+    }
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#codigoJava {
+    user-select: text;
+}
+
+/* Botones */
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+@media (prefers-color-scheme: dark) {
+    button {
+        background-color: #bb86fc;
+        color: #121212;
+    }
+
+    button:hover {
+        background-color: #3700b3;
+    }
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    section {
+        margin: 10px 0;
+    }
+}
