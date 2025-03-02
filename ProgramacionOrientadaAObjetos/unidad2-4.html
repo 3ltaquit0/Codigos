@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos en Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Métodos en Programación Orientada a Objetos</h1>
+        <p>En la programación orientada a objetos (POO), un método es una función definida dentro de una clase, utilizada para realizar acciones o comportamientos específicos en los objetos de dicha clase.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Declaración de Métodos</h2>
+            <p>Un método se declara dentro de una clase y define una acción que los objetos de esa clase pueden realizar. La estructura básica de un método incluye su tipo de retorno, el nombre del método, los parámetros (si los hay) y el cuerpo del método donde se define su funcionalidad.</p>
+            <p><strong>Ejemplo en Java:</strong></p>
+            <pre><code>
+class Persona {
+    // Método que declara su tipo de retorno y parámetros
+    public void saludar(String nombre) {
+        System.out.println("Hola, " + nombre);
+    }
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Mensajes</h2>
+            <p>En POO, enviar un mensaje es el acto de invocar un método en un objeto. Este proceso permite que el objeto ejecute el comportamiento definido en el método.</p>
+            <p><strong>Ejemplo en Java:</strong></p>
+            <pre><code>
+Persona persona = new Persona();
+persona.saludar("Carlos"); // Enviar mensaje al objeto 'persona'
+            </code></pre>
+            <p>En este ejemplo, al llamar al método <code>saludar</code>, el objeto <code>persona</code> recibe el mensaje y ejecuta la acción definida en el método.</p>
+        </section>
+
+        <section>
+            <h2>Paso de Parámetros</h2>
+            <p>Los métodos pueden recibir datos externos mediante parámetros. Los parámetros se definen en la declaración del método y permiten que el método realice operaciones con esos datos específicos.</p>
+            <p>En el ejemplo anterior, <code>saludar(String nombre)</code> tiene un parámetro <code>nombre</code>, que se utiliza para personalizar el saludo.</p>
+            <p>Los parámetros pueden pasarse por valor (una copia del valor se pasa al método) o por referencia (se pasa una referencia al objeto original), dependiendo del lenguaje.</p>
+        </section>
+
+        <section>
+            <h2>Retorno de Valores</h2>
+            <p>Un método puede devolver un valor al llamarlo, especificando el tipo de retorno en su declaración. Para devolver un valor, se utiliza la palabra clave <code>return</code>, seguida del valor a retornar.</p>
+            <p><strong>Ejemplo en Java:</strong></p>
+            <pre><code>
+class Calculadora {
+    public int sumar(int a, int b) {
+        return a + b; // Retorno del resultado de la suma
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, el método <code>sumar</code> devuelve la suma de dos números enteros, la cual puede ser usada o almacenada en una variable.</p>
+        </section>
+
+        <section>
+            <h2>Resumen de Ventajas de Usar Métodos en POO</h2>
+            <ul>
+                <li><strong>Reutilización de código:</strong> Los métodos permiten definir comportamientos una vez y reutilizarlos en varios lugares.</li>
+                <li><strong>Modularidad:</strong> Al dividir la funcionalidad en métodos, se facilita la lectura y el mantenimiento del código.</li>
+                <li><strong>Encapsulamiento:</strong> Los métodos permiten ocultar la complejidad de las operaciones y exponer solo una interfaz clara y sencilla.</li>
+            </ul>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flujos y Archivos - Definición</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Flujos y Archivos en Programación</h1>
+    </header>
+
+    <section>
+      <h2>Flujos</h2>
+      <p>
+        Un <strong>flujo</strong> (o "stream" en inglés) es una secuencia de datos
+        que se transmite de un lugar a otro, como una secuencia de bytes o
+        caracteres. Los flujos se utilizan para leer o escribir datos desde y
+        hacia dispositivos o archivos, ya sea en memoria o en dispositivos de
+        almacenamiento.
+      </p>
+      <p>
+        Existen dos tipos principales de flujos:
+      </p>
+      <ul>
+        <li>
+          <strong>Flujos de entrada</strong> (Input Streams): Permiten leer datos
+          desde una fuente (por ejemplo, desde un archivo o la entrada estándar).
+        </li>
+        <li>
+          <strong>Flujos de salida</strong> (Output Streams): Permiten escribir
+          datos a un destino (por ejemplo, un archivo o la salida estándar).
+        </li>
+      </ul>
+      <p>
+        Los flujos permiten realizar operaciones de lectura y escritura de
+        manera secuencial, facilitando el acceso eficiente a los datos.
+      </p>
+    </section>
+
+    <section>
+      <h2>Archivos</h2>
+      <p>
+        Un <strong>archivo</strong> es una unidad de almacenamiento en un
+        dispositivo, como un disco duro, donde los datos se guardan de manera
+        persistente. Los archivos pueden contener diversos tipos de datos,
+        como texto, imágenes, videos, entre otros.
+      </p>
+      <p>
+        Los archivos pueden ser de diferentes tipos:
+      </p>
+      <ul>
+        <li><strong>Archivos de texto</strong>: Contienen datos en formato
+          legible por el ser humano.</li>
+        <li><strong>Archivos binarios</strong>: Contienen datos en formato no
+          legible por humanos (por ejemplo, imágenes o videos).</li>
+      </ul>
+      <p>
+        Los archivos se utilizan para almacenar datos de forma que persistan
+        más allá de la ejecución de un programa.
+      </p>
+    </section>
+
+    <section>
+      <h2>Flujos y Archivos en conjunto</h2>
+      <p>
+        Los flujos y los archivos trabajan juntos para permitir la manipulación
+        eficiente de datos. Al trabajar con archivos, se usan flujos para
+        leer o escribir datos de manera secuencial. Los flujos permiten
+        interactuar con los archivos de una manera controlada.
+      </p>
+      <h3>Operaciones comunes con archivos:</h3>
+      <ul>
+        <li>Abrir un archivo para leer o escribir.</li>
+        <li>Leer datos desde un archivo usando flujos de entrada.</li>
+        <li>Escribir datos a un archivo usando flujos de salida.</li>
+        <li>Cerrar el archivo después de realizar las operaciones.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplo de código en Java</h2>
+      <pre><code>
+import java.io.*;
+
+public class EjemploArchivo {
+    public static void main(String[] args) {
+        try (FileOutputStream archivoSalida = new FileOutputStream("ejemplo.txt")) {
+            String texto = "Hola, este es un ejemplo de escritura en archivo.";
+            archivoSalida.write(texto.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (FileInputStream archivoEntrada = new FileInputStream("ejemplo.txt")) {
+            int contenido;
+            while ((contenido = archivoEntrada.read()) != -1) {
+                System.out.print((char) contenido);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+      </code></pre>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

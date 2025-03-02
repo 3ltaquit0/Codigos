@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenguaje de Modelado Unificado: Diagrama de Clases</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Lenguaje de Modelado Unificado (UML): Diagrama de Clases</h1>
+        <p>El Lenguaje de Modelado Unificado (UML) es un estándar de modelado visual ampliamente utilizado en el desarrollo de software para representar y documentar distintos aspectos del diseño del sistema.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Diagrama de Clases?</h2>
+            <p>Un <strong>diagrama de clases</strong> es un tipo de diagrama en UML que describe la estructura de un sistema mostrando sus clases, atributos, métodos y las relaciones entre ellas. Es una herramienta clave para el diseño orientado a objetos.</p>
+        </section>
+
+        <section>
+            <h2>Elementos del Diagrama de Clases</h2>
+            <p>Los principales componentes de un diagrama de clases incluyen:</p>
+
+            <h3>Clases</h3>
+            <p>Las <strong>clases</strong> representan los conceptos o entidades en el sistema. Cada clase está representada como un rectángulo dividido en tres partes:</p>
+            <ul>
+                <li><strong>Nombre de la clase</strong>: Indica el nombre de la clase (por ejemplo, "Coche").</li>
+                <li><strong>Atributos</strong>: Propiedades de la clase (por ejemplo, "color", "modelo").</li>
+                <li><strong>Métodos</strong>: Comportamientos o funciones de la clase (por ejemplo, "acelerar()", "frenar()").</li>
+            </ul>
+
+            <h3>Relaciones entre Clases</h3>
+            <p>Los diagramas de clases incluyen distintos tipos de relaciones que muestran cómo interactúan las clases entre sí:</p>
+            <ul>
+                <li><strong>Asociación</strong>: Indica una relación básica entre dos clases. Por ejemplo, una clase "Coche" puede estar asociada a una clase "Conductor".</li>
+                <li><strong>Herencia</strong> (Generalización): Muestra que una clase hija hereda atributos y métodos de una clase padre. Se representa con una línea con un triángulo apuntando hacia la clase padre.</li>
+                <li><strong>Agregación</strong>: Indica una relación de "todo/parte" débil, donde una clase contiene otra, pero ambas pueden existir independientemente. Por ejemplo, una clase "Coche" contiene una clase "Motor".</li>
+                <li><strong>Composición</strong>: Similar a la agregación, pero más fuerte. En este caso, si la clase contenedora se destruye, también se destruyen las clases que contiene. Se representa con un rombo negro.</li>
+                <li><strong>Dependencia</strong>: Una relación donde una clase utiliza o depende de otra. Generalmente es temporal y se representa con una línea discontinua.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Diagrama de Clases</h2>
+            <p>A continuación se presenta un ejemplo básico de un diagrama de clases para un sistema de gestión de vehículos:</p>
+            <ul>
+                <li><strong>Clase:</strong> Coche</li>
+                <ul>
+                    <li><strong>Atributos:</strong> color, modelo, velocidad</li>
+                    <li><strong>Métodos:</strong> acelerar(), frenar(), encender()</li>
+                </ul>
+                <li><strong>Relación:</strong> Herencia de una clase "Vehículo"</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Beneficios del Diagrama de Clases</h2>
+            <p>El diagrama de clases es una herramienta útil en el desarrollo de software ya que:</p>
+            <ul>
+                <li>Permite visualizar la estructura del sistema y sus componentes.</li>
+                <li>Facilita la comunicación entre desarrolladores y otras partes interesadas.</li>
+                <li>Ayuda a organizar y planificar el desarrollo del sistema.</li>
+                <li>Proporciona una base para implementar el diseño en código.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

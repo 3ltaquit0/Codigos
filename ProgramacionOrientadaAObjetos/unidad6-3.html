@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operaciones Básicas y Tipos de Acceso en Archivos</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Operaciones Básicas y Tipos de Acceso en Archivos</h1>
+    </header>
+
+    <section>
+      <h2>Operaciones Básicas en Archivos</h2>
+      <p>
+        Las operaciones básicas en archivos son esenciales para interactuar con
+        ellos. A continuación, se describen las principales operaciones que se
+        realizan en archivos:
+      </p>
+      <ul>
+        <li>
+          <strong>Abrir:</strong> Antes de realizar cualquier operación en un
+          archivo, es necesario abrirlo. Dependiendo del tipo de archivo (texto
+          o binario) y del modo de acceso, se abrirá en un modo específico
+          (lectura, escritura, etc.).
+        </li>
+        <li>
+          <strong>Leer:</strong> Esta operación permite extraer información del
+          archivo. En archivos de texto, se lee línea por línea o carácter por
+          carácter. En archivos binarios, se lee byte por byte.
+        </li>
+        <li>
+          <strong>Escribir:</strong> Permite insertar información en el archivo.
+          En archivos de texto, se escribe como texto plano. En archivos binarios,
+          se escriben secuencias de bytes.
+        </li>
+        <li>
+          <strong>Cerrar:</strong> Después de realizar las operaciones necesarias,
+          se debe cerrar el archivo para liberar los recursos del sistema.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tipos de Acceso a Archivos</h2>
+      <p>
+        El acceso a los archivos se puede clasificar en diferentes tipos, que
+        determinan cómo y en qué orden se accede a los datos almacenados en un
+        archivo:
+      </p>
+      <ul>
+        <li>
+          <strong>Acceso Secuencial:</strong> En este tipo de acceso, los datos
+          se leen o escriben de manera secuencial, es decir, en el orden en que
+          se encuentran en el archivo. El acceso secuencial es común en archivos
+          de texto, como los archivos de log, donde los datos se procesan en
+          el orden en que fueron escritos.
+        </li>
+        <li>
+          <strong>Acceso Directo:</strong> Este tipo de acceso permite leer o
+          escribir en cualquier parte del archivo sin necesidad de procesar los
+          datos secuencialesmente. Los archivos binarios generalmente permiten
+          acceso directo, lo que facilita la búsqueda rápida de datos en grandes
+          archivos.
+        </li>
+        <li>
+          <strong>Acceso Aleatorio:</strong> Permite saltar entre las partes del
+          archivo y acceder a cualquier ubicación de manera directa. Este tipo de
+          acceso es útil para bases de datos y otros sistemas que necesitan leer
+          y escribir datos de manera no secuencial.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplos de Operaciones en Archivos</h2>
+      <p>
+        A continuación, se presenta un ejemplo de cómo realizar algunas de las
+        operaciones básicas en archivos en Java:
+      </p>
+      <h3>Operación de Lectura y Escritura en Archivos de Texto:</h3>
+      <pre><code>
+import java.io.*;
+
+public class EjemploArchivoTexto {
+    public static void main(String[] args) {
+        // Escritura en archivo de texto
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("archivo.txt"))) {
+            escritor.write("Hola, este es un archivo de texto.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Lectura de archivo de texto
+        try (BufferedReader lector = new BufferedReader(new FileReader("archivo.txt"))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+      </code></pre>
+
+      <h3>Operación de Lectura y Escritura en Archivos Binarios:</h3>
+      <pre><code>
+import java.io.*;
+
+public class EjemploArchivoBinario {
+    public static void main(String[] args) {
+        // Escritura en archivo binario
+        try (FileOutputStream archivoSalida = new FileOutputStream("archivo.bin")) {
+            byte[] datos = {1, 2, 3, 4, 5};
+            archivoSalida.write(datos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Lectura de archivo binario
+        try (FileInputStream archivoEntrada = new FileInputStream("archivo.bin")) {
+            int contenido;
+            while ((contenido = archivoEntrada.read()) != -1) {
+                System.out.print(contenido + " ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+      </code></pre>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

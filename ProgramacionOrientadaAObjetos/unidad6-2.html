@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clasificación de Archivos: Texto y Binarios</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Clasificación de Archivos: Archivos de Texto y Binarios</h1>
+    </header>
+
+    <section>
+      <h2>Archivos de Texto</h2>
+      <p>
+        Los <strong>archivos de texto</strong> son archivos que contienen solo
+        caracteres legibles por humanos. Estos archivos almacenan información
+        en formato de texto sin ningún tipo de formato especial, aunque
+        algunos pueden contener caracteres especiales como saltos de línea o
+        tabulaciones.
+      </p>
+      <p>
+        Los archivos de texto pueden ser abiertos y editados fácilmente con
+        cualquier editor de texto, como el Bloc de notas en Windows o el
+        editor Vim en Linux. Los formatos más comunes de archivos de texto son:
+      </p>
+      <ul>
+        <li><strong>Archivos .txt</strong>: El formato más básico de archivo de texto.</li>
+        <li><strong>Archivos .csv</strong>: Archivos de valores separados por comas, usados para almacenar datos tabulares.</li>
+        <li><strong>Archivos .log</strong>: Archivos de texto que almacenan registros de actividad de un sistema.</li>
+      </ul>
+      <p>
+        En los archivos de texto, cada carácter ocupa un número específico de
+        bytes (por ejemplo, un byte por carácter en el formato ASCII). Estos
+        archivos pueden ser procesados sin tener que convertir los datos, ya
+        que están en un formato directamente legible.
+      </p>
+    </section>
+
+    <section>
+      <h2>Archivos Binarios</h2>
+      <p>
+        Los <strong>archivos binarios</strong> contienen datos que no están
+        destinados a ser legibles directamente por humanos. En lugar de
+        caracteres de texto, estos archivos almacenan datos en formato binario,
+        que es el lenguaje que entiende la computadora.
+      </p>
+      <p>
+        Los archivos binarios pueden contener cualquier tipo de datos: texto
+        codificado, imágenes, videos, programas ejecutables, etc. A diferencia
+        de los archivos de texto, los archivos binarios no pueden ser leídos
+        con un editor de texto simple, ya que su contenido no tiene una
+        representación legible.
+      </p>
+      <p>
+        Algunos ejemplos de archivos binarios incluyen:
+      </p>
+      <ul>
+        <li><strong>Archivos .jpg</strong>: Archivos de imagen comprimida en formato JPEG.</li>
+        <li><strong>Archivos .exe</strong>: Archivos ejecutables para sistemas operativos Windows.</li>
+        <li><strong>Archivos .mp3</strong>: Archivos de audio en formato comprimido MP3.</li>
+        <li><strong>Archivos .pdf</strong>: Documentos en formato Portable Document Format.</li>
+      </ul>
+      <p>
+        Los archivos binarios requieren una interpretación especial para ser
+        procesados correctamente, y se leen mediante flujos binarios en
+        lugar de flujos de texto.
+      </p>
+    </section>
+
+    <section>
+      <h2>Comparación entre Archivos de Texto y Archivos Binarios</h2>
+      <table border="1">
+        <tr>
+          <th>Características</th>
+          <th>Archivos de Texto</th>
+          <th>Archivos Binarios</th>
+        </tr>
+        <tr>
+          <td>Contenido</td>
+          <td>Caracteres legibles por humanos</td>
+          <td>Datos no legibles directamente</td>
+        </tr>
+        <tr>
+          <td>Formato</td>
+          <td>Texto plano</td>
+          <td>Datos en formato binario</td>
+        </tr>
+        <tr>
+          <td>Edición</td>
+          <td>Se puede editar con cualquier editor de texto</td>
+          <td>Requiere programas específicos para abrir y editar</td>
+        </tr>
+        <tr>
+          <td>Uso común</td>
+          <td>Documentos, registros, código fuente</td>
+          <td>Imágenes, audio, video, programas ejecutables</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Operaciones con Archivos de Texto y Binarios</h2>
+      <p>
+        La principal diferencia entre los archivos de texto y los binarios es
+        cómo se leen y escriben. Los archivos de texto pueden ser manejados
+        fácilmente con flujos de caracteres, mientras que los archivos binarios
+        requieren flujos binarios para ser procesados correctamente.
+      </p>
+      <p>
+        A continuación, un ejemplo de cómo abrir, leer y escribir en un archivo
+        binario en Java:
+      </p>
+      <pre><code>
+import java.io.*;
+
+public class EjemploArchivoBinario {
+    public static void main(String[] args) {
+        // Escritura en archivo binario
+        try (FileOutputStream archivoSalida = new FileOutputStream("ejemplo.bin")) {
+            byte[] datos = {1, 2, 3, 4, 5};
+            archivoSalida.write(datos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Lectura de archivo binario
+        try (FileInputStream archivoEntrada = new FileInputStream("ejemplo.bin")) {
+            int contenido;
+            while ((contenido = archivoEntrada.read()) != -1) {
+                System.out.print(contenido + " ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+      </code></pre>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

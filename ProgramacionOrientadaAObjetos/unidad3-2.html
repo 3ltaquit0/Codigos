@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de Herencia: Herencia Simple y Herencia Múltiple</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Clasificación de Herencia: Herencia Simple y Herencia Múltiple</h1>
+        <p>La herencia es un concepto central en la programación orientada a objetos. Permite que una clase derive de otra, lo que facilita la reutilización de código. Existen dos tipos principales de herencia: <strong>herencia simple</strong> y <strong>herencia múltiple</strong>.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Herencia Simple</h2>
+            <p>La <strong>herencia simple</strong> es el tipo de herencia en la que una clase deriva directamente de una única clase base. En otras palabras, una clase derivada puede acceder a los miembros (atributos y métodos) de una sola clase base. Este tipo de herencia es el más común y se utiliza cuando hay una relación "es un" entre la clase base y la clase derivada.</p>
+            <p>Ejemplo: Considera una clase base <code>Animal</code> y una clase derivada <code>Perro</code>. Un perro es un tipo de animal, por lo que la clase <code>Perro</code> puede heredar los atributos y métodos de la clase <code>Animal</code>.</p>
+            <p>Ventajas:</p>
+            <ul>
+                <li>Simplicidad en la relación entre clases.</li>
+                <li>Facilita la reutilización de código.</li>
+                <li>Mayor facilidad para entender la jerarquía de clases.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Herencia Simple</h2>
+            <pre><code>
+class Animal {
+    String nombre;
+    int edad;
+
+    public void hacerSonido() {
+        System.out.println("Sonido genérico");
+    }
+}
+
+class Perro extends Animal {
+    public void ladrar() {
+        System.out.println("¡Guau!");
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, la clase <code>Perro</code> hereda de la clase <code>Animal</code>, por lo que un objeto de la clase <code>Perro</code> puede acceder al método <code>hacerSonido()</code> de la clase base <code>Animal</code>.</p>
+        </section>
+
+        <section>
+            <h2>Herencia Múltiple</h2>
+            <p>La <strong>herencia múltiple</strong> ocurre cuando una clase deriva de más de una clase base. Esto significa que una clase derivada puede heredar atributos y métodos de múltiples clases. Aunque la herencia múltiple puede ser útil en algunos casos, también puede generar problemas, como la ambigüedad cuando dos clases base tienen métodos con el mismo nombre.</p>
+            <p>En algunos lenguajes como Java, la herencia múltiple no está permitida directamente para clases, pero sí se puede lograr mediante interfaces, que permiten a una clase implementar varias interfaces.</p>
+            <p>Ejemplo: Considera las clases base <code>Volador</code> y <code>Corredor</code>, y una clase derivada <code>Murcielago</code>. Un murciélago puede volar y correr, por lo que hereda de ambas clases base.</p>
+            <p>Ventajas:</p>
+            <ul>
+                <li>Permite que una clase herede múltiples comportamientos.</li>
+                <li>Facilita la creación de clases con características de varias clases base.</li>
+            </ul>
+            <p>Desventajas:</p>
+            <ul>
+                <li>Puede generar ambigüedad si las clases base tienen métodos o atributos con el mismo nombre.</li>
+                <li>Hace más compleja la jerarquía de clases.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Herencia Múltiple (usando Interfaces en Java)</h2>
+            <pre><code>
+interface Volador {
+    void volar();
+}
+
+interface Corredor {
+    void correr();
+}
+
+class Murcielago implements Volador, Corredor {
+    public void volar() {
+        System.out.println("El murciélago está volando.");
+    }
+
+    public void correr() {
+        System.out.println("El murciélago está corriendo.");
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, la clase <code>Murcielago</code> implementa tanto la interfaz <code>Volador</code> como la interfaz <code>Corredor</code>, permitiéndole tener tanto la habilidad de volar como de correr.</p>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La herencia puede clasificarse en dos tipos principales:</p>
+            <ul>
+                <li><strong>Herencia Simple:</strong> Una clase derivada hereda de una única clase base, lo que simplifica la jerarquía de clases.</li>
+                <li><strong>Herencia Múltiple:</strong> Una clase derivada hereda de más de una clase base. Aunque permite la reutilización de múltiples comportamientos, puede generar problemas de ambigüedad, especialmente en lenguajes que no permiten la herencia múltiple directa entre clases.</li>
+            </ul>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

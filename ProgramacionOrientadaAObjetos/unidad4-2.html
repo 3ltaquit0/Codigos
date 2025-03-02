@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clases Abstractas - Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Clases Abstractas en Programación Orientada a Objetos</h1>
+    </header>
+
+    <section>
+      <h2>Definición</h2>
+      <p>
+        Una <strong>clase abstracta</strong> es una clase que no puede ser instanciada por sí sola. Es decir, no puedes crear objetos directamente a partir de ella. En lugar de eso, se utiliza como una base para que otras clases la hereden y proporcionen implementaciones concretas de los métodos definidos en ella.
+      </p>
+      <p>
+        Las clases abstractas se utilizan cuando tienes una jerarquía de clases en la que algunas funcionalidades comunes están definidas en la clase base (abstracta), pero necesitas que las clases derivadas implementen sus propios comportamientos específicos para ciertos métodos.
+      </p>
+    </section>
+
+    <section>
+      <h2>Métodos Abstractos</h2>
+      <p>
+        Los <strong>métodos abstractos</strong> son aquellos que están declarados en una clase abstracta pero no tienen implementación en ella. Solo tienen su firma (nombre, tipo de retorno y parámetros). Las clases derivadas son responsables de implementar estos métodos. Un método abstracto no puede tener un cuerpo (es decir, no tiene un bloque de código).
+      </p>
+      <p>
+        En la mayoría de los lenguajes de programación orientada a objetos, como Java, C# o C++, los métodos abstractos se definen con la palabra clave `abstract` en su declaración.
+      </p>
+    </section>
+
+    <section>
+      <h2>Implementación de Clases Abstractas</h2>
+      <p>
+        Para implementar una clase abstracta, se debe crear una clase que herede de la clase abstracta y proporcionar la implementación de los métodos abstractos. A continuación, se presenta un ejemplo en Java para ilustrar cómo funciona:
+      </p>
+
+      <pre>
+        <code>
+abstract class Animal {
+    abstract void hacerSonido();  // Método abstracto
+
+    public void dormir() {
+        System.out.println("El animal duerme");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Animal miPerro = new Perro();
+        miPerro.hacerSonido();  // El perro ladra
+        miPerro.dormir();  // El animal duerme
+    }
+}
+        </code>
+      </pre>
+
+      <p>
+        En este ejemplo, `Animal` es una clase abstracta que tiene un método abstracto `hacerSonido` y un método concreto `dormir`. La clase `Perro` hereda de `Animal` y proporciona una implementación para el método `hacerSonido`. Esto muestra cómo una clase abstracta puede definir métodos comunes y dejar otros para que las clases derivadas los implementen.
+      </p>
+    </section>
+
+    <section>
+      <h2>Modelado de Clases Abstractas</h2>
+      <p>
+        En el modelado de clases abstractas en un diagrama de clases, las clases abstractas se representan mediante un rectángulo similar al de una clase común, pero con la palabra <strong>«abstract»</strong> antes del nombre de la clase. Los métodos abstractos suelen ir acompañados de un estereotipo que indica que no tienen implementación.
+      </p>
+
+      <p>
+        Ejemplo de diagrama UML para clases abstractas:
+      </p>
+      <ul>
+        <li><strong>Clase abstracta:</strong> Representada con la palabra clave <em>abstract</em> en su nombre.</li>
+        <li><strong>Métodos abstractos:</strong> Los métodos que no tienen implementación se marcan con la palabra <em>abstract</em> y se muestran sin cuerpo.</li>
+        <li><strong>Relación de herencia:</strong> Las clases derivadas se conectan a la clase abstracta mediante una flecha que indica la herencia.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Beneficios de las Clases Abstractas</h2>
+      <ul>
+        <li><strong>Reutilización de código:</strong> Las clases abstractas permiten definir funcionalidades comunes que serán heredadas por las clases derivadas, evitando la duplicación de código.</li>
+        <li><strong>Control de implementación:</strong> A través de métodos abstractos, las clases base pueden definir una interfaz común, pero las clases derivadas tienen la libertad de implementar el comportamiento específico.</li>
+        <li><strong>Diseño orientado a objetos más limpio:</strong> Las clases abstractas ayudan a estructurar el sistema de manera más modular y flexible.</li>
+      </ul>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

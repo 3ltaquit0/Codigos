@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propagación de Excepciones en Programación</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Propagación de Excepciones en Programación</h1>
+    </header>
+
+    <section>
+      <h2>Definición</h2>
+      <p>
+        La propagación de excepciones es el proceso mediante el cual una excepción que ocurre en un bloque de código se "propaga" o "lanza" hacia el código llamador si no se maneja dentro del bloque donde ocurre. Es un mecanismo clave en el manejo de errores, ya que permite a los métodos o funciones superiores decidir cómo tratar las excepciones. 
+      </p>
+      <p>
+        En lugar de manejar todas las excepciones en un solo lugar, la propagación permite a un método propagar una excepción hacia el método que lo llamó, donde puede ser manejada de forma más apropiada o bien puede ser propagada aún más arriba en la cadena de llamadas.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Cómo Funciona la Propagación de Excepciones?</h2>
+      <p>
+        Cuando se produce una excepción en un bloque de código, el flujo de control se detiene y el programa busca un manejador de excepciones en los bloques de código cercanos. Si el bloque actual no tiene un bloque `catch` para manejar esa excepción, la excepción se propaga hacia el método llamador.
+      </p>
+      <p>
+        Este proceso continúa hasta que la excepción es manejada por un bloque `catch` o hasta que se alcanza el método principal (`main`) o el punto de entrada del programa. Si no se maneja en ninguna parte del programa, la excepción puede provocar la terminación del programa.
+      </p>
+    </section>
+
+    <section>
+      <h2>Uso de la palabra clave <code>throws</code></h2>
+      <p>
+        En Java, un método puede especificar que lanza una excepción utilizando la palabra clave `throws`. Esto significa que el método no maneja la excepción y que el llamador debe hacerse responsable de manejarla. Este mecanismo es una forma explícita de permitir la propagación de excepciones.
+      </p>
+      <p>
+        La declaración `throws` va en la firma del método, justo después de los parámetros, y se usa para indicar que el método puede lanzar una o varias excepciones verificadas (checked exceptions).
+      </p>
+      <pre><code class="language-java">public void miMetodo() throws IOException {
+  // Código que puede lanzar IOException
+}
+</code></pre>
+    </section>
+
+    <section>
+      <h2>Ejemplo de Propagación de Excepciones</h2>
+      <p>Supongamos que tenemos una función que lanza una excepción y otra función que la recibe y la maneja:</p>
+      <pre><code class="language-java">
+import java.io.*;
+
+public class EjemploExcepcion {
+  
+  public static void metodo1() throws IOException {
+    // Generamos una excepción
+    throw new IOException("Error en el archivo");
+  }
+  
+  public static void metodo2() {
+    try {
+      metodo1();  // Propaga la excepción de metodo1
+    } catch (IOException e) {
+      System.out.println("Excepción capturada en metodo2: " + e.getMessage());
+    }
+  }
+  
+  public static void main(String[] args) {
+    metodo2();  // Llama a metodo2 que maneja la excepción
+  }
+}
+</code></pre>
+      <p>En este ejemplo:</p>
+      <ul>
+        <li>El método <code>metodo1()</code> lanza una excepción de tipo <code>IOException</code>.</li>
+        <li>El método <code>metodo2()</code> llama a <code>metodo1()</code> y maneja la excepción utilizando un bloque <code>try-catch</code>.</li>
+        <li>La excepción se "propaga" de <code>metodo1()</code> a <code>metodo2()</code>, y este último la maneja de manera adecuada.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ventajas de la Propagación de Excepciones</h2>
+      <p>
+        La propagación de excepciones tiene varias ventajas importantes:
+      </p>
+      <ul>
+        <li><strong>Desacoplamiento:</strong> Permite que el código de un método sea más limpio, ya que no necesita manejar todas las excepciones que podrían ocurrir, sino que delega la responsabilidad al llamador.</li>
+        <li><strong>Flexibilidad:</strong> Los llamadores pueden decidir cómo manejar las excepciones de manera específica para su contexto.</li>
+        <li><strong>Mejor gestión de errores:</strong> Permite manejar errores de manera centralizada, lo que hace que el código sea más fácil de mantener.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>¿Qué sucede si no se maneja la excepción?</h2>
+      <p>
+        Si una excepción no se maneja en ningún punto del programa, el flujo de ejecución se interrumpe y, en muchos lenguajes de programación, el programa se detiene abruptamente. En Java, si no se maneja una excepción, la JVM imprimirá un mensaje de error en la consola y terminará la ejecución.
+      </p>
+    </section>
+    
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+  </body>
+</html>

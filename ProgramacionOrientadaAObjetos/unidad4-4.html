@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables Polimórficas (Plantillas)</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Variables Polimórficas (Plantillas)</h1>
+    </header>
+
+    <section>
+      <h2>Definición de Variables Polimórficas</h2>
+      <p>
+        El concepto de **variables polimórficas** está estrechamente relacionado con el polimorfismo en la programación orientada a objetos. Las variables polimórficas son aquellas que pueden referirse a objetos de diferentes clases derivadas de una misma clase base. El polimorfismo permite que un mismo tipo de variable pueda tomar diferentes formas durante la ejecución del programa, lo que facilita el manejo de diferentes tipos de objetos bajo una interfaz común.
+      </p>
+      <p>
+        En el caso de las **plantillas** (también conocidas como *generics* en algunos lenguajes como Java y C++), estas permiten definir variables, funciones o clases de manera que el tipo de datos se determine en tiempo de compilación en función del tipo de objeto que se pase a la plantilla. Este enfoque maximiza la reutilización del código y permite manejar distintos tipos de datos sin necesidad de reescribir el código para cada tipo.
+      </p>
+    </section>
+
+    <section>
+      <h2>Uso de Variables Polimórficas</h2>
+      <p>
+        Las variables polimórficas permiten que una sola variable pueda almacenar diferentes tipos de objetos en diferentes momentos de la ejecución. Esto es útil en situaciones en las que el tipo de objeto a manipular no se conoce hasta tiempo de ejecución. En lugar de declarar una variable para cada tipo posible, se puede usar una variable polimórfica que maneje cualquier tipo de objeto derivado de una clase base.
+      </p>
+      <p>
+        A continuación, se presenta un ejemplo en C++ utilizando plantillas para declarar variables polimórficas que pueden trabajar con diferentes tipos de datos:
+      </p>
+
+      <pre>
+        <code>
+#include <iostream>
+using namespace std;
+
+// Definición de plantilla de clase
+template <typename T>
+class Caja {
+public:
+    T valor;
+    Caja(T v) : valor(v) {}
+    void mostrarValor() {
+        cout << "El valor es: " << valor << endl;
+    }
+};
+
+int main() {
+    Caja<int> cajaEnteros(100);  // Caja que contiene un entero
+    cajaEnteros.mostrarValor();   // El valor es: 100
+
+    Caja<string> cajaCadenas("Hola mundo");  // Caja que contiene una cadena
+    cajaCadenas.mostrarValor();  // El valor es: Hola mundo
+
+    return 0;
+}
+        </code>
+      </pre>
+
+      <p>
+        En este ejemplo, la clase `Caja` es una plantilla que puede ser utilizada con diferentes tipos de datos, como `int`, `string`, o cualquier otro tipo. Esto permite la creación de objetos `Caja` para diferentes tipos de datos sin la necesidad de definir múltiples clases.
+      </p>
+    </section>
+
+    <section>
+      <h2>Aplicaciones de Variables Polimórficas (Plantillas)</h2>
+      <p>
+        El uso de variables polimórficas y plantillas tiene numerosas aplicaciones en la programación moderna. Algunas de las más destacadas son:
+      </p>
+      <ul>
+        <li><strong>Contenedores genéricos:</strong> Las plantillas se utilizan ampliamente en la implementación de contenedores, como listas, pilas, colas, y vectores, que pueden manejar cualquier tipo de dato. Esto permite escribir código más flexible y reutilizable.</li>
+        <li><strong>Funciones genéricas:</strong> Las plantillas también se usan para crear funciones que pueden operar sobre diferentes tipos de datos. Esto reduce la necesidad de escribir funciones repetitivas para cada tipo específico.</li>
+        <li><strong>Mejora de la legibilidad y mantenimiento:</strong> El uso de plantillas mejora la legibilidad del código, ya que el programador no necesita duplicar funciones o clases para tipos diferentes, lo que también reduce el mantenimiento y los errores potenciales.</li>
+        <li><strong>Optimización en el uso de memoria:</strong> Al ser compilado el tipo de datos en tiempo de compilación, el uso de plantillas permite una mayor eficiencia en términos de memoria y rendimiento, ya que el compilador genera el código específico para el tipo utilizado.</li>
+      </ul>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

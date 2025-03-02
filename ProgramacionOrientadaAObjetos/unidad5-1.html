@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excepciones en Programación</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Excepciones en Programación</h1>
+    </header>
+
+    <section>
+      <h2>Definición de Excepciones</h2>
+      <p>
+        En programación, una **excepción** es un evento inesperado o error que ocurre durante la ejecución de un programa. Las excepciones pueden surgir por una variedad de razones, como operaciones inválidas (como dividir por cero), intentar acceder a archivos que no existen, o cualquier otra condición que impida la correcta ejecución del programa.
+      </p>
+      <p>
+        Las excepciones son una forma de manejar errores de manera controlada. En lugar de dejar que un error interrumpa abruptamente la ejecución del programa, las excepciones permiten capturar el error, manejarlo apropiadamente, y, en algunos casos, continuar con la ejecución del programa sin que se detenga completamente.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Por qué son importantes las excepciones?</h2>
+      <p>
+        Las excepciones son cruciales porque permiten a los desarrolladores:
+      </p>
+      <ul>
+        <li><strong>Gestionar errores:</strong> Las excepciones permiten gestionar los errores de manera controlada y adecuada, mejorando la estabilidad del software.</li>
+        <li><strong>Mejorar la experiencia del usuario:</strong> Si un error ocurre, se puede mostrar un mensaje amigable o tomar medidas para corregir el problema, en lugar de que el programa falle sin explicación.</li>
+        <li><strong>Mantener el flujo de ejecución:</strong> Al capturar y manejar excepciones, se evita que el programa se cierre inesperadamente y se puede intentar recuperar o continuar con la ejecución.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tipos de Excepciones</h2>
+      <p>
+        Las excepciones se pueden clasificar en dos categorías principales:
+      </p>
+      <ul>
+        <li><strong>Excepciones verificadas:</strong> Son aquellas que el compilador obliga a manejar. El programador debe proporcionar una forma de manejar estas excepciones, ya sea mediante el uso de bloques `try-catch` o propagándolas a través de `throws`.</li>
+        <li><strong>Excepciones no verificadas:</strong> Son excepciones que no son verificadas por el compilador, y generalmente están relacionadas con errores del programa, como acceder a un índice fuera de rango o dividir por cero.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Manejo de Excepciones</h2>
+      <p>
+        El manejo de excepciones en muchos lenguajes de programación se realiza mediante el uso de bloques especiales de código como `try`, `catch` y `finally`. La estructura básica es la siguiente:
+      </p>
+      <ul>
+        <li><strong>try:</strong> En este bloque se coloca el código que podría generar una excepción. Si ocurre un error dentro de este bloque, el flujo de ejecución salta al bloque `catch` correspondiente.</li>
+        <li><strong>catch:</strong> Este bloque captura la excepción y permite manejarla. Puede realizar acciones como mostrar un mensaje de error o realizar una corrección.</li>
+        <li><strong>finally:</strong> Este bloque es opcional y se ejecuta siempre, haya o no habido una excepción. Se utiliza para realizar tareas de limpieza, como cerrar archivos o liberar recursos.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplo de Manejo de Excepciones en Java</h2>
+      <p>
+        A continuación se muestra un ejemplo básico en Java de cómo se pueden manejar excepciones usando bloques `try-catch`:
+      </p>
+
+      <pre>
+        <code>
+public class EjemploExcepciones {
+    public static void main(String[] args) {
+        try {
+            int resultado = 10 / 0;  // Esto causará una excepción de división por cero
+        } catch (ArithmeticException e) {
+            System.out.println("Error: No se puede dividir por cero.");
+        } finally {
+            System.out.println("Este bloque se ejecuta siempre.");
+        }
+    }
+}
+        </code>
+      </pre>
+      <p>
+        En este ejemplo, se intenta realizar una operación de división por cero, lo cual lanza una excepción. El bloque `catch` captura la excepción `ArithmeticException` y muestra un mensaje adecuado, mientras que el bloque `finally` se ejecuta independientemente de si ocurre una excepción o no.
+      </p>
+    </section>
+
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+  </body>
+</html>

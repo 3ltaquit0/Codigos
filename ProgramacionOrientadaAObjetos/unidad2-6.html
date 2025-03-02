@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobrecarga de Métodos en Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Sobrecarga de Métodos en Programación Orientada a Objetos</h1>
+        <p>La <strong>sobrecarga de métodos</strong> es una característica en la programación orientada a objetos que permite definir múltiples métodos en la misma clase con el mismo nombre pero diferentes parámetros.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Sobrecarga de Métodos?</h2>
+            <p>La sobrecarga de métodos permite que una clase tenga varios métodos con el mismo nombre, pero con diferentes listas de parámetros. Esto facilita la creación de métodos que realizan una función similar pero aceptan diferentes tipos o cantidades de datos.</p>
+        </section>
+
+        <section>
+            <h2>¿Cómo Funciona la Sobrecarga de Métodos?</h2>
+            <p>La sobrecarga de métodos se basa en las firmas de los métodos, que incluyen el nombre del método y el tipo y número de parámetros. Si dos métodos tienen el mismo nombre pero distintas firmas, se consideran sobrecargados.</p>
+            <p><strong>Ejemplo en Java:</strong></p>
+            <pre><code>
+class Calculadora {
+    // Método que suma dos enteros
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Método sobrecargado que suma tres enteros
+    public int sumar(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Método sobrecargado que suma dos números de tipo double
+    public double sumar(double a, double b) {
+        return a + b;
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, el método <code>sumar</code> tiene tres versiones, cada una con diferentes tipos o cantidades de parámetros.</p>
+        </section>
+
+        <section>
+            <h2>Ventajas de la Sobrecarga de Métodos</h2>
+            <ul>
+                <li><strong>Legibilidad:</strong> Facilita la lectura del código, ya que permite usar el mismo nombre para métodos que realizan tareas similares.</li>
+                <li><strong>Flexibilidad:</strong> Permite a los desarrolladores llamar a un método con diferentes conjuntos de parámetros.</li>
+                <li><strong>Modularidad:</strong> Facilita el diseño modular al agrupar métodos relacionados bajo un nombre común.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Aplicaciones Comunes de la Sobrecarga de Métodos</h2>
+            <p>La sobrecarga de métodos se usa en diversas situaciones, como:</p>
+            <ul>
+                <li>Realizar cálculos o funciones similares con diferentes tipos de datos.</li>
+                <li>Proveer opciones simplificadas para llamar a un método con un conjunto mínimo de parámetros, y permitir parámetros adicionales para casos más avanzados.</li>
+                <li>Facilitar operaciones en objetos que pueden necesitar diferentes entradas (por ejemplo, sumar dos números o más).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Limitaciones de la Sobrecarga de Métodos</h2>
+            <p>Es importante tener en cuenta que la sobrecarga de métodos:</p>
+            <ul>
+                <li>No puede distinguir métodos únicamente por el tipo de retorno.</li>
+                <li>No debe usarse en exceso, ya que puede hacer el código confuso si hay demasiadas variantes de un mismo método.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La sobrecarga de métodos es una técnica poderosa que permite definir múltiples versiones de un método en la misma clase. Es especialmente útil para mejorar la flexibilidad y legibilidad del código cuando se requieren operaciones similares en diferentes tipos o números de datos.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polimorfismo - Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Polimorfismo en Programación Orientada a Objetos</h1>
+    </header>
+
+    <section>
+      <h2>Definición</h2>
+      <p>
+        El <strong>polimorfismo</strong> es un concepto fundamental en la
+        programación orientada a objetos (OOP), que permite que objetos de
+        diferentes clases puedan ser tratados como objetos de una clase común,
+        generalmente la clase base o clase padre. El término *polimorfismo* proviene
+        del griego "poli" (muchos) y "morphos" (forma), lo que significa *muchas formas*.
+      </p>
+      <p>
+        En programación orientada a objetos, el polimorfismo se refiere a la capacidad
+        de un objeto de adoptar muchas formas. Esto permite que una sola interfaz
+        (o método) sea utilizada por objetos de diferentes tipos, pero que el comportamiento
+        de esa interfaz varíe según el tipo de objeto que la implemente.
+      </p>
+    </section>
+
+    <section>
+      <h2>Tipos de Polimorfismo</h2>
+      <h3>1. Polimorfismo de Inclusión (Subtipado)</h3>
+      <p>
+        Este tipo de polimorfismo ocurre cuando una clase derivada sobrescribe (o
+        redefine) un método de la clase base. Un objeto de la clase derivada puede ser
+        tratado como un objeto de la clase base. La decisión de qué versión del método
+        ejecutar se toma en tiempo de ejecución, lo que permite que el mismo código ejecute
+        diferentes comportamientos según el tipo de objeto real.
+      </p>
+
+      <h3>2. Polimorfismo de Sobrecarga</h3>
+      <p>
+        El polimorfismo de sobrecarga permite que un mismo nombre de método realice
+        diferentes tareas según los parámetros que se le pasen. La sobrecarga se resuelve
+        en tiempo de compilación, ya que depende de la firma del método (nombre, número
+        y tipo de parámetros).
+      </p>
+    </section>
+
+    <section>
+      <h2>Ejemplo de Polimorfismo</h2>
+      <p>
+        Aquí tienes un ejemplo de cómo el polimorfismo funciona en programación orientada
+        a objetos, utilizando la herencia y la sobrescritura de métodos:
+      </p>
+
+      <pre>
+        <code>
+class Animal {
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+class Gato extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El gato maulla");
+    }
+}
+
+public class EjemploPolimorfismo {
+    public static void main(String[] args) {
+        Animal miAnimal = new Animal();
+        Animal miPerro = new Perro();
+        Animal miGato = new Gato();
+
+        miAnimal.hacerSonido();  // El animal hace un sonido
+        miPerro.hacerSonido();   // El perro ladra
+        miGato.hacerSonido();    // El gato maulla
+    }
+}
+        </code>
+      </pre>
+
+      <p>
+        En este ejemplo, aunque todos los objetos son de tipo `Animal`, el método
+        `hacerSonido()` se comporta de forma diferente dependiendo de si el objeto es un
+        `Perro`, un `Gato` o un `Animal`. Esto es un claro ejemplo de polimorfismo.
+      </p>
+    </section>
+
+    <section>
+      <h2>Beneficios del Polimorfismo</h2>
+      <ul>
+        <li><strong>Flexibilidad y Reutilización de Código:</strong> Un mismo bloque de código
+          puede trabajar con diferentes tipos de objetos.</li>
+        <li><strong>Mantenimiento más fácil:</strong> Las clases derivadas pueden implementar
+          o modificar el comportamiento de los métodos sin alterar el código de las clases base.</li>
+        <li><strong>Mayor extensibilidad:</strong> Nuevas clases pueden ser fácilmente añadidas
+          al sistema sin necesidad de modificar el código existente.</li>
+      </ul>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

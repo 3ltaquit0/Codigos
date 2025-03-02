@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reutilización de Código</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Reutilización de Código</h1>
+    </header>
+
+    <section>
+      <h2>Definición de Reutilización de Código</h2>
+      <p>
+        La **reutilización de código** es un principio fundamental en el desarrollo de software que consiste en utilizar porciones de código ya existentes en nuevas aplicaciones o programas, en lugar de escribir código desde cero. Esto tiene como objetivo reducir el esfuerzo y el tiempo de desarrollo, aumentar la consistencia y facilitar el mantenimiento del código.
+      </p>
+      <p>
+        En lugar de reescribir el mismo código para diferentes funciones o tareas, los programadores pueden reutilizar módulos, funciones, clases o bibliotecas que ya han sido creadas y probadas. Este enfoque promueve la eficiencia y la calidad del software, así como la reducción de errores y la duplicación de esfuerzos.
+      </p>
+    </section>
+
+    <section>
+      <h2>Beneficios de la Reutilización de Código</h2>
+      <ul>
+        <li><strong>Reducción de tiempo de desarrollo:</strong> Reutilizar código previamente escrito permite acelerar el proceso de desarrollo, ya que no es necesario volver a crear funcionalidades ya existentes.</li>
+        <li><strong>Mejora de la calidad del software:</strong> Al reutilizar código probado y documentado, se reduce la posibilidad de introducir errores en el software.</li>
+        <li><strong>Consistencia:</strong> Reutilizar componentes asegura que las funcionalidades sean consistentes en todas las partes del proyecto, lo que mejora la coherencia del software.</li>
+        <li><strong>Facilita el mantenimiento:</strong> Cuando el código es reutilizado de manera adecuada, las actualizaciones y el mantenimiento de las funcionalidades pueden hacerse de manera centralizada, sin tener que modificar cada parte del código que usa esas funciones.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Formas de Reutilizar Código</h2>
+      <p>
+        Existen varias formas de reutilizar código, dependiendo del tipo de programa y del lenguaje de programación que se esté utilizando. Algunas de las formas más comunes de reutilización de código incluyen:
+      </p>
+      <ul>
+        <li><strong>Funciones y Métodos:</strong> Crear funciones o métodos reutilizables que encapsulen una tarea específica. Esto permite que se pueda llamar a esa función cada vez que sea necesario sin necesidad de escribir el mismo código repetidamente.</li>
+        <li><strong>Clases y Objetos:</strong> En programación orientada a objetos, las clases y objetos permiten crear componentes modulares y reutilizables. Puedes crear una clase que represente un concepto y luego instanciarla tantas veces como sea necesario.</li>
+        <li><strong>Bibliotecas y Frameworks:</strong> Las bibliotecas y frameworks contienen conjuntos de funciones o clases predefinidas que pueden ser utilizadas por diferentes programas. Al integrar estas bibliotecas, se puede reutilizar código ya optimizado y probado.</li>
+        <li><strong>Patrones de Diseño:</strong> Los patrones de diseño proporcionan soluciones generales a problemas comunes de programación. Estos patrones promueven la reutilización de código al ofrecer una estructura estandarizada para resolver ciertos problemas.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplo Práctico: Funciones Reutilizables</h2>
+      <p>
+        Un ejemplo común de reutilización de código es la creación de funciones que puedan ser llamadas desde diferentes partes de un programa. A continuación se muestra un ejemplo en Python de una función que calcula el área de un círculo. Esta función puede ser reutilizada cada vez que necesitemos calcular el área de un círculo con un radio diferente:
+      </p>
+      
+      <pre>
+        <code>
+# Función reutilizable para calcular el área de un círculo
+import math
+
+def calcular_area_circulo(radio):
+    return math.pi * radio ** 2
+
+# Reutilización de la función con diferentes valores de radio
+area1 = calcular_area_circulo(5)
+area2 = calcular_area_circulo(10)
+
+print("Área 1:", area1)
+print("Área 2:", area2)
+        </code>
+      </pre>
+      <p>
+        En este ejemplo, la función `calcular_area_circulo` puede ser llamada múltiples veces con diferentes valores de radio, lo que hace que el código sea más limpio, modular y fácil de mantener.
+      </p>
+    </section>
+
+    <section>
+      <h2>Buenas Prácticas para la Reutilización de Código</h2>
+      <p>
+        Aunque la reutilización de código puede ser extremadamente útil, es importante seguir ciertas buenas prácticas para asegurarse de que el código reutilizable sea eficiente y fácil de usar:
+      </p>
+      <ul>
+        <li><strong>Modularidad:</strong> El código reutilizable debe estar bien encapsulado y debe cumplir una única función para que sea fácilmente reutilizable sin generar efectos secundarios indeseados.</li>
+        <li><strong>Documentación:</strong> La reutilización de código es más efectiva cuando el código está bien documentado, de modo que otros desarrolladores puedan entender cómo usarlo correctamente.</li>
+        <li><strong>Pruebas:</strong> El código reutilizable debe estar probado adecuadamente para asegurarse de que funcione correctamente cuando se use en diferentes contextos.</li>
+        <li><strong>Evitar la duplicación excesiva:</strong> Aunque la reutilización de código es importante, también lo es evitar crear múltiples copias del mismo código si no es necesario. El código debe mantenerse lo más limpio y conciso posible.</li>
+      </ul>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo de Objetos Persistentes</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Manejo de Objetos Persistentes</h1>
+    </header>
+
+    <section>
+      <h2>¿Qué son los Objetos Persistentes?</h2>
+      <p>
+        Los objetos persistentes son aquellos cuyos datos se almacenan de manera
+        permanente o semi-permanente en algún medio de almacenamiento, como una base
+        de datos o un archivo. A diferencia de los objetos temporales que solo viven en
+        la memoria durante la ejecución del programa, los objetos persistentes pueden
+        ser recuperados o modificados incluso después de que la aplicación se cierre.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Por qué es Importante el Manejo de Objetos Persistentes?</h2>
+      <p>
+        El manejo adecuado de objetos persistentes es esencial para asegurar la
+        integridad y la accesibilidad de los datos en aplicaciones que requieren
+        almacenamiento a largo plazo. En sistemas como bases de datos, el manejo de
+        objetos persistentes es clave para la administración de información.
+      </p>
+    </section>
+
+    <section>
+      <h2>Formas de Persistir Objetos</h2>
+      <p>
+        Existen varias maneras de persistir objetos, dependiendo de las necesidades y
+        el tipo de aplicación. Algunas de las formas más comunes son:
+      </p>
+      <ul>
+        <li>
+          <strong>Archivos:</strong> Los objetos pueden ser serializados y guardados en
+          archivos. Este enfoque es adecuado para aplicaciones simples o cuando no se
+          necesita acceso concurrente a los datos.
+        </li>
+        <li>
+          <strong>Bases de Datos:</strong> Utilizando tecnologías como JDBC en Java o
+          frameworks ORM (Object-Relational Mapping), se pueden persistir objetos
+          directamente en bases de datos relacionales.
+        </li>
+        <li>
+          <strong>Frameworks ORM (Object-Relational Mapping):</strong> Herramientas como
+          Hibernate (en Java) permiten mapear objetos a tablas de bases de datos
+          automáticamente, facilitando la persistencia de objetos complejos sin necesidad
+          de escribir consultas SQL manualmente.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplo de Persistencia de Objetos en Java con JDBC</h2>
+      <p>
+        A continuación, se presenta un ejemplo básico de cómo persistir un objeto en una
+        base de datos utilizando JDBC en Java:
+      </p>
+      <pre><code>
+import java.sql.*;
+
+public class PersistenciaObjeto {
+    public static void main(String[] args) {
+        // Datos del objeto que se desea persistir
+        String nombre = "Juan Pérez";
+        int edad = 30;
+
+        // Estableciendo la conexión con la base de datos
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miBaseDeDatos", "usuario", "contraseña")) {
+            // Consulta SQL para insertar los datos en la tabla
+            String sql = "INSERT INTO personas (nombre, edad) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, nombre);
+                stmt.setInt(2, edad);
+                
+                // Ejecutar la inserción
+                int filasAfectadas = stmt.executeUpdate();
+                System.out.println(filasAfectadas + " fila(s) insertada(s).");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Serialización de Objetos en Archivos</h2>
+      <p>
+        En Java, los objetos también pueden ser serializados y guardados en archivos. La
+        serialización convierte los objetos en una secuencia de bytes que luego se puede
+        almacenar en un archivo. Para deserializarlos, se leen los bytes del archivo y
+        se reconstruye el objeto original.
+      </p>
+      <pre><code>
+import java.io.*;
+
+public class Serializacion {
+    public static void main(String[] args) {
+        try {
+            // Crear un objeto
+            Persona persona = new Persona("Ana", 25);
+
+            // Serializar el objeto
+            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("persona.ser"))) {
+                out.writeObject(persona);
+            }
+
+            // Deserializar el objeto
+            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("persona.ser"))) {
+                Persona personaLeida = (Persona) in.readObject();
+                System.out.println("Persona deserializada: " + personaLeida);
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Persona implements Serializable {
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona[nombre=" + nombre + ", edad=" + edad + "]";
+    }
+}
+      </code></pre>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

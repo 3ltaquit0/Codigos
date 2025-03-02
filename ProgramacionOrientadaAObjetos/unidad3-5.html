@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructores y Destructores en Clases Derivadas</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Constructores y Destructores en Clases Derivadas</h1>
+        <p>En la programación orientada a objetos, los constructores y destructores son esenciales para la correcta inicialización y limpieza de los objetos, tanto en clases base como en clases derivadas. Estos mecanismos juegan un papel fundamental en la herencia, permitiendo un adecuado control sobre los objetos cuando se crean y destruyen.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué son los Constructores y Destructores?</h2>
+            <p>Un <strong>constructor</strong> es un método especial en una clase que se ejecuta automáticamente cuando se crea una nueva instancia de la clase. Su propósito principal es inicializar los atributos del objeto. Por otro lado, un <strong>destructor</strong> es un método que se invoca cuando un objeto se destruye o se sale del ámbito en el que fue creado, y su función es liberar recursos o realizar tareas de limpieza.</p>
+        </section>
+
+        <section>
+            <h2>Constructores en Clases Derivadas</h2>
+            <p>Cuando una clase derivada hereda de una clase base, puede tener su propio constructor. Sin embargo, para garantizar que los miembros de la clase base sean inicializados adecuadamente, la clase derivada debe invocar explícitamente el constructor de la clase base, ya sea de manera directa o a través de la herencia implícita.</p>
+            <p>En la mayoría de los lenguajes orientados a objetos, como C++ o Java, los constructores de las clases derivadas se encargan de llamar al constructor de la clase base antes de ejecutar su propia inicialización.</p>
+            <h3>Ejemplo en C++:</h3>
+            <pre><code class="language-cpp">
+class Base {
+public:
+    Base() {
+        cout << "Constructor de la clase Base" << endl;
+    }
+};
+
+class Derivada : public Base {
+public:
+    Derivada() : Base() { // Llamada explícita al constructor de la clase base
+        cout << "Constructor de la clase Derivada" << endl;
+    }
+};
+            </code></pre>
+            <p>En este ejemplo, el constructor de la clase derivada <code>Derivada</code> llama explícitamente al constructor de la clase base <code>Base</code> antes de ejecutar su propio código.</p>
+        </section>
+
+        <section>
+            <h2>Destructores en Clases Derivadas</h2>
+            <p>Los destructores también siguen una jerarquía en las clases derivadas. Si una clase derivada tiene un destructor, este debe ser responsable de llamar al destructor de la clase base para garantizar que se liberen correctamente los recursos de la clase base. En muchos lenguajes de programación, los destructores se invocan automáticamente cuando un objeto es destruido o se sale del ámbito.</p>
+            <p>En algunos lenguajes como C++, los destructores de las clases derivadas deben ser definidos y deben invocar al destructor de la clase base explícitamente para asegurar que los recursos de la clase base sean limpiados adecuadamente.</p>
+            <h3>Ejemplo en C++:</h3>
+            <pre><code class="language-cpp">
+class Base {
+public:
+    ~Base() {
+        cout << "Destructor de la clase Base" << endl;
+    }
+};
+
+class Derivada : public Base {
+public:
+    ~Derivada() {
+        cout << "Destructor de la clase Derivada" << endl;
+    }
+};
+            </code></pre>
+            <p>En este ejemplo, tanto el destructor de la clase derivada como el de la clase base se ejecutan al destruir un objeto de la clase derivada. Es importante que el destructor de la clase derivada no olvide invocar al destructor de la clase base si es necesario.</p>
+        </section>
+
+        <section>
+            <h2>Importancia de los Constructores y Destructores en Herencia</h2>
+            <p>El uso adecuado de constructores y destructores en clases derivadas garantiza que los objetos sean correctamente inicializados y destruidos, evitando posibles fugas de memoria y asegurando una gestión eficiente de recursos.</p>
+            <p>Cuando trabajamos con herencia, es importante recordar lo siguiente:</p>
+            <ul>
+                <li><strong>El constructor de la clase base:</strong> debe ser llamado antes de ejecutar cualquier código en el constructor de la clase derivada.</li>
+                <li><strong>El destructor de la clase derivada:</strong> debe invocar al destructor de la clase base para asegurar que se liberen correctamente todos los recursos heredados.</li>
+                <li><strong>La inicialización de miembros:</strong> los miembros de las clases base y derivada deben ser inicializados adecuadamente en los constructores correspondientes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>Los constructores y destructores en clases derivadas son fundamentales para el correcto manejo de la inicialización y destrucción de objetos en sistemas orientados a objetos. El constructor de una clase derivada debe garantizar que los miembros de la clase base sean correctamente inicializados, mientras que el destructor debe liberar los recursos utilizados por las clases base y derivadas, evitando fugas de memoria y mejorando la eficiencia del sistema.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

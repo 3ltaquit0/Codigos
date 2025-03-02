@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reutilización de Miembros Heredados</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Reutilización de Miembros Heredados</h1>
+        <p>En la programación orientada a objetos, la reutilización de miembros heredados es un concepto clave que facilita la reutilización de código y la creación de sistemas más eficientes y organizados. Este concepto permite que una clase derivada utilice los atributos y métodos definidos en su clase base.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la reutilización de miembros heredados?</h2>
+            <p>La reutilización de miembros heredados se refiere a la capacidad de una clase derivada de utilizar los atributos y métodos que ya han sido definidos en su clase base. Este proceso permite que las clases derivadas puedan acceder a funcionalidades previamente implementadas, sin necesidad de redefinir o duplicar el código.</p>
+            <p>Los miembros heredados incluyen:</p>
+            <ul>
+                <li><strong>Atributos:</strong> Son variables que contienen información sobre el estado de la clase.</li>
+                <li><strong>Métodos:</strong> Son funciones que definen el comportamiento de la clase.</li>
+            </ul>
+            <p>En otras palabras, cuando una clase hereda de otra, automáticamente obtiene acceso a sus miembros, lo que mejora la modularidad y reduce el esfuerzo necesario para desarrollar y mantener el código.</p>
+        </section>
+
+        <section>
+            <h2>Ventajas de la Reutilización de Miembros Heredados</h2>
+            <p>La reutilización de miembros heredados ofrece varias ventajas en el desarrollo de software, como:</p>
+            <ul>
+                <li><strong>Reducción de redundancia:</strong> No es necesario escribir el mismo código varias veces. La clase derivada puede reutilizar el código de la clase base.</li>
+                <li><strong>Facilita el mantenimiento:</strong> Los cambios en los métodos y atributos de la clase base se reflejan automáticamente en todas las clases derivadas, lo que facilita el mantenimiento del sistema.</li>
+                <li><strong>Mayor modularidad:</strong> Los sistemas orientados a objetos son más modulares, ya que las clases pueden organizarse jerárquicamente, y las clases derivadas pueden agregar nuevas funcionalidades sin modificar las clases base.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Reutilización de Miembros Heredados</h2>
+            <p>En este ejemplo, la clase <code>Animal</code> tiene un atributo <code>nombre</code> y un método <code>hacerSonido()</code>. La clase <code>Perro</code> hereda de <code>Animal</code>, por lo que puede reutilizar el método <code>hacerSonido()</code> sin necesidad de redefinirlo.</p>
+            <pre><code>
+class Animal {
+    String nombre;
+
+    public void hacerSonido() {
+        System.out.println("Sonido genérico");
+    }
+}
+
+class Perro extends Animal {
+    // La clase Perro hereda el atributo nombre y el método hacerSonido()
+    public void mostrarNombre() {
+        System.out.println("El nombre del perro es: " + nombre);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Perro miPerro = new Perro();
+        miPerro.nombre = "Firulais"; // Utilizando el atributo heredado
+        miPerro.mostrarNombre();      // Accediendo a un método de la clase Perro
+        miPerro.hacerSonido();        // Utilizando el método heredado de la clase Animal
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, la clase <code>Perro</code> hereda tanto el atributo <code>nombre</code> como el método <code>hacerSonido()</code> de la clase <code>Animal</code>, por lo que no es necesario definirlos nuevamente en la clase derivada.</p>
+        </section>
+
+        <section>
+            <h2>Restricciones en la Reutilización de Miembros Heredados</h2>
+            <p>Aunque la reutilización de miembros heredados es muy útil, también existen algunas restricciones a tener en cuenta:</p>
+            <ul>
+                <li><strong>Acceso a miembros privados:</strong> Los miembros privados de la clase base no son accesibles directamente desde la clase derivada. Sin embargo, pueden ser accedidos a través de métodos públicos o protegidos.</li>
+                <li><strong>Herencia de métodos estáticos:</strong> Los métodos estáticos son inherentes a la clase y no a las instancias de la clase. Las clases derivadas pueden acceder a ellos, pero no pueden sobrescribirlos de la misma manera que los métodos de instancia.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La reutilización de miembros heredados es un concepto fundamental en la programación orientada a objetos. Permite que las clases derivadas accedan y utilicen los atributos y métodos definidos en sus clases base, promoviendo la modularidad, la reducción de redundancia y facilitando el mantenimiento del código. Sin embargo, hay ciertas restricciones, como el acceso a miembros privados y la herencia de métodos estáticos.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

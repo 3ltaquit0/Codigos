@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referencia al Objeto de la Clase Base</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Referencia al Objeto de la Clase Base</h1>
+        <p>En la programación orientada a objetos, la referencia al objeto de la clase base es un concepto importante que se utiliza para manejar la relación entre una clase base y una clase derivada. Permite que los objetos derivados se manejen como si fueran instancias de la clase base, lo que facilita el uso de polimorfismo y la manipulación de objetos en estructuras más generales.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Referencia al Objeto de la Clase Base?</h2>
+            <p>La referencia al objeto de la clase base se refiere a la capacidad de una clase derivada de ser tratada como un objeto de la clase base. En otras palabras, una instancia de una clase derivada puede ser referenciada a través de una variable de tipo de la clase base.</p>
+            <p>Esto es posible gracias al concepto de herencia en la programación orientada a objetos. Las clases derivadas heredan los miembros (atributos y métodos) de la clase base, por lo que un objeto derivado puede ser referenciado por una variable de tipo base, siempre que la clase base sea lo suficientemente general como para manejar el comportamiento común de todos los objetos derivados.</p>
+        </section>
+
+        <section>
+            <h2>Ventajas de Usar Referencia al Objeto de la Clase Base</h2>
+            <p>Utilizar una referencia al objeto de la clase base presenta varias ventajas:</p>
+            <ul>
+                <li><strong>Polimorfismo:</strong> Permite que los objetos derivados sean tratados como objetos de la clase base, lo que facilita el uso de polimorfismo, permitiendo que se puedan invocar métodos de manera más general y flexible.</li>
+                <li><strong>Generalización:</strong> Hace que el código sea más general y reutilizable, ya que las funciones pueden operar sobre objetos de la clase base, sin necesidad de conocer la clase derivada específica.</li>
+                <li><strong>Reducción de dependencias:</strong> Al referenciar un objeto de la clase base, se reduce la necesidad de depender de clases derivadas específicas, lo que permite una mayor flexibilidad y extensibilidad en el diseño del sistema.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Referencia al Objeto de la Clase Base</h2>
+            <p>En el siguiente ejemplo en Java, se muestra cómo una clase derivada puede ser referenciada a través de una variable de tipo de la clase base:</p>
+            <pre><code>
+class Animal {
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Referencia de tipo Animal que apunta a un objeto Perro
+        Animal miAnimal = new Perro();
+        miAnimal.hacerSonido(); // Invoca el método de la clase derivada (Perro)
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, la variable <code>miAnimal</code> es de tipo <code>Animal</code>, pero apunta a un objeto de tipo <code>Perro</code>. Al llamar al método <code>hacerSonido()</code>, el sistema invoca la versión sobrescrita de la clase <code>Perro</code>, demostrando el uso de polimorfismo.</p>
+        </section>
+
+        <section>
+            <h2>Conceptos Relacionados</h2>
+            <p>La referencia al objeto de la clase base está estrechamente relacionada con otros conceptos clave de la programación orientada a objetos, tales como:</p>
+            <ul>
+                <li><strong>Polimorfismo:</strong> Permite que una referencia de clase base pueda hacer referencia a objetos de clases derivadas, y que el comportamiento (métodos) varíe según el tipo de objeto al que apunte la referencia.</li>
+                <li><strong>Herencia:</strong> La capacidad de una clase derivada de heredar los atributos y métodos de una clase base es esencial para que se pueda hacer referencia a los objetos derivados como si fueran objetos de la clase base.</li>
+                <li><strong>Sobre escritura de métodos (Overriding):</strong> La posibilidad de que un método de la clase derivada sobrescriba un método de la clase base, lo que permite que la referencia a la clase base invoque el comportamiento de la clase derivada.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La referencia al objeto de la clase base es un concepto poderoso en la programación orientada a objetos que facilita el uso de polimorfismo y permite que las clases derivadas sean tratadas de manera general a través de la clase base. Esto mejora la flexibilidad y reutilización del código, permitiendo que los objetos de clases derivadas sean manipulados sin necesidad de conocer su tipo específico.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

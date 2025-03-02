@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creación y Manejo de Excepciones Definidas por el Usuario</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Creación y Manejo de Excepciones Definidas por el Usuario</h1>
+    </header>
+
+    <section>
+      <h2>¿Qué son las Excepciones Definidas por el Usuario?</h2>
+      <p>
+        Las excepciones definidas por el usuario son aquellas que los programadores crean explícitamente para manejar situaciones de error que no están cubiertas por las excepciones predefinidas en el lenguaje. Estas excepciones permiten personalizar el manejo de errores, brindando un control más detallado sobre los posibles fallos en un programa.
+      </p>
+      <p>
+        Al crear excepciones propias, podemos mejorar la legibilidad y el mantenimiento del código, hacer que el programa sea más robusto y ofrecer una forma más clara de señalar errores específicos que ocurren en el contexto de la aplicación.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Cómo Crear una Excepción Definida por el Usuario?</h2>
+      <p>
+        En lenguajes como Java, C# o Python, podemos crear nuestras propias excepciones extendiendo las clases de excepciones predefinidas. Generalmente, las excepciones personalizadas heredan de la clase base <code>Exception</code> o una clase derivada de esta.
+      </p>
+      <h3>Ejemplo en Java</h3>
+      <pre><code class="language-java">
+public class MiExcepcion extends Exception {
+    // Constructor que permite pasar un mensaje de error
+    public MiExcepcion(String mensaje) {
+        super(mensaje);
+    }
+}
+</code></pre>
+      <p>
+        En este ejemplo, la clase <code>MiExcepcion</code> extiende la clase <code>Exception</code>, lo que la convierte en una excepción personalizada. El constructor de la clase permite que se pase un mensaje de error, que luego puede ser recuperado por los bloques de manejo de excepciones.
+      </p>
+    </section>
+
+    <section>
+      <h2>Manejo de Excepciones Definidas por el Usuario</h2>
+      <p>
+        Una vez que se ha creado una excepción definida por el usuario, se puede lanzar y manejar de manera similar a las excepciones estándar. Se puede utilizar el bloque <code>try-catch</code> para capturar la excepción y tomar las medidas adecuadas para manejar el error.
+      </p>
+      <h3>Ejemplo en Java</h3>
+      <pre><code class="language-java">
+public class Main {
+    public static void main(String[] args) {
+        try {
+            // Lanzar la excepción personalizada
+            throw new MiExcepcion("¡Algo salió mal!");
+        } catch (MiExcepcion e) {
+            // Manejar la excepción
+            System.out.println("Se atrapó una excepción personalizada: " + e.getMessage());
+        }
+    }
+}
+</code></pre>
+      <p>
+        En este ejemplo, la excepción <code>MiExcepcion</code> es lanzada dentro del bloque <code>try</code> con el mensaje personalizado. Luego, el bloque <code>catch</code> captura la excepción y muestra el mensaje de error en la consola.
+      </p>
+    </section>
+
+    <section>
+      <h2>Ventajas de Usar Excepciones Definidas por el Usuario</h2>
+      <p>
+        Crear y manejar excepciones personalizadas tiene varias ventajas:
+      </p>
+      <ul>
+        <li><strong>Mayor claridad:</strong> Puedes crear excepciones específicas para tu aplicación, lo que hace que los errores sean más fáciles de entender y manejar.</li>
+        <li><strong>Control detallado:</strong> Te permite tomar decisiones precisas sobre cómo manejar errores específicos que ocurren dentro de tu aplicación.</li>
+        <li><strong>Mejor mantenimiento:</strong> Facilita la localización de errores y la modificación del código cuando se producen fallos que son específicos de la aplicación.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ejemplo de Aplicación: Validación de Edad</h2>
+      <p>
+        Imaginemos que tenemos un sistema donde es necesario validar la edad de los usuarios. Si un usuario proporciona una edad inválida, podemos lanzar una excepción personalizada para manejar este error de manera específica.
+      </p>
+      <h3>Ejemplo de Excepción de Edad Inválida en Java</h3>
+      <pre><code class="language-java">
+public class EdadInvalidaExcepcion extends Exception {
+    public EdadInvalidaExcepcion(String mensaje) {
+        super(mensaje);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int edad = 15;
+            if (edad < 18) {
+                throw new EdadInvalidaExcepcion("La edad debe ser mayor o igual a 18");
+            }
+        } catch (EdadInvalidaExcepcion e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+</code></pre>
+      <p>
+        En este caso, la excepción personalizada <code>EdadInvalidaExcepcion</code> se lanza cuando la edad proporcionada es menor a 18. El bloque <code>catch</code> captura esta excepción y muestra el mensaje de error correspondiente.
+      </p>
+    </section>
+    
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+  </body>
+</html>

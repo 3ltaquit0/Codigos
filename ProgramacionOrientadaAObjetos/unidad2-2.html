@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instanciación de una Clase en POO</title>
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Instanciación de una Clase</h1>
+        <p>En la programación orientada a objetos (POO), la instanciación es el proceso mediante el cual se crea un objeto a partir de una clase. Este objeto representa una instancia de la clase, lo que significa que tiene sus propios valores para los atributos definidos por la clase.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es Instanciar una Clase?</h2>
+            <p>Instanciar una clase es el proceso de crear un objeto concreto de esa clase. Una vez que se declara una clase, puede ser utilizada para crear múltiples objetos, cada uno con sus propios valores para los atributos.</p>
+            <p>La <strong>instanciación</strong> permite trabajar con entidades específicas dentro de un programa, haciendo uso de los atributos y métodos definidos en la clase para cada instancia u objeto creado.</p>
+        </section>
+
+        <section>
+            <h2>Ejemplo Conceptual</h2>
+            <p>Por ejemplo, si tienes una clase llamada <code>Coche</code> que describe las características y comportamientos generales de un coche, puedes crear instancias como <code>miCoche</code> y <code>otroCoche</code>, que representan coches específicos con sus propios valores.</p>
+        </section>
+
+        <section>
+            <h2>Pasos para Instanciar una Clase</h2>
+            <ol>
+                <li>Declarar la clase con sus atributos y métodos.</li>
+                <li>Usar el operador adecuado (dependiendo del lenguaje) para crear una nueva instancia de la clase.</li>
+                <li>Asignar valores a los atributos específicos de la instancia si es necesario.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Ejemplo en Pseudocódigo</h2>
+            <p>A continuación, un ejemplo en pseudocódigo que muestra cómo se instanciaría una clase <code>Coche</code>:</p>
+            <pre><code>
+class Coche
+    atributo color
+    atributo velocidad
+
+    método encenderMotor()
+        // Código para encender el motor
+
+    método acelerar()
+        // Código para aumentar la velocidad
+
+// Creación de una instancia de la clase Coche
+miCoche = new Coche()
+miCoche.color = "Rojo"
+miCoche.velocidad = 0
+            </code></pre>
+            <p>En este ejemplo, <code>miCoche</code> es una instancia de la clase <code>Coche</code>. Tiene sus propios valores para los atributos <code>color</code> y <code>velocidad</code>, que pueden ser diferentes para cada instancia que se cree.</p>
+        </section>
+
+        <section>
+            <h2>Beneficios de Instanciar una Clase</h2>
+            <ul>
+                <li>Permite crear múltiples objetos de la misma clase, cada uno con sus propios datos.</li>
+                <li>Facilita la reutilización de código, ya que la clase sirve como plantilla general.</li>
+                <li>Promueve la modularidad, lo que hace que el código sea más fácil de entender y mantener.</li>
+            </ul>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

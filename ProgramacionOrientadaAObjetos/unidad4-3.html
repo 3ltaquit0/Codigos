@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interfaces en Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Interfaces en Programación Orientada a Objetos</h1>
+    </header>
+
+    <section>
+      <h2>Definición de Interfaces</h2>
+      <p>
+        Una <strong>interfaz</strong> es un contrato en programación orientada a objetos que define un conjunto de métodos que una clase debe implementar, pero no proporciona la implementación de esos métodos. Las interfaces permiten que las clases que las implementan tengan un comportamiento común sin importar la jerarquía de clases de las que provienen.
+      </p>
+      <p>
+        Las interfaces se utilizan para lograr una forma de programación orientada a objetos más flexible y permitir que diferentes clases puedan implementar el mismo conjunto de métodos, incluso si no comparten una jerarquía común.
+      </p>
+    </section>
+
+    <section>
+      <h2>Implementación de Interfaces</h2>
+      <p>
+        Para implementar una interfaz en una clase, la clase debe declarar que implementa esa interfaz y proporcionar implementaciones concretas para todos los métodos definidos en la interfaz.
+      </p>
+      <p>
+        A continuación se muestra un ejemplo en Java que ilustra cómo se declara una interfaz y cómo una clase la implementa:
+      </p>
+
+      <pre>
+        <code>
+interface Animal {
+    void hacerSonido();  // Método de la interfaz
+}
+
+class Perro implements Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+}
+
+class Gato implements Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El gato maulla");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Animal miPerro = new Perro();
+        miPerro.hacerSonido();  // El perro ladra
+        
+        Animal miGato = new Gato();
+        miGato.hacerSonido();  // El gato maulla
+    }
+}
+        </code>
+      </pre>
+
+      <p>
+        En este ejemplo, la interfaz `Animal` declara el método `hacerSonido`, y tanto la clase `Perro` como la clase `Gato` implementan esta interfaz, proporcionando su propia implementación del método `hacerSonido`.
+      </p>
+    </section>
+
+    <section>
+      <h2>Herencia de Interfaces</h2>
+      <p>
+        Las interfaces pueden ser heredadas de otras interfaces. Esto permite que una interfaz extienda a otras interfaces, lo que facilita la reutilización y la creación de jerarquías de interfaces, similares a cómo las clases pueden heredar de otras clases.
+      </p>
+      <p>
+        A continuación, se muestra un ejemplo en Java donde una interfaz hereda de otra:
+      </p>
+
+      <pre>
+        <code>
+interface Animal {
+    void hacerSonido();
+}
+
+interface Mamifero extends Animal {
+    void amamantar();
+}
+
+class Perro implements Mamifero {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+
+    @Override
+    public void amamantar() {
+        System.out.println("El perro amamanta a sus cachorros");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Mamifero miPerro = new Perro();
+        miPerro.hacerSonido();  // El perro ladra
+        miPerro.amamantar();  // El perro amamanta a sus cachorros
+    }
+}
+        </code>
+      </pre>
+
+      <p>
+        En este ejemplo, la interfaz `Mamifero` extiende de la interfaz `Animal` y agrega un nuevo método `amamantar`. La clase `Perro` implementa la interfaz `Mamifero` y proporciona implementaciones tanto para `hacerSonido` como para `amamantar`.
+      </p>
+    </section>
+
+    <section>
+      <h2>Beneficios de Usar Interfaces</h2>
+      <ul>
+        <li><strong>Desacoplamiento:</strong> Las interfaces ayudan a desacoplar las clases que las implementan de las clases que las utilizan, permitiendo un diseño más flexible y escalable.</li>
+        <li><strong>Polimorfismo:</strong> Las interfaces facilitan el uso del polimorfismo, ya que diferentes clases pueden implementar la misma interfaz y ser tratadas de manera uniforme.</li>
+        <li><strong>Interoperabilidad:</strong> Las interfaces permiten que clases de diferentes jerarquías de herencia implementen el mismo conjunto de métodos, promoviendo la interoperabilidad entre diferentes componentes del sistema.</li>
+        <li><strong>Implementación de múltiples interfaces:</strong> A diferencia de la herencia de clases, una clase puede implementar múltiples interfaces, lo que proporciona más flexibilidad en el diseño.</li>
+      </ul>
+    </section>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+  </body>
+</html>

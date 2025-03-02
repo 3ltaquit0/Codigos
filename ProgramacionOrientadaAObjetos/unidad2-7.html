@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobrecarga de Operadores en Programación Orientada a Objetos</title>
+    <!-- Enlaza aquí tu archivo CSS -->
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Sobrecarga de Operadores en Programación Orientada a Objetos</h1>
+        <p>La <strong>sobrecarga de operadores</strong> es una técnica que permite redefinir el comportamiento de los operadores para trabajar con objetos creados por el usuario en lugar de tipos de datos primitivos.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Sobrecarga de Operadores?</h2>
+            <p>La sobrecarga de operadores permite personalizar el comportamiento de operadores como <code>+</code>, <code>-</code>, <code>*</code>, y <code>==</code> cuando se aplican a objetos de una clase definida por el usuario. Esto ayuda a que los objetos se comporten de una manera más natural al realizar operaciones que normalmente se aplican a tipos de datos primitivos.</p>
+        </section>
+
+        <section>
+            <h2>¿Por Qué Usar la Sobrecarga de Operadores?</h2>
+            <p>La sobrecarga de operadores permite hacer el código más intuitivo y legible al facilitar operaciones entre objetos. Esto es especialmente útil en clases que representan estructuras de datos complejas, como vectores, matrices o números complejos, donde las operaciones matemáticas se vuelven más fáciles de entender y usar.</p>
+        </section>
+
+        <section>
+            <h2>Tipos de Operadores que se Pueden Sobrecargar</h2>
+            <ul>
+                <li><strong>Operadores unarios:</strong> Operadores que afectan a un solo operando, como <code>+</code> (unario), <code>-</code> (unario), <code>++</code> y <code>--</code>.</li>
+                <li><strong>Operadores binarios:</strong> Operadores que actúan sobre dos operandos, como <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, y <code>==</code>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Sobrecarga de Operadores en C++</h2>
+            <p><strong>Ejemplo de Sobrecarga del Operador <code>+</code> en una Clase Complejo:</strong></p>
+            <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Complejo {
+public:
+    double real, imag;
+
+    Complejo(double r = 0, double i = 0) : real(r), imag(i) {}
+
+    // Sobrecarga del operador +
+    Complejo operator + (const Complejo& other) {
+        return Complejo(real + other.real, imag + other.imag);
+    }
+};
+
+int main() {
+    Complejo c1(3.5, 2.5);
+    Complejo c2(1.5, 3.5);
+    Complejo resultado = c1 + c2;
+    cout << "Resultado: " << resultado.real << " + " << resultado.imag << "i" << endl;
+    return 0;
+}
+            </code></pre>
+            <p>En este ejemplo, el operador <code>+</code> se sobrecarga para sumar dos números complejos, haciendo que el código sea más intuitivo.</p>
+        </section>
+
+        <section>
+            <h2>Operadores Unarios y Binarios</h2>
+            <p>En la sobrecarga de operadores, los operadores pueden clasificarse en dos categorías principales:</p>
+            <ul>
+                <li><strong>Operadores unarios:</strong> Operan sobre un solo operando, como el operador de incremento <code>++</code> o el operador negativo <code>-</code>. Estos operadores a menudo se sobrecargan para realizar ajustes sobre un solo objeto.</li>
+                <li><strong>Operadores binarios:</strong> Requieren dos operandos, como <code>+</code>, <code>-</code>, <code>*</code>, y <code>/</code>. Se utilizan comúnmente para realizar operaciones entre dos objetos o entre un objeto y un tipo de datos primitivo.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ventajas de la Sobrecarga de Operadores</h2>
+            <ul>
+                <li><strong>Legibilidad:</strong> Permite expresar operaciones complejas de una manera más clara y cercana al lenguaje natural.</li>
+                <li><strong>Flexibilidad:</strong> Los operadores se pueden adaptar a las necesidades de las clases personalizadas, permitiendo un manejo intuitivo de objetos complejos.</li>
+                <li><strong>Mantenimiento:</strong> Facilita el mantenimiento del código al mantener operaciones dentro de las clases.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Limitaciones y Consideraciones</h2>
+            <p>La sobrecarga de operadores también tiene limitaciones:</p>
+            <ul>
+                <li>No se pueden sobrecargar todos los operadores. Por ejemplo, los operadores <code>::</code> (ámbito) y <code>?:</code> (ternario) no pueden sobrecargarse.</li>
+                <li>Debe utilizarse con cuidado para no causar confusión. La sobrecarga inapropiada de operadores puede hacer que el código sea difícil de entender.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La sobrecarga de operadores permite personalizar el comportamiento de operadores en programación orientada a objetos, haciendo que las clases personalizadas sean más intuitivas y fáciles de usar. Es particularmente útil en el manejo de operaciones con objetos complejos y proporciona una forma poderosa de hacer el código más legible y flexible.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

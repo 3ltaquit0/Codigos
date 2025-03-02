@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia en Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Herencia en Programación Orientada a Objetos</h1>
+        <p>La <strong>herencia</strong> es un concepto fundamental en la programación orientada a objetos (OOP) que permite crear una nueva clase a partir de una clase existente, aprovechando y extendiendo sus características.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Herencia?</h2>
+            <p>La herencia permite que una clase adquiera propiedades y comportamientos de otra clase. Esto ayuda a reducir la duplicación de código y promueve la reutilización, haciendo que el código sea más eficiente y fácil de mantener.</p>
+            <p>En la herencia, la clase existente se denomina <strong>clase base</strong> (o clase padre), mientras que la nueva clase se denomina <strong>clase derivada</strong> (o clase hija).</p>
+        </section>
+
+        <section>
+            <h2>Clase Base</h2>
+            <p>Una <strong>clase base</strong> es una clase que se utiliza como modelo para crear otras clases. Contiene atributos y métodos que pueden ser heredados por otras clases. La clase base representa el comportamiento y las propiedades comunes que serán compartidos por las clases derivadas.</p>
+            <p>Por ejemplo, en una aplicación que maneja diferentes tipos de empleados, podríamos tener una clase base llamada <code>Empleado</code>, que contiene atributos y métodos comunes a todos los empleados, como el nombre, el ID y la función de calcular el salario.</p>
+        </section>
+
+        <section>
+            <h2>Clase Derivada</h2>
+            <p>Una <strong>clase derivada</strong> es una clase que hereda de la clase base. Puede utilizar los atributos y métodos de la clase base y también definir sus propias propiedades y comportamientos específicos. La clase derivada puede sobrescribir (modificar) métodos de la clase base si es necesario.</p>
+            <p>Siguiendo con el ejemplo anterior, podríamos tener clases derivadas como <code>EmpleadoTiempoCompleto</code> y <code>EmpleadoPorHora</code>, que heredan los atributos y métodos de la clase <code>Empleado</code>, pero agregan sus propias características, como un salario específico o una tarifa por hora.</p>
+        </section>
+
+        <section>
+            <h2>Ejemplo de Herencia en C++</h2>
+            <p>El siguiente código muestra cómo se puede implementar la herencia en C++ usando una clase base y una clase derivada:</p>
+            <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+// Clase base
+class Empleado {
+public:
+    string nombre;
+    int id;
+
+    Empleado(string nombre, int id) : nombre(nombre), id(id) {}
+
+    void mostrarInformacion() {
+        cout << "Nombre: " << nombre << ", ID: " << id << endl;
+    }
+};
+
+// Clase derivada
+class EmpleadoTiempoCompleto : public Empleado {
+public:
+    double salarioAnual;
+
+    EmpleadoTiempoCompleto(string nombre, int id, double salario) : Empleado(nombre, id), salarioAnual(salario) {}
+
+    void mostrarSalario() {
+        cout << "Salario Anual: " << salarioAnual << endl;
+    }
+};
+
+int main() {
+    EmpleadoTiempoCompleto empleado1("Juan Perez", 101, 50000);
+    empleado1.mostrarInformacion();
+    empleado1.mostrarSalario();
+    return 0;
+}
+            </code></pre>
+            <p>En este ejemplo, la clase <code>Empleado</code> es la clase base y <code>EmpleadoTiempoCompleto</code> es la clase derivada que hereda de <code>Empleado</code>. La clase derivada puede acceder a los atributos y métodos de la clase base, además de definir su propio comportamiento.</p>
+        </section>
+
+        <section>
+            <h2>Ventajas de la Herencia</h2>
+            <ul>
+                <li><strong>Reutilización de código:</strong> Los atributos y métodos de la clase base se pueden reutilizar en las clases derivadas, evitando la duplicación de código.</li>
+                <li><strong>Mantenimiento:</strong> Los cambios en la clase base se aplican automáticamente a las clases derivadas, lo que facilita el mantenimiento y actualización del código.</li>
+                <li><strong>Jerarquía de clases:</strong> La herencia permite crear jerarquías de clases que reflejan la estructura del sistema o modelo que se está representando.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La herencia es un mecanismo que permite crear nuevas clases basadas en clases existentes, promoviendo la reutilización y organización de código. La clase base proporciona el comportamiento y las propiedades comunes, mientras que las clases derivadas añaden o especializan sus propias características.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinición de Métodos en Clases Derivadas</title>
+    <link rel="stylesheet" href="orientada.css"> <!-- Enlaza aquí tu archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Redefinición de Métodos en Clases Derivadas</h1>
+        <p>En la programación orientada a objetos, la redefinición de métodos es un concepto importante que permite a una clase derivada modificar el comportamiento de un método heredado de la clase base. Este concepto es fundamental en la herencia, ya que proporciona flexibilidad y control sobre cómo los métodos heredados pueden ser adaptados para cumplir con necesidades específicas.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Redefinición de Métodos?</h2>
+            <p>La redefinición de métodos (también conocida como <strong>sobrescritura de métodos</strong> o <strong>overriding</strong>) ocurre cuando una clase derivada proporciona una nueva implementación para un método que ya ha sido definido en la clase base. Este proceso reemplaza el comportamiento original del método en la clase base, permitiendo que la clase derivada ofrezca una versión adaptada de ese método.</p>
+            <p>Es importante destacar que la redefinición de métodos solo se realiza si el método de la clase base es accesible para la clase derivada, generalmente a través de la palabra clave <code>public</code> o <code>protected</code>.</p>
+        </section>
+
+        <section>
+            <h2>Redefinición de Métodos en Clases Derivadas</h2>
+            <p>Cuando una clase derivada redefine un método, la nueva implementación debe tener la misma firma que el método original en la clase base, es decir, el mismo nombre, tipo de retorno y parámetros. Esto permite que el método sea invocado de la misma manera, pero ejecutando el comportamiento definido en la clase derivada.</p>
+            <p>Al redefinir un método, la clase derivada puede proporcionar su propia lógica de ejecución, pero la clase base seguirá conservando su propia implementación, que se puede invocar si es necesario.</p>
+
+            <h3>Ejemplo en Java:</h3>
+            <pre><code class="language-java">
+class Animal {
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, la clase <code>Perro</code> redefine el método <code>hacerSonido()</code> heredado de la clase base <code>Animal</code>. Cuando se invoca <code>hacerSonido()</code> en un objeto de la clase <code>Perro</code>, se ejecuta la versión definida en la clase derivada.</p>
+        </section>
+
+        <section>
+            <h2>¿Por qué Redefinir Métodos?</h2>
+            <p>La redefinición de métodos permite que las clases derivadas personalicen el comportamiento de los métodos heredados según sus necesidades, sin modificar la estructura de la clase base. Este enfoque facilita:</p>
+            <ul>
+                <li><strong>Adaptación a requisitos específicos:</strong> Las clases derivadas pueden ofrecer comportamientos más especializados sin cambiar la implementación general de la clase base.</li>
+                <li><strong>Flexibilidad:</strong> Permite que una jerarquía de clases tenga diferentes implementaciones del mismo método, dependiendo del contexto.</li>
+                <li><strong>Polimorfismo:</strong> La redefinición de métodos es una característica fundamental del polimorfismo, lo que significa que un objeto de tipo base puede invocar un método de la clase derivada sin necesidad de conocer su tipo específico.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Consideraciones sobre la Redefinición de Métodos</h2>
+            <p>Al redefinir un método, se deben tener en cuenta algunas consideraciones:</p>
+            <ul>
+                <li><strong>Compatibilidad de la firma:</strong> La firma del método redefinido debe coincidir con la del método original en la clase base (mismo nombre, tipo de retorno y parámetros).</li>
+                <li><strong>Acceso:</strong> Si el método original en la clase base está marcado como <code>private</code>, no podrá ser redefinido en la clase derivada. El método debe ser accesible (generalmente <code>public</code> o <code>protected</code>).</li>
+                <li><strong>Uso de la palabra clave <code>super</code>:</strong> Si es necesario, el método de la clase derivada puede invocar al método original de la clase base utilizando la palabra clave <code>super</code>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La redefinición de métodos en clases derivadas permite modificar o adaptar el comportamiento de los métodos heredados según las necesidades de la clase derivada. Este mecanismo es esencial en la programación orientada a objetos, ya que proporciona flexibilidad y control sobre el comportamiento de los objetos, facilitando la reutilización de código y la implementación de polimorfismo.</p>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

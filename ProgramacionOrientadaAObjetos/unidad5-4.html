@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Excepciones: Manejo y Lanzamiento</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Gestión de Excepciones: Manejo y Lanzamiento</h1>
+    </header>
+
+    <section>
+      <h2>Definición de Excepciones</h2>
+      <p>
+        Las excepciones son eventos o situaciones anómalas que ocurren durante la ejecución de un programa y que interrumpen el flujo normal del mismo. Estas situaciones pueden ser errores de programación, como intentar dividir por cero, acceder a un índice fuera de rango en un arreglo, o intentar abrir un archivo que no existe.
+      </p>
+      <p>
+        En la mayoría de los lenguajes de programación modernos, como Java, Python o C#, las excepciones son manejadas a través de un mecanismo especial conocido como manejo de excepciones, que permite que el programa recupere el control o termine de manera controlada cuando ocurre un error.
+      </p>
+    </section>
+
+    <section>
+      <h2>Manejo de Excepciones</h2>
+      <p>
+        El manejo de excepciones implica capturar y responder a las excepciones que se producen durante la ejecución de un programa. Esto permite que el programa siga funcionando o termine de manera adecuada, en lugar de cerrarse inesperadamente.
+      </p>
+      <p>
+        En lenguajes como Java, Python o C#, las excepciones se manejan mediante bloques `try-catch` o `try-except`, donde se intenta ejecutar un bloque de código y, si ocurre una excepción, esta se captura y maneja.
+      </p>
+      <h3>Ejemplo en Java</h3>
+      <pre><code class="language-java">
+try {
+    // Código que puede generar una excepción
+    int resultado = 10 / 0;  // Dividir por cero
+} catch (ArithmeticException e) {
+    // Manejo de la excepción
+    System.out.println("Error: " + e.getMessage());
+}
+</code></pre>
+      <p>
+        En este ejemplo, el bloque <code>try</code> contiene el código que puede generar una excepción. Si ocurre una excepción de tipo <code>ArithmeticException</code>, el flujo de ejecución se detiene en el bloque <code>try</code> y se transfiere al bloque <code>catch</code>, donde se maneja el error (en este caso, imprimiendo el mensaje de error).
+      </p>
+    </section>
+
+    <section>
+      <h2>Lanzamiento de Excepciones</h2>
+      <p>
+        Lanzar excepciones es el proceso por el cual un programa indica explícitamente que ha ocurrido un error. Esto permite que el código llame a otro bloque de código que manejará esa excepción, en lugar de simplemente dejar que se propague sin control.
+      </p>
+      <p>
+        En Java, el lanzamiento de excepciones se realiza mediante la palabra clave <code>throw</code>, que se utiliza para crear una nueva excepción y lanzarla. También se puede usar <code>throws</code> en la declaración de un método para indicar que el método puede lanzar excepciones que deben ser manejadas por el llamador.
+      </p>
+      <h3>Ejemplo de Lanzamiento de Excepciones en Java</h3>
+      <pre><code class="language-java">
+public void verificarEdad(int edad) throws IllegalArgumentException {
+    if (edad < 18) {
+        throw new IllegalArgumentException("La edad debe ser mayor o igual a 18");
+    }
+    System.out.println("Edad válida: " + edad);
+}
+</code></pre>
+      <p>
+        En este ejemplo, el método <code>verificarEdad</code> lanza una excepción de tipo <code>IllegalArgumentException</code> si la edad es menor que 18. La excepción es lanzada con la palabra clave <code>throw</code> y el mensaje correspondiente.
+      </p>
+    </section>
+
+    <section>
+      <h2>Tipos de Excepciones</h2>
+      <p>
+        Existen dos tipos principales de excepciones: verificadas (checked) y no verificadas (unchecked).
+      </p>
+      <ul>
+        <li><strong>Excepciones verificadas (checked):</strong> Son aquellas que el compilador requiere que sean manejadas explícitamente, ya sea con un bloque <code>try-catch</code> o declarando que el método puede lanzarlas utilizando <code>throws</code>.</li>
+        <li><strong>Excepciones no verificadas (unchecked):</strong> Son aquellas que el compilador no obliga a manejar. Estas excepciones son generalmente errores de programación, como <code>NullPointerException</code> o <code>ArrayIndexOutOfBoundsException</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Uso de la palabra clave <code>throws</code></h2>
+      <p>
+        La palabra clave <code>throws</code> se utiliza en la firma de un método para declarar que ese método puede lanzar una o varias excepciones. Esto obliga al llamador del método a manejar esas excepciones, ya sea mediante un bloque <code>try-catch</code> o propagándolas a su vez utilizando <code>throws</code>.
+      </p>
+      <h3>Ejemplo en Java</h3>
+      <pre><code class="language-java">
+public void metodo1() throws IOException {
+    // Código que puede lanzar una excepción de tipo IOException
+    FileReader archivo = new FileReader("archivo.txt");
+}
+</code></pre>
+      <p>
+        En este ejemplo, el método <code>metodo1</code> declara que puede lanzar una excepción <code>IOException</code>, y cualquier código que llame a este método debe manejarla o declararla también usando <code>throws</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Ventajas de la Gestión de Excepciones</h2>
+      <p>
+        El manejo y lanzamiento de excepciones tiene varias ventajas importantes:
+      </p>
+      <ul>
+        <li><strong>Control de errores:</strong> Permite manejar los errores de forma estructurada y predecible, lo que mejora la robustez del programa.</li>
+        <li><strong>Desacoplamiento:</strong> Separa el código de control del flujo del código de manejo de errores, lo que facilita la legibilidad y mantenimiento.</li>
+        <li><strong>Recuperación de errores:</strong> Permite que el programa recupere de ciertos errores de manera controlada sin necesidad de cerrarse de manera abrupta.</li>
+      </ul>
+    </section>
+    
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos de Excepciones en Programación</title>
+    <link rel="stylesheet" href="orientada.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tipos de Excepciones en Programación</h1>
+    </header>
+
+    <section>
+      <h2>Definición</h2>
+      <p>
+        Las excepciones son eventos inesperados que ocurren durante la ejecución de un programa y que interrumpen su flujo normal. Dependiendo de cómo se manejen estas excepciones, pueden clasificarse en diferentes tipos. Es importante entender los diferentes tipos de excepciones para manejarlas correctamente y mantener la estabilidad del programa.
+      </p>
+    </section>
+
+    <section>
+      <h2>Tipos de Excepciones</h2>
+      <p>En programación, las excepciones se dividen principalmente en dos tipos:</p>
+
+      <h3>1. Excepciones Verificadas (Checked Exceptions)</h3>
+      <p>
+        Las excepciones verificadas son aquellas que el compilador obliga a manejar. Es decir, el programador debe asegurarse de que estas excepciones se manejen adecuadamente, ya sea mediante un bloque `try-catch` o propagándolas hacia el llamador utilizando la palabra clave `throws`. 
+      </p>
+      <p>
+        Las excepciones verificadas suelen ser causadas por condiciones externas al programa, como la falta de acceso a un archivo, una conexión de red perdida, o problemas al interactuar con la base de datos. Ejemplos comunes incluyen:
+      </p>
+      <ul>
+        <li><strong>IOException:</strong> Ocurre cuando se producen errores al trabajar con archivos o flujos de entrada/salida.</li>
+        <li><strong>SQLException:</strong> Se lanza cuando se produce un error al interactuar con una base de datos.</li>
+        <li><strong>ClassNotFoundException:</strong> Se produce cuando el programa no puede encontrar una clase que se requiere durante la ejecución.</li>
+      </ul>
+
+      <h3>2. Excepciones No Verificadas (Unchecked Exceptions)</h3>
+      <p>
+        Las excepciones no verificadas son aquellas que no requieren que el compilador las controle. Estas excepciones suelen estar relacionadas con errores lógicos o del programa, como intentar dividir por cero, acceder a un índice fuera de los límites de un arreglo, o usar un objeto nulo.
+      </p>
+      <p>
+        Las excepciones no verificadas son subtipos de `RuntimeException` y se pueden evitar mediante una programación más cuidadosa. Ejemplos comunes incluyen:
+      </p>
+      <ul>
+        <li><strong>ArithmeticException:</strong> Ocurre cuando se realiza una operación aritmética no válida, como dividir por cero.</li>
+        <li><strong>NullPointerException:</strong> Se lanza cuando el código intenta acceder o modificar un objeto a través de una referencia nula.</li>
+        <li><strong>ArrayIndexOutOfBoundsException:</strong> Se produce cuando se intenta acceder a un índice fuera de los límites de un arreglo.</li>
+      </ul>
+
+      <h3>3. Errores (Errors)</h3>
+      <p>
+        Los errores son condiciones que ocurren debido a fallos graves en el sistema, como problemas de memoria o un fallo en la JVM (Java Virtual Machine). Estos no son excepciones que deban manejarse en el código, ya que generalmente son irreparables y el programa debería finalizar. Los errores se heredan de la clase `Error` en Java.
+      </p>
+      <p>
+        Ejemplos de errores incluyen:
+      </p>
+      <ul>
+        <li><strong>OutOfMemoryError:</strong> Indica que la máquina virtual de Java se ha quedado sin memoria.</li>
+        <li><strong>StackOverflowError:</strong> Ocurre cuando se desborda la pila de llamadas, normalmente debido a una recursión infinita.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>¿Cómo manejar las excepciones?</h2>
+      <p>
+        El manejo adecuado de excepciones es clave para asegurar la robustez de un programa. Dependiendo del tipo de excepción, se puede optar por gestionarlas de distintas formas, como:
+      </p>
+      <ul>
+        <li><strong>Bloques try-catch:</strong> Usados para capturar excepciones y manejarlas de forma específica.</li>
+        <li><strong>Palabra clave throws:</strong> Para propagar la excepción hacia el llamador si no se puede manejar en el mismo nivel.</li>
+        <li><strong>Bloque finally:</strong> Usado para ejecutar código de limpieza, como liberar recursos, independientemente de si se produce una excepción o no.</li>
+      </ul>
+    </section>
+
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+  </body>
+</html>

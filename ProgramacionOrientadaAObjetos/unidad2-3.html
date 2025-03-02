@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referencia al Objeto Actual en POO</title>
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Referencia al Objeto Actual</h1>
+        <p>En la programación orientada a objetos (POO), la referencia al objeto actual permite que un objeto haga referencia a sí mismo dentro de su clase. Esto se usa comúnmente para manipular sus propios atributos y métodos.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Referencia al Objeto Actual?</h2>
+            <p>En POO, la referencia al objeto actual es una característica que permite que un objeto se refiera a sí mismo mientras se ejecutan sus métodos. Esto se logra mediante una palabra clave especial, como <code>this</code> en Java y C++ o <code>self</code> en Python.</p>
+            <p>Esta referencia se usa principalmente para acceder a los atributos y métodos del propio objeto, especialmente en situaciones donde los nombres de las variables locales y de los atributos de la clase pueden ser similares o iguales.</p>
+        </section>
+
+        <section>
+            <h2>Uso Común de la Referencia al Objeto Actual</h2>
+            <p>Los usos más comunes de la referencia al objeto actual incluyen:</p>
+            <ul>
+                <li><strong>Diferenciar entre atributos de clase y parámetros:</strong> La referencia ayuda a distinguir entre variables de instancia y parámetros del método que llevan el mismo nombre.</li>
+                <li><strong>Retorno de la instancia:</strong> En algunos lenguajes, se utiliza para retornar la instancia actual desde un método.</li>
+                <li><strong>Pasar el objeto actual como argumento:</strong> Facilita el paso de la referencia del objeto actual a otros métodos o funciones.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo en Java</h2>
+            <p>En el siguiente ejemplo en Java, se utiliza <code>this</code> para distinguir entre el atributo <code>nombre</code> del objeto y el parámetro del constructor:</p>
+            <pre><code>
+class Persona {
+    String nombre;
+
+    Persona(String nombre) {
+        this.nombre = nombre; // "this.nombre" se refiere al atributo de la clase
+    }
+
+    void mostrarNombre() {
+        System.out.println("Nombre: " + this.nombre); // Uso de "this" en un método
+    }
+}
+            </code></pre>
+            <p>Aquí, <code>this.nombre</code> se refiere al atributo <code>nombre</code> del objeto actual, mientras que el <code>nombre</code> sin <code>this</code> se refiere al parámetro del constructor.</p>
+        </section>
+
+        <section>
+            <h2>Ejemplo en Python</h2>
+            <p>En Python, la referencia al objeto actual se realiza con la palabra clave <code>self</code>, como se muestra a continuación:</p>
+            <pre><code>
+class Persona:
+    def __init__(self, nombre):
+        self.nombre = nombre  # "self.nombre" es el atributo de instancia
+
+    def mostrar_nombre(self):
+        print("Nombre:", self.nombre)  # Uso de "self" en un método
+            </code></pre>
+            <p>Aquí, <code>self.nombre</code> se utiliza para acceder al atributo <code>nombre</code> de la instancia actual.</p>
+        </section>
+
+        <section>
+            <h2>Beneficios de Usar la Referencia al Objeto Actual</h2>
+            <ul>
+                <li>Ayuda a evitar conflictos de nombres entre atributos y parámetros.</li>
+                <li>Facilita la claridad y legibilidad del código al hacer explícita la referencia a los atributos de la clase.</li>
+                <li>Permite el uso de la instancia actual en otros contextos, como en el encadenamiento de métodos.</li>
+            </ul>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>

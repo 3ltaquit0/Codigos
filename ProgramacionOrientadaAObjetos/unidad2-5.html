@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructores y Destructores en Programación Orientada a Objetos</title>
+    <link rel="stylesheet" href="orientada.css">
+</head>
+<body>
+    <header>
+        <h1>Constructores y Destructores en Programación Orientada a Objetos</h1>
+        <p>En la programación orientada a objetos (POO), los constructores y destructores son métodos especiales que se utilizan para inicializar y limpiar objetos de una clase.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Constructores</h2>
+            <p>Un <strong>constructor</strong> es un método especial que se llama automáticamente cuando se crea una instancia (u objeto) de una clase. Su principal función es inicializar los atributos del objeto con valores predeterminados o proporcionados.</p>
+            <p><strong>Características de los Constructores:</strong></p>
+            <ul>
+                <li>No tienen tipo de retorno, ni siquiera <code>void</code>.</li>
+                <li>Llevan el mismo nombre que la clase.</li>
+                <li>Pueden sobrecargarse para aceptar diferentes tipos o números de parámetros.</li>
+            </ul>
+            <p><strong>Ejemplo en Java:</strong></p>
+            <pre><code>
+class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor que inicializa los atributos
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+            </code></pre>
+            <p>En este ejemplo, el constructor <code>Persona(String nombre, int edad)</code> se usa para inicializar el nombre y la edad de una persona cuando se crea un objeto.</p>
+        </section>
+
+        <section>
+            <h2>Uso de Constructores</h2>
+            <p>Los constructores son útiles para asegurar que los objetos siempre comiencen en un estado válido. Permiten asignar valores a los atributos de un objeto en el momento de su creación, lo cual evita problemas asociados a atributos sin inicializar.</p>
+            <p><strong>Ejemplo de Uso:</strong></p>
+            <pre><code>
+Persona persona = new Persona("Carlos", 25); // Llama al constructor y crea un objeto
+            </code></pre>
+            <p>El constructor recibe los valores <code>"Carlos"</code> y <code>25</code>, inicializando el objeto <code>persona</code> con esos valores.</p>
+        </section>
+
+        <section>
+            <h2>Destructores</h2>
+            <p>Un <strong>destructor</strong> es un método especial que se llama automáticamente cuando un objeto deja de estar en uso y se libera su memoria. A diferencia de los constructores, los destructores no suelen recibir parámetros ni devolver valores.</p>
+            <p>En lenguajes como Java y Python, el proceso de limpieza de objetos está gestionado automáticamente por el recolector de basura (Garbage Collector), por lo que no existe un destructor explícito. Sin embargo, en C++ y otros lenguajes, el destructor es útil para liberar recursos como memoria y archivos abiertos.</p>
+            <p><strong>Ejemplo en C++:</strong></p>
+            <pre><code>
+class Persona {
+    public:
+        ~Persona() {
+            // Código para liberar recursos
+            cout << "Destructor llamado, liberando recursos." << endl;
+        }
+};
+            </code></pre>
+            <p>En este ejemplo, el destructor <code>~Persona()</code> se llama automáticamente cuando el objeto <code>Persona</code> deja de estar en uso.</p>
+        </section>
+
+        <section>
+            <h2>Aplicaciones</h2>
+            <p>Constructores y destructores son esenciales para una gestión eficiente de los recursos en POO. Algunas aplicaciones comunes son:</p>
+            <ul>
+                <li><strong>Constructores:</strong> Inicializan atributos, establecen conexiones a bases de datos, o preparan archivos para su uso.</li>
+                <li><strong>Destructores:</strong> Liberan memoria, cierran conexiones a bases de datos, y cierran archivos abiertos para evitar fugas de memoria.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <ul>
+                <li><strong>Constructores:</strong> Métodos especiales que inicializan los atributos de un objeto. Se llaman automáticamente al crear el objeto.</li>
+                <li><strong>Destructores:</strong> Métodos especiales que limpian los recursos utilizados por el objeto antes de su eliminación. No son comunes en lenguajes con recolección de basura automática.</li>
+            </ul>
+        </section>
+    </main>
+    <div id="buttonContainer">
+        <button id="backButton3">Volver</button>
+    </div>
+    <script src="../funciones.js"></script>
+</body>
+</html>
