@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clasificación de Estructuras de Datos en Java</title>
+    <link rel="stylesheet" href="estructura.css" />
+
+  </head>
+  <body>
+
+    <h1>Clasificación de las Estructuras de Datos</h1>
+    <p>
+      En el ámbito de Java y la programación en general, las estructuras de
+      datos son esenciales para organizar y gestionar información de manera
+      eficiente. Aquí te detallo la
+      <strong>Clasificación de las estructuras de datos</strong>, enfocándome en
+      la teoría y ejemplos prácticos en Java:
+    </p>
+
+    <h2>Estructuras de Datos Lineales</h2>
+    <p>
+      Las estructuras de datos lineales organizan los elementos de forma
+      secuencial. En Java, se utilizan comúnmente para representar listas de
+      elementos, pilas, colas, y arreglos. Los tipos más comunes son:
+    </p>
+    <ul>
+      <li>
+        <strong>Arreglos (Arrays):</strong> Son colecciones de elementos del
+        mismo tipo, almacenados en ubicaciones de memoria contiguas.
+        <pre><code class="language-java">int[] arr = {1, 2, 3, 4, 5};</code></pre>
+      </li>
+      <li>
+        <strong>Listas enlazadas (Linked Lists):</strong> Son secuencias de
+        nodos donde cada nodo tiene un valor y un puntero al siguiente nodo. En
+        Java, se pueden implementar utilizando clases:
+        <pre><code class="language-java">class Node {
+    int data;
+    Node next;
+    Node(int d) { data = d; next = null; }
+}</code></pre>
+      </li>
+      <li>
+        <strong>Pilas (Stacks):</strong> Las pilas siguen el principio LIFO
+        (Último en entrar, primero en salir). En Java, puedes usar la clase
+        <code>Stack</code>:
+        <pre><code class="language-java">Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+stack.push(1);
+stack.push(2);</code></pre>
+      </li>
+      <li>
+        <strong>Colas (Queues):</strong> Funcionan bajo el principio FIFO
+        (Primero en entrar, primero en salir). En Java, puedes usar la interfaz
+        <code>Queue</code>:
+        <pre><code class="language-java">Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+queue.add(1);
+queue.add(2);</code></pre>
+      </li>
+    </ul>
+
+    <h2>Estructuras de Datos No Lineales</h2>
+    <p>
+      Estas estructuras no siguen una secuencia lineal y permiten relaciones más
+      complejas entre los datos. Ejemplos comunes son los
+      <strong>árboles</strong> y los <strong>grafos</strong>.
+    </p>
+    <ul>
+      <li>
+        <strong>Árboles (Trees):</strong> En Java, los árboles son estructuras
+        jerárquicas con un nodo raíz y subárboles. Cada nodo puede tener
+        múltiples hijos.
+        <pre><code class="language-java">class Node {
+    int data;
+    Node left, right;
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}</code></pre>
+      </li>
+      <li>
+        <strong>Grafos (Graphs):</strong> Son estructuras que representan redes
+        o conexiones entre nodos. Puedes usar una matriz de adyacencia o una
+        lista de adyacencia para representarlos en Java:
+        <pre><code class="language-java">class Graph {
+    private LinkedList&lt;Integer&gt; adjList[];
+    Graph(int vertices) {
+        adjList = new LinkedList[vertices];
+        for (int i = 0; i &lt; vertices; i++) {
+            adjList[i] = new LinkedList&lt;&gt;();
+        }
+    }
+    void addEdge(int src, int dest) {
+        adjList[src].add(dest);
+    }
+}</code></pre>
+      </li>
+    </ul>
+
+    <h2>Diferencias clave</h2>
+    <p>
+      <strong>Lineales:</strong> Los elementos están ordenados secuencialmente,
+      como los arreglos o las pilas.
+    </p>
+    <p>
+      <strong>No Lineales:</strong> Los datos están interconectados de manera
+      jerárquica o en red, como en los árboles y grafos.
+    </p>
+
+    <h2>Ejemplos avanzados en Java</h2>
+    <h3>Lista Enlazada Doble (Doubly Linked List):</h3>
+    <pre><code class="language-java">class Node {
+    int data;
+    Node prev, next;
+    Node(int d) { data = d; prev = next = null; }
+}
+class DoublyLinkedList {
+    Node head;
+    void insertFront(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        if (head != null) head.prev = newNode;
+        head = newNode;
+    }
+}</code></pre>
+
+    <h3>Árbol Binario de Búsqueda (Binary Search Tree - BST):</h3>
+    <pre><code class="language-java">class BST {
+    class Node {
+        int data;
+        Node left, right;
+        Node(int item) { data = item; left = right = null; }
+    }
+    Node root;
+    void insert(int key) {
+        root = insertRec(root, key);
+    }
+    Node insertRec(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key &lt; root.data)
+            root.left = insertRec(root.left, key);
+        else if (key &gt; root.data)
+            root.right = insertRec(root.right, key);
+        return root;
+    }
+}</code></pre>
+
+    <div id="buttonContainer">
+      <button id="backButton2">Volver</button>
+    </div>
+    
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

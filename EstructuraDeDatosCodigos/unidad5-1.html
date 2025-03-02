@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicación del Código de Altura y Profundidad en Árbol Binario</title>
+    <link rel="stylesheet" href="estructura.css"> <!-- Enlace a tu archivo CSS -->
+</head>
+<body>
+    <h1>Explicación del Código de Altura y Profundidad en Árbol Binario</h1>
+    <p>
+        Este código en Java crea un árbol binario simple y calcula la altura del árbol y la profundidad de un nodo específico. 
+        A continuación se explica cómo funciona cada parte del código.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton2">Volver</button>
+    </div>
+
+    <pre id="codigoJava">
+public class AlturaArbolBinario {
+    // Clase interna que representa un nodo del árbol binario
+    class Nodo {
+        int dato; // Valor del nodo
+        Nodo izquierdo, derecho; // Referencias a los nodos hijo izquierdo y derecho
+
+        public Nodo(int item) {
+            dato = item;
+            izquierdo = derecho = null;
+        }
+    }
+
+    Nodo raiz;
+
+    // Método para calcular la altura de un nodo en el árbol
+    int altura(Nodo nodo) {
+        if (nodo == null) {
+            return 0;
+        } else {
+            int alturaIzquierda = altura(nodo.izquierdo);
+            int alturaDerecha = altura(nodo.derecho);
+            return Math.max(alturaIzquierda, alturaDerecha) + 1;
+        }
+    }
+
+    // Método para calcular la profundidad de un nodo en el árbol
+    int profundidad(Nodo nodo, Nodo raiz) {
+        if (raiz == null) {
+            return -1;
+        }
+        if (raiz == nodo) {
+            return 0;
+        }
+        int nivel = profundidad(nodo, raiz.izquierdo);
+        if (nivel == -1) {
+            nivel = profundidad(nodo, raiz.derecho);
+        }
+        if (nivel != -1) {
+            return nivel + 1;
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        AlturaArbolBinario arbol = new AlturaArbolBinario();
+        arbol.raiz = arbol.new Nodo(1);
+        arbol.raiz.izquierdo = arbol.new Nodo(2);
+        arbol.raiz.derecho = arbol.new Nodo(3);
+        arbol.raiz.izquierdo.izquierdo = arbol.new Nodo(4);
+        arbol.raiz.izquierdo.derecho = arbol.new Nodo(5);
+
+        System.out.println("Altura del árbol es: " + arbol.altura(arbol.raiz));
+        System.out.println("Profundidad del nodo con dato 5 es: " + arbol.profundidad(arbol.raiz.izquierdo.derecho, arbol.raiz));
+    }
+}
+    </pre>
+
+    <h2>Explicación del Código</h2>
+    <p>
+        Este programa tiene dos funcionalidades principales: calcular la altura del árbol binario y la profundidad de un nodo específico. Ambas se implementan a través de métodos recursivos en la clase <strong>AlturaArbolBinario</strong>.
+    </p>
+
+    <h3>Clase Nodo</h3>
+    <p>
+        La clase interna <strong>Nodo</strong> representa cada nodo en el árbol binario, con referencias a sus hijos izquierdo y derecho. El constructor inicializa el valor de cada nodo y establece las referencias a los hijos como <strong>null</strong> inicialmente.
+    </p>
+
+    <h3>Método altura()</h3>
+    <p>
+        El método <strong>altura()</strong> calcula la altura del árbol a partir de un nodo específico, utilizando recursión. Calcula las alturas del subárbol izquierdo y derecho y devuelve el valor máximo más uno, representando el nivel de profundidad del nodo en el árbol.
+    </p>
+
+    <h3>Método profundidad()</h3>
+    <p>
+        El método <strong>profundidad()</strong> calcula la profundidad de un nodo desde la raíz del árbol. También usa recursión, buscando el nodo en los subárboles izquierdo y derecho hasta encontrarlo. Si el nodo se encuentra, retorna el nivel, de lo contrario devuelve -1.
+    </p>
+
+    <h3>Método main()</h3>
+    <p>
+        En el <strong>método main</strong> se crea un árbol binario y se llama a los métodos <strong>altura()</strong> y <strong>profundidad()</strong> para calcular la altura del árbol y la profundidad de un nodo específico (en este caso, el nodo con el valor 5).
+    </p>
+
+    <script src="../funciones.js"></script> <!-- Enlace a tu archivo JavaScript -->
+</body>
+</html>

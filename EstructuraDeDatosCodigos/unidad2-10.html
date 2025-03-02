@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Caracteres Recursivo</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      Este programa en Java cuenta el número de ocurrencias de un carácter
+      específico en una cadena de texto utilizando un método recursivo. El
+      método evalúa cada carácter de la cadena y suma cuántas veces aparece el
+      carácter buscado.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase ContadorDeCaracteres</h2>
+    <pre id="codigoJava">
+<code>
+public class ContadorDeCaracteres {
+
+    // Método recursivo para contar el número de ocurrencias de un carácter
+    public static int contarCaracter(char caracter, String cadena, int indice) {
+        // Caso base: si el índice llega al final de la cadena, retorna 0
+        if (indice == cadena.length()) {
+            return 0;
+        }
+
+        // Compara el carácter actual con el carácter a buscar
+        int conteo = (cadena.charAt(indice) == caracter) ? 1 : 0;
+
+        // Llama recursivamente con el siguiente índice y suma el conteo
+        return conteo + contarCaracter(caracter, cadena, indice + 1);
+    }
+
+    public static void main(String[] args) {
+        // Valores predefinidos para la cadena y el carácter a buscar
+        String cadena = "Esta es una cadena de ejemplo";
+        char caracter = 'a';
+
+        // Muestra en la consola cuántas veces aparece el carácter en la cadena
+        System.out.println("El carácter '" + caracter + "' aparece " +
+                           contarCaracter(caracter, cadena, 0) + " veces en la cadena.");
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>ContadorDeCaracteres</code> contiene dos métodos
+      principales:
+    </p>
+    <ul>
+      <li>
+        <code>contarCaracter(char caracter, String cadena, int indice)</code>:
+        Este método recursivo cuenta cuántas veces aparece el carácter
+        especificado en la cadena. Recibe el carácter a buscar, la cadena y un
+        índice que indica la posición actual en la cadena.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Define una cadena de texto y un
+        carácter a buscar, luego llama al método
+        <code>contarCaracter</code> para contar cuántas veces aparece el
+        carácter en la cadena.
+      </li>
+    </ul>
+
+    <h3>Método contarCaracter</h3>
+    <p>El método <code>contarCaracter</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Si el índice actual ha alcanzado el final de la cadena, retorna 0 (caso
+        base).
+      </li>
+      <li>
+        Compara el carácter en la posición actual con el carácter a buscar.
+      </li>
+      <li>Si coincide, añade 1 al conteo. Si no coincide, añade 0.</li>
+      <li>
+        Llama recursivamente al mismo método, incrementando el índice en 1 y
+        sumando los resultados.
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Define una cadena de texto y un carácter a buscar.</li>
+      <li>
+        Llama al método <code>contarCaracter</code> con el carácter, la cadena,
+        y el índice inicial (0).
+      </li>
+      <li>
+        Muestra el resultado en la consola, indicando cuántas veces aparece el
+        carácter en la cadena.
+      </li>
+    </ol>
+    
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

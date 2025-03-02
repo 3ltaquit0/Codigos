@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inversión de Números - Recursividad</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java utiliza un método recursivo para invertir un
+      número sin tratarlo como una cadena.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase InvertirNumero</h2>
+    <pre id="codigoJava">
+<code>
+public class InvertirNumero {
+
+    //programa que invierte un número pero que se maneje como número y no como cadena
+
+    static int invertirN(int numero){
+        if (numero < 10) return numero;
+        else {
+            int digito = numero % 10;
+            int longitud = (int) Math.log10(numero);
+            return digito * (int) Math.pow(10, longitud) + invertirN(numero / 10);
+        }
+    }
+
+    public static void main(String[] args){
+        System.out.println(invertirN(1234));
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>InvertirNumero</code> contiene dos métodos principales:
+    </p>
+    <ul>
+      <li>
+        <code>invertirN(int numero)</code>: Este método recursivo invierte el
+        número dado utilizando operaciones matemáticas en lugar de convertirlo a
+        una cadena.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa, que toma un número entero y lo invierte.
+      </li>
+    </ul>
+
+    <h3>Método invertirN</h3>
+    <p>El método <code>invertirN</code> sigue estos pasos:</p>
+    <ol>
+      <li>Si el número es menor que 10, se devuelve tal cual (caso base).</li>
+      <li>
+        En el caso contrario:
+        <ul>
+          <li>
+            Calcula el último dígito del número usando el módulo
+            <code>% 10</code>.
+          </li>
+          <li>
+            Calcula la longitud del número usando <code>Math.log10()</code> para
+            encontrar cuántos dígitos tiene.
+          </li>
+          <li>
+            Multiplica el dígito extraído por
+            <code>Math.pow(10, longitud)</code> para colocarlo en la posición
+            invertida.
+          </li>
+          <li>
+            Llama recursivamente al método con el número restante (<code
+              >numero / 10</code
+            >).
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>
+        Ejecuta el método <code>invertirN</code> con un número de prueba, como
+        <code>1234</code>.
+      </li>
+      <li>Muestra el número invertido en la consola.</li>
+    </ol>
+      
+    <script src="../funciones.js"></script>
+      
+  </body>
+</html>

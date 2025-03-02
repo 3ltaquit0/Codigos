@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Navegador</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+    <h1>Explicación del Código</h1>
+    <p>Este programa en Java simula la navegación entre páginas utilizando un historial de tipo `Stack`. El usuario puede navegar hacia atrás, adelante o visualizar la página actual según los comandos introducidos.</p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase simuladorNavegador</h2>
+    <pre id="codigoJava">
+<code>
+package Pila;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class simuladorNavegador {
+
+    private Stack<String> historial = new Stack<>();
+    private Stack<String> historialAdelante = new Stack<>();
+
+    // Método para enviar un nuevo mensaje (página)
+    public void enviarMensaje(String mensaje) {
+        historial.push(mensaje);
+        historialAdelante.clear();
+        System.out.println("Enviando: " + mensaje);
+    }
+
+    // Método para ir hacia atrás en el historial
+    public void irAtras() {
+        if (!historial.isEmpty()) {
+            String mensajeActual = historial.pop();
+            historialAdelante.push(mensajeActual);
+            if (!historial.isEmpty()) {
+                System.out.println("Volviendo a: " + historial.peek());
+            } else {
+                System.out.println("No hay más mensajes para volver.");
+            }
+        } else {
+            System.out.println("No hay historial para volver.");
+        }
+    }
+
+    // Método para ir hacia adelante en el historial
+    public void irAdelante() {
+        if (!historialAdelante.isEmpty()) {
+            String mensajeSiguiente = historialAdelante.pop();
+            historial.push(mensajeSiguiente);
+            System.out.println("Avanzando a: " + mensajeSiguiente);
+        } else {
+            System.out.println("No hay historial adelante.");
+        }
+    }
+
+    // Método para mostrar el mensaje (página) actual
+    public void mostrarMensajeActual() {
+        if (!historial.isEmpty()) {
+            System.out.println("Mensaje actual: " + historial.peek());
+        } else {
+            System.out.println("No hay mensajes en el historial.");
+        }
+    }
+
+    public static void main(String[] args) {
+        simuladorNavegador navegador = new simuladorNavegador();
+        Scanner scanner = new Scanner(System.in);
+        String comando;
+
+        // Se envían algunas páginas al historial
+        navegador.enviarMensaje("Pagina 1");
+        navegador.enviarMensaje("Pagina 2");
+        navegador.enviarMensaje("Pagina 3");
+
+        // Bucle para interactuar con el usuario
+        while (true) {
+            System.out.println("Ingrese un comando (atras, adelante, actual, salir): ");
+            comando = scanner.nextLine();
+
+            switch (comando.toLowerCase()) {
+                case "atras":
+                    navegador.irAtras();
+                    break;
+                case "adelante":
+                    navegador.irAdelante();
+                    break;
+                case "actual":
+                    navegador.mostrarMensajeActual();
+                    break;
+                case "salir":
+                    System.out.println("Saliendo del simulador.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Comando no reconocido.");
+                    break;
+            }
+        }
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>El programa utiliza dos pilas (<code>Stack</code>) para simular el historial de un navegador: una pila principal (<code>historial</code>) y otra para el historial adelante (<code>historialAdelante</code>). Las pilas permiten almacenar las páginas en el orden en que se visitan, y permiten retroceder o avanzar en este historial de forma eficiente.</p>
+
+    <h3>Principales Métodos</h3>
+    <ul>
+        <li><code>enviarMensaje(String mensaje)</code>: Añade un nuevo mensaje (o página) al historial. Cada vez que se añade una nueva página, el historial adelante se borra.</li>
+        <li><code>irAtras()</code>: Si el historial no está vacío, retrocede una página y la mueve al historial adelante.</li>
+        <li><code>irAdelante()</code>: Si hay páginas en el historial adelante, avanza a la siguiente página.</li>
+        <li><code>mostrarMensajeActual()</code>: Muestra el mensaje (página) actual sin modificar el historial.</li>
+    </ul>
+
+    <h3>Interacción con el Usuario</h3>
+    <p>El método <code>main</code> inicia una interacción con el usuario a través de la consola. Permite que el usuario navegue entre páginas con los comandos <code>atras</code>, <code>adelante</code>, <code>actual</code> y <code>salir</code>.</p>
+
+    <h3>Flujo de Ejecución</h3>
+    <p>El programa simula un navegador en el cual se pueden visitar páginas, retroceder a páginas anteriores, avanzar a las siguientes o visualizar la página actual en cualquier momento.</p>
+    
+    <script src="../funciones.js"></script>
+    
+</body>
+</html>

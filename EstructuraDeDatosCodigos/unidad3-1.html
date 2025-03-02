@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Metadatos básicos del documento HTML -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecuaciones balanceadas con entrada de datos</title>
+    
+    <!-- Enlace a una hoja de estilos CSS externa (estilos.css) -->
+    <link rel="stylesheet" href="estructura.css" />
+    
+  </head>
+  <body>
+    <!-- Título principal de la página y descripción del código -->
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java verifica si los paréntesis en una ecuación
+      están balanceados utilizando una pila. Además, permite al usuario ingresar
+      una ecuación desde la consola.
+    </p>
+
+    <!-- Contenedor de botones para copiar el código y regresar -->
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <!-- Área donde se muestra el código Java, usando la etiqueta <pre> para formato -->
+    <pre id="codigoJava">
+package Pila;
+
+import java.util.Scanner;
+
+public class EcuacionBalanceada {
+
+    public static boolean balanceado(String ecuacion) {
+        Pila pila = new Pila(ecuacion.length());
+
+        for (int i = 0; i < ecuacion.length(); i++) {
+            char caracter = ecuacion.charAt(i);
+
+            if (caracter == '(') {
+                pila.push(caracter);
+            } else if (caracter == ')') {
+                if (pila.estaVacia()) {
+                    return false;
+                }
+                pila.pop();
+            }
+        }
+
+        return pila.estaVacia();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingresa una ecuación: ");
+        String ecuacion = scanner.nextLine();
+
+        if (balanceado(ecuacion)) {
+            System.out.println("La ecuación está balanceada.");
+        } else {
+            System.out.println("La ecuación no está balanceada.");
+        }
+
+        scanner.close();
+    }
+}
+    </pre>
+      
+    <!-- Explicación de las Clases y Métodos -->
+    <h2>Método balanceado</h2>
+    <p>
+      El método <code>balanceado</code> verifica si los paréntesis en una
+      ecuación están balanceados. Crea una pila con capacidad igual a la
+      longitud de la ecuación y recorre cada carácter de la ecuación. Si
+      encuentra un paréntesis de apertura, lo empuja a la pila. Si encuentra un
+      paréntesis de cierre, verifica si la pila está vacía. Si está vacía,
+      significa que hay un paréntesis de cierre sin su correspondiente
+      paréntesis de apertura. Finalmente, verifica si la pila está vacía al
+      final.
+    </p>
+
+    <h2>Método principal</h2>
+    <p>
+      El método principal permite la entrada de datos por parte del usuario.
+      Crea una instancia de <code>Scanner</code> para leer la entrada del
+      usuario y llama al método <code>balanceado</code> para verificar si la
+      ecuación está balanceada. Muestra el resultado en la consola y cierra el
+      <code>Scanner</code>.
+    </p>
+      
+      <!-- Funcionalidades en JavaScript -->
+      <script src="../funciones.js"></script>
+    
+  </body>
+</html>

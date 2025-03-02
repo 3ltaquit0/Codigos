@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificación de Palíndromo - Predefinido</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      Este programa en Java verifica si una palabra predefinida es un
+      palíndromo. La palabra utilizada es "Anita lava la tina", que es un
+      clásico ejemplo de palíndromo. El programa elimina los espacios, convierte
+      la palabra a minúsculas y la evalúa recursivamente.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase Palindromo</h2>
+    <pre id="codigoJava">
+<code>
+public class Palindromo {
+
+    // Método recursivo para verificar si una palabra es un palíndromo
+    static boolean esPalindromo(String palabra) {
+        // Caso base: si la palabra tiene 1 o 0 caracteres, es un palíndromo
+        if (palabra.length() <= 1) {
+            return true;
+        }
+
+        // Verifica si el primer y último carácter son iguales
+        if (palabra.charAt(0) == palabra.charAt(palabra.length() - 1)) {
+            // Llama recursivamente al método con la subcadena sin el primer y último carácter
+            return esPalindromo(palabra.substring(1, palabra.length() - 1));
+        }
+
+        // Si los caracteres no coinciden, no es un palíndromo
+        return false;
+    }
+
+    public static void main(String[] args) {
+        // Define una palabra específica
+        String palabra = "Anita lava la tina";
+
+        // Elimina espacios y convierte la palabra a minúsculas
+        palabra = palabra.replaceAll("\\s+", "").toLowerCase();
+
+        // Verifica si la palabra es un palíndromo y muestra el resultado
+        if (esPalindromo(palabra)) {
+            System.out.println("La palabra es un palíndromo.");
+        } else {
+            System.out.println("La palabra no es un palíndromo.");
+        }
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>Palindromo</code> contiene dos métodos principales:</p>
+    <ul>
+      <li>
+        <code>esPalindromo(String palabra)</code>: Este método recursivo
+        verifica si una palabra es un palíndromo, eliminando espacios y
+        diferencias de mayúsculas/minúsculas.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa, donde se evalúa la palabra predefinida "Anita lava la tina".
+      </li>
+    </ul>
+
+    <h3>Método esPalindromo</h3>
+    <p>El método <code>esPalindromo</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Comprueba si la palabra tiene uno o cero caracteres. Si es así, se
+        considera un palíndromo.
+      </li>
+      <li>
+        Verifica si el primer y el último carácter de la palabra son iguales.
+      </li>
+      <li>
+        Si son iguales, llama recursivamente al mismo método con la palabra sin
+        el primer y último carácter.
+      </li>
+      <li>Si los caracteres no coinciden, la palabra no es un palíndromo.</li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>
+        Define la palabra <code>"Anita lava la tina"</code> como un ejemplo de
+        palíndromo.
+      </li>
+      <li>
+        Elimina los espacios en blanco y convierte la palabra a minúsculas para
+        facilitar la comparación.
+      </li>
+      <li>
+        Verifica si la palabra es un palíndromo utilizando el método
+        <code>esPalindromo</code>.
+      </li>
+      <li>Muestra el resultado en la consola.</li>
+    </ol>
+      
+    <script src="../funciones.js"></script>
+      
+  </body>
+</html>

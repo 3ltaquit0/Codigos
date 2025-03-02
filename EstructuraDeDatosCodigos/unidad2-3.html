@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificador de Palíndromos - Recursividad</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java verifica si una palabra es un palíndromo
+      utilizando un método recursivo.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase Palindromo</h2>
+    <pre id="codigoJava">
+<code>
+import java.util.Scanner;
+
+public class Palindromo {
+
+    static boolean esPalindromo(String palabra) {
+
+        if (palabra.length() <= 1) {
+            return true;
+        }
+
+        if (palabra.charAt(0) == palabra.charAt(palabra.length() - 1)) {
+            return esPalindromo(palabra.substring(1, palabra.length() - 1));
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingresa una palabra: ");
+        String palabra = scanner.nextLine();
+
+        palabra = palabra.replaceAll("\\s+", "").toLowerCase();
+
+        if (esPalindromo(palabra)) {
+            System.out.println("La palabra es un palíndromo.");
+        } else {
+            System.out.println("La palabra no es un palíndromo.");
+        }
+
+        scanner.close();
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>Palindromo</code> contiene dos métodos principales:</p>
+    <ul>
+      <li>
+        <code>esPalindromo(String palabra)</code>: Este método recursivo
+        verifica si una palabra es un palíndromo, comparando el primer y el
+        último carácter, y recortando la palabra en cada paso.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa, donde se solicita al usuario que ingrese una palabra, y se
+        determina si es un palíndromo o no.
+      </li>
+    </ul>
+
+    <h3>Método esPalindromo</h3>
+    <p>El método <code>esPalindromo</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Si la palabra tiene 0 o 1 caracteres, retorna <code>true</code>,
+        indicando que es un palíndromo.
+      </li>
+      <li>Compara el primer carácter con el último.</li>
+      <li>
+        Si son iguales, realiza una llamada recursiva con la palabra reducida,
+        eliminando el primer y el último carácter.
+      </li>
+      <li>Si los caracteres no coinciden, retorna <code>false</code>.</li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Pide al usuario que ingrese una palabra a través de la consola.</li>
+      <li>
+        Elimina los espacios y convierte la palabra a minúsculas para evitar
+        diferencias de formato.
+      </li>
+      <li>
+        Verifica si la palabra es un palíndromo utilizando el método
+        <code>esPalindromo</code> y muestra el resultado en la consola.
+      </li>
+    </ol>
+      
+    <script src="../funciones.js"></script>
+      
+  </body>
+</html>

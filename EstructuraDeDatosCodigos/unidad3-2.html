@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecuaciones balanceadas sin entrada de datos</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java verifica si los paréntesis en una ecuación
+      están balanceados utilizando una pila.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+
+    <h2>Clase ValidadorParentesis</h2>
+    <pre id="codigoJava">
+<code>
+package Pila;
+
+public class ValidadorParentesis {
+
+    public static boolean estaBalanceado(String ecuacion) {
+        Pila pila = new Pila(ecuacion.length());
+
+        for (int i = 0; i < ecuacion.length(); i++) {
+            char caracter = ecuacion.charAt(i);
+
+            if (caracter == '(') {
+                pila.push(caracter);
+            } else if (caracter == ')') {
+                if (pila.estaVacia()) {
+                    return false;
+                }
+                pila.pop();
+            }
+        }
+
+        return pila.estaVacia();
+    }
+
+    public static void main(String[] args) {
+        String ecuacion1 = "2x+(5y*3)-4";
+        String ecuacion2 = "(a + b * (c + d)";
+        String ecuacion3 = "(a + b) * c + d)";
+
+        System.out.println("Ecuacion 1 balanceada: " + estaBalanceado(ecuacion1));
+        System.out.println("Ecuacion 2 balanceada: " + estaBalanceado(ecuacion2));
+        System.out.println("Ecuacion 3 balanceada: " + estaBalanceado(ecuacion3));
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>ValidadorParentesis</code> contiene dos métodos
+      principales:
+    </p>
+    <ul>
+      <li>
+        <code>estaBalanceado(String ecuacion)</code>: Este método verifica si
+        los paréntesis en la ecuación están balanceados. Utiliza una pila para
+        realizar esta verificación.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa. Prueba varias ecuaciones y muestra si están balanceadas o no.
+      </li>
+    </ul>
+
+    <h3>Método estaBalanceado</h3>
+    <p>El método <code>estaBalanceado</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Crea una pila con la capacidad igual a la longitud de la ecuación.
+      </li>
+      <li>Recorre cada carácter de la ecuación.</li>
+      <li>
+        Si el carácter es un paréntesis de apertura <code>'('</code>, lo empuja
+        a la pila.
+      </li>
+      <li>
+        Si el carácter es un paréntesis de cierre <code>')'</code>, verifica si
+        la pila está vacía. Si está vacía, retorna <code>false</code>. Si no
+        está vacía, saca un elemento de la pila.
+      </li>
+      <li>
+        Al final del recorrido, retorna <code>true</code> si la pila está vacía,
+        lo que significa que los paréntesis están balanceados.
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Define tres ecuaciones de prueba.</li>
+      <li>
+        Verifica si cada ecuación está balanceada utilizando el método
+        <code>estaBalanceado</code>.
+      </li>
+      <li>Muestra el resultado en la consola.</li>
+    </ol>
+
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

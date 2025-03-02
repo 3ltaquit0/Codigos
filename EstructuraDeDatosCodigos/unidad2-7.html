@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invertir un Número con Recursividad</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      Este programa en Java invierte un número entero de forma recursiva, sin
+      convertirlo en una cadena. El número se procesa dígito por dígito, y se
+      reconstruye en orden inverso.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase InvertirNumero</h2>
+    <pre id="codigoJava">
+<code>
+import java.util.Scanner;
+
+public class InvertirNumero {
+
+    // Programa que invierte un número pero que se maneje como número y no como cadena
+    static int invertirN(int numero) {
+        // Caso base: si el número es menor a 10, retorna el número tal cual
+        if (numero < 10) return numero;
+        else {
+            // Obtiene el último dígito del número
+            int digito = numero % 10;
+            // Calcula la longitud del número en términos de cantidad de dígitos
+            int longitud = (int) Math.log10(numero);
+            // Multiplica el dígito por su valor posicional invertido y llama recursivamente
+            return digito * (int) Math.pow(10, longitud) + invertirN(numero / 10);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Solicita al usuario que ingrese un número
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce un número: ");
+        int numero = scanner.nextInt();
+
+        // Muestra el número invertido en la consola
+        System.out.println("Número invertido: " + invertirN(numero));
+        scanner.close();
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>InvertirNumero</code> contiene dos métodos principales:
+    </p>
+    <ul>
+      <li>
+        <code>invertirN(int numero)</code>: Este método recursivo toma un número
+        entero y lo invierte. Si el número es menor que 10, lo retorna tal como
+        está (caso base). De lo contrario, extrae el último dígito y lo
+        multiplica por su posición en el número invertido, luego llama
+        recursivamente al método con el número sin el último dígito.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa, donde se solicita un número al usuario y se imprime el número
+        invertido en la consola.
+      </li>
+    </ul>
+
+    <h3>Método invertirN</h3>
+    <p>El método <code>invertirN</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Si el número tiene solo un dígito (es menor a 10), lo retorna tal cual
+        (caso base).
+      </li>
+      <li>
+        Si el número tiene más de un dígito, extrae el último dígito utilizando
+        el operador módulo (<code>%</code>).
+      </li>
+      <li>
+        Calcula la longitud del número, que es la cantidad de dígitos menos 1.
+      </li>
+      <li>
+        Multiplica el dígito por su valor posicional en el número invertido
+        (usando <code>Math.pow()</code>), y luego llama recursivamente al método
+        con el número sin el último dígito.
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Solicita al usuario que ingrese un número.</li>
+      <li>Llama al método <code>invertirN</code> para invertir el número.</li>
+      <li>Muestra el resultado en la consola.</li>
+    </ol>
+      
+    <script src="../funciones.js"></script>
+      
+  </body>
+</html>

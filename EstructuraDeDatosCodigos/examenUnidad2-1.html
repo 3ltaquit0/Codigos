@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de Dígitos Recursiva</title>
+    <link rel="stylesheet" href="estructura.css">
+
+</head>
+<body>
+    <h1>Explicación del Código</h1>
+    <p>Este programa en Java suma los dígitos de un número ingresado por el usuario utilizando un método recursivo. El método procesa cada dígito del número y los suma hasta que no quedan más dígitos.</p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase examen</h2>
+    <pre id="codigoJava">
+<code>
+import java.util.Scanner;
+
+public class examen {
+
+    // Elaborar un programa que sume los dígitos de un número de forma recursiva
+    public static int sumaDigitos(int numero) {
+        // Caso base: si el número es 0, retorna 0
+        if (numero == 0) {
+            return 0;
+        }
+        // Suma el último dígito y llama recursivamente al método con el número sin el último dígito
+        return numero % 10 + sumaDigitos(numero / 10);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicita al usuario que ingrese varios números y calcula la suma de los dígitos
+        System.out.print("Introduce un número: ");
+        int numero = scanner.nextInt();
+        int resultado = sumaDigitos(numero);
+        System.out.println("La suma de los dígitos de " + numero + " es: " + resultado);
+
+        System.out.print("Introduce otro número: ");
+        int numero1 = scanner.nextInt();
+        int resultado1 = sumaDigitos(numero1);
+        System.out.println("La suma de los dígitos de " + numero1 + " es: " + resultado1);
+
+        System.out.print("Introduce otro número: ");
+        int numero2 = scanner.nextInt();
+        int resultado2 = sumaDigitos(numero2);
+        System.out.println("La suma de los dígitos de " + numero2 + " es: " + resultado2);
+
+        System.out.print("Introduce otro número: ");
+        int numero3 = scanner.nextInt();
+        int resultado3 = sumaDigitos(numero3);
+        System.out.println("La suma de los dígitos de " + numero3 + " es: " + resultado3);
+
+        scanner.close();
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>examen</code> contiene dos métodos principales:</p>
+    <ul>
+        <li><code>sumaDigitos(int numero)</code>: Este método recursivo suma los dígitos de un número. Recibe el número como argumento y procesa su último dígito sumándolo al resultado de la llamada recursiva con el número dividido entre 10.</li>
+        <li><code>main(String[] args)</code>: Solicita al usuario que introduzca varios números y utiliza el método <code>sumaDigitos</code> para calcular y mostrar la suma de los dígitos de cada número.</li>
+    </ul>
+
+    <h3>Método sumaDigitos</h3>
+    <p>El método <code>sumaDigitos</code> sigue estos pasos:</p>
+    <ol>
+        <li>Si el número es 0, retorna 0 (caso base).</li>
+        <li>Calcula el último dígito del número utilizando el operador módulo (<code>%</code>).</li>
+        <li>Llama recursivamente al método con el número dividido entre 10, eliminando el último dígito.</li>
+        <li>Suma el dígito actual al resultado de la llamada recursiva.</li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+        <li>Pide al usuario que introduzca varios números utilizando un objeto <code>Scanner</code>.</li>
+        <li>Llama al método <code>sumaDigitos</code> para cada número ingresado.</li>
+        <li>Muestra la suma de los dígitos de cada número en la consola.</li>
+    </ol>
+</body>
+
+<script src="../funciones.js"></script>
+
+</html>

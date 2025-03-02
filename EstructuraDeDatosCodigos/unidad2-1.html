@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máximo Común Divisor Recursivo</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body id="unidad2-1">
+    <h1>Explicación del Código</h1>
+    <p>
+      Este programa en Java calcula el Máximo Común Divisor (MCD) de dos números
+      utilizando un enfoque recursivo basado en el algoritmo de Euclides.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase MaximoComunDivisor</h2>
+    <pre id="codigoJava">
+<code>
+import java.util.Scanner;
+
+public class MaximoComunDivisor {
+    public static int mcd(int digito, int digito2) {
+        if (digito2 == 0) {
+            return digito;
+        }
+        return mcd(digito2, digito % digito2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Introduce el primer número: ");
+        int digito = scanner.nextInt();
+
+        System.out.print("Introduce el segundo número: ");
+        int digito2 = scanner.nextInt();
+
+        System.out.println("El MCD de " + digito + " y " + digito2 + " es: " + mcd(digito, digito2));
+
+        scanner.close();
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>MaximoComunDivisor</code> contiene dos métodos principales:
+    </p>
+    <ul>
+      <li>
+        <code>mcd(int digito, int digito2)</code>: Este método recursivo calcula
+        el MCD de dos números utilizando el algoritmo de Euclides.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa. Solicita al usuario que ingrese dos números, y luego calcula y
+        muestra el MCD de esos números utilizando el método <code>mcd</code>.
+      </li>
+    </ul>
+
+    <h3>Método mcd</h3>
+    <p>El método <code>mcd</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Comprueba si el segundo número (<code>digito2</code>) es igual a 0. Si
+        es así, retorna el primer número (<code>digito</code>) como el MCD, ya
+        que esto indica que el MCD ha sido encontrado.
+      </li>
+      <li>
+        Si <code>digito2</code> no es 0, el método se llama a sí mismo
+        recursivamente, intercambiando los valores de <code>digito</code> y
+        <code>digito2</code>, y pasando como nuevo argumento
+        <code>digito % digito2</code> (el residuo de la división).
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Solicita al usuario que ingrese dos números.</li>
+      <li>
+        Llama al método <code>mcd</code> con esos dos números para calcular su
+        MCD.
+      </li>
+      <li>Muestra el resultado del MCD en la consola.</li>
+    </ol>
+    
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

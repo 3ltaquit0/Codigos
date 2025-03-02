@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explicación del Código Pila</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java implementa una pila (stack) con manejo de
+      excepciones para los casos de pila llena y pila vacía.
+    </p>
+
+    <button id="copyButton">Copiar Código</button>
+    <button id="backButton2">Volver</button>
+    <pre id="codigoJava">
+<code>
+class ExcepcionPilaLlena extends RuntimeException {
+    public ExcepcionPilaLlena(String mensaje) {
+        super(mensaje);
+    }
+}
+
+class ExcepcionPilaVacia extends RuntimeException {
+    public ExcepcionPilaVacia(String mensaje) {
+        super(mensaje);
+    }
+}
+
+public class Pila {
+    private Object[] elementos;
+    private int tope;
+
+    public Pila(int capacidad) {
+        elementos = new Object[capacidad];
+        tope = -1;
+    }
+
+    public void push(Object dato) {
+        if (estaLlena()) {
+            throw new ExcepcionPilaLlena("La pila está llena");
+        } else {
+            elementos[++tope] = dato;
+        }
+    }
+
+    public Object pop() {
+        if (estaVacia()) {
+            throw new ExcepcionPilaVacia("La pila está vacía");
+        } else {
+            return elementos[tope--];
+        }
+    }
+
+    public boolean estaLlena() {
+        return tope == elementos.length - 1;
+    }
+
+    public boolean estaVacia() {
+        return tope == -1;
+    }
+
+    public static void main(String[] args) {
+        Pila pila = new Pila(5);
+
+        // Intentar desapilar de una pila vacía
+        try {
+            pila.pop();
+        } catch (ExcepcionPilaVacia e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Apilar elementos
+        pila.push(1);
+        pila.push(2);
+        pila.push(3);
+
+        // Desapilar elementos
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
+    }
+}
+</code>
+    </pre>
+
+
+    <h2>Clases ExcepcionPilaLlena y ExcepcionPilaVacia</h2>
+    <pre>
+<code>
+class ExcepcionPilaLlena extends RuntimeException {
+    public ExcepcionPilaLlena(String mensaje) {
+        super(mensaje);
+    }
+}
+
+class ExcepcionPilaVacia extends RuntimeException {
+    public ExcepcionPilaVacia(String mensaje) {
+        super(mensaje);
+    }
+}
+</code>
+    </pre>
+    <p>
+      Estas clases definen excepciones personalizadas que se lanzan cuando la
+      pila está llena o vacía, respectivamente.
+    </p>
+
+    <h2>Clase Pila</h2>
+    <pre>
+<code>
+public class Pila {
+    private Object[] elementos;
+    private int tope;
+
+    public Pila(int capacidad) {
+        elementos = new Object[capacidad];
+        tope = -1;
+    }
+
+    public void push(Object dato) {
+        if (estaLlena()) {
+            throw new ExcepcionPilaLlena("La pila está llena");
+        } else {
+            elementos[++tope] = dato;
+        }
+    }
+
+    public Object pop() {
+        if (estaVacia()) {
+            throw new ExcepcionPilaVacia("La pila está vacía");
+        } else {
+            return elementos[tope--];
+        }
+    }
+
+    public boolean estaLlena() {
+        return tope == elementos.length - 1;
+    }
+
+    public boolean estaVacia() {
+        return tope == -1;
+    }
+
+    public static void main(String[] args) {
+        Pila pila = new Pila(5);
+
+        // Intentar desapilar de una pila vacía
+        try {
+            pila.pop();
+        } catch (ExcepcionPilaVacia e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Apilar elementos
+        pila.push(1);
+        pila.push(2);
+        pila.push(3);
+
+        // Desapilar elementos
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>
+      La clase <code>Pila</code> implementa una pila con los siguientes métodos:
+    </p>
+    <ul>
+      <li>
+        <code>push(Object dato)</code>: Añade un elemento a la pila. Si la pila
+        está llena, lanza una <code>ExcepcionPilaLlena</code>.
+      </li>
+      <li>
+        <code>pop()</code>: Elimina y retorna el elemento en la cima de la pila.
+        Si la pila está vacía, lanza una <code>ExcepcionPilaVacia</code>.
+      </li>
+      <li>
+        <code>estaLlena()</code>: Retorna <code>true</code> si la pila está
+        llena.
+      </li>
+      <li>
+        <code>estaVacia()</code>: Retorna <code>true</code> si la pila está
+        vacía.
+      </li>
+    </ul>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Crea una pila con capacidad para 5 elementos.</li>
+      <li>
+        Intenta desapilar un elemento de una pila vacía, lo que lanza una
+        <code>ExcepcionPilaVacia</code> y muestra el mensaje correspondiente.
+      </li>
+      <li>Apila tres elementos en la pila.</li>
+      <li>Desapila y muestra los tres elementos apilados.</li>
+    </ol>
+
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inversión de Palabras - Recursividad</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java utiliza un método recursivo para invertir una
+      palabra ingresada por el usuario.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase Recursividad</h2>
+    <pre id="codigoJava">
+<code>
+import java.util.Scanner;
+
+public class Recursividad {
+    static String invierte(String palabra) {
+        if (palabra.isEmpty()) {
+            return palabra;
+        } else {
+            return invierte(palabra.substring(1)) + palabra.charAt(0);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingresa una palabra: ");
+        String palabra = scanner.nextLine();
+
+        System.out.println("Palabra invertida: " + Recursividad.invierte(palabra));
+
+        scanner.close();
+    }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>Recursividad</code> contiene dos métodos principales:</p>
+    <ul>
+      <li>
+        <code>invierte(String palabra)</code>: Este método recursivo invierte la
+        palabra dada, moviendo el primer carácter al final y llamándose
+        recursivamente con el resto de la palabra.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa, que solicita al usuario una palabra y muestra la palabra
+        invertida.
+      </li>
+    </ul>
+
+    <h3>Método invierte</h3>
+    <p>El método <code>invierte</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Comprueba si la palabra está vacía. Si es así, retorna la palabra vacía
+        (caso base).
+      </li>
+      <li>
+        Si no, toma el primer carácter de la palabra y lo coloca al final de la
+        palabra invertida resultante de llamar recursivamente al método con el
+        resto de la palabra (todo menos el primer carácter).
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>Pide al usuario que ingrese una palabra.</li>
+      <li>
+        Invoca el método <code>invierte</code> con la palabra ingresada y
+        muestra la palabra invertida en la consola.
+      </li>
+      <li>Cierra el escáner para liberar recursos.</li>
+    </ol>
+    
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

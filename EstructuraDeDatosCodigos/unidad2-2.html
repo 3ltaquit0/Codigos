@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máximo Común Divisor - Recursividad</title>
+    <link rel="stylesheet" href="estructura.css" />
+  </head>
+  <body>
+    <h1>Explicación del Código</h1>
+    <p>
+      El siguiente código en Java utiliza un método recursivo para calcular el
+      Máximo Común Divisor (MCD) de dos números.
+    </p>
+
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase Metodo1</h2>
+    <pre id="codigoJava">
+<code>
+package Recursividad;
+
+//Método recursivo para calcular máximo común divisor de 2 números
+
+public class Metodo1 {
+  public static int mcd(int a, int b) {
+      if (b == 0) {
+          return a;
+      } else {
+          return mcd(b, a % b);
+      }
+  }
+
+  public static void main(String[] args) {
+      System.out.println(mcd(10, 5));
+  }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>Metodo1</code> contiene dos métodos principales:</p>
+    <ul>
+      <li>
+        <code>mcd(int a, int b)</code>: Este método recursivo calcula el máximo
+        común divisor de dos números utilizando el algoritmo de Euclides.
+      </li>
+      <li>
+        <code>main(String[] args)</code>: Este método es el punto de entrada del
+        programa y prueba el cálculo del MCD de dos números.
+      </li>
+    </ul>
+
+    <h3>Método mcd</h3>
+    <p>El método <code>mcd</code> sigue estos pasos:</p>
+    <ol>
+      <li>
+        Si el segundo número (b) es 0, retorna el primer número (a) como el MCD.
+      </li>
+      <li>
+        Si no, realiza una llamada recursiva con los valores de <code>b</code> y
+        <code>a % b</code>, donde <code>%</code> es el operador módulo.
+      </li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+      <li>
+        Invoca el método <code>mcd</code> con dos números (en este caso, 10 y 5)
+        y muestra el resultado en la consola.
+      </li>
+    </ol>
+    
+    <script src="../funciones.js"></script>
+    
+  </body>
+</html>

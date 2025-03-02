@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicación del Código de Gestión de Tareas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+    <h1>Explicación del Código de Gestión de Tareas</h1>
+
+    <p>Este código en Java crea una aplicación para gestionar tareas, implementando un algoritmo de ordenamiento ShellSort para clasificar tareas por fecha y prioridad. A continuación se explica cómo funciona cada parte del código.</p>
+
+    <button id="copyButton">Copiar Código</button>
+    <button id="backButton2">Volver</button>
+
+    <pre id="codigoJava">
+        package Noviembre19; // Define el paquete donde se encuentra la clase
+
+        import java.util.ArrayList; // Importa la clase ArrayList
+        import java.util.Collections; // Importa la clase Collections
+        import java.util.Comparator; // Importa la clase Comparator
+        import java.util.Date; // Importa la clase Date
+        
+        class Tarea { // Define la clase Tarea
+            String nombre; // Declara el atributo nombre
+            String descripcion; // Declara el atributo descripcion
+            String prioridad; // Declara el atributo prioridad
+            Date fecha; // Declara el atributo fecha
+            String hora; // Declara el atributo hora
+            String indicacion; // Declara el atributo indicacion
+        
+            public Tarea(String nombre, String descripcion, String prioridad, Date fecha, String hora, String indicacion) { // Constructor de la clase Tarea
+                this.nombre = nombre; // Inicializa el atributo nombre
+                this.descripcion = descripcion; // Inicializa el atributo descripcion
+                this.prioridad = prioridad; // Inicializa el atributo prioridad
+                this.fecha = fecha; // Inicializa el atributo fecha
+                this.hora = hora; // Inicializa el atributo hora
+                this.indicacion = indicacion; // Inicializa el atributo indicacion
+            }
+        
+            @Override
+            public String toString() { // Sobrescribe el método toString
+                return "Tarea{" + // Devuelve una representación en cadena de la tarea
+                        "nombre='" + nombre + '\'' +
+                        ", descripcion='" + descripcion + '\'' +
+                        ", prioridad='" + prioridad + '\'' +
+                        ", fecha=" + fecha +
+                        ", hora='" + hora + '\'' +
+                        ", indicacion='" + indicacion + '\'' +
+                        '}';
+            }
+        }
+        
+        public class Tareas { // Define la clase Tareas
+            public static void main(String[] args) { // Método principal
+                ArrayList<Tarea> tareas = new ArrayList<>(); // Crea una lista de tareas
+        
+                // Agregar tareas a la lista
+                // tareas.add(new Tarea("Nombre", "Descripcion", "Prioridad", new Date(), "Hora", "Indicacion"));
+                tareas.add(new Tarea("Tarea 1", "Descripcion 1", "Alta", new Date(2021, 11, 19), "10:00", "Indicacion 1")); // Agrega una tarea a la lista
+                tareas.add(new Tarea("Tarea 2", "Descripcion 2", "Baja", new Date(2021, 11, 20), "11:00", "Indicacion 2")); // Agrega una tarea a la lista
+                tareas.add(new Tarea("Tarea 3", "Descripcion 3", "Media", new Date(2021, 11, 21), "12:00", "Indicacion 3")); // Agrega una tarea a la lista
+                tareas.add(new Tarea("Tarea 4", "Descripcion 4", "Baja", new Date(2021, 11, 22), "13:00", "Indicacion 4")); // Agrega una tarea a la lista
+        
+                // Ordenar por fecha
+                shellSort(tareas, Comparator.comparing(t -> t.fecha)); // Ordena la lista de tareas por fecha usando shellSort
+                System.out.println("Tareas ordenadas por fecha:"); // Imprime un mensaje
+                for (Tarea tarea : tareas) { // Itera sobre la lista de tareas
+                    System.out.println(tarea); // Imprime cada tarea
+                }
+        
+                // Ordenar por prioridad
+                shellSort(tareas, Comparator.comparing(t -> t.prioridad)); // Ordena la lista de tareas por prioridad usando shellSort
+                System.out.println("Tareas ordenadas por prioridad:"); // Imprime un mensaje
+                for (Tarea tarea : tareas) { // Itera sobre la lista de tareas
+                    System.out.println(tarea); // Imprime cada tarea
+                }
+            }
+        
+            public static <T> void shellSort(ArrayList<T> list, Comparator<? super T> comparator) { // Método shellSort genérico
+                int n = list.size(); // Obtiene el tamaño de la lista
+                for (int gap = n / 2; gap > 0; gap /= 2) { // Inicializa el gap y lo reduce a la mitad en cada iteración
+                    for (int i = gap; i < n; i++) { // Itera desde gap hasta el final de la lista
+                        T temp = list.get(i); // Guarda el elemento actual en temp
+                        int j;
+                        for (j = i; j >= gap && comparator.compare(list.get(j - gap), temp) > 0; j -= gap) { // Compara y desplaza elementos
+                            list.set(j, list.get(j - gap)); // Desplaza el elemento hacia adelante
+                        }
+                        list.set(j, temp); // Coloca temp en su posición correcta
+                    }
+                }
+            }
+        }
+    </pre>
+
+    <h2>Explicación del Código</h2>
+    Aquí tienes explicaciones más concisas de cada sección:
+
+    <h3>Clase Tarea</h3>
+    <p>Define el modelo de una tarea con sus atributos (nombre, descripción, prioridad, fecha, hora e indicaciones) y un método toString() para su representación textual.</p>
+    
+    <h3>Método main()</h3>
+    <p>Crea y rellena una lista de tareas, y demuestra el ordenamiento usando shellSort por fecha y prioridad.</p>
+    
+    <h3>Método shellSort()</h3>
+    <p>Implementa el algoritmo ShellSort genérico que ordena la lista de tareas según el criterio especificado en el comparador.</p>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

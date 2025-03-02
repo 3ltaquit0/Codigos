@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma Recursiva de Dígitos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+
+<body>
+
+    <h1>Explicación del Código</h1>
+    <p>El siguiente código en Java suma los dígitos de un número de manera recursiva, es decir, descompone el número en
+        sus dígitos y suma cada uno.</p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton2">Volver</button>
+    </div>
+
+    <h2>Clase examen</h2>
+    <pre id="codigoJava">
+<code>
+package unidad2;
+
+public class examen{
+
+        // Elaborar un programa que sume los dígitos de un número de forma recursiva
+
+        public static int sumaDigitos(int numero) {
+                if (numero == 0) {
+                        return 0;
+                }
+                return numero % 10 + sumaDigitos(numero / 10);
+        }
+
+        public static void main(String[] args) {
+                int numero = 123;
+                int resultado = sumaDigitos(numero);
+                System.out.println("La suma de los dígitos de " + numero + " es: " + resultado);
+
+                int numero1 = 3457;
+                int resultado1 = sumaDigitos(numero1);
+                System.out.println("La suma de los dígitos de " + numero1 + " es: " + resultado1);
+
+                int numero2 = 987654321;
+                int resultado2 = sumaDigitos(numero2);
+                System.out.println("La suma de los dígitos de " + numero2 + " es: " + resultado2);
+
+                int numero3 = 999999999;
+                int resultado3 = sumaDigitos(numero3);
+                System.out.println("La suma de los dígitos de " + numero3 + " es: " + resultado3);
+        }
+}
+</code>
+    </pre>
+
+    <h2>Explicación</h2>
+    <p>La clase <code>examen</code> contiene dos métodos principales:</p>
+    <ul>
+        <li><code>sumaDigitos(int numero)</code>: Este método recursivo toma un número y suma sus dígitos. Lo hace
+            extrayendo el último dígito y llamándose recursivamente con el número restante.</li>
+        <li><code>main(String[] args)</code>: Este método es el punto de entrada del programa, donde se prueban
+            diferentes números para sumar sus dígitos y mostrar el resultado.</li>
+    </ul>
+
+    <h3>Método sumaDigitos</h3>
+    <p>El método <code>sumaDigitos</code> sigue estos pasos:</p>
+    <ol>
+        <li>Si el número es igual a 0, devuelve 0 (caso base).</li>
+        <li>De lo contrario, toma el último dígito del número usando el operador <code>% 10</code> y lo suma al
+            resultado de una llamada recursiva que procesa el resto del número (<code>numero / 10</code>).</li>
+    </ol>
+
+    <h3>Método main</h3>
+    <p>El método <code>main</code> realiza lo siguiente:</p>
+    <ol>
+        <li>Define varios números, como <code>123</code>, <code>3457</code>, <code>987654321</code> y
+            <code>999999999</code>.</li>
+        <li>Para cada número, invoca el método <code>sumaDigitos</code> y muestra el resultado en la consola.</li>
+    </ol>
+    
+    <script src="../funciones.js"></script>
+
+</body>
+
+</html>

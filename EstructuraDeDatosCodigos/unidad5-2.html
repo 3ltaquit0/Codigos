@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicación del Algoritmo Bubble Sort</title>
+    <link rel="stylesheet" href="estructura.css"> <!-- Enlace a tu archivo CSS -->
+</head>
+<body>
+    <h1>Explicación del Algoritmo Bubble Sort</h1>
+    <p>
+        Este código en Java implementa el algoritmo de Bubble Sort, que ordena una lista de números de menor a mayor. 
+        A continuación se explica cómo funciona el código y el rendimiento de Bubble Sort en distintos tamaños de listas.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="copyButton">Copiar Código</button>
+        <button id="backButton2">Volver</button>
+    </div>
+
+    <pre id="codigoJava">
+import java.util.Random;
+
+public class BubbleSort {
+
+    // Método para ordenar un arreglo usando el algoritmo de Bubble Sort
+    public static void bubblesort(int[] arr) {
+        int n = arr.length;
+        // Recorre todo el arreglo
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                // Si el elemento actual es mayor que el siguiente, intercámbialos
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    // Método para mostrar el arreglo ordenado
+    public static void printArray(int[] arr) {
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int[] sizes = {10, 100, 1000, 5000};
+        Random random = new Random();
+
+        for (int size : sizes) {
+            int[] arr = new int[size];
+            for (int i = 0; i < size; i++) {
+                arr[i] = random.nextInt(10000);
+            }
+
+            long startTime = System.currentTimeMillis();
+            bubblesort(arr);
+            long endTime = System.currentTimeMillis();
+
+            System.out.println("Tiempo para ordenar lista de tamaño " + size + ": " + (endTime - startTime) + " ms");
+            printArray(arr);
+        }
+    }
+}
+    </pre>
+
+    <h2>Explicación del Código</h2>
+    <p>
+        El código tiene tres partes principales: el método <strong>bubblesort</strong> para ordenar, el método <strong>printArray</strong> para mostrar el arreglo y el <strong>método main</strong> que ejecuta el proceso y mide el tiempo de ordenación.
+    </p>
+
+    <h3>Método bubblesort()</h3>
+    <p>
+        Este método recorre el arreglo y compara cada elemento con el siguiente. Si el elemento actual es mayor, se intercambian. Este proceso se repite hasta que todos los elementos están en orden ascendente.
+    </p>
+
+    <h3>Método printArray()</h3>
+    <p>
+        El método <strong>printArray()</strong> imprime los elementos del arreglo ordenado, mostrando el resultado final de la ordenación.
+    </p>
+
+    <h3>Método main()</h3>
+    <p>
+        El <strong>método main</strong> crea arreglos de diferentes tamaños, los llena con valores aleatorios, y mide el tiempo que toma ordenarlos con <strong>bubblesort</strong>. Esto permite observar el rendimiento del algoritmo.
+    </p>
+
+    <script src="../funciones.js"></script> <!-- Enlace a tu archivo JavaScript -->
+</body>
+</html>

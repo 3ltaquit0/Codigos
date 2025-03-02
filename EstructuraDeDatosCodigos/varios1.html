@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Metadatos básicos del documento HTML -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Serpientes y Escaleras</title>
+
+    <!-- Enlace a una hoja de estilos CSS externa (estilos.css) -->
+    <link rel="stylesheet" href="estructura.css" />
+
+  </head>
+  <body>
+    <!-- Título principal de la página y descripción del código -->
+    <h1>Explicación del Código del Juego de Serpientes y Escaleras</h1>
+    <p>
+      Este código en Java representa un juego de Serpientes y Escaleras. Los jugadores lanzan un dado y avanzan en el tablero, encontrando serpientes y escaleras que los hacen retroceder o avanzar, respectivamente.
+    </p>
+
+    <!-- Contenedor de botones para copiar el código y regresar -->
+    <div id="buttonContainer">
+      <button id="copyButton">Copiar Código</button>
+      <button id="backButton2">Volver</button>
+    </div>
+
+    <!-- Área donde se muestra el código Java, usando la etiqueta <pre> para formato -->
+    <pre id="codigoJava">
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class SerpientesEscaleras {
+    // Clase interna Nodo: representa cada casilla del tablero
+    class Nodo {
+        int posicion;          // Número de casilla en el tablero
+        Nodo siguiente;        // Referencia a la casilla siguiente
+        int destino;           // Si hay serpiente/escalera, indica casilla destino
+
+        Nodo(int posicion) {
+            this.posicion = posicion;
+            this.siguiente = null;
+            this.destino = posicion; // Por defecto, destino es la misma casilla
+        }
+    }
+
+    // Clase interna Jugador: representa cada jugador en el juego
+    class Jugador {
+        String nombre;        // Nombre del jugador
+        Nodo posicionActual;  // Casilla actual del jugador en el tablero
+
+        Jugador(String nombre, Nodo inicio) {
+            this.nombre = nombre;
+            this.posicionActual = inicio; // Inicia en la primera casilla
+        }
+    }
+
+    Nodo inicioTablero;       // Casilla inicial del tablero
+    LinkedList<Jugador> jugadores; // Lista de jugadores
+    Random dado;              // Objeto para simular el dado
+    final int META = 100;     // Casilla meta del juego
+
+    public SerpientesEscaleras() {
+        jugadores = new LinkedList<>();
+        dado = new Random();
+        construirTablero(); // Construye el tablero con serpientes y escaleras
+    }
+
+    private void construirTablero() {
+        Nodo actual = new Nodo(1); // Nodo inicial (casilla 1)
+        inicioTablero = actual;
+
+        // Crea casillas hasta llegar a la meta (casilla 100)
+        for (int i = 2; i <= META; i++) {
+            Nodo nuevo = new Nodo(i);
+            actual.siguiente = nuevo; // Enlaza a la siguiente casilla
+            actual = nuevo;
+        }
+
+        // Configuración de algunas serpientes y escaleras
+        asignarSerpientesEscaleras(16, 6);   // Serpiente de 16 a 6
+        asignarSerpientesEscaleras(47, 26);  // Serpiente de 47 a 26
+        asignarSerpientesEscaleras(49, 11);  // Serpiente de 49 a 11
+        asignarSerpientesEscaleras(62, 19);  // Serpiente de 62 a 19
+        asignarSerpientesEscaleras(1, 38);   // Escalera de 1 a 38
+        asignarSerpientesEscaleras(4, 14);   // Escalera de 4 a 14
+        asignarSerpientesEscaleras(9, 31);   // Escalera de 9 a 31
+        asignarSerpientesEscaleras(28, 84);  // Escalera de 28 a 84
+    }
+
+    private void asignarSerpientesEscaleras(int origen, int destino) {
+        Nodo actual = inicioTablero;
+        while (actual != null) {
+            if (actual.posicion == origen) {
+                actual.destino = destino; // Cambia el destino si hay serpiente/escalera
+                break;
+            }
+            actual = actual.siguiente;
+        }
+    }
+
+    public void agregarJugadores(int cantidad) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            for (int i = 1; i <= cantidad; i++) {
+                System.out.print("Ingrese el nombre del jugador " + i + ": ");
+                String nombre = scanner.nextLine();
+                if (nombre != null && !nombre.trim().isEmpty()) {
+                    jugadores.add(new Jugador(nombre, inicioTablero));
+                } else {
+                    System.out.println("Nombre inválido.");
+                    i--; // Reintenta si el nombre es inválido
+                }
+            }
+        }
+    }
+
+    public void iniciarJuego() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("¿Cuántos jugadores (2-10)? ");
+            int cantidad = scanner.nextInt();
+            if (cantidad < 2 || cantidad > 10) {
+                System.out.println("Número de jugadores inválido.");
+                return;
+            }
+
+            agregarJugadores(cantidad);
+            System.out.println("¡El juego comienza!");
+
+            boolean juegoTerminado = false;
+
+            while (!juegoTerminado) {
+                for (Jugador jugador : jugadores) {
+                    System.out.println("\nTurno de " + jugador.nombre);
+                    int avance = lanzarDado();
+                    System.out.println(jugador.nombre + " sacó un " + avance);
+
+                    jugador.posicionActual = moverJugador(jugador.posicionActual, avance);
+
+                    if (jugador.posicionActual.posicion >= META) {
+                        System.out.println("¡" + jugador.nombre + " ha ganado!");
+                        juegoTerminado = true;
+                        break;
+                    } else {
+                        System.out.println(jugador.nombre + " está en la posición " + jugador.posicionActual.posicion);
+                    }
+                }
+            }
+        }
+    }
+
+    private Nodo moverJugador(Nodo posicionActual, int pasos) {
+        Nodo actual = posicionActual;
+
+        for (int i = 0; i < pasos && actual.siguiente != null; i++) {
+            actual = actual.siguiente;
+        }
+
+        if (actual.destino != actual.posicion) {
+            System.out.println("¡" + (actual.destino > actual.posicion ? "Escalera" : "Serpiente") + "! " + 
+                               "Avanza a la posición " + actual.destino);
+            actual = obtenerNodoPorPosicion(actual.destino);
+        }
+
+        return actual;
+    }
+
+    private Nodo obtenerNodoPorPosicion(int posicion) {
+        Nodo actual = inicioTablero;
+        while (actual != null) {
+            if (actual.posicion == posicion) {
+                return actual;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
+    }
+
+    private int lanzarDado() {
+        return dado.nextInt(6) + 1;
+    }
+
+    public static void main(String[] args) {
+        SerpientesEscaleras juego = new SerpientesEscaleras();
+        juego.iniciarJuego();
+    }
+}
+    </pre>
+
+    <!-- Explicación de las Clases y Métodos -->
+    <h2>Clases y Métodos</h2>
+    <p>
+      El juego está estructurado con dos clases internas: <strong>Nodo</strong> y <strong>Jugador</strong>. La clase <strong>Nodo</strong> representa cada casilla en el tablero, mientras que la clase <strong>Jugador</strong> gestiona la posición y nombre de los jugadores.
+    </p>
+    <p>
+      La clase <strong>SerpientesEscaleras</strong> contiene los métodos principales que manejan la lógica del juego. Uno de los métodos importantes es <strong>construirTablero()</strong>, que construye el tablero de 100 casillas, agregando las serpientes y escaleras en las posiciones definidas.
+    </p>
+    <p>
+      El método <strong>agregarJugadores()</strong> se encarga de recibir la cantidad de jugadores y sus nombres. Luego, el método <strong>iniciarJuego()</strong> maneja el turno de cada jugador, permitiendo que lancen el dado, avancen, y posiblemente caigan en una serpiente o escalera.
+    </p>
+    <p>
+      <strong>moverJugador()</strong> es responsable de mover a un jugador a la nueva casilla después de cada lanzamiento de dado. Si el jugador cae en una serpiente o escalera, este método los llevará automáticamente a la casilla de destino correspondiente. El método <strong>lanzarDado()</strong> genera un número aleatorio entre 1 y 6, simulando el lanzamiento de un dado.
+
+    </p>
+    <p>
+      Los métodos internos <strong>obtenerNodoPorPosicion()</strong> y <strong>asignarSerpientesEscaleras()</strong> son utilizados para gestionar las posiciones de los jugadores y las casillas con serpientes y escaleras. <strong>obtenerNodoPorPosicion()</strong> recorre el tablero para encontrar la casilla correspondiente, mientras que <strong>asignarSerpientesEscaleras()</strong> establece el destino de una casilla si contiene una serpiente o una escalera.
+    </p>
+
+    <!-- Funcionalidades en JavaScript -->
+    <script src="../funciones.js"></script>
+      
+  </body>
+</html>
