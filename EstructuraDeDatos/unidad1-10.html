@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eficiencia de los Algoritmos - Explicación Sencilla</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Eficiencia de los Algoritmos</h1>
+
+    <p>
+        Cuando hablamos de la **eficiencia de los algoritmos**, nos referimos a cuán bien un algoritmo realiza una tarea en términos de recursos, como tiempo de ejecución (complejidad temporal) y uso de memoria (complejidad espacial). La eficiencia es crucial para resolver problemas de manera efectiva, especialmente cuando se trabaja con grandes volúmenes de datos o en entornos con recursos limitados.
+    </p>
+
+    <h2>¿Por Qué Es Importante la Eficiencia de un Algoritmo?</h2>
+    <p>
+        Un algoritmo eficiente puede procesar grandes cantidades de datos en poco tiempo y utilizando poca memoria. Por el contrario, un algoritmo ineficiente puede tardar mucho tiempo en ejecutarse o consumir demasiados recursos, lo que puede llevar a fallos o a una mala experiencia de usuario.
+    </p>
+
+    <h2>Medir la Eficiencia: Complejidad Temporal y Espacial</h2>
+    <p>
+        La eficiencia de un algoritmo se mide principalmente a través de dos aspectos: 
+        <strong>complejidad temporal</strong> (cuánto tiempo tarda el algoritmo en ejecutarse) y <strong>complejidad espacial</strong> (cuánta memoria usa durante su ejecución).
+    </p>
+    <ul>
+        <li><strong>Complejidad temporal:</strong> Nos dice cómo varía el tiempo de ejecución del algoritmo conforme cambia el tamaño de la entrada.</li>
+        <li><strong>Complejidad espacial:</strong> Nos indica cuánta memoria necesita el algoritmo a medida que aumentan los datos con los que trabaja.</li>
+    </ul>
+
+    <h2>¿Cómo Saber Si un Algoritmo Es Eficiente?</h2>
+    <p>
+        Para saber si un algoritmo es eficiente, debemos observar:
+    </p>
+    <ul>
+        <li>La **notación Big O**: Es una forma estándar de describir la eficiencia de un algoritmo. Nos dice cómo cambia el rendimiento del algoritmo a medida que aumenta el tamaño de la entrada.</li>
+        <li>El análisis de **mejor caso, peor caso y caso promedio**: Ayuda a entender el comportamiento de un algoritmo en diferentes situaciones, ya sea con entradas pequeñas o grandes.</li>
+    </ul>
+
+    <h2>Tipos Comunes de Algoritmos y Su Eficiencia</h2>
+
+    <h3>1. Algoritmos con Complejidad Temporal O(1) - Tiempo Constante</h3>
+    <p>
+        Un algoritmo con complejidad O(1) realiza su tarea en un tiempo constante, sin importar el tamaño de la entrada. Es uno de los algoritmos más eficientes en cuanto a tiempo.
+    </p>
+    <pre><code class="language-java">
+public class EjemploO1 {
+    public static void main(String[] args) {
+        int[] arreglo = {1, 2, 3, 4, 5};
+        // Acceso a un elemento en la posición 2, siempre toma el mismo tiempo
+        System.out.println(arreglo[2]);
+    }
+}
+    </code></pre>
+
+    <h3>2. Algoritmos con Complejidad Temporal O(n) - Tiempo Lineal</h3>
+    <p>
+        Un algoritmo con complejidad O(n) toma un tiempo proporcional al tamaño de la entrada. Por ejemplo, un algoritmo que recorre todos los elementos de una lista.
+    </p>
+    <pre><code class="language-java">
+public class EjemploOn {
+    public static void main(String[] args) {
+        int[] arreglo = {1, 2, 3, 4, 5};
+        // Recorremos todo el arreglo, lo que toma tiempo proporcional a n
+        for (int i = 0; i < arreglo.length; i++) {
+            System.out.println(arreglo[i]);
+        }
+    }
+}
+    </code></pre>
+
+    <h3>3. Algoritmos con Complejidad Temporal O(n²) - Tiempo Cuadrático</h3>
+    <p>
+        Los algoritmos con complejidad O(n²) tienen un tiempo de ejecución que aumenta cuadráticamente con el tamaño de la entrada. Esto sucede en algoritmos como los de ordenación que comparan elementos entre sí.
+    </p>
+    <pre><code class="language-java">
+public class EjemploOn2 {
+    public static void main(String[] args) {
+        int[] arreglo = {1, 2, 3, 4, 5};
+        // Algoritmo de burbuja con tiempo cuadrático
+        for (int i = 0; i < arreglo.length; i++) {
+            for (int j = i + 1; j < arreglo.length; j++) {
+                if (arreglo[i] > arreglo[j]) {
+                    int temp = arreglo[i];
+                    arreglo[i] = arreglo[j];
+                    arreglo[j] = temp;
+                }
+            }
+        }
+        for (int num : arreglo) {
+            System.out.println(num);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>¿Cómo Mejorar la Eficiencia de un Algoritmo?</h2>
+    <p>
+        Mejorar la eficiencia de un algoritmo puede implicar varias cosas:
+    </p>
+    <ul>
+        <li>Optimizar la lógica del algoritmo para reducir el número de operaciones.</li>
+        <li>Utilizar estructuras de datos más eficientes, como tablas hash o árboles balanceados.</li>
+        <li>Aplicar técnicas como la **divide y vencerás** o la **programación dinámica** para dividir el problema en subproblemas más pequeños.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        La eficiencia de un algoritmo es fundamental para garantizar que los programas funcionen rápidamente y no consuman más recursos de los necesarios. Al analizar un algoritmo, debemos considerar tanto su complejidad temporal como espacial y aplicar las mejores prácticas para optimizar su rendimiento. Con una comprensión sólida de estos conceptos, podemos escribir algoritmos más rápidos y eficientes, lo que mejora el rendimiento de nuestros programas y la experiencia del usuario.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

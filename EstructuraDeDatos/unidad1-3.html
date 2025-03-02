@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Tipos de Datos Abstractos (TDA)</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Ejemplos de Tipos de Datos Abstractos (TDA)</h1>
+    <p>
+        Los <strong>Tipos de Datos Abstractos (TDA)</strong> permiten organizar y manipular datos de manera eficiente en los programas. 
+        A continuación, se presentan ejemplos en <strong>Java</strong> de algunos TDA comunes: <strong>Lista, Pila, Cola, Conjunto y Diccionario</strong>.
+    </p>
+
+    <h2>1. Lista Enlazada</h2>
+    <p>
+        Una <strong>Lista Enlazada</strong> es una estructura donde cada nodo apunta al siguiente nodo, formando una secuencia dinámica.
+    </p>
+    <pre><code class="language-java">
+class Nodo {
+    int dato;
+    Nodo siguiente;
+
+    public Nodo(int dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+}
+
+class ListaEnlazada {
+    private Nodo cabeza;
+
+    public void agregar(int dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            Nodo temp = cabeza;
+            while (temp.siguiente != null) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+        }
+    }
+
+    public void mostrar() {
+        Nodo temp = cabeza;
+        while (temp != null) {
+            System.out.print(temp.dato + " -> ");
+            temp = temp.siguiente;
+        }
+        System.out.println("null");
+    }
+}
+
+public class EjemploListaEnlazada {
+    public static void main(String[] args) {
+        ListaEnlazada lista = new ListaEnlazada();
+        lista.agregar(1);
+        lista.agregar(2);
+        lista.agregar(3);
+        lista.mostrar();
+    }
+}
+    </code></pre>
+
+    <h2>2. Pila (Stack)</h2>
+    <p>
+        Una <strong>Pila</strong> sigue el principio <strong>LIFO</strong> (Last In, First Out). Se usa para gestionar funciones y operaciones reversibles.
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPila {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        System.out.println("Elemento eliminado: " + pila.pop()); // 30
+        System.out.println("Tope de la pila: " + pila.peek()); // 20
+    }
+}
+    </code></pre>
+
+    <h2>3. Cola (Queue)</h2>
+    <p>
+        Una <strong>Cola</strong> sigue el principio <strong>FIFO</strong> (First In, First Out), útil para gestionar procesos en orden.
+    </p>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class EjemploCola {
+    public static void main(String[] args) {
+        Queue<String> cola = new LinkedList<>();
+        cola.add("A");
+        cola.add("B");
+        cola.add("C");
+
+        System.out.println("Elemento eliminado: " + cola.poll()); // "A"
+        System.out.println("Frente de la cola: " + cola.peek()); // "B"
+    }
+}
+    </code></pre>
+
+    <h2>4. Conjunto (Set)</h2>
+    <p>
+        Un <strong>Conjunto</strong> almacena elementos únicos sin orden específico.
+    </p>
+    <pre><code class="language-java">
+import java.util.HashSet;
+
+public class EjemploConjunto {
+    public static void main(String[] args) {
+        HashSet<Integer> conjunto = new HashSet<>();
+        conjunto.add(1);
+        conjunto.add(2);
+        conjunto.add(2); // No se agrega porque ya existe
+
+        System.out.println(conjunto);
+    }
+}
+    </code></pre>
+
+    <h2>5. Diccionario (Map)</h2>
+    <p>
+        Un <strong>Diccionario</strong> almacena pares clave-valor para una rápida recuperación.
+    </p>
+    <pre><code class="language-java">
+import java.util.HashMap;
+
+public class EjemploDiccionario {
+    public static void main(String[] args) {
+        HashMap<String, Integer> edades = new HashMap<>();
+        edades.put("Juan", 25);
+        edades.put("María", 30);
+
+        System.out.println("Edad de Juan: " + edades.get("Juan"));
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los <strong>TDA</strong> permiten manejar datos de manera estructurada y eficiente. 
+        Cada estructura tiene sus ventajas y aplicaciones en la programación.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

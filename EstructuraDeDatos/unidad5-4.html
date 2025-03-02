@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Ordenamiento ShellSort</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Algoritmo de Ordenamiento ShellSort</h1>
+
+    <p>
+        El algoritmo de **ShellSort** es una mejora del algoritmo de ordenamiento por inserción. La idea principal detrás de ShellSort es mejorar la eficiencia del ordenamiento por inserción utilizando un paso mayor al principio para ordenar elementos más dispersos y luego ir reduciendo gradualmente el tamaño de los pasos hasta que el arreglo quede completamente ordenado.
+    </p>
+
+    <h2>1. ¿Cómo funciona el algoritmo ShellSort?</h2>
+    <p>
+        ShellSort comienza dividiendo el arreglo en subgrupos de elementos distantes entre sí. Estos subgrupos se ordenan utilizando el algoritmo de ordenamiento por inserción. Luego, el tamaño de los pasos (denominado "gap") se reduce progresivamente, y el algoritmo vuelve a ordenar el arreglo utilizando los subgrupos más pequeños hasta que el gap se vuelve 1, lo que significa que el arreglo está completamente ordenado.
+    </p>
+
+    <h2>2. Pasos del algoritmo ShellSort</h2>
+    <ol>
+        <li>Se selecciona un valor para el "gap" (espacio entre los elementos a comparar) y se ordena el arreglo en función de estos elementos dispersos.</li>
+        <li>Después de ordenar los subgrupos con el "gap", se reduce el tamaño de dicho "gap".</li>
+        <li>Se repite el proceso hasta que el "gap" sea 1.</li>
+        <li>Cuando el "gap" es 1, el algoritmo se comporta como el algoritmo de ordenamiento por inserción, ordenando los elementos de forma final.</li>
+    </ol>
+
+    <h2>3. Ejemplo de ShellSort</h2>
+    <p>
+        Supongamos que tenemos el siguiente arreglo de números desordenados: <strong>[10, 7, 8, 9, 1, 5]</strong>.
+    </p>
+    <p>
+        En el primer paso, se elige un valor de "gap" igual a 3 (una distancia grande entre los elementos a comparar). El algoritmo ordena los elementos en subgrupos distantes entre sí, y luego reduce el "gap" a 1 y realiza el ordenamiento final.
+    </p>
+    
+    <h2>4. Implementación en Java</h2>
+    <pre><code class="language-java">
+public class ShellSort {
+    public static void shellSort(int[] array) {
+        int n = array.length;
+        
+        // Comienza con un gran gap y reduce
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            // Realiza un ordenamiento por inserción para los elementos con el gap dado
+            for (int i = gap; i < n; i++) {
+                int temp = array[i];
+                int j = i;
+                
+                // Mueve los elementos mayores a la derecha
+                while (j >= gap && array[j - gap] > temp) {
+                    array[j] = array[j - gap];
+                    j -= gap;
+                }
+                
+                // Coloca el valor temporal en la posición correcta
+                array[j] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {10, 7, 8, 9, 1, 5};
+        shellSort(array);
+        
+        System.out.println("Lista ordenada:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Complejidad del algoritmo ShellSort</h2>
+    <p>
+        La complejidad temporal de **ShellSort** depende del valor de "gap" y cómo se reduce a lo largo de las iteraciones. En el mejor de los casos, cuando el gap es reducido de manera eficiente, la complejidad es O(n log n). Sin embargo, en el peor de los casos, la complejidad puede ser O(n²), lo que lo hace menos eficiente que otros algoritmos como QuickSort en algunos casos.
+    </p>
+    <ul>
+        <li>En el **mejor de los casos**, cuando el gap se elige adecuadamente, la complejidad es O(n log n).</li>
+        <li>En el **peor de los casos**, dependiendo de la secuencia de gaps, la complejidad puede llegar a ser O(n²).</li>
+    </ul>
+    
+    <h2>6. Ventajas y desventajas del algoritmo ShellSort</h2>
+    <h3>Ventajas</h3>
+    <ul>
+        <li>Es más eficiente que el algoritmo de inserción simple en arreglos grandes.</li>
+        <li>Es relativamente fácil de implementar en comparación con otros algoritmos de ordenamiento más complejos.</li>
+        <li>Mejora el rendimiento de los algoritmos de ordenamiento por inserción en grandes volúmenes de datos.</li>
+    </ul>
+
+    <h3>Desventajas</h3>
+    <ul>
+        <li>La elección del tamaño del gap puede afectar el rendimiento, y no siempre se comporta tan bien como QuickSort o MergeSort.</li>
+        <li>No tiene un rendimiento estable garantizado, lo que significa que puede ser más lento que otros algoritmos en algunos casos.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        El algoritmo ShellSort es una mejora eficiente sobre el ordenamiento por inserción, especialmente cuando el arreglo a ordenar es relativamente grande. Aunque su complejidad en el peor caso puede ser O(n²), en la práctica suele ser más rápido que el ordenamiento por inserción simple. Sin embargo, en casos donde se requiere una eficiencia óptima, algoritmos como QuickSort o MergeSort suelen ser más recomendables.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

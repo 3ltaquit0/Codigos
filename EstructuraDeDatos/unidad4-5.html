@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Grafos</h1>
+
+    <p>
+        Los <strong>grafos</strong> son una estructura de datos fundamental en ciencias de la computación, utilizada para modelar relaciones entre objetos. En un grafo, los objetos se representan como <strong>nodos</strong> o vértices, y las relaciones entre estos objetos se representan como <strong>aristas</strong> o bordes. Los grafos tienen una amplia variedad de aplicaciones en diferentes campos, como redes sociales, tráfico, algoritmos de búsqueda, entre otros.
+    </p>
+
+    <h2>1. ¿Qué es un grafo?</h2>
+    <p>
+        Un <strong>grafo</strong> es una estructura compuesta por un conjunto de nodos (vértices) y un conjunto de aristas (bordes), donde las aristas conectan los nodos entre sí. Los grafos pueden ser:
+        <ul>
+            <li><strong>Dirigidos</strong>: donde las aristas tienen una dirección específica (de un nodo a otro).</li>
+            <li><strong>No dirigidos</strong>: donde las aristas no tienen dirección, es decir, la relación es bidireccional.</li>
+            <li><strong>Pesados</strong>: donde cada arista tiene un peso o costo asociado (por ejemplo, el tiempo o la distancia).</li>
+            <li><strong>No pesados</strong>: donde las aristas no tienen peso.</li>
+        </ul>
+    </p>
+
+    <h2>2. Representación de un grafo</h2>
+    <p>
+        Existen varias formas de representar un grafo en memoria:
+        <ul>
+            <li><strong>Lista de adyacencia</strong>: se usa un arreglo o lista para representar los nodos, y cada nodo contiene una lista de los nodos adyacentes a él.</li>
+            <li><strong>Matriz de adyacencia</strong>: es una matriz bidimensional donde el valor en la posición <em>i, j</em> indica si existe una arista entre los nodos <em>i</em> y <em>j</em>.</li>
+        </ul>
+    </p>
+
+    <h2>3. Tipos de grafos</h2>
+    <p>
+        Los grafos se pueden clasificar en varios tipos según sus características:
+        <ul>
+            <li><strong>Grafo simple</strong>: no tiene aristas repetidas ni aristas que conecten un nodo consigo mismo (bucles).</li>
+            <li><strong>Grafo completo</strong>: cada nodo está conectado con todos los demás nodos.</li>
+            <li><strong>Grafo dirigido</strong>: las aristas tienen una dirección, es decir, la relación es unidireccional.</li>
+            <li><strong>Grafo no dirigido</strong>: las aristas no tienen dirección, es decir, la relación es bidireccional.</li>
+            <li><strong>Grafo ponderado</strong>: las aristas tienen pesos asociados, los cuales pueden representar distancia, tiempo, costo, etc.</li>
+        </ul>
+    </p>
+
+    <h2>4. Aplicaciones de los grafos</h2>
+    <p>
+        Los grafos tienen aplicaciones en muchas áreas de la informática y otras disciplinas. Algunas de las aplicaciones más comunes incluyen:
+        <ul>
+            <li><strong>Redes sociales</strong>: los nodos representan usuarios y las aristas representan relaciones entre ellos (amistades, seguidores, etc.).</li>
+            <li><strong>Rutas y navegación</strong>: los grafos se usan para encontrar la ruta más corta entre dos puntos, como en los sistemas de navegación GPS.</li>
+            <li><strong>Redes de comunicación</strong>: en las redes de computadoras, los grafos representan la interconexión entre dispositivos como enrutadores, switches y servidores.</li>
+            <li><strong>Algoritmos de búsqueda</strong>: como el algoritmo de Dijkstra o el algoritmo A*, que se utilizan para encontrar caminos más cortos en un grafo.</li>
+            <li><strong>Optimización de recursos</strong>: en problemas de programación y optimización, los grafos ayudan a modelar relaciones y a buscar soluciones óptimas.</li>
+        </ul>
+    </p>
+
+    <h2>5. Recorridos en un grafo</h2>
+    <p>
+        El recorrido de un grafo es el proceso de visitar sus nodos de acuerdo con un orden específico. Existen dos algoritmos fundamentales para recorrer grafos:
+        <ul>
+            <li><strong>Recorrido en profundidad (DFS, Depth First Search)</strong>: visita los nodos lo más profundamente posible antes de retroceder. Es útil para encontrar ciclos o rutas en un grafo.</li>
+            <li><strong>Recorrido en amplitud (BFS, Breadth First Search)</strong>: visita todos los nodos a un nivel de distancia del nodo inicial antes de avanzar al siguiente nivel. Es útil para encontrar el camino más corto en grafos no ponderados.</li>
+        </ul>
+    </p>
+
+    <h2>6. Algoritmos de grafos</h2>
+    <p>
+        Existen varios algoritmos diseñados específicamente para resolver problemas sobre grafos. Algunos de los más importantes incluyen:
+        <ul>
+            <li><strong>Algoritmo de Dijkstra</strong>: encuentra el camino más corto entre un nodo de origen y los demás nodos de un grafo ponderado.</li>
+            <li><strong>Algoritmo de Bellman-Ford</strong>: también encuentra el camino más corto, pero a diferencia de Dijkstra, puede manejar grafos con aristas de peso negativo.</li>
+            <li><strong>Algoritmo de Prim</strong>: encuentra el árbol de expansión mínima de un grafo ponderado.</li>
+            <li><strong>Algoritmo de Kruskal</strong>: también encuentra el árbol de expansión mínima, pero lo hace de manera diferente a Prim.</li>
+        </ul>
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los grafos son una de las estructuras de datos más poderosas y versátiles que se utilizan en una gran cantidad de aplicaciones. Desde redes sociales hasta rutas de navegación, los grafos ayudan a modelar, organizar y resolver problemas complejos en diversos campos de la ciencia y la ingeniería.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

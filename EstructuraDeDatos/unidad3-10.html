@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Listas en Estructuras de Datos</h1>
+
+    <p>
+        Las **listas** son una de las estructuras de datos más comunes y útiles en programación. Son colecciones de elementos organizados de manera secuencial, lo que significa que cada elemento de la lista tiene un lugar determinado en ella. Las listas se pueden usar para almacenar una variedad de datos y permitir el acceso, inserción y eliminación de estos de manera eficiente.
+    </p>
+
+    <h2>1. ¿Qué es una Lista?</h2>
+    <p>
+        Una lista es una estructura de datos que almacena una secuencia de elementos. Los elementos en una lista están ordenados y cada elemento tiene una posición o índice asociado. Las listas pueden ser estáticas o dinámicas:
+    </p>
+    <ul>
+        <li><strong>Estática</strong>: El tamaño de la lista se define al momento de su creación y no se puede cambiar.</li>
+        <li><strong>Dinámica</strong>: El tamaño de la lista puede cambiar durante la ejecución del programa, lo que permite agregar o eliminar elementos según sea necesario.</li>
+    </ul>
+
+    <h2>2. Tipos de Listas</h2>
+    <p>
+        Existen varios tipos de listas, dependiendo de cómo se gestionan los elementos. Los más comunes son:
+    </p>
+    <ul>
+        <li><strong>Listas Enlazadas</strong>: Cada elemento de la lista contiene un valor y una referencia (o enlace) al siguiente elemento. Se pueden dividir en:
+            <ul>
+                <li><strong>Lista Simplemente Enlazada</strong>: Cada nodo tiene una referencia al siguiente nodo.</li>
+                <li><strong>Lista Doblemente Enlazada</strong>: Cada nodo tiene referencias tanto al siguiente como al nodo anterior.</li>
+            </ul>
+        </li>
+        <li><strong>Listas Dinámicas</strong>: Usan estructuras como <code>ArrayList</code> en Java, donde el tamaño puede cambiar y los elementos pueden ser accesados por su índice.</li>
+    </ul>
+
+    <h2>3. Operaciones Comunes con Listas</h2>
+    <p>
+        Las listas ofrecen varias operaciones útiles para manipular sus elementos. Algunas de las más comunes son:
+    </p>
+    <ul>
+        <li><strong>Insertar</strong>: Agregar un elemento a la lista, ya sea al principio, al final o en una posición específica.</li>
+        <li><strong>Eliminar</strong>: Eliminar un elemento de la lista, por su valor o por su índice.</li>
+        <li><strong>Acceder</strong>: Obtener el valor de un elemento en una posición determinada.</li>
+        <li><strong>Buscar</strong>: Buscar si un valor existe dentro de la lista.</li>
+        <li><strong>Recorrer</strong>: Iterar sobre todos los elementos de la lista.</li>
+    </ul>
+
+    <h2>4. Ventajas y Desventajas de las Listas</h2>
+    <p>
+        Las listas tienen muchas ventajas, pero también algunas desventajas que debes considerar:
+    </p>
+    <ul>
+        <li><strong>Ventajas</strong>:
+            <ul>
+                <li>Fácil de usar y entender.</li>
+                <li>Flexible: Se pueden agregar y quitar elementos fácilmente.</li>
+                <li>Permite acceso secuencial y directo a los elementos.</li>
+            </ul>
+        </li>
+        <li><strong>Desventajas</strong>:
+            <ul>
+                <li>En listas enlazadas, el acceso a los elementos es más lento que en listas dinámicas.</li>
+                <li>En listas estáticas, el tamaño fijo puede ser un inconveniente si se necesita cambiar durante la ejecución.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>5. Ejemplo de Lista en Java</h2>
+    <p>
+        A continuación se muestra un ejemplo simple de cómo trabajar con una lista en Java usando la clase <code>ArrayList</code>, que es una implementación dinámica de lista.
+    </p>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploLista {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+
+        // Agregar elementos a la lista
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+        listaDeNombres.add("Carlos");
+
+        // Imprimir los elementos de la lista
+        System.out.println("Lista de nombres:");
+        for (String nombre : listaDeNombres) {
+            System.out.println(nombre);
+        }
+
+        // Acceder a un elemento específico
+        System.out.println("El segundo nombre en la lista es: " + listaDeNombres.get(1));
+
+        // Eliminar un elemento de la lista
+        listaDeNombres.remove("Carlos");
+        System.out.println("Después de eliminar a Carlos, la lista es:");
+        for (String nombre : listaDeNombres) {
+            System.out.println(nombre);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>6. Conclusión</h2>
+    <p>
+        Las listas son estructuras de datos poderosas y versátiles que se utilizan en una variedad de aplicaciones. Ya sea que estés trabajando con listas estáticas o dinámicas, las listas te permiten organizar y manipular datos de manera eficiente. Es importante elegir el tipo adecuado de lista según el problema que estés resolviendo, ya que cada tipo tiene sus propias ventajas y desventajas.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

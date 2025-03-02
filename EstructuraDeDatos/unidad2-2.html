@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedimientos Recursivos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Procedimientos Recursivos</h1>
+
+    <p>
+        Los **procedimientos recursivos** son aquellos procedimientos (o funciones) que se llaman a sí mismos para resolver una tarea. 
+        La recursividad es una herramienta poderosa que permite resolver problemas dividiendo un problema grande en subproblemas más pequeños, hasta que se llega a un caso base, que no necesita más llamadas recursivas.
+    </p>
+
+    <h2>¿Qué es un Procedimiento Recursivo?</h2>
+    <p>
+        Un procedimiento recursivo es una función o procedimiento que se invoca a sí mismo como parte de su ejecución. Para que funcione correctamente, debe cumplir con dos condiciones:
+    </p>
+    <ul>
+        <li><strong>Caso base:</strong> Un caso que no requiere una llamada recursiva, deteniendo así el proceso recursivo.</li>
+        <li><strong>Caso recursivo:</strong> El proceso en el cual el procedimiento se llama a sí mismo para resolver una versión más simple del problema.</li>
+    </ul>
+
+    <h2>Ejemplo de Procedimiento Recursivo: Sumar Números</h2>
+    <p>
+        Supongamos que queremos calcular la suma de los primeros n números naturales (1 + 2 + 3 + ... + n) de manera recursiva. Este problema es un buen ejemplo de un procedimiento recursivo.
+    </p>
+    <pre><code class="language-java">
+public class SumaRecursiva {
+    // Procedimiento recursivo para sumar los primeros n números
+    public static int suma(int n) {
+        // Caso base: si n es 1, la suma es 1
+        if (n == 1) {
+            return 1;
+        }
+        // Caso recursivo: n + suma de los números menores
+        return n + suma(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println("La suma de los primeros " + n + " números es: " + suma(n));
+    }
+}
+    </code></pre>
+
+    <h2>Explicación del Código</h2>
+    <p>
+        En este ejemplo, el procedimiento recursivo <code>suma(n)</code> calcula la suma de los primeros n números de manera recursiva. 
+        La función se llama a sí misma con el valor <code>n-1</code> hasta que alcanza el caso base, que es cuando <code>n = 1</code>. 
+        En ese momento, la función ya no se llama más y comienza a devolver el resultado de las llamadas previas.
+    </p>
+
+    <h2>¿Cómo Funcionan los Procedimientos Recursivos?</h2>
+    <p>
+        Para entender cómo funciona un procedimiento recursivo, veamos un ejemplo práctico. Tomemos el número 5 como entrada:
+    </p>
+    <pre>
+    suma(5) = 5 + suma(4)
+    suma(4) = 4 + suma(3)
+    suma(3) = 3 + suma(2)
+    suma(2) = 2 + suma(1)
+    suma(1) = 1 (caso base, la recursión se detiene)
+    </pre>
+    <p>
+        Luego, se empieza a devolver el resultado de cada llamada recursiva:
+    </p>
+    <pre>
+    suma(1) = 1
+    suma(2) = 2 + 1 = 3
+    suma(3) = 3 + 3 = 6
+    suma(4) = 4 + 6 = 10
+    suma(5) = 5 + 10 = 15
+    </pre>
+    <p>
+        Finalmente, el resultado de <code>suma(5)</code> es 15.
+    </p>
+
+    <h2>Ventajas y Desventajas de los Procedimientos Recursivos</h2>
+
+    <h3>Ventajas:</h3>
+    <ul>
+        <li>Los problemas que se dividen en subproblemas pueden ser más fáciles de resolver utilizando recursividad.</li>
+        <li>El código tiende a ser más sencillo y elegante para ciertos tipos de problemas.</li>
+    </ul>
+
+    <h3>Desventajas:</h3>
+    <ul>
+        <li>El uso excesivo de la recursión puede llevar a un desbordamiento de pila (stack overflow) si las llamadas recursivas son muy profundas.</li>
+        <li>Puede ser menos eficiente en términos de uso de memoria y tiempo de ejecución, comparado con soluciones iterativas para algunos problemas.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los procedimientos recursivos son una herramienta poderosa y útil para resolver problemas complejos dividiéndolos en subproblemas más simples. 
+        Aunque son elegantes y fáciles de entender, deben ser utilizados con cuidado para evitar problemas como el desbordamiento de pila y la ineficiencia en ciertos casos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

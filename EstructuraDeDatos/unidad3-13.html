@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones de las Listas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Aplicaciones de las Listas</h1>
+
+    <p>
+        Las listas son estructuras de datos extremadamente versátiles y se utilizan en una amplia variedad de aplicaciones en programación. Debido a su capacidad para almacenar y organizar datos de manera secuencial, las listas son muy útiles para resolver problemas de procesamiento de información. En este artículo, exploraremos algunas de las aplicaciones más comunes de las listas.
+    </p>
+
+    <h2>1. Implementación de Pilas y Colas</h2>
+    <p>
+        Las listas son frecuentemente utilizadas para implementar estructuras de datos como pilas y colas. Estas estructuras siguen principios de acceso de datos específicos:
+    </p>
+    <ul>
+        <li><strong>Pilas (LIFO):</strong> Las pilas se implementan generalmente usando listas, donde los datos se agregan y se eliminan desde el mismo extremo. El último elemento agregado es el primero en salir (Last In, First Out).</li>
+        <li><strong>Colas (FIFO):</strong> Las colas se implementan usando listas, donde los elementos se agregan al final y se eliminan desde el principio, siguiendo el principio First In, First Out.</li>
+    </ul>
+
+    <h3>Ejemplo de Aplicación en Pilas</h3>
+    <pre><code class="language-java">
+class Pila {
+    private List<Integer> elementos = new LinkedList<>();
+    
+    public void push(int dato) {
+        elementos.add(dato);
+    }
+    
+    public int pop() {
+        return elementos.remove(elementos.size() - 1);
+    }
+
+    public boolean estaVacia() {
+        return elementos.isEmpty();
+    }
+}
+    </code></pre>
+
+    <h2>2. Representación de Listas de Tareas</h2>
+    <p>
+        Las listas se usan para representar listas de tareas o actividades en un programa. Por ejemplo, en una aplicación de gestión de proyectos, se puede mantener una lista de tareas por hacer, donde cada tarea se agrega a la lista y se elimina cuando se completa. Esta representación secuencial permite ordenar, añadir o eliminar tareas de forma eficiente.
+    </p>
+
+    <h3>Ejemplo de Lista de Tareas</h3>
+    <pre><code class="language-java">
+class ListaDeTareas {
+    private List<String> tareas = new LinkedList<>();
+    
+    public void agregarTarea(String tarea) {
+        tareas.add(tarea);
+    }
+    
+    public void eliminarTarea(String tarea) {
+        tareas.remove(tarea);
+    }
+    
+    public void mostrarTareas() {
+        for (String tarea : tareas) {
+            System.out.println(tarea);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>3. Implementación de Listas de Contactos</h2>
+    <p>
+        Las listas también son utilizadas para representar colecciones de elementos de datos relacionados, como una lista de contactos en una aplicación de teléfono. Cada contacto se puede almacenar como un nodo en la lista, lo que facilita el acceso y la gestión de los datos.
+    </p>
+
+    <h3>Ejemplo de Lista de Contactos</h3>
+    <pre><code class="language-java">
+class Contacto {
+    String nombre;
+    String telefono;
+
+    public Contacto(String nombre, String telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+}
+
+class ListaDeContactos {
+    private List<Contacto> contactos = new LinkedList<>();
+
+    public void agregarContacto(Contacto contacto) {
+        contactos.add(contacto);
+    }
+
+    public void mostrarContactos() {
+        for (Contacto contacto : contactos) {
+            System.out.println("Nombre: " + contacto.nombre + ", Teléfono: " + contacto.telefono);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>4. Manejo de Historial de Navegación (Pilas)</h2>
+    <p>
+        En aplicaciones de navegación web, las pilas son utilizadas para almacenar el historial de páginas visitadas. Cada vez que el usuario navega a una nueva página, esta se agrega a la pila. Cuando el usuario presiona "Atrás", se elimina la página actual de la pila y se regresa a la anterior, siguiendo el principio LIFO.
+    </p>
+
+    <h3>Ejemplo de Historial de Navegación</h3>
+    <pre><code class="language-java">
+class HistorialNavegacion {
+    private Pila historial = new Pila();
+    
+    public void visitarPagina(String pagina) {
+        historial.push(pagina);
+    }
+    
+    public String irAtras() {
+        return historial.pop();
+    }
+}
+    </code></pre>
+
+    <h2>5. Implementación de Listas Enlazadas para Gestión de Memoria</h2>
+    <p>
+        Las listas enlazadas se utilizan en sistemas operativos y gestores de memoria para organizar bloques de memoria. La memoria se divide en bloques que pueden estar conectados entre sí mediante punteros, formando una lista que facilita la asignación y liberación dinámica de memoria.
+    </p>
+
+    <h3>Ejemplo de Gestión de Memoria</h3>
+    <pre><code class="language-java">
+class BloqueMemoria {
+    int id;
+    BloqueMemoria siguiente;
+    
+    public BloqueMemoria(int id) {
+        this.id = id;
+        this.siguiente = null;
+    }
+}
+
+class GestorMemoria {
+    private BloqueMemoria cabeza;
+    
+    public void agregarBloque(int id) {
+        BloqueMemoria nuevoBloque = new BloqueMemoria(id);
+        if (cabeza == null) {
+            cabeza = nuevoBloque;
+        } else {
+            BloqueMemoria temp = cabeza;
+            while (temp.siguiente != null) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevoBloque;
+        }
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las listas tienen aplicaciones fundamentales en la programación y son esenciales para muchas estructuras de datos y algoritmos. Algunas de las aplicaciones más comunes incluyen:
+    </p>
+    <ul>
+        <li>Implementación de pilas y colas para la gestión de datos.</li>
+        <li>Gestión de listas de tareas o contactos.</li>
+        <li>Historial de navegación en aplicaciones web.</li>
+        <li>Organización de bloques de memoria en sistemas operativos.</li>
+    </ul>
+    <p>
+        Al entender cómo funcionan las listas y cómo se aplican en estos contextos, podemos mejorar nuestras soluciones de programación y hacerlas más eficientes.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

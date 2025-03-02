@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas de una Pila</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Operaciones Básicas de una Pila</h1>
+
+    <p>
+        Una pila es una estructura de datos que sigue el principio **LIFO** (Last In, First Out), lo que significa que el último elemento agregado es el primero en ser eliminado. 
+        Las operaciones básicas que se realizan sobre una pila son: **push**, **pop**, **peek**, y **isEmpty**.
+    </p>
+
+    <h2>Operaciones Principales de una Pila</h2>
+    
+    <h3>1. Operación <strong>Push</strong></h3>
+    <p>
+        La operación **push** agrega un elemento a la cima de la pila. Este es el único lugar donde se pueden agregar elementos en una pila.
+    </p>
+    <p>
+        En Java, la operación **push** se realiza utilizando el método <code>push()</code>. A continuación, se muestra un ejemplo:
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPush {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        
+        // Agregar elementos a la pila
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        System.out.println("Pila después de Push: " + pila);
+    }
+}
+    </code></pre>
+    <p>
+        Salida: <code>[10, 20, 30]</code> (El último elemento agregado es 30 y está en la cima).
+    </p>
+
+    <h3>2. Operación <strong>Pop</strong></h3>
+    <p>
+        La operación **pop** elimina el elemento que está en la cima de la pila. Después de realizar esta operación, la pila se reduce en tamaño y el elemento eliminado ya no está disponible.
+    </p>
+    <p>
+        En Java, la operación **pop** se realiza utilizando el método <code>pop()</code>. A continuación, se muestra un ejemplo:
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPop {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        
+        // Agregar elementos a la pila
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        // Eliminar el elemento superior de la pila
+        System.out.println("Elemento eliminado: " + pila.pop()); // 30
+
+        System.out.println("Pila después de Pop: " + pila);
+    }
+}
+    </code></pre>
+    <p>
+        Salida: 
+        <code>Elemento eliminado: 30</code><br>
+        <code>Pila después de Pop: [10, 20]</code> (El último elemento agregado fue 30, por lo que es el primero en ser eliminado).
+    </p>
+
+    <h3>3. Operación <strong>Peek</strong></h3>
+    <p>
+        La operación **peek** permite ver el elemento que está en la cima de la pila sin eliminarlo. Es útil cuando quieres acceder al elemento sin modificar la pila.
+    </p>
+    <p>
+        En Java, la operación **peek** se realiza utilizando el método <code>peek()</code>. A continuación, se muestra un ejemplo:
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPeek {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        
+        // Agregar elementos a la pila
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        // Ver el elemento en la cima de la pila
+        System.out.println("Elemento en la cima de la pila: " + pila.peek()); // 30
+    }
+}
+    </code></pre>
+    <p>
+        Salida: <code>Elemento en la cima de la pila: 30</code> (El último elemento agregado es 30).
+    </p>
+
+    <h3>4. Operación <strong>isEmpty</strong></h3>
+    <p>
+        La operación **isEmpty** permite verificar si la pila está vacía o no. Devuelve un valor booleano: <code>true</code> si la pila está vacía, y <code>false</code> si contiene elementos.
+    </p>
+    <p>
+        En Java, la operación **isEmpty** se realiza utilizando el método <code>isEmpty()</code>. A continuación, se muestra un ejemplo:
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploIsEmpty {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        
+        // Verificar si la pila está vacía
+        System.out.println("¿Está la pila vacía? " + pila.isEmpty()); // true
+        
+        // Agregar elementos a la pila
+        pila.push(10);
+        
+        // Verificar nuevamente
+        System.out.println("¿Está la pila vacía? " + pila.isEmpty()); // false
+    }
+}
+    </code></pre>
+    <p>
+        Salida:
+        <code>¿Está la pila vacía? true</code><br>
+        <code>¿Está la pila vacía? false</code> (Después de agregar un elemento, la pila ya no está vacía).
+    </p>
+
+    <h2>Resumen de Operaciones</h2>
+    <ul>
+        <li><strong>Push:</strong> Agrega un elemento a la cima de la pila.</li>
+        <li><strong>Pop:</strong> Elimina el elemento superior de la pila y lo devuelve.</li>
+        <li><strong>Peek:</strong> Devuelve el elemento en la cima de la pila sin eliminarlo.</li>
+        <li><strong>isEmpty:</strong> Verifica si la pila está vacía.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las pilas son estructuras de datos simples pero muy poderosas. Las operaciones básicas como **push**, **pop**, **peek**, y **isEmpty** permiten manipular los elementos de manera eficiente, siguiendo el principio LIFO. Estas operaciones son fundamentales para comprender cómo funcionan las pilas en programación y se usan comúnmente en algoritmos y estructuras de datos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

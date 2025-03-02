@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda por Funciones de Hash</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Búsqueda por Funciones de Hash</h1>
+
+    <p>
+        La **búsqueda por funciones de hash** es un método eficiente de búsqueda en colecciones de datos, como tablas de hash. Utiliza una función matemática, conocida como **función de hash**, para asignar una clave a un valor y almacenarlo en una estructura llamada **tabla de hash**. Este enfoque permite acceder a los datos de manera rápida, con un tiempo promedio de búsqueda constante O(1).
+    </p>
+
+    <h2>1. ¿Qué es una Función de Hash?</h2>
+    <p>
+        Una **función de hash** es un algoritmo que toma una entrada (o clave) y devuelve un valor numérico, conocido como **valor hash**. Este valor se utiliza como índice en una estructura de datos, como una tabla de hash. La principal ventaja de una función de hash es que convierte cualquier tipo de dato en un valor numérico que puede ser utilizado para almacenar o recuperar el dato de manera eficiente.
+    </p>
+
+    <h3>Características principales de una función de hash:</h3>
+    <ul>
+        <li>Debe devolver el mismo valor hash para la misma entrada.</li>
+        <li>Debe ser eficiente y rápida de calcular.</li>
+        <li>Idealmente, debe distribuir las claves de manera uniforme en la tabla de hash.</li>
+    </ul>
+
+    <h2>2. Tabla de Hash</h2>
+    <p>
+        Una **tabla de hash** es una estructura de datos que almacena pares clave-valor, utilizando el valor hash como índice para acceder a los valores. La tabla tiene un tamaño predefinido y, cuando se realiza una búsqueda, la función de hash calcula el índice de la clave y accede directamente a la posición correspondiente.
+    </p>
+
+    <h3>Ventajas de las Tablas de Hash:</h3>
+    <ul>
+        <li>Acceso a los datos en tiempo constante O(1) en el mejor de los casos.</li>
+        <li>Almacenamiento eficiente de grandes cantidades de datos.</li>
+    </ul>
+
+    <h3>Problemas comunes con las Tablas de Hash:</h3>
+    <ul>
+        <li><strong>Colisiones</strong>: Cuando dos claves diferentes tienen el mismo valor hash, lo que provoca que ambas intenten ocupar el mismo espacio en la tabla.</li>
+        <li><strong>Rehashing</strong>: Cuando la tabla de hash se llena demasiado, es necesario aumentar su tamaño y recalcular las posiciones de los elementos existentes.</li>
+    </ul>
+
+    <h2>3. ¿Cómo funciona la Búsqueda por Funciones de Hash?</h2>
+    <p>
+        El proceso básico de búsqueda por funciones de hash consta de los siguientes pasos:
+    </p>
+
+    <ol>
+        <li>Aplicar la función de hash a la clave que se desea buscar.</li>
+        <li>Obtener el valor hash, que indica la ubicación de la clave en la tabla de hash.</li>
+        <li>Si la clave está presente en la tabla, devolver el valor asociado con ella.</li>
+        <li>Si no, indicar que la clave no se encuentra en la tabla.</li>
+    </ol>
+
+    <h2>4. Ejemplo de Búsqueda por Función de Hash en Java</h2>
+    <pre><code class="language-java">
+import java.util.HashMap;
+
+public class BusquedaPorHash {
+    public static void main(String[] args) {
+        // Crear una tabla de hash usando HashMap
+        HashMap<String, String> tablaDeHash = new HashMap<>();
+
+        // Insertar algunos pares clave-valor
+        tablaDeHash.put("A123", "Juan");
+        tablaDeHash.put("B456", "María");
+        tablaDeHash.put("C789", "Carlos");
+
+        // Buscar un valor por clave
+        String clave = "B456";
+        if (tablaDeHash.containsKey(clave)) {
+            System.out.println("La persona con clave " + clave + " es: " + tablaDeHash.get(clave));
+        } else {
+            System.out.println("Clave no encontrada.");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Colisiones en Tablas de Hash</h2>
+    <p>
+        Una de las dificultades en las tablas de hash es el problema de las **colisiones**, que ocurre cuando dos claves diferentes generan el mismo valor hash. Para manejar este problema, existen diversas técnicas como:
+    </p>
+
+    <h3>Algunas técnicas para resolver colisiones:</h3>
+    <ul>
+        <li><strong>Encadenamiento</strong>: Cada celda de la tabla de hash almacena una lista de elementos que tienen el mismo valor hash.</li>
+        <li><strong>Dirección Abierta</strong>: Si una celda está ocupada, el algoritmo busca la siguiente celda vacía para almacenar el elemento.</li>
+    </ul>
+
+    <h2>6. Complejidad de la Búsqueda por Función de Hash</h2>
+    <p>
+        En el caso promedio, la búsqueda por funciones de hash tiene una **complejidad temporal de O(1)**, lo que significa que el tiempo para encontrar un elemento no depende del número de elementos en la tabla. Sin embargo, en el peor de los casos (cuando hay muchas colisiones), la complejidad puede ser O(n), ya que es posible que se necesite buscar a través de toda la lista de elementos en una celda.
+    </p>
+
+    <h2>7. Ventajas y Desventajas</h2>
+    <h3>Ventajas:</h3>
+    <ul>
+        <li>Acceso extremadamente rápido a los datos, especialmente para tablas de tamaño moderado.</li>
+        <li>Almacenamiento eficiente cuando se manejan grandes volúmenes de datos.</li>
+    </ul>
+
+    <h3>Desventajas:</h3>
+    <ul>
+        <li>Requiere una función de hash eficiente y bien diseñada.</li>
+        <li>Las colisiones pueden afectar el rendimiento, especialmente en tablas grandes o mal diseñadas.</li>
+    </ul>
+
+    <h2>8. Aplicaciones de la Búsqueda por Funciones de Hash</h2>
+    <p>
+        Las funciones de hash y las tablas de hash se utilizan en una variedad de aplicaciones debido a su eficiencia. Algunas de sus aplicaciones incluyen:
+    </p>
+
+    <ul>
+        <li>Implementación de diccionarios y bases de datos clave-valor.</li>
+        <li>Almacenamiento eficiente de contraseñas, donde se almacena el hash de la contraseña y no la contraseña misma.</li>
+        <li>Reducción de los tiempos de búsqueda en grandes volúmenes de datos.</li>
+    </ul>
+
+    <h2>9. Conclusión</h2>
+    <p>
+        La **búsqueda por funciones de hash** es una de las técnicas más poderosas y rápidas para acceder a datos en estructuras clave-valor. Aunque tiene algunos problemas, como las colisiones, su eficiencia hace que sea una herramienta muy útil en el diseño de algoritmos y estructuras de datos. Al implementarla correctamente, podemos mejorar significativamente el rendimiento de nuestras aplicaciones.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

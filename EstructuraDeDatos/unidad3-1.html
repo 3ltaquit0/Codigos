@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras Lineales - Pilas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Estructuras Lineales: Pilas</h1>
+
+    <p>
+        Una **pila** es una estructura de datos lineal que sigue el principio **LIFO** (Last In, First Out). Esto significa que el último elemento en ser agregado es el primero en salir. Es como una pila de platos: puedes poner un plato encima, pero siempre sacarás el de arriba.
+    </p>
+
+    <h2>¿Cómo funciona una pila?</h2>
+    <p>
+        Las pilas tienen dos operaciones principales:
+        <ul>
+            <li><strong>Push:</strong> Agregar un elemento al final de la pila.</li>
+            <li><strong>Pop:</strong> Eliminar el último elemento agregado.</li>
+        </ul>
+        También hay una operación adicional llamada <strong>peek</strong>, que devuelve el último elemento sin eliminarlo.
+    </p>
+
+    <h2>Ejemplo de una Pila en Java</h2>
+    <p>
+        A continuación, vamos a ver cómo se puede implementar una pila utilizando la clase <code>Stack</code> de Java. Este ejemplo muestra cómo agregar (push) y eliminar (pop) elementos de la pila.
+    </p>
+
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPila {
+    public static void main(String[] args) {
+        // Crear una nueva pila
+        Stack<Integer> pila = new Stack<>();
+
+        // Agregar elementos a la pila
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        System.out.println("Pila después de agregar elementos: " + pila);
+
+        // Eliminar el elemento superior de la pila (30)
+        int elementoEliminado = pila.pop();
+        System.out.println("Elemento eliminado: " + elementoEliminado);
+
+        // Ver el elemento superior de la pila sin eliminarlo (20)
+        int tope = pila.peek();
+        System.out.println("Elemento en la cima de la pila: " + tope);
+
+        // Mostrar la pila después de las operaciones
+        System.out.println("Pila después de las operaciones: " + pila);
+    }
+}
+    </code></pre>
+
+    <p>
+        En este código:
+        <ul>
+            <li>Se crea una pila de números enteros usando la clase <code>Stack</code>.</li>
+            <li>Se agregan tres elementos a la pila con el método <code>push</code>.</li>
+            <li>Se elimina el elemento superior de la pila con el método <code>pop</code>.</li>
+            <li>Finalmente, se muestra el elemento en la cima de la pila usando <code>peek</code>.</li>
+        </ul>
+        Como resultado, podemos ver cómo la pila funciona siguiendo el principio LIFO: el último elemento agregado es el primero en ser eliminado.
+    </p>
+
+    <h2>Aplicaciones de las Pilas</h2>
+    <p>
+        Las pilas son muy útiles en diferentes áreas de la programación, como:
+        <ul>
+            <li><strong>Gestión de funciones:</strong> Se utilizan para gestionar las llamadas a funciones en los lenguajes de programación, especialmente en la implementación de la recursión.</li>
+            <li><strong>Deshacer y rehacer:</strong> En aplicaciones como editores de texto, las pilas se utilizan para almacenar acciones previas y poder deshacerlas.</li>
+            <li><strong>Algoritmos de recorrido:</strong> En algunos algoritmos de búsqueda y recorrido, como el recorrido en profundidad en grafos, se utilizan pilas para almacenar los nodos por visitar.</li>
+        </ul>
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las pilas son estructuras de datos simples pero poderosas, que siguen el principio LIFO para organizar y manipular los datos. Son esenciales para resolver diversos problemas de programación, especialmente en tareas relacionadas con la recursión, la gestión de funciones y la manipulación de datos de manera ordenada.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

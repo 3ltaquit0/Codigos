@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercalación en Algoritmos de Ordenamiento Externos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Intercalación en Algoritmos de Ordenamiento Externos</h1>
+
+    <p>
+        La **intercalación** es un proceso utilizado en los algoritmos de ordenamiento externos para combinar (o "fusionar") varios bloques de datos ordenados en un único archivo ordenado. Este proceso es crucial cuando se trabajan con grandes volúmenes de datos que no caben completamente en la memoria principal del sistema, y se deben manejar mediante accesos al disco o almacenamiento secundario.
+    </p>
+
+    <h2>1. ¿Qué es la Intercalación?</h2>
+    <p>
+        La intercalación es el proceso mediante el cual se fusionan varios bloques de datos ordenados, combinándolos en un único conjunto de datos ordenado. Este proceso es una parte fundamental de algoritmos como el **Ordenamiento por Mezcla Externa**, donde los datos se dividen en bloques más pequeños que se ordenan en la memoria y luego se intercalan para obtener el archivo final ordenado.
+    </p>
+
+    <h3>Ejemplo sencillo de intercalación:</h3>
+    <p>
+        Supongamos que tenemos dos bloques de datos ordenados:
+    </p>
+    <pre>
+    Bloque 1: 2, 4, 6, 8
+    Bloque 2: 1, 3, 5, 7
+    </pre>
+    <p>
+        La intercalación consiste en fusionar estos dos bloques en un único bloque ordenado:
+    </p>
+    <pre>
+    Bloque intercalado: 1, 2, 3, 4, 5, 6, 7, 8
+    </pre>
+    <p>
+        Durante la intercalación, se comparan los elementos de los bloques y se van tomando los elementos más pequeños de cada bloque, colocándolos en el bloque final. Este proceso se repite hasta que todos los elementos estén correctamente ordenados.
+    </p>
+
+    <h2>2. ¿Por qué es importante la intercalación?</h2>
+    <p>
+        La intercalación permite ordenar grandes cantidades de datos que no caben en la memoria RAM al dividir los datos en bloques más pequeños, que luego se pueden ordenar y fusionar sin necesidad de cargar todo el conjunto de datos a la vez. Este proceso es eficiente porque minimiza el número de accesos al disco, lo cual es crucial cuando los datos son demasiado grandes para manejarse en la memoria principal.
+    </p>
+
+    <h2>3. Proceso de Intercalación en el Ordenamiento por Mezcla Externa</h2>
+    <p>
+        En el algoritmo de **Ordenamiento por Mezcla Externa**, la intercalación juega un papel vital en la fase final del ordenamiento. Aquí se detalla el proceso:
+    </p>
+    <ol>
+        <li><strong>División:</strong> Los datos se dividen en bloques que caben en la memoria.</li>
+        <li><strong>Ordenamiento de bloques:</strong> Cada bloque se ordena internamente usando un algoritmo de ordenamiento interno (como Quicksort o MergeSort).</li>
+        <li><strong>Intercalación:</strong> Los bloques ordenados se fusionan (intercalan) en orden. Este proceso se repite hasta que todo el conjunto de datos esté completamente ordenado.</li>
+    </ol>
+
+    <h3>Ejemplo de Ordenamiento por Mezcla Externa con Intercalación:</h3>
+    <p>
+        Supongamos que tenemos el siguiente conjunto de datos desordenados:
+    </p>
+    <pre>
+    3, 1, 7, 5, 8, 2, 9, 4, 6
+    </pre>
+    <p>
+        Paso 1: Dividimos los datos en bloques que caben en la memoria:
+    </p>
+    <pre>
+    Bloque 1: 3, 1, 7
+    Bloque 2: 5, 8, 2
+    Bloque 3: 9, 4, 6
+    </pre>
+    <p>
+        Paso 2: Ordenamos cada bloque en memoria:
+    </p>
+    <pre>
+    Bloque 1: 1, 3, 7
+    Bloque 2: 2, 5, 8
+    Bloque 3: 4, 6, 9
+    </pre>
+    <p>
+        Paso 3: Intercalamos los bloques ordenados para obtener el archivo final:
+    </p>
+    <pre>
+    1, 2, 3, 4, 5, 6, 7, 8, 9
+    </pre>
+    <p>
+        El proceso de intercalación asegura que los datos se combinan de manera eficiente, manteniendo el orden sin necesidad de cargar todo el conjunto de datos a la vez en la memoria.
+    </p>
+
+    <h2>4. Tipos de Intercalación</h2>
+
+    <h3>4.1. Intercalación en k vías</h3>
+    <p>
+        En la intercalación en k vías, se combinan más de dos bloques a la vez. En lugar de intercalar dos bloques ordenados, se intercalan múltiples bloques simultáneamente. Esto permite una fusión más eficiente de grandes volúmenes de datos en menos pasos.
+    </p>
+
+    <h3>4.2. Intercalación multivía</h3>
+    <p>
+        La intercalación multivía es una extensión de la intercalación en k vías, donde se manejan muchos bloques de datos. En este caso, se utilizan estructuras de datos como colas para manejar y comparar los elementos de múltiples bloques a la vez.
+    </p>
+
+    <h2>5. Ventajas de la Intercalación</h2>
+    <ul>
+        <li>Permite ordenar grandes volúmenes de datos que no caben en la memoria principal.</li>
+        <li>Reduce la cantidad de accesos a disco, mejorando el rendimiento de los sistemas de almacenamiento.</li>
+        <li>Es escalable, lo que significa que puede manejar grandes cantidades de datos dividiéndolos en bloques más pequeños.</li>
+    </ul>
+
+    <h2>6. Desventajas de la Intercalación</h2>
+    <ul>
+        <li>El rendimiento de la intercalación depende en gran medida de la velocidad de acceso al disco.</li>
+        <li>Puede ser más lento que los algoritmos de ordenamiento internos cuando los datos pueden caber en la memoria principal.</li>
+        <li>La complejidad del algoritmo aumenta con el número de bloques a intercalar, lo que puede hacer que el proceso sea más costoso en términos de tiempo y recursos.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        La intercalación es un componente esencial de los algoritmos de ordenamiento externos, ya que permite combinar eficientemente bloques de datos ordenados en un solo archivo ordenado. Es fundamental cuando se trabaja con grandes volúmenes de datos que no caben en la memoria principal, ya que optimiza el uso del disco y mejora el rendimiento del sistema. Aunque tiene algunas desventajas, como la dependencia de la velocidad de acceso al disco, su capacidad para manejar grandes cantidades de datos lo convierte en una herramienta indispensable en el procesamiento de datos a gran escala.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

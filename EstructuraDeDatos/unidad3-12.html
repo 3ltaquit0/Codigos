@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Listas: Enlazadas, Doblemente Enlazadas y Circulares</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Tipos de Listas: Enlazadas, Doblemente Enlazadas y Circulares</h1>
+
+    <p>
+        Las listas son estructuras de datos fundamentales en programación. Existen varios tipos de listas que difieren en la forma en que se organizan y gestionan los nodos. Los tres tipos más comunes son las <strong>listas simplemente enlazadas</strong>, <strong>doblemente enlazadas</strong> y <strong>circulares</strong>. A continuación, explicamos en detalle cada uno de ellos.
+    </p>
+
+    <h2>1. Lista Simplemente Enlazada</h2>
+    <p>
+        Una lista simplemente enlazada es una estructura de datos en la que cada nodo contiene dos partes: 
+        1. El dato que se quiere almacenar.
+        2. Un puntero o referencia al siguiente nodo en la lista.
+        Cada nodo solo tiene acceso al siguiente nodo, lo que significa que puedes recorrer la lista solo en una dirección: de principio a fin.
+    </p>
+    <p>
+        El primer nodo de la lista es conocido como <strong>cabeza</strong>, y el último nodo apunta a <strong>null</strong>, indicando el final de la lista.
+    </p>
+
+    <h3>Ejemplo de Lista Simplemente Enlazada</h3>
+    <pre><code class="language-java">
+class Nodo {
+    int dato;
+    Nodo siguiente;
+
+    public Nodo(int dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+}
+
+class ListaSimple {
+    private Nodo cabeza;
+
+    public ListaSimple() {
+        cabeza = null;
+    }
+
+    public void agregar(int dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            Nodo temp = cabeza;
+            while (temp.siguiente != null) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+        }
+    }
+
+    public void mostrar() {
+        Nodo temp = cabeza;
+        while (temp != null) {
+            System.out.print(temp.dato + " -> ");
+            temp = temp.siguiente;
+        }
+        System.out.println("null");
+    }
+}
+    </code></pre>
+
+    <h2>2. Lista Doblemente Enlazada</h2>
+    <p>
+        Una lista doblemente enlazada es similar a la lista simplemente enlazada, pero con la diferencia de que cada nodo tiene dos punteros:
+        1. Un puntero al siguiente nodo.
+        2. Un puntero al nodo anterior.
+        Esto permite recorrer la lista en ambas direcciones: de principio a fin o de fin a principio.
+    </p>
+    <p>
+        El primer nodo (cabeza) tiene su puntero al nodo anterior como <strong>null</strong>, y el último nodo tiene su puntero siguiente como <strong>null</strong>.
+    </p>
+
+    <h3>Ejemplo de Lista Doblemente Enlazada</h3>
+    <pre><code class="language-java">
+class NodoDoble {
+    int dato;
+    NodoDoble siguiente;
+    NodoDoble anterior;
+
+    public NodoDoble(int dato) {
+        this.dato = dato;
+        this.siguiente = null;
+        this.anterior = null;
+    }
+}
+
+class ListaDoble {
+    private NodoDoble cabeza;
+
+    public ListaDoble() {
+        cabeza = null;
+    }
+
+    public void agregar(int dato) {
+        NodoDoble nuevo = new NodoDoble(dato);
+        if (cabeza == null) {
+            cabeza = nuevo;
+        } else {
+            NodoDoble temp = cabeza;
+            while (temp.siguiente != null) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+            nuevo.anterior = temp;
+        }
+    }
+
+    public void mostrar() {
+        NodoDoble temp = cabeza;
+        while (temp != null) {
+            System.out.print(temp.dato + " <-> ");
+            temp = temp.siguiente;
+        }
+        System.out.println("null");
+    }
+
+    public void mostrarReversa() {
+        NodoDoble temp = cabeza;
+        while (temp.siguiente != null) {
+            temp = temp.siguiente;
+        }
+        while (temp != null) {
+            System.out.print(temp.dato + " <-> ");
+            temp = temp.anterior;
+        }
+        System.out.println("null");
+    }
+}
+    </code></pre>
+
+    <h2>3. Lista Circular</h2>
+    <p>
+        Una lista circular es una estructura en la que el último nodo apunta de nuevo al primer nodo, formando un ciclo. Esta estructura puede ser simplemente circular (un solo puntero al siguiente nodo) o doblemente circular (con punteros al siguiente y anterior nodo).
+    </p>
+    <p>
+        En una lista circular, no hay un "final" de la lista, ya que el último nodo redirige a la cabeza, lo que permite recorrer la lista de manera continua.
+    </p>
+
+    <h3>Ejemplo de Lista Circular Simplemente Enlazada</h3>
+    <pre><code class="language-java">
+class NodoCircular {
+    int dato;
+    NodoCircular siguiente;
+
+    public NodoCircular(int dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+}
+
+class ListaCircular {
+    private NodoCircular cabeza;
+
+    public ListaCircular() {
+        cabeza = null;
+    }
+
+    public void agregar(int dato) {
+        NodoCircular nuevo = new NodoCircular(dato);
+        if (cabeza == null) {
+            cabeza = nuevo;
+            nuevo.siguiente = cabeza; // Apunta al mismo nodo, formando el ciclo
+        } else {
+            NodoCircular temp = cabeza;
+            while (temp.siguiente != cabeza) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+            nuevo.siguiente = cabeza;
+        }
+    }
+
+    public void mostrar() {
+        if (cabeza != null) {
+            NodoCircular temp = cabeza;
+            do {
+                System.out.print(temp.dato + " -> ");
+                temp = temp.siguiente;
+            } while (temp != cabeza);
+            System.out.println("(ciclo de vuelta al inicio)");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las listas son estructuras de datos muy útiles que permiten organizar los elementos de manera eficiente. Existen diferentes tipos de listas según la cantidad de punteros o enlaces que cada nodo tiene:
+    </p>
+    <ul>
+        <li><strong>Lista simplemente enlazada</strong>: Cada nodo tiene un puntero al siguiente nodo.</li>
+        <li><strong>Lista doblemente enlazada</strong>: Cada nodo tiene un puntero al siguiente y al nodo anterior, lo que permite un recorrido bidireccional.</li>
+        <li><strong>Lista circular</strong>: El último nodo apunta al primer nodo, formando un ciclo, lo que permite recorrerla de manera continua.</li>
+    </ul>
+
+    <p>
+        La elección del tipo de lista depende de las necesidades del problema, ya que cada tipo tiene ventajas en cuanto a la flexibilidad de las operaciones y el tipo de acceso que se requiere.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

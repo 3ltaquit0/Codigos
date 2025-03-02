@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas de las Colas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Operaciones Básicas de las Colas</h1>
+
+    <p>
+        Las **colas** son una estructura de datos que siguen el principio **FIFO** (First In, First Out), es decir, el primer elemento en entrar es el primero en salir. Para poder manipular los elementos dentro de una cola, existen varias operaciones básicas que permiten agregar, eliminar y consultar los elementos de manera eficiente.
+    </p>
+
+    <h2>1. Operaciones Básicas de las Colas</h2>
+    <p>
+        Las operaciones más comunes que se pueden realizar con las colas son las siguientes:
+    </p>
+    <ul>
+        <li><strong>Enqueue (Agregar):</strong> Añadir un elemento al final de la cola.</li>
+        <li><strong>Dequeue (Eliminar):</strong> Eliminar el elemento del frente de la cola.</li>
+        <li><strong>Peek (Consultar):</strong> Consultar el elemento en el frente de la cola sin eliminarlo.</li>
+        <li><strong>IsEmpty (Está vacía):</strong> Verificar si la cola está vacía.</li>
+        <li><strong>Size (Tamaño):</strong> Obtener el número de elementos en la cola.</li>
+    </ul>
+
+    <h2>2. Explicación de Cada Operación</h2>
+
+    <h3>2.1. Enqueue (Agregar)</h3>
+    <p>
+        La operación **enqueue** agrega un nuevo elemento al final de la cola. Esto se hace moviendo el puntero del final de la cola al siguiente espacio disponible y colocando el nuevo elemento allí. 
+    </p>
+    <p>
+        Ejemplo: Si la cola contiene los elementos [1, 2, 3] y agregamos el elemento 4, la nueva cola será [1, 2, 3, 4].
+    </p>
+
+    <h3>2.2. Dequeue (Eliminar)</h3>
+    <p>
+        La operación **dequeue** elimina el elemento que está al frente de la cola. Al realizar esta operación, se mueve el puntero del frente de la cola al siguiente elemento y se descarta el primer elemento.
+    </p>
+    <p>
+        Ejemplo: Si la cola contiene los elementos [1, 2, 3] y eliminamos el primer elemento, la nueva cola será [2, 3].
+    </p>
+
+    <h3>2.3. Peek (Consultar)</h3>
+    <p>
+        La operación **peek** nos permite mirar el primer elemento de la cola sin eliminarlo. Es útil para saber qué elemento será el próximo en ser procesado.
+    </p>
+    <p>
+        Ejemplo: Si la cola contiene los elementos [1, 2, 3], al realizar un **peek**, el valor retornado será 1 (sin eliminarlo de la cola).
+    </p>
+
+    <h3>2.4. IsEmpty (Está vacía)</h3>
+    <p>
+        La operación **isEmpty** nos permite verificar si la cola está vacía. Si la cola está vacía, significa que no hay elementos para eliminar o consultar.
+    </p>
+    <p>
+        Ejemplo: Si la cola está vacía, el resultado de **isEmpty** será verdadero (true). Si contiene elementos, el resultado será falso (false).
+    </p>
+
+    <h3>2.5. Size (Tamaño)</h3>
+    <p>
+        La operación **size** devuelve el número de elementos que actualmente hay en la cola. Esto es útil cuando queremos saber cuántos elementos estamos manejando en la cola.
+    </p>
+    <p>
+        Ejemplo: Si la cola contiene los elementos [1, 2, 3, 4], el tamaño de la cola será 4.
+    </p>
+
+    <h2>3. Ejemplo de Operaciones Básicas de las Colas en Java</h2>
+    <p>
+        A continuación, se muestra un ejemplo práctico de cómo se pueden implementar las operaciones básicas de una cola en Java utilizando una lista enlazada:
+    </p>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ColaBasica {
+    public static void main(String[] args) {
+        // Crear una cola utilizando LinkedList
+        Queue<Integer> cola = new LinkedList<>();
+
+        // Agregar elementos a la cola (Enqueue)
+        cola.offer(10);
+        cola.offer(20);
+        cola.offer(30);
+        System.out.println("Elementos después de agregar: " + cola);
+
+        // Consultar el elemento al frente de la cola (Peek)
+        System.out.println("Elemento al frente: " + cola.peek());
+
+        // Eliminar el elemento del frente de la cola (Dequeue)
+        cola.poll();
+        System.out.println("Elementos después de eliminar: " + cola);
+
+        // Verificar si la cola está vacía (IsEmpty)
+        System.out.println("¿Está vacía la cola? " + cola.isEmpty());
+
+        // Obtener el tamaño de la cola (Size)
+        System.out.println("Tamaño de la cola: " + cola.size());
+    }
+}
+    </code></pre>
+
+    <h2>4. Conclusión</h2>
+    <p>
+        Las colas son estructuras de datos esenciales que permiten realizar operaciones de forma eficiente según el principio **FIFO**. Las operaciones básicas de las colas como **enqueue**, **dequeue**, **peek**, **isEmpty** y **size** son fundamentales para manejar los datos que se insertan y eliminan de ellas. Estas operaciones permiten una manipulación ordenada de los elementos y son muy útiles en aplicaciones como la gestión de tareas, manejo de procesos, y más.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

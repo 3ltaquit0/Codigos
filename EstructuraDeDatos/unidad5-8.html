@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mezcla Directa en Algoritmos de Ordenamiento Externos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Mezcla Directa en Algoritmos de Ordenamiento Externos</h1>
+
+    <p>
+        La **mezcla directa** es una técnica utilizada en el contexto de los algoritmos de ordenamiento externos para fusionar dos archivos grandes que no caben en la memoria principal, pero que están divididos en bloques más pequeños que pueden ser ordenados de manera independiente. Este método es especialmente útil cuando los datos se encuentran distribuidos en varios archivos y el objetivo es fusionarlos en un solo archivo ordenado.
+    </p>
+
+    <h2>1. ¿Qué es la Mezcla Directa?</h2>
+    <p>
+        La mezcla directa es un algoritmo de fusión utilizado en el ordenamiento de archivos grandes que no pueden ser cargados en su totalidad en la memoria. En lugar de cargar todo el archivo, los datos se dividen en bloques más pequeños que pueden ser ordenados individualmente en la memoria principal. Luego, se utiliza el algoritmo de mezcla para combinar estos bloques de manera ordenada en un archivo único.
+    </p>
+
+    <h3>Proceso de Mezcla Directa:</h3>
+    <p>
+        El proceso de mezcla directa consiste en fusionar dos archivos ordenados en un único archivo ordenado. Se comparan los elementos de ambos archivos y se van tomando de manera alterna los más pequeños hasta que todos los elementos estén ordenados y colocados en el archivo final.
+    </p>
+    
+    <pre>
+    Archivo 1: 1, 3, 5, 7
+    Archivo 2: 2, 4, 6, 8
+
+    Mezcla Directa:
+    Resultado: 1, 2, 3, 4, 5, 6, 7, 8
+    </pre>
+    
+    <h2>2. ¿Por qué es importante la Mezcla Directa?</h2>
+    <p>
+        La mezcla directa es una parte fundamental de los algoritmos de ordenamiento externos, ya que permite combinar archivos ordenados sin necesidad de cargar todos los datos en la memoria principal. Esto es esencial cuando se tiene un conjunto de datos que no cabe en la memoria y se requiere un proceso de fusión eficiente para obtener un archivo ordenado final.
+    </p>
+
+    <h2>3. Proceso de Mezcla Directa en el Ordenamiento por Mezcla Externa</h2>
+    <p>
+        En un algoritmo de **ordenamiento por mezcla externa**, el proceso de mezcla directa se lleva a cabo después de que los bloques de datos han sido ordenados internamente en la memoria. Una vez que los bloques están ordenados, la mezcla directa se usa para combinar todos estos bloques en un archivo único y ordenado.
+    </p>
+
+    <h3>Ejemplo de Mezcla Directa:</h3>
+    <p>
+        Imaginemos que tenemos dos archivos con datos desordenados:
+    </p>
+    <pre>
+    Archivo 1: 3, 1, 7
+    Archivo 2: 5, 8, 2
+    </pre>
+    <p>
+        Paso 1: Ordenamos los archivos internamente:
+    </p>
+    <pre>
+    Archivo 1: 1, 3, 7
+    Archivo 2: 2, 5, 8
+    </pre>
+    <p>
+        Paso 2: Realizamos la mezcla directa de los dos archivos:
+    </p>
+    <pre>
+    Resultado: 1, 2, 3, 5, 7, 8
+    </pre>
+    <p>
+        En este ejemplo, los dos archivos ordenados se combinan en un único archivo ordenado gracias al proceso de mezcla directa.
+    </p>
+
+    <h2>4. ¿Cuándo se usa la Mezcla Directa?</h2>
+    <p>
+        La mezcla directa es útil cuando se manejan grandes volúmenes de datos que no pueden caber en la memoria RAM de un sistema, pero pueden ser ordenados en bloques más pequeños. Este proceso es especialmente eficiente en los sistemas donde los datos están almacenados en discos u otros medios de almacenamiento externos, y se necesita un algoritmo que trabaje de manera eficiente con estos recursos limitados.
+    </p>
+
+    <h2>5. Ventajas de la Mezcla Directa</h2>
+    <ul>
+        <li>Permite ordenar grandes archivos sin necesidad de cargar todo el archivo a la memoria.</li>
+        <li>Es eficiente al manejar archivos distribuidos en discos, ya que minimiza el número de accesos a disco.</li>
+        <li>El algoritmo es sencillo y efectivo cuando los datos están preordenados en bloques pequeños.</li>
+    </ul>
+
+    <h2>6. Desventajas de la Mezcla Directa</h2>
+    <ul>
+        <li>Requiere que los datos estén ordenados previamente en bloques, lo que implica un paso adicional.</li>
+        <li>La eficiencia del algoritmo puede depender de la cantidad de bloques y del tamaño de los archivos involucrados.</li>
+        <li>En algunos casos, la mezcla directa puede no ser la técnica más eficiente cuando hay muchos archivos pequeños.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        La mezcla directa es una técnica de fusión que permite combinar archivos ordenados en un único archivo ordenado sin la necesidad de cargar todos los datos a la memoria principal. Es un componente importante en los algoritmos de ordenamiento externos, especialmente cuando se trabaja con grandes volúmenes de datos que no caben en la memoria RAM. Aunque tiene algunas limitaciones, su capacidad para manejar archivos grandes de manera eficiente la convierte en una herramienta fundamental en el procesamiento de datos a gran escala.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colas - Estructuras de Datos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Colas - Estructuras de Datos</h1>
+
+    <p>
+        Una **Cola** es una estructura de datos que sigue el principio **FIFO** (First In, First Out), es decir, el primer elemento en entrar es el primero en salir. Las colas se utilizan en una amplia variedad de aplicaciones en programación, especialmente cuando se necesita gestionar elementos en un orden secuencial.
+    </p>
+
+    <h2>1. ¿Qué es una Cola?</h2>
+    <p>
+        Una cola es una estructura de datos en la que los elementos se añaden al final (conocido como **final de la cola** o **cola de inserción**) y se eliminan del principio (conocido como **frente de la cola** o **cabeza de la cola**). Este tipo de organización es útil cuando el orden de llegada de los elementos debe ser preservado.
+    </p>
+
+    <h2>2. Representación en Memoria</h2>
+    <p>
+        Las colas se pueden implementar de varias maneras en memoria. Una implementación común es mediante un arreglo o una lista enlazada, donde el principio de la cola está representado por el primer elemento de la estructura y el final está representado por el último.
+    </p>
+    <p>
+        El acceso a los elementos solo puede realizarse en el **frente** de la cola para eliminarlos (operación **dequeue**) y en el **final** de la cola para agregar nuevos elementos (operación **enqueue**).
+    </p>
+
+    <h2>3. Operaciones Básicas de una Cola</h2>
+    <p>Las operaciones básicas que se realizan con las colas son:</p>
+    <ul>
+        <li><strong>Enqueue:</strong> Agregar un elemento al final de la cola.</li>
+        <li><strong>Dequeue:</strong> Eliminar el elemento del frente de la cola.</li>
+        <li><strong>Peek:</strong> Obtener el elemento del frente sin eliminarlo.</li>
+        <li><strong>isEmpty:</strong> Verificar si la cola está vacía.</li>
+    </ul>
+
+    <h2>4. Ejemplo de Implementación de una Cola en Java</h2>
+    <p>
+        A continuación, se muestra cómo implementar una cola utilizando la clase <code>Queue</code> de la biblioteca estándar de Java. Este ejemplo usa la implementación <code>LinkedList</code> de la interfaz <code>Queue</code>.
+    </p>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class EjemploCola {
+    public static void main(String[] args) {
+        // Crear una cola de enteros
+        Queue<Integer> cola = new LinkedList<>();
+        
+        // Agregar elementos a la cola
+        cola.add(1);
+        cola.add(2);
+        cola.add(3);
+        
+        // Mostrar el primer elemento de la cola sin eliminarlo
+        System.out.println("Elemento al frente de la cola: " + cola.peek()); // 1
+        
+        // Eliminar el primer elemento de la cola
+        System.out.println("Elemento eliminado: " + cola.poll()); // 1
+        
+        // Mostrar el primer elemento después de eliminar uno
+        System.out.println("Elemento al frente de la cola después de eliminar: " + cola.peek()); // 2
+    }
+}
+    </code></pre>
+
+    <h2>5. Aplicaciones de las Colas</h2>
+    <p>
+        Las colas tienen múltiples aplicaciones en la programación. Algunas de las más comunes incluyen:
+    </p>
+    <ul>
+        <li><strong>Gestión de procesos:</strong> En los sistemas operativos, las colas se usan para gestionar la ejecución de procesos. Los procesos que están esperando para ser ejecutados se agregan a una cola, y el primero en llegar es el primero en ejecutarse (FIFO).</li>
+        <li><strong>Impresión en cola:</strong> Cuando múltiples trabajos de impresión se envían a una impresora, se gestionan en una cola. Los trabajos de impresión se procesan en el orden en que fueron recibidos.</li>
+        <li><strong>Colas de mensajes:</strong> Las aplicaciones de mensajería y comunicación a menudo utilizan colas para gestionar la entrega de mensajes entre los usuarios.</li>
+        <li><strong>Simulación de sistemas:</strong> En la simulación de sistemas (por ejemplo, colas en bancos, supermercados, etc.), las colas se utilizan para modelar la espera de los clientes y el tiempo que tardan en ser atendidos.</li>
+    </ul>
+
+    <h2>6. Tipos de Colas</h2>
+    <p>
+        Existen varios tipos de colas, que varían según las reglas que rigen su operación. Algunos de los tipos más comunes son:
+    </p>
+    <ul>
+        <li><strong>Cola Simple:</strong> Es la cola básica que sigue el principio FIFO.</li>
+        <li><strong>Cola Circular:</strong> En una cola circular, cuando el final de la cola se alcanza, se puede volver a utilizar el espacio vacío al principio.</li>
+        <li><strong>Cola Prioridad:</strong> En lugar de seguir FIFO, los elementos con mayor prioridad son eliminados primero.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        Las colas son estructuras de datos simples pero poderosas que se utilizan en muchos contextos donde el orden de llegada debe ser respetado. Su uso se extiende desde la gestión de procesos hasta la simulación de sistemas, y son esenciales para el diseño de algoritmos eficientes en programación.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

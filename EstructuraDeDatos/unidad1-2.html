@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Datos Abstractos (TDA)</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+    <h1>Tipos de Datos Abstractos (TDA)</h1>
+    <p>
+        Un <strong>Tipo de Dato Abstracto (TDA)</strong> es una estructura de datos que define qué operaciones se pueden realizar sobre los datos, pero no cómo se implementan internamente. 
+        Son fundamentales en la programación porque nos ayudan a organizar y manipular información de manera eficiente.
+    </p>
+
+    <h2>1. Lista</h2>
+    <p>
+        Una <strong>lista</strong> es una colección ordenada de elementos donde podemos agregar, eliminar y buscar datos fácilmente.
+    </p>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploLista {
+    public static void main(String[] args) {
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("Manzana");
+        lista.add("Banana");
+        lista.add("Cereza");
+
+        for (String fruta : lista) {
+            System.out.println(fruta);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>2. Pila (Stack)</h2>
+    <p>
+        Una <strong>pila</strong> sigue el principio <em>LIFO</em> (Last In, First Out), es decir, el último en entrar es el primero en salir.
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPila {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+
+        System.out.println("Elemento eliminado: " + pila.pop()); // Sale 30
+    }
+}
+    </code></pre>
+
+    <h2>3. Cola (Queue)</h2>
+    <p>
+        Una <strong>cola</strong> sigue el principio <em>FIFO</em> (First In, First Out), el primero en entrar es el primero en salir.
+    </p>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class EjemploCola {
+    public static void main(String[] args) {
+        Queue<String> cola = new LinkedList<>();
+        cola.add("A");
+        cola.add("B");
+        cola.add("C");
+
+        System.out.println("Elemento eliminado: " + cola.poll()); // Sale "A"
+    }
+}
+    </code></pre>
+
+    <h2>4. Conjunto (Set)</h2>
+    <p>
+        Un <strong>conjunto</strong> es una colección de elementos únicos, es decir, no permite duplicados.
+    </p>
+    <pre><code class="language-java">
+import java.util.HashSet;
+
+public class EjemploConjunto {
+    public static void main(String[] args) {
+        HashSet<Integer> conjunto = new HashSet<>();
+        conjunto.add(1);
+        conjunto.add(2);
+        conjunto.add(2); // No se agregará porque ya existe
+
+        System.out.println(conjunto);
+    }
+}
+    </code></pre>
+
+    <h2>5. Diccionario (Map)</h2>
+    <p>
+        Un <strong>diccionario</strong> almacena pares clave-valor, permitiendo encontrar datos rápidamente.
+    </p>
+    <pre><code class="language-java">
+import java.util.HashMap;
+
+public class EjemploDiccionario {
+    public static void main(String[] args) {
+        HashMap<String, Integer> edades = new HashMap<>();
+        edades.put("Juan", 25);
+        edades.put("María", 30);
+
+        System.out.println("Edad de Juan: " + edades.get("Juan"));
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los Tipos de Datos Abstractos nos ayudan a manejar datos de manera estructurada y eficiente. 
+        Dependiendo del problema que enfrentemos, elegiremos la estructura de datos más adecuada:
+    </p>
+    <ul>
+        <li><strong>Listas:</strong> Si necesitamos mantener un orden específico.</li>
+        <li><strong>Pilas:</strong> Para estructuras donde el último en entrar debe salir primero.</li>
+        <li><strong>Colas:</strong> Para gestionar procesos en orden de llegada.</li>
+        <li><strong>Conjuntos:</strong> Cuando los valores no pueden repetirse.</li>
+        <li><strong>Diccionarios:</strong> Para almacenar datos asociados a claves específicas.</li>
+    </ul>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+</body>
+</html>

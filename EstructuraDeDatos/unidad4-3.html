@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas sobre Árboles Binarios</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Operaciones Básicas sobre Árboles Binarios</h1>
+
+    <p>
+        Los árboles binarios son estructuras de datos fundamentales en la programación. Tienen una propiedad clave: cada nodo tiene como máximo dos hijos, denominados hijo izquierdo y hijo derecho. A continuación, veremos las operaciones básicas que se realizan en los árboles binarios, fundamentales para el manejo y manipulación de datos.
+    </p>
+
+    <h2>1. Inserción de un Nodo</h2>
+    <p>
+        La inserción de un nodo en un árbol binario se realiza de acuerdo con un criterio, que generalmente depende del tipo de árbol binario. En el caso de un árbol binario de búsqueda (ABB), el valor del nodo que se va a insertar debe ser mayor que el valor de los nodos a la izquierda y menor que los nodos a la derecha.
+    </p>
+    <pre><code class="language-java">
+class Nodo {
+    int dato;
+    Nodo izquierdo, derecho;
+
+    public Nodo(int dato) {
+        this.dato = dato;
+        izquierdo = derecho = null;
+    }
+}
+
+class ArbolBinario {
+    Nodo raiz;
+
+    public ArbolBinario() {
+        raiz = null;
+    }
+
+    // Método de inserción
+    public void insertar(int dato) {
+        raiz = insertarRecursivo(raiz, dato);
+    }
+
+    private Nodo insertarRecursivo(Nodo raiz, int dato) {
+        if (raiz == null) {
+            raiz = new Nodo(dato);
+            return raiz;
+        }
+
+        if (dato < raiz.dato) {
+            raiz.izquierdo = insertarRecursivo(raiz.izquierdo, dato);
+        } else if (dato > raiz.dato) {
+            raiz.derecho = insertarRecursivo(raiz.derecho, dato);
+        }
+
+        return raiz;
+    }
+}
+    </code></pre>
+
+    <h2>2. Búsqueda de un Nodo</h2>
+    <p>
+        La búsqueda de un nodo en un árbol binario se realiza comparando el valor que estamos buscando con el nodo actual. Si el valor es menor que el nodo actual, la búsqueda continúa en el subárbol izquierdo; si es mayor, se busca en el subárbol derecho.
+    </p>
+    <pre><code class="language-java">
+public boolean buscar(int dato) {
+    return buscarRecursivo(raiz, dato);
+}
+
+private boolean buscarRecursivo(Nodo raiz, int dato) {
+    if (raiz == null) {
+        return false;
+    }
+
+    if (dato == raiz.dato) {
+        return true;
+    }
+
+    return (dato < raiz.dato) ? buscarRecursivo(raiz.izquierdo, dato) : buscarRecursivo(raiz.derecho, dato);
+}
+    </code></pre>
+
+    <h2>3. Eliminación de un Nodo</h2>
+    <p>
+        La eliminación de un nodo en un árbol binario es más compleja que la inserción y la búsqueda. Dependiendo de si el nodo a eliminar tiene cero, uno o dos hijos, la operación puede ser diferente:
+        <ul>
+            <li>Si el nodo no tiene hijos, simplemente se elimina.</li>
+            <li>Si el nodo tiene un solo hijo, el hijo reemplaza al nodo eliminado.</li>
+            <li>Si el nodo tiene dos hijos, se debe encontrar el sucesor (el nodo con el valor más pequeño en el subárbol derecho) o el predecesor (el nodo con el valor más grande en el subárbol izquierdo), y este nodo reemplaza al nodo eliminado.</li>
+        </ul>
+    </p>
+    <pre><code class="language-java">
+public void eliminar(int dato) {
+    raiz = eliminarRecursivo(raiz, dato);
+}
+
+private Nodo eliminarRecursivo(Nodo raiz, int dato) {
+    if (raiz == null) {
+        return raiz;
+    }
+
+    if (dato < raiz.dato) {
+        raiz.izquierdo = eliminarRecursivo(raiz.izquierdo, dato);
+    } else if (dato > raiz.dato) {
+        raiz.derecho = eliminarRecursivo(raiz.derecho, dato);
+    } else {
+        // Nodo con un solo hijo o sin hijos
+        if (raiz.izquierdo == null) {
+            return raiz.derecho;
+        } else if (raiz.derecho == null) {
+            return raiz.izquierdo;
+        }
+
+        // Nodo con dos hijos: obtener el sucesor
+        raiz.dato = obtenerMin(raiz.derecho);
+
+        // Eliminar el sucesor
+        raiz.derecho = eliminarRecursivo(raiz.derecho, raiz.dato);
+    }
+
+    return raiz;
+}
+
+private int obtenerMin(Nodo raiz) {
+    int minValue = raiz.dato;
+    while (raiz.izquierdo != null) {
+        minValue = raiz.izquierdo.dato;
+        raiz = raiz.izquierdo;
+    }
+    return minValue;
+}
+    </code></pre>
+
+    <h2>4. Recorridos de un Árbol Binario</h2>
+    <p>
+        Los recorridos de un árbol binario son formas de recorrer todos los nodos del árbol de manera sistemática. Los tres tipos principales de recorrido son:
+        <ul>
+            <li><strong>Recorrido Preorden:</strong> Se visita primero el nodo, luego el subárbol izquierdo y después el subárbol derecho.</li>
+            <li><strong>Recorrido Inorden:</strong> Se visita primero el subárbol izquierdo, luego el nodo y después el subárbol derecho.</li>
+            <li><strong>Recorrido Postorden:</strong> Se visita primero el subárbol izquierdo, luego el subárbol derecho y finalmente el nodo.</li>
+        </ul>
+    </p>
+    <pre><code class="language-java">
+public void recorridoPreorden(Nodo raiz) {
+    if (raiz == null) {
+        return;
+    }
+    System.out.print(raiz.dato + " ");
+    recorridoPreorden(raiz.izquierdo);
+    recorridoPreorden(raiz.derecho);
+}
+
+public void recorridoInorden(Nodo raiz) {
+    if (raiz == null) {
+        return;
+    }
+    recorridoInorden(raiz.izquierdo);
+    System.out.print(raiz.dato + " ");
+    recorridoInorden(raiz.derecho);
+}
+
+public void recorridoPostorden(Nodo raiz) {
+    if (raiz == null) {
+        return;
+    }
+    recorridoPostorden(raiz.izquierdo);
+    recorridoPostorden(raiz.derecho);
+    System.out.print(raiz.dato + " ");
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las operaciones básicas sobre árboles binarios son esenciales para manipular y gestionar estructuras jerárquicas de datos. Estas operaciones permiten realizar inserciones, búsquedas, eliminaciones y recorridos de manera eficiente, y son la base para el funcionamiento de muchos algoritmos y aplicaciones en informática.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

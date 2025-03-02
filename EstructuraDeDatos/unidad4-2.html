@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de Árboles</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Clasificación de Árboles</h1>
+
+    <p>
+        Los árboles son estructuras de datos fundamentales en la informática. Se pueden clasificar de diferentes maneras, dependiendo de sus características y el tipo de operaciones que se pueden realizar en ellos. En esta página, veremos las distintas clasificaciones de árboles más comunes, sus características y cuándo se utilizan.
+    </p>
+
+    <h2>1. Clasificación según el número de hijos</h2>
+    <p>
+        Una de las maneras más comunes de clasificar los árboles es según el número de hijos que cada nodo puede tener. Esta clasificación incluye:
+    </p>
+    <ul>
+        <li><strong>Árbol Binario:</strong> Cada nodo tiene como máximo dos hijos, llamados hijo izquierdo y hijo derecho.</li>
+        <li><strong>Árbol N-ario:</strong> Un nodo puede tener hasta <strong>n</strong> hijos, lo que permite que los árboles sean más flexibles para representar estructuras más complejas.</li>
+        <li><strong>Árbol Ternario:</strong> Un caso específico de árbol N-ario, donde cada nodo puede tener hasta tres hijos.</li>
+    </ul>
+
+    <h2>2. Clasificación según la estructura de los nodos</h2>
+    <p>
+        En esta clasificación, los árboles se agrupan según cómo están organizados los nodos:
+    </p>
+    <ul>
+        <li><strong>Árboles Generales:</strong> No tienen restricciones sobre el número de hijos que un nodo puede tener. Cada nodo puede tener cualquier número de hijos.</li>
+        <li><strong>Árbol Binario de Búsqueda (ABB):</strong> Un árbol binario en el que los nodos a la izquierda de un nodo tienen un valor menor, y los nodos a la derecha tienen un valor mayor. Esto facilita la búsqueda eficiente.</li>
+        <li><strong>Árbol AVL:</strong> Es un tipo de árbol binario de búsqueda balanceado, donde la diferencia de altura entre los subárboles izquierdo y derecho de un nodo no puede ser mayor a 1.</li>
+        <li><strong>Árbol B:</strong> Un árbol de búsqueda balanceado en el que se utilizan más de dos hijos por nodo, y se usa comúnmente en bases de datos y sistemas de archivos.</li>
+    </ul>
+
+    <h2>3. Clasificación según el balanceo</h2>
+    <p>
+        En esta clasificación, los árboles se agrupan en función de cómo se mantiene su balance para asegurar un rendimiento eficiente en las operaciones de búsqueda, inserción y eliminación. Algunos de los más conocidos son:
+    </p>
+    <ul>
+        <li><strong>Árboles Balanceados:</strong> Estos árboles mantienen un balance estricto entre los nodos para asegurar que las operaciones no sean demasiado lentas. El árbol AVL es un ejemplo de árbol balanceado.</li>
+        <li><strong>Árboles No Balanceados:</strong> Estos árboles no tienen ninguna restricción de balance, lo que puede generar una estructura más desigual y, en algunos casos, menos eficiente.</li>
+    </ul>
+
+    <h2>4. Clasificación según el tipo de recorrido</h2>
+    <p>
+        Los árboles también pueden clasificarse según cómo se recorren. Los algoritmos de recorrido son cruciales para explorar un árbol y procesar los datos que contiene. Los tipos comunes de árboles basados en recorridos son:
+    </p>
+    <ul>
+        <li><strong>Árboles Preorden:</strong> En este recorrido, el nodo se procesa antes de sus subárboles izquierdo y derecho.</li>
+        <li><strong>Árboles Inorden:</strong> En este recorrido, primero se procesa el subárbol izquierdo, luego el nodo, y finalmente el subárbol derecho. Este recorrido es útil para obtener una secuencia ordenada en un árbol binario de búsqueda.</li>
+        <li><strong>Árboles Postorden:</strong> En este recorrido, primero se procesan los subárboles izquierdo y derecho, y finalmente el nodo.</li>
+    </ul>
+
+    <h2>5. Árboles Balanceados por Peso</h2>
+    <p>
+        Los árboles balanceados por peso son aquellos en los que la cantidad de nodos en los subárboles izquierdo y derecho se equilibran mediante un algoritmo que asegura que las operaciones de inserción, eliminación y búsqueda se mantengan eficientes.
+    </p>
+    <ul>
+        <li><strong>Árbol Red-Black (Rojo-negro):</strong> Es un tipo de árbol binario de búsqueda balanceado, en el que cada nodo tiene un color (rojo o negro) y se utilizan reglas de balanceo para mantener el árbol equilibrado.</li>
+        <li><strong>Árbol Splay:</strong> Es un árbol de búsqueda binaria autoajustable en el que los nodos que se acceden con mayor frecuencia se "acercan" a la raíz, mejorando el rendimiento de las búsquedas sucesivas.</li>
+    </ul>
+
+    <h2>6. Árboles en Computación Gráfica y Redes</h2>
+    <p>
+        Además de su uso común en algoritmos de búsqueda y bases de datos, los árboles también son fundamentales en áreas como la computación gráfica y las redes. En estos contextos, los árboles se utilizan para:
+    </p>
+    <ul>
+        <li><strong>Representación de la jerarquía de objetos:</strong> En computación gráfica, los árboles se usan para representar relaciones jerárquicas entre objetos 3D en escenas complejas.</li>
+        <li><strong>Protocolos de redes:</strong> En redes, los árboles de expansión mínima se utilizan para la conectividad eficiente entre nodos en la red.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los árboles son estructuras muy versátiles que pueden clasificarse de muchas formas diferentes, dependiendo de su número de hijos, su balanceo o el tipo de recorrido utilizado. Cada clasificación tiene aplicaciones específicas en diversas áreas de la informática, y comprender cómo funcionan y cómo elegir el árbol adecuado para un problema determinado es crucial para la eficiencia y el rendimiento del software.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

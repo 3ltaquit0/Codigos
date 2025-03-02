@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representación de Grafos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Representación de Grafos</h1>
+
+    <p>
+        Los <strong>grafos</strong> son una estructura de datos fundamental en muchas áreas de la informática, y su representación es crucial para poder trabajar con ellos de manera eficiente. Existen diferentes formas de representar un grafo en memoria, cada una con sus ventajas y desventajas dependiendo del tipo de operaciones que se deseen realizar. A continuación, exploraremos las formas más comunes de representar un grafo.
+    </p>
+
+    <h2>1. ¿Por qué es importante la representación de un grafo?</h2>
+    <p>
+        La representación de un grafo determina cómo se almacenan y acceden a los nodos y aristas, y puede influir considerablemente en el rendimiento de los algoritmos que operan sobre el grafo. Elegir la representación adecuada depende de factores como:
+        <ul>
+            <li><strong>Tipo de grafo:</strong> Si es dirigido o no dirigido, si es ponderado o no ponderado.</li>
+            <li><strong>Operaciones requeridas:</strong> Si se necesita buscar nodos adyacentes, recorrer el grafo, o encontrar el camino más corto entre dos nodos.</li>
+        </ul>
+    </p>
+
+    <h2>2. Representación mediante lista de adyacencia</h2>
+    <p>
+        La <strong>lista de adyacencia</strong> es una de las representaciones más comunes para grafos. En este enfoque, cada nodo del grafo tiene una lista que contiene todos los nodos adyacentes a él. Esta representación es eficiente para grafos dispersos, es decir, aquellos con pocas aristas en comparación con el número de nodos.
+    </p>
+    <p>
+        <strong>Ventajas:</strong>
+        <ul>
+            <li>Es eficiente en términos de espacio cuando el grafo es disperso.</li>
+            <li>Acceder a los nodos adyacentes de un nodo es muy rápido.</li>
+        </ul>
+        <strong>Desventajas:</strong>
+        <ul>
+            <li>No es tan eficiente cuando se realizan muchas búsquedas de aristas específicas entre nodos no adyacentes.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo:</strong> Para representar el grafo no dirigido siguiente:
+        <pre>
+        A --- B
+        |     |
+        C --- D
+        </pre>
+        La lista de adyacencia sería:
+        <pre>
+        A: [B, C]
+        B: [A, D]
+        C: [A, D]
+        D: [B, C]
+        </pre>
+    </p>
+
+    <h2>3. Representación mediante matriz de adyacencia</h2>
+    <p>
+        La <strong>matriz de adyacencia</strong> es una representación más simple y directa de un grafo. En este caso, se usa una matriz bidimensional donde el valor en la posición <em>i, j</em> indica si existe una arista entre los nodos <em>i</em> y <em>j</em>. Si el grafo es ponderado, la matriz puede almacenar los pesos de las aristas en lugar de solo indicar su existencia.
+    </p>
+    <p>
+        <strong>Ventajas:</strong>
+        <ul>
+            <li>Es fácil verificar si existe una arista entre dos nodos, simplemente consultando la matriz en la posición correspondiente.</li>
+            <li>Es fácil de implementar y comprender.</li>
+        </ul>
+        <strong>Desventajas:</strong>
+        <ul>
+            <li>Es ineficiente en términos de espacio si el grafo es disperso, ya que la matriz tendrá muchos valores nulos (si no hay arista).</li>
+            <li>No es tan eficiente para recorrer los nodos adyacentes de un nodo específico.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo:</strong> Para el mismo grafo no dirigido mostrado anteriormente, la matriz de adyacencia sería:
+        <pre>
+        A  B  C  D
+        A [0, 1, 1, 0]
+        B [1, 0, 0, 1]
+        C [1, 0, 0, 1]
+        D [0, 1, 1, 0]
+        </pre>
+    </p>
+
+    <h2>4. Representación mediante lista de aristas</h2>
+    <p>
+        La <strong>lista de aristas</strong> es una representación simple en la que se mantiene una lista de todas las aristas del grafo. Cada arista se representa como un par de nodos (en el caso de un grafo no dirigido) o un trío de nodos y peso (en un grafo ponderado).
+    </p>
+    <p>
+        <strong>Ventajas:</strong>
+        <ul>
+            <li>Es simple y fácil de implementar.</li>
+            <li>Es eficiente para representar grafos donde se requiere mantener solo las aristas sin preocuparse demasiado por los nodos individuales.</li>
+        </ul>
+        <strong>Desventajas:</strong>
+        <ul>
+            <li>No es tan eficiente cuando se necesita realizar muchas búsquedas de adyacencia.</li>
+            <li>No es tan fácil para realizar recorridos de manera eficiente.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo:</strong> Para el grafo mostrado anteriormente, la lista de aristas sería:
+        <pre>
+        [(A, B), (A, C), (B, D), (C, D)]
+        </pre>
+    </p>
+
+    <h2>5. Representación de grafos dirigidos y no dirigidos</h2>
+    <p>
+        La representación de un grafo cambia dependiendo de si es dirigido o no dirigido:
+        <ul>
+            <li>En un <strong>grafo dirigido</strong>, las aristas tienen una dirección, por lo que las representaciones de lista de adyacencia o matriz de adyacencia se modifican para reflejar esta dirección.</li>
+            <li>En un <strong>grafo no dirigido</strong>, las aristas no tienen dirección, por lo que una arista se representa en ambas direcciones en la lista de adyacencia o en la matriz de adyacencia (simétrica).</li>
+        </ul>
+    </p>
+
+    <h2>6. Elección de la representación adecuada</h2>
+    <p>
+        La elección de la representación de un grafo depende de:
+        <ul>
+            <li>El número de nodos y aristas en el grafo.</li>
+            <li>Las operaciones que se realizarán sobre el grafo (por ejemplo, si se necesita recorrer todos los nodos adyacentes o verificar la existencia de una arista específica).</li>
+        </ul>
+        Si el grafo es denso (muchas aristas en comparación con los nodos), la matriz de adyacencia podría ser más eficiente. Si el grafo es disperso, la lista de adyacencia es generalmente más adecuada.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los grafos son una de las estructuras más poderosas y flexibles en informática, y elegir la representación adecuada es clave para optimizar el rendimiento en diversas operaciones. Dependiendo de las características del grafo y las operaciones que necesites realizar, deberás elegir entre una lista de adyacencia, matriz de adyacencia o lista de aristas.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

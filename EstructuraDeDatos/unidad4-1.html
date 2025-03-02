@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árboles - Estructuras No Lineales</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Árboles - Estructuras No Lineales</h1>
+
+    <p>
+        Un árbol es una estructura de datos jerárquica que se utiliza para representar relaciones jerárquicas entre elementos. A diferencia de las estructuras lineales como las listas o las pilas, los árboles no siguen una secuencia de datos lineal, sino que se ramifican en diversas direcciones, lo que les permite almacenar información de manera más eficiente en muchos casos.
+    </p>
+
+    <h2>¿Qué es un Árbol?</h2>
+    <p>
+        Un árbol está compuesto por nodos, donde cada nodo contiene un valor o dato y referencias (enlaces) a otros nodos. Estos enlaces permiten que el árbol tenga una estructura jerárquica, en la que un nodo puede tener varios "hijos", pero solo un "padre" (excepto el nodo raíz, que no tiene padre).
+    </p>
+
+    <h2>Componentes de un Árbol</h2>
+    <ul>
+        <li><strong>Raíz:</strong> El nodo inicial del árbol, desde el cual se ramifican todos los demás nodos.</li>
+        <li><strong>Nodos:</strong> Elementos del árbol que contienen datos y enlaces a otros nodos.</li>
+        <li><strong>Hoja:</strong> Nodos que no tienen hijos. Son los nodos terminales del árbol.</li>
+        <li><strong>Subárbol:</strong> Un árbol dentro de otro árbol, comenzando desde un nodo específico.</li>
+        <li><strong>Camino:</strong> Secuencia de nodos conectados por enlaces entre sí.</li>
+    </ul>
+
+    <h2>Tipos de Árboles</h2>
+    <p>Existen varios tipos de árboles, cada uno diseñado para resolver diferentes problemas de manera eficiente. Algunos de los más comunes incluyen:</p>
+    <ul>
+        <li><strong>Árbol Binario:</strong> Cada nodo tiene a lo sumo dos hijos, conocidos como hijo izquierdo e hijo derecho.</li>
+        <li><strong>Árboles de Búsqueda Binaria:</strong> Es un tipo de árbol binario en el que los nodos a la izquierda de un nodo tienen un valor menor, y los nodos a la derecha tienen un valor mayor, lo que facilita la búsqueda.</li>
+        <li><strong>Árbol AVL:</strong> Un árbol de búsqueda binaria autoajustable, donde la diferencia de altura entre los subárboles izquierdo y derecho no puede ser mayor a 1.</li>
+        <li><strong>Árbol N-ario:</strong> Un árbol en el que un nodo puede tener más de dos hijos. Es útil para representar estructuras más complejas como directorios de archivos.</li>
+    </ul>
+
+    <h3>Ejemplo de un Árbol Binario</h3>
+    <pre><code class="language-java">
+class Nodo {
+    int valor;
+    Nodo izquierdo, derecho;
+
+    public Nodo(int valor) {
+        this.valor = valor;
+        izquierdo = derecho = null;
+    }
+}
+
+class ArbolBinario {
+    Nodo raiz;
+
+    public ArbolBinario() {
+        raiz = null;
+    }
+
+    // Función para insertar un nuevo nodo
+    public void insertar(int valor) {
+        raiz = insertarRecursivo(raiz, valor);
+    }
+
+    private Nodo insertarRecursivo(Nodo raiz, int valor) {
+        if (raiz == null) {
+            raiz = new Nodo(valor);
+            return raiz;
+        }
+        if (valor < raiz.valor) {
+            raiz.izquierdo = insertarRecursivo(raiz.izquierdo, valor);
+        } else if (valor > raiz.valor) {
+            raiz.derecho = insertarRecursivo(raiz.derecho, valor);
+        }
+        return raiz;
+    }
+
+    // Función para realizar un recorrido en orden
+    public void recorrerEnOrden() {
+        recorrerEnOrdenRecursivo(raiz);
+    }
+
+    private void recorrerEnOrdenRecursivo(Nodo raiz) {
+        if (raiz != null) {
+            recorrerEnOrdenRecursivo(raiz.izquierdo);
+            System.out.print(raiz.valor + " ");
+            recorrerEnOrdenRecursivo(raiz.derecho);
+        }
+    }
+}
+
+public class EjemploArbolBinario {
+    public static void main(String[] args) {
+        ArbolBinario arbol = new ArbolBinario();
+        arbol.insertar(50);
+        arbol.insertar(30);
+        arbol.insertar(70);
+        arbol.insertar(20);
+        arbol.insertar(40);
+        arbol.insertar(60);
+        arbol.insertar(80);
+
+        System.out.println("Recorrido en orden del árbol:");
+        arbol.recorrerEnOrden(); // Salida esperada: 20 30 40 50 60 70 80
+    }
+}
+    </code></pre>
+
+    <h2>Aplicaciones de los Árboles</h2>
+    <p>
+        Los árboles tienen una amplia gama de aplicaciones en la informática, incluyendo:
+    </p>
+    <ul>
+        <li><strong>Representación de datos jerárquicos:</strong> Se utilizan para representar estructuras jerárquicas como directorios de archivos, organizaciones de carpetas o sistemas de clasificación.</li>
+        <li><strong>Árboles de decisión:</strong> En inteligencia artificial y toma de decisiones, los árboles se utilizan para representar diferentes decisiones y sus posibles consecuencias, como en los algoritmos de aprendizaje supervisado (por ejemplo, árboles de decisión).</li>
+        <li><strong>Base de datos:</strong> Los árboles son fundamentales para la implementación de índices en bases de datos. Los árboles B, por ejemplo, son ampliamente usados para la organización eficiente de datos y la optimización de consultas.</li>
+        <li><strong>Compresión de datos:</strong> En algoritmos de compresión como Huffman, los árboles se usan para representar las frecuencias de los caracteres y lograr una representación más compacta.</li>
+        <li><strong>Juegos y simulaciones:</strong> Los árboles se usan en la simulación de juegos, donde cada nodo representa una posible jugada, y las ramas representan las decisiones que pueden tomarse.</li>
+    </ul>
+
+    <h2>Ventajas de los Árboles</h2>
+    <ul>
+        <li><strong>Acceso rápido:</strong> Los árboles, especialmente los árboles balanceados, permiten búsquedas rápidas, insertaciones y eliminaciones de elementos en comparación con las listas lineales.</li>
+        <li><strong>Estructura jerárquica natural:</strong> Su capacidad para representar relaciones jerárquicas hace que los árboles sean ideales para ciertas aplicaciones, como bases de datos, sistemas de archivos, y más.</li>
+        <li><strong>Facilidad de navegación:</strong> Con las estructuras de árboles, se pueden realizar recorridos ordenados (en orden, preorden, postorden) que facilitan la visualización o procesamiento de los datos.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los árboles son estructuras de datos fundamentales en programación, con aplicaciones en una variedad de áreas. Desde la representación de jerarquías de información hasta la optimización de búsquedas y almacenamiento en bases de datos, los árboles siguen siendo una herramienta indispensable en el campo de la informática.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

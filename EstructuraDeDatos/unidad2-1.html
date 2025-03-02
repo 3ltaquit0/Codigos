@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursividad - Definición</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Recursividad - Definición</h1>
+
+    <p>
+        La **recursividad** es un concepto fundamental en programación que permite que una función se llame a sí misma, ya sea directamente o indirectamente, para resolver un problema. 
+        Es una técnica poderosa que se utiliza para resolver problemas complejos dividiéndolos en subproblemas más pequeños de la misma naturaleza.
+    </p>
+
+    <h2>¿Qué Es la Recursividad?</h2>
+    <p>
+        La recursividad ocurre cuando una función se llama a sí misma dentro de su propio cuerpo. Cada vez que la función se llama, trabaja sobre una versión más simple del problema original hasta llegar a una condición base que detiene las llamadas recursivas.
+    </p>
+
+    <h2>Componentes de la Recursividad</h2>
+    <p>
+        Una función recursiva generalmente tiene dos componentes clave:
+    </p>
+    <ul>
+        <li><strong>Caso base:</strong> Es la condición que permite que la función deje de llamarse a sí misma, evitando una recursión infinita. Sin un caso base, la función se llamaría a sí misma indefinidamente.</li>
+        <li><strong>Caso recursivo:</strong> Es el momento en que la función se llama a sí misma para resolver un subproblema más pequeño y similar al problema original.</li>
+    </ul>
+
+    <h2>Ejemplo Simple de Recursividad</h2>
+    <p>
+        Imaginemos que queremos calcular el factorial de un número, que se define como el producto de todos los enteros positivos menores o iguales a ese número. 
+        El factorial de un número n (denotado como n!) se puede calcular utilizando recursividad de la siguiente manera:
+    </p>
+    <pre><code class="language-java">
+public class FactorialRecursivo {
+    public static int factorial(int n) {
+        // Caso base: Si n es 0 o 1, el factorial es 1
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // Caso recursivo: n * factorial(n-1)
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int numero = 5;
+        System.out.println("El factorial de " + numero + " es: " + factorial(numero));
+    }
+}
+    </code></pre>
+
+    <h2>¿Por Qué Usar Recursividad?</h2>
+    <p>
+        La recursividad es útil para resolver problemas que pueden dividirse en subproblemas similares. Algunos ejemplos comunes incluyen:
+    </p>
+    <ul>
+        <li>El cálculo de factoriales, como se mostró en el ejemplo anterior.</li>
+        <li>El recorrido de estructuras de datos como árboles y gráficos.</li>
+        <li>La solución de problemas como la Torre de Hanoi, búsqueda en árboles binarios, etc.</li>
+    </ul>
+
+    <h2>Ventajas y Desventajas de la Recursividad</h2>
+
+    <h3>Ventajas:</h3>
+    <ul>
+        <li>Permite resolver problemas complejos de manera más sencilla y elegante.</li>
+        <li>En algunos casos, puede ser más fácil de entender y escribir que las soluciones iterativas.</li>
+    </ul>
+
+    <h3>Desventajas:</h3>
+    <ul>
+        <li>Puede ser menos eficiente en términos de uso de memoria, ya que cada llamada recursiva consume espacio en la pila.</li>
+        <li>Si no se implementa correctamente, puede llevar a una recursión infinita o a un desbordamiento de pila.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        La recursividad es una técnica poderosa y útil en programación que permite resolver problemas dividiendo una tarea en subproblemas más pequeños. 
+        Aunque tiene sus ventajas, como la simplicidad y elegancia, también debe usarse con cuidado para evitar problemas de eficiencia, como el desbordamiento de pila. 
+        Es importante entender cuándo y cómo usar la recursividad para obtener los mejores resultados.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

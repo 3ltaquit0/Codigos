@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complejidad en el Espacio - Explicación Sencilla</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Complejidad en el Espacio</h1>
+
+    <p>
+        Al igual que la **complejidad en el tiempo**, la **complejidad en el espacio** es otra medida importante en el análisis de algoritmos. Mientras que la complejidad en el tiempo se refiere a cuántas operaciones realiza un algoritmo, la complejidad en el espacio mide cuánta memoria necesita el algoritmo para ejecutar sus tareas.
+    </p>
+
+    <h2>¿Qué es la Complejidad en el Espacio?</h2>
+    <p>
+        La **complejidad en el espacio** se refiere a la cantidad de memoria que un algoritmo requiere para resolver un problema. Esta memoria puede ser utilizada para almacenar datos, estructuras temporales, variables, etc. Al igual que la complejidad temporal, la complejidad espacial se puede expresar en notación **Big O** para describir cómo cambia la cantidad de memoria utilizada a medida que aumenta el tamaño de los datos de entrada.
+    </p>
+
+    <h2>Notación Big O para Complejidad Espacial</h2>
+    <p>
+        La notación Big O para la complejidad en el espacio nos ayuda a describir cuánta memoria consume un algoritmo en función de los datos que procesa. Algunas de las notaciones más comunes incluyen:
+    </p>
+
+    <ul>
+        <li><strong>O(1) - Espacio constante:</strong> El algoritmo usa la misma cantidad de memoria sin importar el tamaño de la entrada. Es el tipo de algoritmo más eficiente en términos de espacio.</li>
+        <li><strong>O(n) - Espacio lineal:</strong> La cantidad de memoria utilizada aumenta de manera proporcional al tamaño de la entrada. Un ejemplo de esto sería un algoritmo que necesita almacenar todos los elementos de una lista.</li>
+        <li><strong>O(n²) - Espacio cuadrático:</strong> El algoritmo requiere una cantidad de memoria que crece cuadráticamente con el tamaño de los datos de entrada. Esto sucede en algoritmos que crean estructuras de datos grandes basadas en la entrada.</li>
+    </ul>
+
+    <h2>Ejemplos de Complejidad Espacial</h2>
+
+    <h3>1. O(1) - Espacio Constante</h3>
+    <p>
+        Los algoritmos con **O(1)** de complejidad espacial utilizan una cantidad constante de memoria, sin importar el tamaño de la entrada. Esto significa que el algoritmo usa la misma cantidad de memoria, independientemente de cuántos datos tenga que procesar.
+    </p>
+    <pre><code class="language-java">
+public class EjemploEspacioO1 {
+    public static void main(String[] args) {
+        int numero = 10; // Solo se usa un espacio para almacenar el número
+        System.out.println("El número es: " + numero);
+    }
+}
+    </code></pre>
+
+    <h3>2. O(n) - Espacio Lineal</h3>
+    <p>
+        Un algoritmo con **O(n)** de complejidad espacial utiliza una cantidad de memoria proporcional al tamaño de la entrada. Por ejemplo, si tienes un arreglo de tamaño "n", el algoritmo necesitará "n" unidades de memoria.
+    </p>
+    <pre><code class="language-java">
+public class EjemploEspacioOn {
+    public static void main(String[] args) {
+        int[] arreglo = new int[100]; // Se crea un arreglo que ocupa espacio proporcional a n
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = i; // Llenamos el arreglo con valores
+        }
+        System.out.println("Arreglo lleno de " + arreglo.length + " elementos.");
+    }
+}
+    </code></pre>
+
+    <h3>3. O(n²) - Espacio Cuadrático</h3>
+    <p>
+        Un algoritmo con **O(n²)** de complejidad espacial utiliza una cantidad de memoria que crece cuadráticamente con el tamaño de la entrada. Esto suele ocurrir en algoritmos que crean estructuras de datos grandes, como matrices bidimensionales.
+    </p>
+    <pre><code class="language-java">
+public class EjemploEspacioOn2 {
+    public static void main(String[] args) {
+        int n = 5;
+        int[][] matriz = new int[n][n]; // Se crea una matriz que ocupa espacio proporcional a n²
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matriz[i][j] = i * j;
+            }
+        }
+        System.out.println("Matriz de tamaño " + n + "x" + n + " creada.");
+    }
+}
+    </code></pre>
+
+    <h2>¿Por Qué Es Importante la Complejidad Espacial?</h2>
+    <p>
+        Al igual que la complejidad temporal, la complejidad espacial es crucial para determinar cuán eficiente es un algoritmo en términos de uso de recursos. Si un algoritmo consume demasiada memoria, puede hacer que el sistema se quede sin recursos y cause fallos. Por ello, siempre debemos buscar algoritmos que utilicen la menor cantidad de memoria posible, especialmente cuando tratamos con grandes volúmenes de datos.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        La complejidad espacial es una medida importante para evaluar la eficiencia de los algoritmos, ya que nos ayuda a entender cuánta memoria necesitará un algoritmo para funcionar. Al igual que con la complejidad temporal, se debe optimizar el uso de la memoria para crear programas más eficientes y escalables. Utilizando la notación Big O, podemos describir y comparar cómo los algoritmos gestionan la memoria y elegir el más adecuado para nuestro problema.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

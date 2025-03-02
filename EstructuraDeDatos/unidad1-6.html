@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Dinámica - Explicación Sencilla</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Memoria Dinámica en Programación</h1>
+
+    <p>
+        La memoria es como el lugar donde se guardan los datos en un programa. En la programación, la memoria se puede organizar de diferentes maneras, y una de ellas es a través de la <strong>memoria dinámica</strong>. ¡Veamos qué es y cómo funciona de forma fácil de entender!
+    </p>
+
+    <h2>¿Qué es la Memoria Dinámica?</h2>
+    <p>
+        La memoria dinámica es un tipo de memoria que se asigna y organiza mientras el programa está en ejecución. A diferencia de la memoria estática, donde el espacio se fija al principio, la memoria dinámica se ajusta según las necesidades del programa durante su ejecución. Es como si pudieras agregar o quitar espacio de almacenamiento mientras usas tu computadora.
+    </p>
+
+    <h2>¿Cómo Funciona?</h2>
+    <p>
+        Cuando un programa necesita más espacio para almacenar datos, la memoria dinámica permite pedir espacio adicional de la memoria en tiempo real. Este espacio se libera cuando ya no se necesita. Es como si pudieras alquilar espacio extra cuando lo necesitas, y luego devolverlo cuando ya no lo necesitas.
+    </p>
+    <p>
+        En lenguajes como C o C++, este tipo de memoria se maneja usando funciones como <code>malloc()</code> para pedir espacio y <code>free()</code> para liberar el espacio. En otros lenguajes como Java, la memoria dinámica se maneja automáticamente con el <strong>Garbage Collector</strong>, que elimina los objetos que ya no se utilizan.
+    </p>
+
+    <h2>Ejemplo de Memoria Dinámica</h2>
+    <p>
+        Vamos a ver un ejemplo sencillo en Java para entender cómo funciona la memoria dinámica. Imagina que necesitamos almacenar una lista de números, pero no sabemos cuántos números serán hasta que el programa esté en ejecución.
+    </p>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploMemoriaDinamica {
+    public static void main(String[] args) {
+        // Se crea una lista vacía que puede crecer según sea necesario
+        ArrayList&lt;Integer&gt; lista = new ArrayList&lt;&gt;();
+        
+        // Agregamos números a la lista dinámicamente
+        lista.add(10);
+        lista.add(20);
+        lista.add(30);
+
+        // Mostramos el contenido de la lista
+        System.out.println("Los números en la lista son: " + lista);
+    }
+}
+    </code></pre>
+    <p>
+        En el ejemplo anterior, usamos un <code>ArrayList</code>, que es una estructura de datos que puede crecer o reducir su tamaño según lo necesitemos. A medida que agregamos elementos, la memoria se ajusta dinámicamente para almacenar los números.
+    </p>
+
+    <h2>¿Cuáles Son sus Ventajas?</h2>
+    <ul>
+        <li><strong>Flexibilidad:</strong> Puedes pedir exactamente el espacio que necesitas en cualquier momento, lo que permite manejar grandes cantidades de datos sin desperdiciar memoria.</li>
+        <li><strong>Optimización:</strong> Al liberar la memoria cuando ya no se necesita, la memoria dinámica puede ayudar a que los programas usen solo el espacio necesario en cada momento.</li>
+    </ul>
+
+    <h2>¿Cuáles Son sus Desventajas?</h2>
+    <ul>
+        <li><strong>Gestión Compleja:</strong> En algunos lenguajes, como C o C++, tienes que gestionar la memoria manualmente, asegurándote de liberar la memoria cuando ya no la necesitas. Si olvidas liberar la memoria, puedes provocar fugas de memoria.</li>
+        <li><strong>Más Lento:</strong> La asignación dinámica de memoria puede ser más lenta que la memoria estática, ya que implica buscar espacio disponible y hacer ajustes durante la ejecución del programa.</li>
+    </ul>
+
+    <h2>¿Dónde Se Usa la Memoria Dinámica?</h2>
+    <p>
+        La memoria dinámica es útil cuando el tamaño de los datos no es conocido de antemano o cuando el programa necesita manejar una cantidad de datos que cambia durante su ejecución. Por ejemplo, se usa en aplicaciones como:
+    </p>
+    <ul>
+        <li>Juegos y gráficos, donde los datos cambian constantemente.</li>
+        <li>Aplicaciones que manejan grandes cantidades de información, como bases de datos.</li>
+        <li>Sistemas operativos y aplicaciones que necesitan gestionar recursos de forma flexible.</li>
+    </ul>
+
+    <h2>Conclusión</h2>
+    <p>
+        En resumen, la memoria dinámica es una forma de manejar los datos en un programa de manera flexible, asignando y liberando memoria durante la ejecución según se necesite. Es perfecta para situaciones donde no sabes cuánta memoria necesitarás desde el principio. Sin embargo, también requiere un manejo cuidadoso para evitar errores, como las fugas de memoria.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

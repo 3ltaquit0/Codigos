@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda Secuencial</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Búsqueda Secuencial</h1>
+
+    <p>
+        La **búsqueda secuencial** es uno de los métodos más sencillos y directos para encontrar un elemento dentro de una lista o arreglo. Se realiza revisando cada uno de los elementos de la lista en orden secuencial hasta encontrar el valor que estamos buscando.
+    </p>
+
+    <h2>1. ¿Qué es la Búsqueda Secuencial?</h2>
+    <p>
+        La búsqueda secuencial, también conocida como búsqueda lineal, es un algoritmo que recorre la lista o arreglo de izquierda a derecha (o viceversa) y compara cada elemento con el valor que se desea encontrar. Si el valor es encontrado, se retorna la posición del elemento; de lo contrario, se continúa hasta llegar al final de la lista.
+    </p>
+
+    <h3>Características principales:</h3>
+    <ul>
+        <li>Es simple y fácil de implementar.</li>
+        <li>No requiere que la lista esté ordenada.</li>
+        <li>Poco eficiente en listas grandes, ya que revisa cada elemento uno por uno.</li>
+    </ul>
+
+    <h2>2. ¿Cómo funciona la Búsqueda Secuencial?</h2>
+    <p>
+        El proceso de la búsqueda secuencial es muy sencillo. A continuación te explicamos los pasos:
+    </p>
+
+    <ol>
+        <li>Comienza desde el primer elemento de la lista.</li>
+        <li>Compara el valor del elemento con el que estamos buscando.</li>
+        <li>Si el valor coincide, retorna la posición del elemento encontrado.</li>
+        <li>Si no, pasa al siguiente elemento y repite el proceso.</li>
+        <li>Si se llega al final de la lista sin encontrar el valor, significa que el elemento no está presente.</li>
+    </ol>
+
+    <h2>3. Ejemplo de Búsqueda Secuencial en Java</h2>
+    <pre><code class="language-java">
+public class BusquedaSecuencial {
+    public static void main(String[] args) {
+        int[] lista = {3, 5, 7, 9, 11, 13, 15};
+        int valorBuscado = 9;
+
+        int resultado = busquedaSecuencial(lista, valorBuscado);
+        if (resultado != -1) {
+            System.out.println("El valor " + valorBuscado + " se encuentra en la posición " + resultado);
+        } else {
+            System.out.println("El valor " + valorBuscado + " no se encuentra en la lista.");
+        }
+    }
+
+    public static int busquedaSecuencial(int[] lista, int valorBuscado) {
+        for (int i = 0; i < lista.length; i++) {
+            if (lista[i] == valorBuscado) {
+                return i; // Retorna la posición del valor
+            }
+        }
+        return -1; // Retorna -1 si el valor no se encuentra
+    }
+}
+    </code></pre>
+
+    <h2>4. Complejidad de la Búsqueda Secuencial</h2>
+    <p>
+        La **complejidad temporal** de la búsqueda secuencial es O(n), donde n es el número de elementos en la lista. Esto se debe a que en el peor de los casos, el algoritmo debe revisar todos los elementos de la lista para asegurarse de que el valor no esté presente.
+    </p>
+
+    <h3>Complejidad Temporal:</h3>
+    <ul>
+        <li>En el mejor de los casos (cuando el elemento está en la primera posición), la complejidad es O(1).</li>
+        <li>En el peor de los casos (cuando el elemento está en la última posición o no está presente), la complejidad es O(n).</li>
+    </ul>
+
+    <h2>5. Ventajas y Desventajas</h2>
+    <h3>Ventajas:</h3>
+    <ul>
+        <li>Es muy fácil de entender e implementar.</li>
+        <li>No requiere que los datos estén ordenados, por lo que se puede aplicar a cualquier lista.</li>
+        <li>Es útil para listas pequeñas o cuando el elemento a buscar es probable que se encuentre cerca del principio de la lista.</li>
+    </ul>
+
+    <h3>Desventajas:</h3>
+    <ul>
+        <li>Es ineficiente para listas grandes, ya que puede requerir la revisión de todos los elementos.</li>
+        <li>No es adecuado cuando la lista es muy grande y la búsqueda es frecuente, ya que existen otros algoritmos más eficientes como la búsqueda binaria (para listas ordenadas).</li>
+    </ul>
+
+    <h2>6. Aplicaciones de la Búsqueda Secuencial</h2>
+    <p>
+        La búsqueda secuencial es más adecuada cuando estamos trabajando con listas pequeñas, datos no ordenados o cuando no sabemos la estructura de los datos. Algunas de sus aplicaciones incluyen:
+    </p>
+
+    <ul>
+        <li>Buscar elementos en pequeñas bases de datos o listas de contacto.</li>
+        <li>Verificar si un valor está presente en una lista de datos que no ha sido ordenada.</li>
+        <li>Utilizar en sistemas donde los datos cambian frecuentemente, por lo que mantener un orden es costoso.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        La **búsqueda secuencial** es una técnica sencilla y fácil de implementar para encontrar un elemento dentro de una lista. Aunque no es la más eficiente para listas grandes, sigue siendo útil en situaciones donde los datos son pequeños o desordenados. Al comprender cómo funciona este algoritmo y sus limitaciones, podemos decidir si es la mejor opción en cada situación de búsqueda.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

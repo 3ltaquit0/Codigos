@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de las Estructuras de Datos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Clasificación de las Estructuras de Datos</h1>
+    <p>
+        ¿Alguna vez te has preguntado cómo las computadoras organizan la información para que todo funcione rápido y sin problemas? 
+        Bueno, ahí es donde entran las **estructuras de datos**. Básicamente, son formas de guardar y manipular datos para que los programas trabajen de manera eficiente.
+    </p>
+
+    <h2>1. Estructuras de Datos Simples</h2>
+    <p>
+        Estas son las más básicas, las que manejamos en cualquier lenguaje de programación. Aquí cada variable guarda un solo valor a la vez. Algunos ejemplos:
+    </p>
+    <ul>
+        <li><strong>Enteros:</strong> Números sin decimales, como `int` o `long`.</li>
+        <li><strong>Flotantes:</strong> Números con decimales, como `float` y `double`.</li>
+        <li><strong>Cadenas de texto:</strong> Para palabras o frases, usamos `String`.</li>
+        <li><strong>Booleanos:</strong> Solo pueden ser `true` o `false` (como un interruptor: encendido o apagado).</li>
+    </ul>
+
+    <h2>2. Estructuras de Datos Compuestas</h2>
+    <p>
+        Estas nos permiten guardar varios valores en una sola variable, en lugar de crear una por cada dato. Imagínatelas como una caja que puede almacenar muchas cosas adentro.
+    </p>
+    <ul>
+        <li><strong>Arreglos:</strong> Son listas de tamaño fijo donde cada elemento tiene una posición (índice).</li>
+        <li><strong>Listas:</strong> Parecidas a los arreglos, pero su tamaño puede crecer o reducirse dinámicamente.</li>
+        <li><strong>Mapas (Diccionarios):</strong> Guardan datos en pares **clave-valor**, como una agenda de contactos.</li>
+    </ul>
+
+    <h3>Ejemplo en Java:</h3>
+    <pre><code class="language-java">
+// Arreglo en Java
+int[] numeros = {1, 2, 3, 4};
+
+// Lista en Java
+import java.util.ArrayList;
+ArrayList<String> lista = new ArrayList<>();
+lista.add("Juan");
+lista.add("María");
+
+// Mapa (Diccionario) en Java
+import java.util.HashMap;
+HashMap<String, Integer> edades = new HashMap<>();
+edades.put("Juan", 25);
+edades.put("María", 30);
+System.out.println(edades.get("Juan")); // Muestra la edad de Juan
+    </code></pre>
+
+    <h2>3. Estructuras de Datos Lineales</h2>
+    <p>
+        Aquí los datos se organizan uno detrás del otro, como una fila de personas esperando su turno.
+    </p>
+    <ul>
+        <li><strong>Pilas (Stack):</strong> Funciona como una torre de platos, el último en entrar es el primero en salir (**LIFO: Last In, First Out**).</li>
+        <li><strong>Colas (Queue):</strong> Funciona como una fila en el banco, el primero en entrar es el primero en salir (**FIFO: First In, First Out**).</li>
+    </ul>
+
+    <h3>Ejemplo de una Pila en Java:</h3>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EjemploPila {
+    public static void main(String[] args) {
+        Stack<Integer> pila = new Stack<>();
+        pila.push(1);  // Se apila (agrega)
+        pila.push(2);
+        pila.push(3);
+        System.out.println(pila.pop()); // Sale el último: 3
+    }
+}
+    </code></pre>
+
+    <h3>Ejemplo de una Cola en Java:</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class EjemploCola {
+    public static void main(String[] args) {
+        Queue<String> cola = new LinkedList<>();
+        cola.add("A");
+        cola.add("B");
+        cola.add("C");
+        System.out.println(cola.poll()); // Sale el primero: "A"
+    }
+}
+    </code></pre>
+
+    <h2>4. Estructuras de Datos No Lineales</h2>
+    <p>
+        Aquí los datos no se guardan en una fila, sino que se conectan de forma más compleja. Son muy usados en bases de datos y sistemas de navegación.
+    </p>
+    <ul>
+        <li><strong>Árboles:</strong> Tienen una estructura jerárquica con un **nodo raíz** y varios **nodos hijos**.</li>
+        <li><strong>Grafos:</strong> Son conjuntos de nodos conectados por enlaces (como un mapa de carreteras o redes sociales).</li>
+    </ul>
+
+    <h3>Ejemplo de Árbol Binario en Java:</h3>
+    <pre><code class="language-java">
+class Nodo {
+    int valor;
+    Nodo izquierda, derecha;
+
+    public Nodo(int valor) {
+        this.valor = valor;
+        izquierda = derecha = null;
+    }
+}
+
+// Clase principal que crea un árbol binario simple
+public class Arbol {
+    Nodo raiz;
+
+    public Arbol(int valor) {
+        raiz = new Nodo(valor);
+    }
+
+    public static void main(String[] args) {
+        Arbol arbol = new Arbol(10);
+        arbol.raiz.izquierda = new Nodo(5);
+        arbol.raiz.derecha = new Nodo(15);
+        System.out.println("Árbol creado con raíz en: " + arbol.raiz.valor);
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Como ves, las estructuras de datos son la base de cualquier programa. Dependiendo del problema que estés resolviendo, necesitarás usar una u otra.
+        <p>- Si necesitas **orden y velocidad**, usa **listas o arreglos**.</p>
+        <p>- Si el orden de entrada y salida es importante, usa **pilas o colas**.</p>
+        <p>- Si necesitas organizar datos jerárquicamente, usa **árboles**.</p>
+        <p>- Si trabajas con relaciones entre elementos, usa **grafos**.</p>
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

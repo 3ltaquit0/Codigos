@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Algoritmos - Explicación Sencilla</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Análisis de Algoritmos</h1>
+
+    <p>
+        El análisis de algoritmos es una parte fundamental de la programación y la informática en general. Se trata de estudiar y medir la eficiencia de los algoritmos, es decir, cómo de bien se desempeñan al resolver un problema. ¡Vamos a entenderlo de forma sencilla!
+    </p>
+
+    <h2>¿Qué es un Algoritmo?</h2>
+    <p>
+        Un algoritmo es una serie de pasos bien definidos que permiten resolver un problema específico. Es como una receta de cocina: tienes un conjunto de instrucciones que debes seguir para lograr un resultado. Por ejemplo, un algoritmo para sumar dos números es tan simple como este conjunto de pasos:
+    </p>
+    <ul>
+        <li>Recibir dos números.</li>
+        <li>Sumar los dos números.</li>
+        <li>Mostrar el resultado.</li>
+    </ul>
+
+    <h2>¿Por Qué Es Importante el Análisis de Algoritmos?</h2>
+    <p>
+        Analizar un algoritmo te ayuda a saber cuán eficiente es para resolver un problema. A veces, un algoritmo puede ser muy lento o consumir demasiados recursos (como memoria o tiempo de procesamiento), por lo que es crucial elegir el más adecuado. El análisis nos ayuda a predecir el comportamiento de un algoritmo antes de implementarlo, lo cual es clave cuando trabajamos con grandes cantidades de datos o sistemas complejos.
+    </p>
+
+    <h2>Tipos de Análisis de Algoritmos</h2>
+    <p>
+        Existen dos aspectos principales que se analizan en los algoritmos: el **tiempo de ejecución** y el **uso de memoria**. Esto se hace para asegurarse de que el algoritmo sea lo más eficiente posible.
+    </p>
+
+    <h3>1. Complejidad Temporal</h3>
+    <p>
+        La complejidad temporal se refiere al tiempo que tarda un algoritmo en ejecutarse. Se mide en función de la cantidad de operaciones que realiza, generalmente dependiendo del tamaño de los datos de entrada. Existen distintas notaciones para describir la complejidad temporal:
+    </p>
+    <ul>
+        <li><strong>O(1) - Tiempo constante:</strong> El algoritmo siempre toma el mismo tiempo, independientemente del tamaño de los datos.</li>
+        <li><strong>O(n) - Tiempo lineal:</strong> El tiempo aumenta linealmente con el tamaño de los datos.</li>
+        <li><strong>O(n²) - Tiempo cuadrático:</strong> El tiempo aumenta de manera cuadrática conforme se incrementa el tamaño de los datos. Esto es común en algoritmos como el de burbuja.</li>
+    </ul>
+    <p>
+        Por ejemplo, si tienes un algoritmo que recorre una lista de elementos y realiza una operación por cada uno, la complejidad temporal es O(n), ya que el tiempo de ejecución aumenta linealmente con la cantidad de elementos en la lista.
+    </p>
+
+    <h3>2. Complejidad Espacial</h3>
+    <p>
+        La complejidad espacial se refiere a la cantidad de memoria que utiliza un algoritmo. Al igual que la complejidad temporal, se mide en función del tamaño de los datos de entrada. Si un algoritmo usa mucha memoria, puede ser menos eficiente, especialmente si estamos trabajando con dispositivos con recursos limitados.
+    </p>
+
+    <h2>Ejemplo de Análisis de Algoritmos</h2>
+    <p>
+        Imaginemos que tenemos que ordenar una lista de números. Existen varios algoritmos de ordenación, pero vamos a analizar dos de ellos: el algoritmo de <strong>burbuja</strong> y el <strong>ordenamiento rápido (QuickSort)</strong>.
+    </p>
+
+    <h3>1. Algoritmo de Burbuja</h3>
+    <pre><code class="language-java">
+public class AlgoritmoBurbuja {
+    public static void ordenar(int[] arreglo) {
+        int n = arreglo.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arreglo[j] > arreglo[j + 1]) {
+                    // Intercambiar los elementos
+                    int temp = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+    </code></pre>
+    <p>
+        El algoritmo de burbuja tiene una complejidad temporal de O(n²), ya que utiliza dos bucles anidados. Esto significa que el tiempo de ejecución aumenta de manera cuadrática a medida que el tamaño de la lista crece. Este algoritmo es ineficiente para listas grandes.
+    </p>
+
+    <h3>2. Algoritmo de Ordenamiento Rápido (QuickSort)</h3>
+    <pre><code class="language-java">
+public class QuickSort {
+    public static void ordenar(int[] arreglo, int bajo, int alto) {
+        if (bajo < alto) {
+            int pivote = particionar(arreglo, bajo, alto);
+            ordenar(arreglo, bajo, pivote - 1);
+            ordenar(arreglo, pivote + 1, alto);
+        }
+    }
+
+    public static int particionar(int[] arreglo, int bajo, int alto) {
+        int pivote = arreglo[alto];
+        int i = (bajo - 1);
+
+        for (int j = bajo; j < alto; j++) {
+            if (arreglo[j] < pivote) {
+                i++;
+                // Intercambiar
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = temp;
+            }
+        }
+
+        // Intercambiar el pivote
+        int temp = arreglo[i + 1];
+        arreglo[i + 1] = arreglo[alto];
+        arreglo[alto] = temp;
+
+        return i + 1;
+    }
+}
+    </code></pre>
+    <p>
+        El algoritmo de QuickSort tiene una complejidad temporal promedio de O(n log n), lo que lo hace mucho más eficiente que el algoritmo de burbuja para listas grandes. Este algoritmo utiliza el principio de dividir y conquistar para dividir la lista en partes más pequeñas y luego ordenarlas.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        El análisis de algoritmos es esencial para desarrollar programas eficientes y optimizados. Al entender cómo se comportan los algoritmos en términos de tiempo y espacio, podemos elegir los más adecuados para cada tarea. Aunque algunos algoritmos son muy sencillos, como el de burbuja, otros como QuickSort son mucho más eficientes para manejar grandes cantidades de datos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

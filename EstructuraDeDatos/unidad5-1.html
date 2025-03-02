@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Ordenamiento: Algoritmos de Ordenamiento Internos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Métodos de Ordenamiento: Algoritmos de Ordenamiento Internos</h1>
+
+    <p>
+        El ordenamiento es una operación fundamental en programación que organiza los elementos de una colección (como una lista o un arreglo) de acuerdo con un criterio específico, generalmente en orden ascendente o descendente. Los algoritmos de ordenamiento internos son aquellos que ordenan los elementos dentro de la memoria principal (RAM), a diferencia de los algoritmos de ordenamiento externos, que trabajan con grandes volúmenes de datos que no caben en la memoria.
+    </p>
+
+    <h2>1. ¿Qué son los algoritmos de ordenamiento internos?</h2>
+    <p>
+        Los algoritmos de ordenamiento internos se utilizan para ordenar colecciones de datos que se encuentran completamente en la memoria. Son llamados "internos" porque trabajan con datos que están cargados en la memoria principal del sistema, lo que permite un acceso rápido y directo a los elementos. Estos algoritmos son fundamentales en la programación porque permiten optimizar la organización de los datos, lo que mejora el rendimiento de otros procesos como la búsqueda o la comparación.
+    </p>
+
+    <h2>2. Tipos de algoritmos de ordenamiento internos</h2>
+    <p>
+        Existen diferentes algoritmos de ordenamiento que varían en su eficiencia, complejidad y tipo de operaciones realizadas. Algunos de los algoritmos más comunes son:
+    </p>
+
+    <h3>2.1. Ordenamiento por burbuja (Bubble Sort)</h3>
+    <p>
+        El ordenamiento por burbuja es uno de los algoritmos más simples, pero también es ineficiente para listas grandes. Este algoritmo compara pares de elementos adyacentes y los intercambia si están en el orden incorrecto. Este proceso se repite hasta que todos los elementos estén ordenados.
+    </p>
+    <pre><code class="language-java">
+public class BubbleSort {
+    public static void bubbleSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    // Intercambiar los elementos
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+    </code></pre>
+
+    <h3>2.2. Ordenamiento por inserción (Insertion Sort)</h3>
+    <p>
+        El ordenamiento por inserción construye la lista ordenada de manera incremental. Comienza en el segundo elemento y lo inserta en la posición correcta en la parte ya ordenada del arreglo. Este proceso se repite hasta que todo el arreglo esté ordenado.
+    </p>
+    <pre><code class="language-java">
+public class InsertionSort {
+    public static void insertionSort(int[] array) {
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            int key = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j = j - 1;
+            }
+            array[j + 1] = key;
+        }
+    }
+}
+    </code></pre>
+
+    <h3>2.3. Ordenamiento por selección (Selection Sort)</h3>
+    <p>
+        El ordenamiento por selección divide el arreglo en dos partes: una parte ordenada y una desordenada. En cada iteración, selecciona el elemento más pequeño (o más grande, dependiendo del orden) de la parte desordenada y lo coloca al final de la parte ordenada.
+    </p>
+    <pre><code class="language-java">
+public class SelectionSort {
+    public static void selectionSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Intercambiar el mínimo con el primero
+            int temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
+        }
+    }
+}
+    </code></pre>
+
+    <h3>2.4. Ordenamiento rápido (Quick Sort)</h3>
+    <p>
+        El algoritmo de ordenamiento rápido es muy eficiente y uno de los más utilizados. Usa el principio de divide y vencerás: elige un "pivote" y divide el arreglo en dos subarreglos: uno con los elementos menores al pivote y otro con los mayores. Luego, ordena recursivamente cada subarreglo.
+    </p>
+    <pre><code class="language-java">
+public class QuickSort {
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(array, low, high);
+            quickSort(array, low, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, high);
+        }
+    }
+
+    private static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (array[j] < pivot) {
+                i++;
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+        int temp = array[i + 1];
+        array[i + 1] = array[high];
+        array[high] = temp;
+        return i + 1;
+    }
+}
+    </code></pre>
+
+    <h3>2.5. Ordenamiento por fusión (Merge Sort)</h3>
+    <p>
+        El ordenamiento por fusión es otro algoritmo basado en el principio de divide y vencerás. Divide el arreglo en mitades, ordena recursivamente cada mitad y luego fusiona las mitades ordenadas en un arreglo único ordenado.
+    </p>
+    <pre><code class="language-java">
+public class MergeSort {
+    public static void mergeSort(int[] array) {
+        if (array.length < 2) {
+            return;
+        }
+        int mid = array.length / 2;
+        int[] left = Arrays.copyOfRange(array, 0, mid);
+        int[] right = Arrays.copyOfRange(array, mid, array.length);
+
+        mergeSort(left);
+        mergeSort(right);
+
+        merge(array, left, right);
+    }
+
+    private static void merge(int[] array, int[] left, int[] right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                array[k++] = left[i++];
+            } else {
+                array[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            array[k++] = left[i++];
+        }
+        while (j < right.length) {
+            array[k++] = right[j++];
+        }
+    }
+}
+    </code></pre>
+
+    <h2>3. Comparación de algoritmos de ordenamiento internos</h2>
+    <p>
+        La elección del algoritmo de ordenamiento depende de diversos factores, como el tamaño de los datos, la eficiencia y la complejidad. A continuación, se presenta una comparación de algunos de los algoritmos de ordenamiento internos más comunes:
+    </p>
+    <ul>
+        <li><strong>Burbuja (Bubble Sort):</strong> O(n²) en el peor caso, ineficiente para grandes cantidades de datos.</li>
+        <li><strong>Inserción (Insertion Sort):</strong> O(n²) en el peor caso, eficiente para arreglos pequeños o casi ordenados.</li>
+        <li><strong>Selección (Selection Sort):</strong> O(n²) en todos los casos, sencillo pero ineficiente para grandes volúmenes de datos.</li>
+        <li><strong>Rápido (Quick Sort):</strong> O(n log n) en el mejor caso, uno de los algoritmos más rápidos.</li>
+        <li><strong>Fusión (Merge Sort):</strong> O(n log n) en todos los casos, eficiente para grandes conjuntos de datos, pero requiere espacio adicional.</li>
+    </ul>
+
+    <h2>4. Conclusión</h2>
+    <p>
+        Los algoritmos de ordenamiento internos son fundamentales en la programación para organizar datos de manera eficiente. La selección del algoritmo adecuado depende de las necesidades del problema específico, como el tamaño de los datos y los recursos disponibles. Aunque algunos algoritmos como el ordenamiento por burbuja son fáciles de entender, otros como QuickSort y MergeSort son mucho más eficientes para manejar grandes cantidades de datos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

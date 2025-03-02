@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Ordenamiento QuickSort</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Algoritmo de Ordenamiento QuickSort</h1>
+
+    <p>
+        El algoritmo de QuickSort es uno de los algoritmos más eficientes para ordenar listas o arreglos. A diferencia de otros algoritmos como el ordenamiento por burbuja, QuickSort utiliza una estrategia de "divide y vencerás", lo que le permite ordenar grandes cantidades de datos mucho más rápido.
+    </p>
+
+    <h2>1. ¿Cómo funciona el algoritmo QuickSort?</h2>
+    <p>
+        QuickSort selecciona un "pivote" en el arreglo y organiza los elementos en dos grupos: los elementos menores que el pivote y los mayores que el pivote. Después, el proceso se repite recursivamente para los subarreglos formados por los elementos menores y mayores, hasta que el arreglo está completamente ordenado.
+    </p>
+    
+    <h2>2. Paso a paso del algoritmo QuickSort</h2>
+    <ol>
+        <li>Seleccionar un elemento del arreglo como pivote.</li>
+        <li>Reorganizar el arreglo de tal manera que todos los elementos menores al pivote estén a su izquierda y los mayores estén a su derecha.</li>
+        <li>Aplicar recursivamente el algoritmo a los subarreglos a la izquierda y a la derecha del pivote.</li>
+        <li>Repetir hasta que los subarreglos tengan un solo elemento o estén vacíos, lo que significa que el arreglo está ordenado.</li>
+    </ol>
+
+    <h2>3. Ejemplo de QuickSort</h2>
+    <p>
+        Supongamos que tenemos el siguiente arreglo de números desordenados: <strong>[10, 7, 8, 9, 1, 5]</strong>.
+    </p>
+    <p>
+        En la primera pasada, seleccionamos un pivote, por ejemplo, el número 5. Reorganizamos el arreglo para que todos los números menores que 5 estén a su izquierda y los mayores a su derecha, resultando en el arreglo <strong>[1, 5, 8, 9, 7, 10]</strong>.
+    </p>
+    <p>
+        Ahora, aplicamos recursivamente QuickSort a los subarreglos <strong>[1]</strong> y <strong>[8, 9, 7, 10]</strong>. Esto continuará hasta que todo el arreglo esté ordenado.
+    </p>
+
+    <h2>4. Implementación en Java</h2>
+    <pre><code class="language-java">
+public class QuickSort {
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int pivot = partition(array, low, high);
+            quickSort(array, low, pivot - 1);  // Ordenar la parte izquierda
+            quickSort(array, pivot + 1, high); // Ordenar la parte derecha
+        }
+    }
+
+    public static int partition(int[] array, int low, int high) {
+        int pivot = array[high];
+        int i = (low - 1);
+        
+        for (int j = low; j < high; j++) {
+            if (array[j] < pivot) {
+                i++;
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+
+        int temp = array[i + 1];
+        array[i + 1] = array[high];
+        array[high] = temp;
+        
+        return i + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {10, 7, 8, 9, 1, 5};
+        quickSort(array, 0, array.length - 1);
+        
+        System.out.println("Lista ordenada:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Complejidad del algoritmo QuickSort</h2>
+    <p>
+        La complejidad temporal del algoritmo QuickSort depende de cómo se elija el pivote y de la estructura del arreglo original:
+    </p>
+    <ul>
+        <li>En el **mejor y promedio de los casos**, la complejidad es O(n log n), donde n es el número de elementos en el arreglo.</li>
+        <li>En el **peor caso**, cuando el pivote se elige de manera inapropiada (como el mayor o el menor elemento de manera repetida), la complejidad se vuelve O(n²). Este caso ocurre raramente si el pivote se elige de forma adecuada.</li>
+    </ul>
+    
+    <h2>6. Ventajas y desventajas del algoritmo QuickSort</h2>
+    <h3>Ventajas</h3>
+    <ul>
+        <li>Es muy eficiente en la mayoría de los casos, con una complejidad promedio de O(n log n).</li>
+        <li>No requiere memoria adicional significativa, ya que es un algoritmo de ordenamiento en el lugar (in-place).</li>
+        <li>Es adecuado para arreglos grandes.</li>
+    </ul>
+
+    <h3>Desventajas</h3>
+    <ul>
+        <li>Puede tener un rendimiento muy pobre (O(n²)) si el pivote se elige de forma inapropiada.</li>
+        <li>Es más complejo de implementar que otros algoritmos como el de burbuja o selección.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        QuickSort es uno de los algoritmos más rápidos y eficientes para ordenar listas, especialmente cuando se compara con otros algoritmos como el de burbuja o selección. Aunque su peor caso puede ser O(n²), el algoritmo generalmente se comporta de manera excelente, especialmente si se elige un buen pivote. Por ello, es ampliamente utilizado en muchos lenguajes de programación y sistemas de bases de datos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

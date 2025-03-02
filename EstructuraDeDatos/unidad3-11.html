@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas con Listas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Operaciones Básicas con Listas</h1>
+
+    <p>
+        Las listas son estructuras de datos muy utilizadas en programación, y tienen varias operaciones básicas que nos permiten manipular sus elementos de manera eficiente. A continuación, te explicamos las operaciones más comunes que podemos realizar con listas.
+    </p>
+
+    <h2>1. Insertar Elementos</h2>
+    <p>
+        La operación de insertar consiste en agregar un nuevo elemento a la lista en una posición específica o al final de la misma. Existen diferentes formas de insertar elementos, dependiendo de la estructura de la lista.
+    </p>
+    <ul>
+        <li><strong>Insertar al final</strong>: La forma más común de agregar elementos es insertarlos al final de la lista.</li>
+        <li><strong>Insertar en una posición específica</strong>: Algunas listas permiten insertar elementos en una posición determinada, desplazando los elementos posteriores si es necesario.</li>
+    </ul>
+
+    <h3>Ejemplo de Inserción en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploInsercion {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+
+        // Insertar al final
+        listaDeNombres.add("Carlos");
+
+        // Insertar en una posición específica
+        listaDeNombres.add(1, "Ana");
+
+        System.out.println("Lista después de inserciones: " + listaDeNombres);
+    }
+}
+    </code></pre>
+
+    <h2>2. Eliminar Elementos</h2>
+    <p>
+        La operación de eliminar consiste en quitar uno o más elementos de la lista. Puede eliminarse un elemento específico, o bien, eliminar un elemento en una posición determinada.
+    </p>
+    <ul>
+        <li><strong>Eliminar por valor</strong>: En algunas listas, puedes eliminar un elemento específico, independientemente de su posición.</li>
+        <li><strong>Eliminar por índice</strong>: En otras listas, puedes eliminar un elemento dado su índice en la lista.</li>
+    </ul>
+
+    <h3>Ejemplo de Eliminación en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploEliminacion {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+        listaDeNombres.add("Carlos");
+
+        // Eliminar por valor
+        listaDeNombres.remove("María");
+
+        // Eliminar por índice
+        listaDeNombres.remove(1);
+
+        System.out.println("Lista después de eliminaciones: " + listaDeNombres);
+    }
+}
+    </code></pre>
+
+    <h2>3. Acceder a Elementos</h2>
+    <p>
+        La operación de acceder a elementos consiste en obtener un valor en una posición específica de la lista. Puedes acceder a los elementos mediante su índice, que empieza desde 0.
+    </p>
+    <ul>
+        <li><strong>Acceso por índice</strong>: Puedes acceder al elemento en una posición específica usando su índice.</li>
+    </ul>
+
+    <h3>Ejemplo de Acceso a Elementos en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploAcceso {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+        listaDeNombres.add("Carlos");
+
+        // Acceder a un elemento
+        String nombre = listaDeNombres.get(1);  // Accede al segundo elemento (María)
+        System.out.println("El segundo nombre en la lista es: " + nombre);
+    }
+}
+    </code></pre>
+
+    <h2>4. Buscar Elementos</h2>
+    <p>
+        Buscar en una lista consiste en comprobar si un valor está presente en la lista. Algunas listas permiten hacer búsquedas rápidas, mientras que otras requieren recorrer la lista hasta encontrar el valor.
+    </p>
+    <ul>
+        <li><strong>Buscar por valor</strong>: Algunas listas permiten buscar un elemento específico dentro de ellas.</li>
+        <li><strong>Buscar por índice</strong>: También es posible realizar una búsqueda para encontrar el índice de un valor específico.</li>
+    </ul>
+
+    <h3>Ejemplo de Búsqueda en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploBusqueda {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+        listaDeNombres.add("Carlos");
+
+        // Buscar un elemento en la lista
+        boolean encontrado = listaDeNombres.contains("María");
+
+        if (encontrado) {
+            System.out.println("María está en la lista.");
+        } else {
+            System.out.println("María no está en la lista.");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Recorrer la Lista</h2>
+    <p>
+        Recorrer una lista significa iterar a través de todos sus elementos. Existen varias formas de recorrer una lista, como utilizar un bucle for, un bucle foreach, o iteradores.
+    </p>
+    <ul>
+        <li><strong>Recorrido con bucle for</strong>: Puedes usar un bucle para recorrer la lista y acceder a cada elemento.</li>
+        <li><strong>Recorrido con foreach</strong>: Una forma más sencilla de recorrer una lista es con un foreach, que itera automáticamente sobre los elementos.</li>
+    </ul>
+
+    <h3>Ejemplo de Recorrido en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class EjemploRecorrido {
+    public static void main(String[] args) {
+        ArrayList<String> listaDeNombres = new ArrayList<>();
+        listaDeNombres.add("Juan");
+        listaDeNombres.add("María");
+        listaDeNombres.add("Carlos");
+
+        // Recorrer la lista con un bucle for
+        System.out.println("Recorrido con bucle for:");
+        for (String nombre : listaDeNombres) {
+            System.out.println(nombre);
+        }
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las operaciones básicas con listas son esenciales para manipular los datos que almacenamos en ellas. Estas operaciones incluyen insertar, eliminar, acceder, buscar y recorrer los elementos de la lista. Dependiendo del tipo de lista que estés utilizando (estática, dinámica, enlazada), las implementaciones y la eficiencia de estas operaciones pueden variar.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

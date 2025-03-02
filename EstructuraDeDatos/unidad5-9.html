@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mezcla Natural en Algoritmos de Ordenamiento Externos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Mezcla Natural en Algoritmos de Ordenamiento Externos</h1>
+
+    <p>
+        La **mezcla natural** es un algoritmo de ordenamiento utilizado para combinar bloques de datos que ya están parcialmente ordenados, optimizando el proceso de fusión. Esta técnica es una mejora de la mezcla directa y se utiliza en el contexto de los algoritmos de ordenamiento externos, donde los datos no pueden ser cargados completamente en la memoria, y deben ser fusionados desde varios archivos.
+    </p>
+
+    <h2>1. ¿Qué es la Mezcla Natural?</h2>
+    <p>
+        La mezcla natural es un algoritmo de fusión que se aprovecha de las secuencias ya ordenadas dentro de un archivo. En lugar de ordenar completamente los bloques antes de la fusión, la mezcla natural busca y fusiona los segmentos que ya están ordenados de manera natural, minimizando la cantidad de trabajo que debe realizarse.
+    </p>
+
+    <h3>Proceso de Mezcla Natural:</h3>
+    <p>
+        En la mezcla natural, el algoritmo divide un archivo en bloques que están ya parcialmente ordenados. Luego, se fusionan esos bloques de manera eficiente. El proceso de fusión se realiza de manera similar a la mezcla directa, pero la diferencia es que los bloques ya tienen algunas secuencias ordenadas, lo que hace que el proceso sea más eficiente.
+    </p>
+
+    <pre>
+    Archivo original: 1, 3, 2, 5, 4, 6
+    Bloques parciales ordenados: 1, 3 | 2, 5 | 4, 6
+    
+    Mezcla Natural:
+    Resultado: 1, 2, 3, 4, 5, 6
+    </pre>
+
+    <h2>2. ¿Por qué se usa la Mezcla Natural?</h2>
+    <p>
+        La mezcla natural es útil porque reduce la cantidad de trabajo necesario para ordenar archivos grandes. En lugar de ordenar todos los datos desde cero, el algoritmo solo necesita trabajar con aquellos bloques que no están completamente ordenados. Esto hace que el proceso de ordenamiento sea más rápido y eficiente, especialmente cuando los datos ya están parcialmente ordenados en una secuencia natural.
+    </p>
+
+    <h3>Ventajas de la Mezcla Natural:</h3>
+    <ul>
+        <li>Reduce la cantidad de comparaciones y movimientos de datos, lo que mejora el rendimiento en comparación con la mezcla directa.</li>
+        <li>Aprovecha la existencia de bloques parcialmente ordenados, lo que optimiza el tiempo de ejecución.</li>
+        <li>Es útil para archivos que contienen datos ya en parte ordenados, como aquellos generados por sistemas en tiempo real.</li>
+    </ul>
+
+    <h2>3. Proceso de Mezcla Natural</h2>
+    <p>
+        La mezcla natural comienza detectando bloques consecutivos de datos que ya están ordenados. Estos bloques se identifican mediante la búsqueda de secuencias crecientes dentro de los datos. Una vez que se encuentran los bloques, se fusionan de manera similar a la mezcla directa, hasta obtener un archivo completamente ordenado.
+    </p>
+
+    <pre>
+    Paso 1: Detectar bloques ordenados
+    Bloques detectados: 1, 3 | 2, 5 | 4, 6
+    
+    Paso 2: Fusionar los bloques
+    Bloques fusionados: 1, 2, 3, 4, 5, 6
+    </pre>
+
+    <h2>4. ¿Cuándo es útil la Mezcla Natural?</h2>
+    <p>
+        La mezcla natural es ideal cuando los datos ya están parcialmente ordenados, ya sea porque fueron previamente ordenados o porque llegaron en segmentos ya ordenados. Es una técnica eficiente en sistemas donde los archivos grandes están siendo procesados de manera continua y no es necesario ordenar toda la información desde cero.
+    </p>
+
+    <h3>Ejemplo práctico de uso:</h3>
+    <p>
+        Imagina un sistema de procesamiento de datos de un sensor que genera datos en tiempo real y los almacena en un archivo. Si el archivo ya contiene datos ordenados en bloques, la mezcla natural puede ser utilizada para fusionar esos bloques sin necesidad de realizar un ordenamiento completo, lo que ahorra tiempo y recursos.
+    </p>
+
+    <h2>5. Comparación con la Mezcla Directa</h2>
+    <p>
+        Mientras que en la **mezcla directa** todos los bloques deben ser ordenados antes de fusionarse, la **mezcla natural** aprovecha los bloques que ya están ordenados. Esto hace que la mezcla natural sea más eficiente en muchos casos, ya que reduce el número de operaciones necesarias.
+    </p>
+
+    <h3>Ejemplo de diferencia:</h3>
+    <pre>
+    Mezcla Directa:
+    Archivo original: 5, 2, 3, 1, 4
+    Bloques ordenados: 5, 2, 3, 1, 4 (todo se ordena)
+    
+    Mezcla Natural:
+    Archivo original: 5, 2, 3, 1, 4
+    Bloques ordenados: 5 | 2, 3 | 1, 4 (se fusionan solo los bloques no ordenados)
+    Resultado: 1, 2, 3, 4, 5
+    </pre>
+
+    <h2>6. Desventajas de la Mezcla Natural</h2>
+    <ul>
+        <li>Si los bloques de datos no están parcialmente ordenados, el algoritmo puede no ser tan eficiente como la mezcla directa.</li>
+        <li>Requiere una detección precisa de los bloques ordenados, lo que puede ser un proceso costoso en algunos casos.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        La mezcla natural es una mejora eficiente de la mezcla directa, aprovechando los bloques de datos que ya están parcialmente ordenados. Es especialmente útil cuando se procesan archivos grandes con datos que ya están ordenados de alguna forma. Al reducir la cantidad de trabajo de ordenamiento, la mezcla natural optimiza el tiempo de procesamiento, lo que la convierte en una herramienta valiosa para trabajar con grandes volúmenes de datos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

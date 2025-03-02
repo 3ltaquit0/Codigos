@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Manejo de Memoria en Java</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Ejemplos de Manejo de Memoria en Java</h1>
+    <p>
+        El <strong>manejo de memoria</strong> en Java es una parte fundamental para garantizar el rendimiento y la estabilidad de los programas. 
+        A continuación, se presentan algunos ejemplos clave para comprender cómo se maneja la memoria en Java.
+    </p>
+
+    <h2>1. Asignación de Memoria</h2>
+    <p>
+        En Java, la memoria se asigna automáticamente cuando se crean objetos utilizando el operador <code>new</code>.
+    </p>
+    <pre><code class="language-java">
+public class ManejoDeMemoria {
+    public static void main(String[] args) {
+        // Asignación de memoria para un objeto
+        String saludo = new String("Hola, Mundo!");
+        System.out.println(saludo);
+    }
+}
+    </code></pre>
+
+    <h2>2. Liberación de Memoria con Garbage Collector</h2>
+    <p>
+        Java maneja la liberación de memoria de forma automática mediante el <strong>Garbage Collector</strong>, que elimina los objetos no utilizados.
+    </p>
+    <pre><code class="language-java">
+public class GarbageCollector {
+    public static void main(String[] args) {
+        // Crear objetos
+        Object obj1 = new Object();
+        Object obj2 = new Object();
+        
+        // Eliminación de objetos
+        obj1 = null; // Hacemos que obj1 sea elegible para ser recolectado por el GC
+        
+        // Ejecutar el Garbage Collector manualmente
+        System.gc(); // Solicitamos la recolección de basura, aunque el sistema lo hace automáticamente
+    }
+}
+    </code></pre>
+
+    <h2>3. Ámbito de las Variables y Memoria</h2>
+    <p>
+        Las variables locales se almacenan en la pila y son eliminadas cuando el método termina su ejecución.
+    </p>
+    <pre><code class="language-java">
+public class VariablesYMemoria {
+    public static void main(String[] args) {
+        // Variables locales almacenadas en la pila
+        int numero = 10;
+        System.out.println("Número: " + numero);
+    }
+}
+    </code></pre>
+
+    <h2>4. Ejemplo de Fugas de Memoria</h2>
+<p>
+    Una fuga de memoria ocurre cuando un objeto ya no es necesario, pero todavía hay referencias a él, impidiendo que el Garbage Collector lo elimine.
+</p>
+<pre><code class="language-java">
+import java.util.ArrayList;
+
+public class FugasDeMemoria {
+    public static void main(String[] args) {
+        ArrayList&lt;Object&gt; lista = new ArrayList&lt;&gt;();
+        
+        // Se crea un objeto pero no se elimina adecuadamente
+        for (int i = 0; i &lt; 1000000; i++) {
+            lista.add(new Object());
+        }
+
+        System.out.println("Se han agregado 1 millón de objetos a la lista.");
+    }
+}
+</code></pre>
+
+
+    <h2>Conclusión</h2>
+    <p>
+        En Java, la gestión de la memoria se maneja de manera automática mediante la asignación de memoria dinámica y el Garbage Collector. 
+        Sin embargo, es importante comprender cómo funciona para evitar problemas como las fugas de memoria.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

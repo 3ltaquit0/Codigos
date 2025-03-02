@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Estática - Explicación Sencilla</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Memoria Estática en Programación</h1>
+
+    <p>
+        ¿Alguna vez te has preguntado cómo una computadora guarda datos cuando estás ejecutando un programa? Bueno, todo esto tiene que ver con la memoria. En programación, la memoria puede dividirse en diferentes tipos, y uno de ellos es la <strong>memoria estática</strong>. ¡Vamos a descubrir qué significa eso!
+    </p>
+
+    <h2>¿Qué es la Memoria Estática?</h2>
+    <p>
+        La memoria estática es un tipo de memoria que se asigna y se organiza cuando se empieza a ejecutar un programa. Lo interesante es que, una vez que se asigna esta memoria, su tamaño y contenido no cambian durante toda la ejecución del programa. ¡Es como tener una caja con una capacidad fija para guardar cosas!
+    </p>
+
+    <h2>¿Cómo Funciona?</h2>
+    <p>
+        Cuando creamos una variable o constante en un programa, esa variable o constante ocupa un espacio de memoria. Si la memoria es <strong>estática</strong>, significa que este espacio se asigna al principio y no puede cambiar durante la ejecución. Este tipo de memoria es común en lenguajes como C, C++, o incluso en Java con variables que tienen una duración de vida fija.
+    </p>
+    <p>
+        Imagina que estás haciendo una receta y necesitas un espacio específico para guardar todos los ingredientes. Si este espacio es estático, no podrás agregar más ingredientes o quitar algunos una vez que comiences la receta, ¡pero sabes que ese espacio estará disponible para ti durante todo el proceso!
+    </p>
+
+    <h2>Ejemplo Sencillo</h2>
+    <p>
+        Pongamos un ejemplo sencillo para que lo entiendas mejor. Imagina que tienes un programa donde declaras una variable para guardar un número. Esta variable se guardará en la memoria estática si su valor no cambia durante la ejecución del programa.
+    </p>
+    <pre><code class="language-java">
+public class EjemploMemoriaEstatica {
+    public static void main(String[] args) {
+        // Esta variable ocupa espacio en la memoria estática
+        int numero = 10; // Se asigna un valor fijo
+        System.out.println("El número es: " + numero);
+    }
+}
+    </code></pre>
+    <p>
+        En el código anterior, la variable <code>numero</code> ocupa un espacio en memoria que no cambia durante la ejecución del programa. Esta es una forma de memoria estática.
+    </p>
+
+    <h2>¿Cuáles Son sus Ventajas?</h2>
+    <ul>
+        <li><strong>Rápida y eficiente:</strong> Como la memoria estática se asigna al inicio, no hay necesidad de buscar espacio dinámicamente durante la ejecución, lo que la hace rápida y eficiente.</li>
+        <li><strong>Predecible:</strong> El tamaño y la ubicación de los datos en la memoria no cambian, lo que hace que el programa sea más predecible.</li>
+    </ul>
+
+    <h2>¿Cuáles Son sus Desventajas?</h2>
+    <ul>
+        <li><strong>Limitada:</strong> La cantidad de memoria que puedes usar es fija, lo que significa que no puedes agregar más datos si tu programa necesita más espacio de lo que asignaste al principio.</li>
+        <li><strong>Flexibilidad reducida:</strong> Si algo sale mal y necesitas cambiar el tamaño de la memoria, no puedes hacerlo con memoria estática. Tendrías que cambiar todo el programa.</li>
+    </ul>
+
+    <h2>¿Dónde Se Usa la Memoria Estática?</h2>
+    <p>
+        La memoria estática se utiliza en situaciones donde se sabe que el tamaño de la memoria no cambiará. Por ejemplo, en sistemas embebidos o en programas con estructuras fijas, como una calculadora sencilla o un software que gestiona datos en un espacio limitado.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        En resumen, la memoria estática es aquella que se asigna al inicio del programa y que no cambia durante su ejecución. Es rápida y predecible, pero también limitada y rígida. Es importante conocerla porque ayuda a que los programas funcionen de manera eficiente, especialmente cuando se sabe cuánto espacio se necesitará desde el principio.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Básicas en Grafos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Operaciones Básicas en Grafos</h1>
+
+    <p>
+        Los grafos son estructuras complejas que permiten modelar relaciones y procesos de manera eficiente. Para poder trabajar con ellos, existen varias operaciones básicas que nos permiten manipular y recorrer estos grafos. Estas operaciones son fundamentales para comprender cómo interactuar con los grafos en algoritmos y aplicaciones informáticas.
+    </p>
+
+    <h2>1. ¿Qué son las operaciones básicas en grafos?</h2>
+    <p>
+        Las operaciones básicas sobre grafos son aquellas que nos permiten realizar las tareas más comunes al trabajar con grafos, tales como insertar nodos y aristas, eliminar elementos, y recorrer el grafo. Estas operaciones nos permiten construir, modificar y explorar los grafos de manera eficiente.
+    </p>
+
+    <h2>2. Inserción de nodos y aristas</h2>
+    <p>
+        Una de las operaciones más básicas y comunes en un grafo es la inserción de nodos y aristas. A través de esta operación, podemos agregar nuevos elementos a un grafo para expandir su estructura.
+    </p>
+    <p>
+        - **Inserción de nodos:** Se agregan nuevos nodos al grafo.
+        - **Inserción de aristas:** Se agregan conexiones entre los nodos ya existentes.
+    </p>
+    <p>
+        Ejemplo de cómo insertar una arista entre dos nodos en un grafo dirigido:
+        <pre>
+        grafo.agregarArista(nodo1, nodo2);
+        </pre>
+    </p>
+
+    <h2>3. Eliminación de nodos y aristas</h2>
+    <p>
+        Al igual que insertamos nodos y aristas, también necesitamos eliminar ciertos elementos del grafo cuando ya no son necesarios. Esto es útil para eliminar nodos o conexiones obsoletas o para modificar la estructura del grafo.
+    </p>
+    <p>
+        - **Eliminación de nodos:** Elimina un nodo y todas las aristas asociadas a él.
+        - **Eliminación de aristas:** Elimina una conexión específica entre dos nodos.
+    </p>
+    <p>
+        Ejemplo de cómo eliminar una arista:
+        <pre>
+        grafo.eliminarArista(nodo1, nodo2);
+        </pre>
+    </p>
+
+    <h2>4. Búsqueda de elementos en un grafo</h2>
+    <p>
+        Otra operación importante es la búsqueda de elementos dentro de un grafo. Dependiendo de la estructura del grafo y de los algoritmos empleados, podemos realizar búsquedas para encontrar nodos específicos o aristas entre nodos.
+    </p>
+    <p>
+        - **Búsqueda de nodos:** Buscar un nodo específico en el grafo.
+        - **Búsqueda de aristas:** Buscar una conexión (arista) específica entre dos nodos.
+    </p>
+    <p>
+        Ejemplo de cómo buscar un nodo:
+        <pre>
+        Nodo nodoBuscado = grafo.buscarNodo("nombreNodo");
+        </pre>
+    </p>
+
+    <h2>5. Recorrido de un grafo</h2>
+    <p>
+        El recorrido de un grafo es una operación que consiste en visitar todos los nodos del grafo. Existen dos métodos principales de recorrido de grafos: el recorrido en <strong>profundidad</strong> (DFS, por sus siglas en inglés) y el recorrido en <strong>anchura</strong> (BFS, por sus siglas en inglés).
+    </p>
+    <p>
+        - **DFS (Depth-First Search):** Recorrido en profundidad, que comienza desde un nodo y visita lo más profundo posible en una rama antes de retroceder.
+        - **BFS (Breadth-First Search):** Recorrido en anchura, que explora los nodos vecinos más cercanos primero antes de ir más profundo.
+    </p>
+    <p>
+        Ejemplo de recorrido en profundidad (DFS):
+        <pre>
+        grafo.dfs(inicio);
+        </pre>
+        Ejemplo de recorrido en anchura (BFS):
+        <pre>
+        grafo.bfs(inicio);
+        </pre>
+    </p>
+
+    <h2>6. Verificación de la existencia de aristas</h2>
+    <p>
+        A veces necesitamos saber si existe una arista entre dos nodos específicos sin necesidad de recorrer todo el grafo. Esta operación nos permite verificar rápidamente si una conexión está presente.
+    </p>
+    <p>
+        Ejemplo de cómo verificar si existe una arista:
+        <pre>
+        boolean existe = grafo.existeArista(nodo1, nodo2);
+        </pre>
+    </p>
+
+    <h2>7. Determinación del grado de un nodo</h2>
+    <p>
+        El <strong>grado</strong> de un nodo en un grafo es el número de aristas que están conectadas a ese nodo. El grado es una medida importante en muchos algoritmos y tiene muchas aplicaciones, como determinar la conectividad de un grafo.
+    </p>
+    <p>
+        Ejemplo de cómo calcular el grado de un nodo:
+        <pre>
+        int grado = grafo.obtenerGrado(nodo);
+        </pre>
+    </p>
+
+    <h2>8. Verificación de la conectividad de un grafo</h2>
+    <p>
+        La conectividad de un grafo se refiere a la propiedad de que existe un camino entre cada par de nodos. Determinar si un grafo es conectado es esencial en problemas como la transmisión de datos o la resolución de rutas.
+    </p>
+    <p>
+        Ejemplo de cómo verificar si un grafo es conexo:
+        <pre>
+        boolean conectado = grafo.esConexo();
+        </pre>
+    </p>
+
+    <h2>9. Otras operaciones sobre grafos</h2>
+    <p>
+        Además de las operaciones anteriores, existen otras más avanzadas y específicas, como:
+        <ul>
+            <li>Encontrar el camino más corto entre dos nodos (algoritmo de Dijkstra o Floyd-Warshall).</li>
+            <li>Determinar ciclos en el grafo.</li>
+            <li>Detectar componentes conectados en un grafo no dirigido.</li>
+            <li>Encontrar árboles de expansión mínima (algoritmo de Prim o Kruskal).</li>
+        </ul>
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las operaciones básicas en grafos son esenciales para manipular y trabajar con grafos de manera eficiente. Desde la inserción de nodos hasta el recorrido y la verificación de la conectividad, estas operaciones forman la base de muchos algoritmos fundamentales en informática. Dependiendo de la tarea que necesitemos realizar, elegiremos la operación más adecuada para optimizar nuestros resultados.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

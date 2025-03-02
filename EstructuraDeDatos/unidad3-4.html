@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones de las Pilas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Aplicaciones de las Pilas</h1>
+
+    <p>
+        Las pilas son estructuras de datos que siguen el principio **LIFO** (Last In, First Out). Gracias a este principio, las pilas son muy útiles en diversas aplicaciones de programación. A continuación, exploraremos algunas de las aplicaciones más comunes de las pilas en la informática.
+    </p>
+
+    <h2>1. Deshacer/Restaurar en Aplicaciones</h2>
+    <p>
+        Una de las aplicaciones más conocidas de las pilas es la función **deshacer/restaurar** que se encuentra en muchas aplicaciones, como procesadores de texto, editores de imágenes, y otras herramientas. 
+        Cada vez que realizas una acción (como escribir o eliminar algo), esa acción se guarda en una pila. Si deseas deshacer la acción, se realiza un **pop** para eliminar la última acción realizada y restaurar el estado anterior.
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class DeshacerRestaurar {
+    public static void main(String[] args) {
+        Stack<String> pila = new Stack<>();
+        
+        // Agregar acciones a la pila
+        pila.push("Escribir texto");
+        pila.push("Eliminar texto");
+        
+        // Deshacer la última acción
+        System.out.println("Acción deshecha: " + pila.pop()); // Eliminar texto
+        System.out.println("Acción deshecha: " + pila.pop()); // Escribir texto
+    }
+}
+    </code></pre>
+
+    <h2>2. Evaluación de Expresiones</h2>
+    <p>
+        Las pilas también se utilizan para la evaluación de expresiones matemáticas, como las expresiones infijas, postfijas o prefijas. 
+        Al evaluar una expresión en notación postfija (también conocida como **notación polaca inversa**), se utilizan pilas para almacenar los operandos y realizar operaciones cuando se encuentran los operadores.
+    </p>
+    <pre><code class="language-java">
+import java.util.Stack;
+
+public class EvaluacionPostfija {
+    public static void main(String[] args) {
+        String expresion = "23*5+";
+        Stack<Integer> pila = new Stack<>();
+        
+        // Evaluación de la expresión postfija "23*5+"
+        for (char c : expresion.toCharArray()) {
+            if (Character.isDigit(c)) {
+                pila.push(c - '0'); // Agregar operandos a la pila
+            } else {
+                int b = pila.pop();
+                int a = pila.pop();
+                switch (c) {
+                    case '+': pila.push(a + b); break;
+                    case '*': pila.push(a * b); break;
+                }
+            }
+        }
+        
+        System.out.println("Resultado: " + pila.pop()); // Resultado de la expresión
+    }
+}
+    </code></pre>
+
+    <h2>3. Llamadas a Funciones (Pilas de Ejecución)</h2>
+    <p>
+        Las pilas también son fundamentales en la gestión de llamadas a funciones en los lenguajes de programación. 
+        Cada vez que se llama a una función, el sistema operativo guarda la dirección de retorno y el estado de la ejecución en una pila. Cuando la función termina, se utiliza la información almacenada para volver al punto donde se encontraba la ejecución.
+    </p>
+    <pre><code class="language-java">
+public class LlamadasFunciones {
+    public static void main(String[] args) {
+        funcionA();
+    }
+    
+    public static void funcionA() {
+        System.out.println("Ejecutando función A");
+        funcionB();
+    }
+
+    public static void funcionB() {
+        System.out.println("Ejecutando función B");
+    }
+}
+    </code></pre>
+    <p>
+        En este caso, las funciones <code>funcionA</code> y <code>funcionB</code> se apilan en la pila de ejecución. La ejecución comienza en <code>funcionA</code>, y luego se apila <code>funcionB</code>. Una vez que <code>funcionB</code> termina, la ejecución vuelve a <code>funcionA</code>.
+    </p>
+
+    <h2>4. Recursividad</h2>
+    <p>
+        La recursividad es un caso particular en el que una función se llama a sí misma. Cada llamada recursiva se apila en la pila de ejecución hasta que se alcanza la condición base. 
+        Después, las llamadas recursivas se van desapilando mientras se devuelve el resultado de la ejecución.
+    </p>
+    <pre><code class="language-java">
+public class Recursividad {
+    public static void main(String[] args) {
+        System.out.println(factorial(5)); // Resultado: 120
+    }
+
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        return n * factorial(n - 1); // Llamada recursiva
+    }
+}
+    </code></pre>
+    <p>
+        En este ejemplo, las llamadas recursivas a la función <code>factorial</code> se apilan hasta llegar a la base (cuando <code>n</code> es igual a 0). Luego, las llamadas se desapilan, devolviendo el resultado.
+    </p>
+
+    <h2>5. Algoritmos de Búsqueda y Ordenamiento</h2>
+    <p>
+        Algunos algoritmos de búsqueda y ordenamiento, como la **búsqueda en profundidad** (DFS) en grafos y el algoritmo de ordenamiento **QuickSort**, utilizan pilas de forma implícita o explícita. 
+        Estos algoritmos aprovechan el principio **LIFO** para explorar nodos o particiones de datos de manera eficiente.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las pilas son estructuras de datos esenciales que tienen una amplia variedad de aplicaciones en programación. Desde la gestión de operaciones de deshacer hasta la implementación de algoritmos complejos, las pilas son fundamentales para organizar y manejar datos de manera eficiente.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

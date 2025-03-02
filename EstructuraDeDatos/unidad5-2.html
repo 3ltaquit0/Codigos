@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Ordenamiento por Burbuja</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Algoritmo de Ordenamiento por Burbuja</h1>
+
+    <p>
+        El algoritmo de ordenamiento por burbuja (Bubble Sort) es uno de los algoritmos más sencillos de entender y de implementar. Su funcionamiento consiste en comparar elementos adyacentes en una lista o arreglo y, si están en el orden incorrecto, intercambiarlos. Este proceso se repite varias veces hasta que todos los elementos estén ordenados de acuerdo al criterio establecido (generalmente ascendente o descendente).
+    </p>
+
+    <h2>1. ¿Cómo funciona el algoritmo de burbuja?</h2>
+    <p>
+        La idea detrás del ordenamiento por burbuja es simple: se compara cada par de elementos adyacentes en la lista y se intercambian si no están en el orden deseado. Al final de cada pasaje, el elemento más grande "burbujea" hacia el final de la lista, de ahí su nombre.
+    </p>
+    <p>
+        El proceso se repite varias veces, y en cada pasada se va moviendo el siguiente elemento más grande hacia su lugar correspondiente. El algoritmo termina cuando ya no es necesario realizar más intercambios.
+    </p>
+
+    <h2>2. Paso a paso del algoritmo de burbuja</h2>
+    <ol>
+        <li>Comienza en el primer elemento de la lista.</li>
+        <li>Compara el elemento actual con el siguiente.</li>
+        <li>Si el elemento actual es mayor que el siguiente, se intercambian.</li>
+        <li>Continúa hasta el final de la lista.</li>
+        <li>Repite el proceso para los elementos restantes, excluyendo los elementos ya ordenados.</li>
+        <li>El proceso termina cuando no se necesitan más intercambios.</li>
+    </ol>
+
+    <h2>3. Ejemplo de ordenamiento por burbuja</h2>
+    <p>
+        Supongamos que tenemos la siguiente lista de números desordenados: <strong>[5, 3, 8, 4, 2]</strong>.
+    </p>
+    <p>
+        Durante el primer paso, comparamos 5 con 3, como 5 es mayor que 3, los intercambiamos. La lista se convierte en <strong>[3, 5, 8, 4, 2]</strong>.
+    </p>
+    <p>
+        Luego, comparamos 5 con 8. Como 5 es menor que 8, no se realiza ningún cambio. Continuamos con 8 y 4, y como 8 es mayor que 4, los intercambiamos, lo que da como resultado <strong>[3, 5, 4, 8, 2]</strong>.
+    </p>
+    <p>
+        Finalmente, comparamos 8 con 2, los intercambiamos, obteniendo la lista <strong>[3, 5, 4, 2, 8]</strong>.
+    </p>
+    <p>
+        El proceso se repite para las siguientes pasadas hasta que la lista está completamente ordenada.
+    </p>
+
+    <h2>4. Implementación en Java</h2>
+    <pre><code class="language-java">
+public class BubbleSort {
+    public static void bubbleSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    // Intercambiar los elementos
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {5, 3, 8, 4, 2};
+        bubbleSort(array);
+        System.out.println("Lista ordenada: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Complejidad del algoritmo de burbuja</h2>
+    <p>
+        La complejidad temporal del algoritmo de ordenamiento por burbuja en el peor caso es O(n²), donde n es el número de elementos en la lista. Esto se debe a que en cada pasada se compara cada par de elementos, lo que resulta en un número de comparaciones cuadrático.
+    </p>
+    <p>
+        En el mejor de los casos, si la lista ya está ordenada, el algoritmo puede terminar en O(n) si se optimiza para detectar que no hubo intercambios en una pasada.
+    </p>
+
+    <h2>6. Ventajas y desventajas del algoritmo de burbuja</h2>
+    <h3>Ventajas</h3>
+    <ul>
+        <li>Fácil de entender y de implementar.</li>
+        <li>No requiere memoria adicional, ya que es un algoritmo de ordenamiento en el lugar (in-place).</li>
+    </ul>
+
+    <h3>Desventajas</h3>
+    <ul>
+        <li>Es ineficiente para listas grandes, ya que tiene una complejidad O(n²).</li>
+        <li>No es adecuado para conjuntos de datos que no sean pequeños o medianos.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        El algoritmo de ordenamiento por burbuja es una excelente opción para aprender sobre algoritmos de ordenamiento debido a su simplicidad. Sin embargo, para listas más grandes, existen algoritmos más eficientes, como Quick Sort o Merge Sort, que tienen una complejidad mejor (O(n log n)) y son mucho más rápidos en la práctica.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

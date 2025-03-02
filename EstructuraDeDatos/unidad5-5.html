@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Ordenamiento Radix</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Algoritmo de Ordenamiento Radix</h1>
+
+    <p>
+        El algoritmo **Radix Sort** es un algoritmo de ordenamiento no comparativo que ordena los números (o cadenas) en función de sus dígitos. En lugar de comparar elementos, el algoritmo agrupa los elementos según sus dígitos en cada posición y los ordena de manera iterativa. Es eficiente cuando se trabaja con números o cadenas de longitud fija, especialmente cuando los valores de los dígitos no son demasiado grandes.
+    </p>
+
+    <h2>1. ¿Cómo funciona el algoritmo Radix?</h2>
+    <p>
+        El algoritmo Radix ordena los números en función de los dígitos de menor a mayor (o viceversa). Comienza con el dígito menos significativo y va ordenando en función de cada dígito, de modo que, al final del proceso, los números quedan ordenados. Radix Sort utiliza un subalgoritmo de ordenamiento estable como Counting Sort para ordenar los elementos según cada dígito.
+    </p>
+
+    <h2>2. Pasos del algoritmo Radix</h2>
+    <ol>
+        <li>Ordenar los números o elementos en función de los dígitos en la posición más baja (las unidades).</li>
+        <li>Repetir el paso anterior para cada posición de los dígitos (decenas, centenas, etc.).</li>
+        <li>Al finalizar, el arreglo estará ordenado de menor a mayor (o viceversa) según todos los dígitos.</li>
+    </ol>
+
+    <h2>3. Ejemplo de Radix Sort</h2>
+    <p>
+        Supongamos que tenemos el siguiente arreglo de números desordenados: <strong>[170, 45, 75, 90, 802, 24, 2, 66]</strong>.
+    </p>
+    <p>
+        El algoritmo comienza ordenando los números en función del dígito de las unidades, luego ordena por las decenas, y finalmente por las centenas (si es necesario).
+    </p>
+    <p>
+        En este caso, el proceso sería el siguiente:
+    </p>
+    <ul>
+        <li>Ordenando por el primer dígito (unidades): [170, 802, 2, 24, 45, 75, 90, 66]</li>
+        <li>Ordenando por el segundo dígito (decenas): [170, 802, 2, 24, 45, 75, 66, 90]</li>
+        <li>Ordenando por el tercer dígito (centenas): [2, 24, 45, 66, 75, 90, 170, 802]</li>
+    </ul>
+
+    <h2>4. Implementación en Java</h2>
+    <pre><code class="language-java">
+import java.util.Arrays;
+
+public class RadixSort {
+    // Función para obtener el valor máximo en un arreglo
+    public static int getMax(int[] array) {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    // Función de ordenamiento por radix
+    public static void radixSort(int[] array) {
+        // Encuentra el valor máximo
+        int max = getMax(array);
+
+        // Ordena por cada dígito
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort(array, exp);
+        }
+    }
+
+    // Función para hacer un Counting Sort basado en el dígito de posición 'exp'
+    public static void countingSort(int[] array, int exp) {
+        int n = array.length;
+        int[] output = new int[n];
+        int[] count = new int[10]; // Contador para los dígitos (0-9)
+
+        // Cuenta las ocurrencias de los dígitos
+        for (int i = 0; i < n; i++) {
+            count[(array[i] / exp) % 10]++;
+        }
+
+        // Cambia count[i] para que ahora contenga la posición de este dígito en output[]
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        // Construye el arreglo de salida
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(array[i] / exp) % 10] - 1] = array[i];
+            count[(array[i] / exp) % 10]--;
+        }
+
+        // Copia el arreglo de salida a array[]
+        System.arraycopy(output, 0, array, 0, n);
+    }
+
+    public static void main(String[] args) {
+        int[] array = {170, 45, 75, 90, 802, 24, 2, 66};
+        radixSort(array);
+        
+        System.out.println("Lista ordenada:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Complejidad del algoritmo Radix</h2>
+    <p>
+        La complejidad temporal del algoritmo Radix depende de varios factores, como el número de elementos que se están ordenando y el número de dígitos. La complejidad en el mejor, peor y promedio de los casos es:
+    </p>
+    <ul>
+        <li><strong>Complejidad temporal:</strong> O(n * k), donde n es el número de elementos y k es el número de dígitos.</li>
+        <li><strong>Complejidad espacial:</strong> O(n), ya que el algoritmo necesita espacio adicional para el arreglo de salida y el contador de dígitos.</li>
+    </ul>
+    <p>
+        En la práctica, Radix Sort puede ser más eficiente que algoritmos como QuickSort o MergeSort cuando se trabaja con grandes conjuntos de números con dígitos pequeños.
+    </p>
+
+    <h2>6. Ventajas y desventajas del algoritmo Radix</h2>
+    <h3>Ventajas</h3>
+    <ul>
+        <li>No realiza comparaciones entre los elementos, lo que puede hacerlo más eficiente en ciertos casos.</li>
+        <li>Es un algoritmo de ordenamiento estable, lo que significa que no cambia el orden relativo de los elementos con valores iguales.</li>
+        <li>Es eficiente cuando los números son relativamente pequeños o tienen un número limitado de dígitos.</li>
+    </ul>
+
+    <h3>Desventajas</h3>
+    <ul>
+        <li>El algoritmo es menos eficiente cuando se trabaja con números grandes con muchos dígitos o con cadenas largas.</li>
+        <li>Necesita espacio adicional para el arreglo de salida y el contador de dígitos.</li>
+        <li>Su rendimiento depende de la cantidad de dígitos de los números, lo que puede hacer que sea menos eficiente en ciertos casos.</li>
+    </ul>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        El algoritmo Radix Sort es eficiente cuando se trata de grandes volúmenes de datos numéricos, especialmente cuando los números tienen pocos dígitos. Es un algoritmo de ordenamiento no comparativo que utiliza el concepto de ordenar los elementos en función de sus dígitos. Aunque tiene algunas limitaciones, como la necesidad de espacio adicional y su dependencia de los dígitos de los números, sigue siendo una opción viable y eficiente para ordenamientos en ciertos contextos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

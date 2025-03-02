@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Ordenamiento Externos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Algoritmos de Ordenamiento Externos</h1>
+
+    <p>
+        Los **algoritmos de ordenamiento externos** son algoritmos diseñados para ordenar datos que no caben completamente en la memoria principal (RAM) del sistema. En lugar de trabajar con datos que están completamente cargados en la memoria, estos algoritmos realizan operaciones de lectura y escritura en archivos o dispositivos de almacenamiento secundario (como discos duros o SSD). Son útiles cuando se necesita ordenar grandes cantidades de datos que exceden la capacidad de la memoria disponible.
+    </p>
+
+    <h2>1. ¿Por qué usar algoritmos de ordenamiento externos?</h2>
+    <p>
+        En situaciones donde los datos a ordenar son demasiado grandes para caber en la memoria RAM, es necesario utilizar algoritmos que puedan manejar estos datos de forma eficiente sin sobrecargar la memoria. Los algoritmos de ordenamiento externos están diseñados para optimizar las operaciones de entrada y salida (E/S) de los datos entre la memoria y los dispositivos de almacenamiento, minimizando el número de accesos al disco y mejorando el rendimiento general.
+    </p>
+
+    <h2>2. Tipos de Algoritmos de Ordenamiento Externos</h2>
+
+    <h3>2.1. Ordenamiento por mezcla externa (External Merge Sort)</h3>
+    <p>
+        El algoritmo más conocido de ordenamiento externo es el **Ordenamiento por Mezcla Externa**. Este algoritmo divide los datos en bloques que pueden caber en la memoria, los ordena por separado y luego los fusiona. Es un algoritmo basado en el concepto de "divide y vencerás", donde los datos se dividen en partes más pequeñas que se pueden manejar en la memoria.
+    </p>
+    <h4>Pasos del algoritmo de mezcla externa:</h4>
+    <ol>
+        <li>Dividir los datos en bloques que caben en la memoria.</li>
+        <li>Ordenar cada bloque por separado (normalmente se utiliza algún algoritmo de ordenamiento interno, como QuickSort o MergeSort).</li>
+        <li>Fusionar los bloques ordenados de manera eficiente, uno a uno, hasta que todos los datos estén completamente ordenados.</li>
+    </ol>
+    
+    <h3>2.2. Ordenamiento por distribución externa (External Distribution Sort)</h3>
+    <p>
+        El **Ordenamiento por Distribución Externa** es otro algoritmo que se utiliza cuando los datos no caben en la memoria principal. En este algoritmo, los datos se distribuyen en rangos predefinidos, se almacenan en diferentes bloques o archivos y luego se ordenan. Posteriormente, se combinan los datos ordenados en un archivo final.
+    </p>
+
+    <h2>3. ¿Cómo funciona el Ordenamiento por Mezcla Externa?</h2>
+    <p>
+        Supongamos que tienes una gran cantidad de datos que no caben en la memoria principal. Para aplicar el algoritmo de **Mezcla Externa**, los pasos son los siguientes:
+    </p>
+    <ol>
+        <li>Primero, divide los datos en pequeños bloques que se pueden cargar en la memoria.</li>
+        <li>Ordena cada uno de esos bloques en memoria.</li>
+        <li>Después, fusiona los bloques ordenados de manera eficiente en un único archivo ordenado.</li>
+    </ol>
+
+    <h3>Ejemplo: Ordenamiento por Mezcla Externa</h3>
+    <p>
+        Imagina que tienes el siguiente conjunto de datos desordenados en un archivo grande:
+    </p>
+    <pre>
+    5, 2, 9, 1, 7, 6, 3, 8, 4
+    </pre>
+    <p>
+        Los datos no caben en la memoria, así que el algoritmo los divide en bloques pequeños:
+    </p>
+    <pre>
+    Bloque 1: 5, 2, 9
+    Bloque 2: 1, 7, 6
+    Bloque 3: 3, 8, 4
+    </pre>
+    <p>
+        Luego, ordena cada bloque:
+    </p>
+    <pre>
+    Bloque 1: 2, 5, 9
+    Bloque 2: 1, 6, 7
+    Bloque 3: 3, 4, 8
+    </pre>
+    <p>
+        Finalmente, los bloques ordenados se fusionan para crear el archivo final ordenado:
+    </p>
+    <pre>
+    1, 2, 3, 4, 5, 6, 7, 8, 9
+    </pre>
+    <p>
+        De esta forma, el algoritmo logra ordenar grandes cantidades de datos que no caben en la memoria RAM.
+    </p>
+
+    <h2>4. Ventajas y Desventajas</h2>
+
+    <h3>4.1. Ventajas</h3>
+    <ul>
+        <li>Permite ordenar grandes volúmenes de datos que no caben en la memoria principal.</li>
+        <li>Es eficiente en el manejo de grandes archivos de datos.</li>
+        <li>Reduce el uso de memoria, lo que permite trabajar con datos que de otra manera serían imposibles de ordenar.</li>
+    </ul>
+
+    <h3>4.2. Desventajas</h3>
+    <ul>
+        <li>Requiere un acceso constante a los dispositivos de almacenamiento, lo que puede hacer que el algoritmo sea más lento en comparación con los algoritmos de ordenamiento internos.</li>
+        <li>Puede ser más complejo de implementar que otros algoritmos de ordenamiento.</li>
+        <li>El rendimiento depende en gran medida de la velocidad de acceso a los discos o sistemas de almacenamiento.</li>
+    </ul>
+
+    <h2>5. Aplicaciones de los Algoritmos de Ordenamiento Externos</h2>
+    <p>
+        Los algoritmos de ordenamiento externos son especialmente útiles en áreas donde se manejan grandes volúmenes de datos, como bases de datos, sistemas de archivos y procesamiento de grandes cantidades de información en sistemas de almacenamiento masivo. Algunos ejemplos incluyen:
+    </p>
+    <ul>
+        <li>Procesamiento de grandes archivos de datos en bases de datos.</li>
+        <li>Ordenamiento de registros en sistemas de almacenamiento de archivos.</li>
+        <li>Procesamiento de grandes volúmenes de datos en sistemas de análisis de datos y Big Data.</li>
+    </ul>
+
+    <h2>6. Conclusión</h2>
+    <p>
+        Los **algoritmos de ordenamiento externos** son esenciales cuando se trabaja con grandes volúmenes de datos que no caben en la memoria principal. Su principal ventaja es permitir el ordenamiento eficiente de datos en discos y otros dispositivos de almacenamiento, optimizando el uso de la memoria. Sin embargo, dependen de la velocidad de acceso a los dispositivos de almacenamiento y pueden ser más lentos que los algoritmos internos. A pesar de estas limitaciones, su uso es fundamental en el procesamiento de grandes datos en bases de datos y otros sistemas de almacenamiento.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

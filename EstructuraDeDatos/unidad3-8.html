@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Colas: Simples, Circulares y Bicolas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Tipos de Colas: Simples, Circulares y Bicolas</h1>
+
+    <p>
+        Las colas son estructuras de datos fundamentales que operan bajo el principio **FIFO** (First In, First Out), es decir, el primer elemento en entrar es el primero en salir. Sin embargo, existen diferentes tipos de colas, cada una con sus características particulares que las hacen útiles para diferentes aplicaciones.
+    </p>
+
+    <h2>1. Cola Simple</h2>
+    <p>
+        Una **cola simple** es la forma más básica de cola. En este tipo de cola, los elementos se agregan al final (en la parte posterior) y se eliminan desde el frente (parte delantera) siguiendo el principio **FIFO**. 
+    </p>
+    <p>
+        <strong>Características:</strong>
+        <ul>
+            <li>El primer elemento en entrar es el primer en salir.</li>
+            <li>Solo puedes insertar elementos al final y eliminar del frente.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo de uso:</strong> Este tipo de cola se usa comúnmente en situaciones como la gestión de tareas, donde las tareas se procesan en el orden en que llegan.
+    </p>
+    
+    <h3>Ejemplo de Cola Simple en Java</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ColaSimple {
+    public static void main(String[] args) {
+        // Crear una cola simple utilizando LinkedList
+        Queue<Integer> cola = new LinkedList<>();
+
+        // Agregar elementos a la cola (Enqueue)
+        cola.offer(10);
+        cola.offer(20);
+        cola.offer(30);
+        System.out.println("Elementos de la cola simple: " + cola);
+
+        // Eliminar el primer elemento de la cola (Dequeue)
+        cola.poll();
+        System.out.println("Elementos después de eliminar: " + cola);
+    }
+}
+    </code></pre>
+
+    <h2>2. Cola Circular</h2>
+    <p>
+        La **cola circular** es una variante de la cola simple. A diferencia de la cola simple, cuando el último elemento de la cola se elimina, el espacio vació puede ser utilizado para insertar nuevos elementos. Esto se hace de forma "circular", de ahí el nombre.
+    </p>
+    <p>
+        <strong>Características:</strong>
+        <ul>
+            <li>Cuando el último elemento se elimina, el espacio libre puede ser reutilizado.</li>
+            <li>Se utiliza para gestionar recursos de manera más eficiente, especialmente cuando la cola es de tamaño fijo.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo de uso:</strong> Las colas circulares son útiles en sistemas de recursos compartidos, como la gestión de impresoras o en sistemas de buffer de datos donde se procesan continuamente elementos en un ciclo.
+    </p>
+
+    <h3>Ejemplo de Cola Circular en Java</h3>
+    <pre><code class="language-java">
+public class ColaCircular {
+    int[] cola;
+    int frente, fin, tamaño;
+
+    public ColaCircular(int capacidad) {
+        cola = new int[capacidad];
+        frente = -1;
+        fin = -1;
+        tamaño = capacidad;
+    }
+
+    // Agregar un elemento a la cola
+    public void enqueue(int elemento) {
+        if ((fin + 1) % tamaño == frente) {
+            System.out.println("La cola está llena.");
+        } else {
+            if (frente == -1) {
+                frente = 0;
+            }
+            fin = (fin + 1) % tamaño;
+            cola[fin] = elemento;
+        }
+    }
+
+    // Eliminar el elemento del frente
+    public void dequeue() {
+        if (frente == -1) {
+            System.out.println("La cola está vacía.");
+        } else {
+            System.out.println("Elemento eliminado: " + cola[frente]);
+            if (frente == fin) {
+                frente = fin = -1;
+            } else {
+                frente = (frente + 1) % tamaño;
+            }
+        }
+    }
+
+    // Mostrar el estado actual de la cola
+    public void mostrar() {
+        if (frente == -1) {
+            System.out.println("La cola está vacía.");
+        } else {
+            int i = frente;
+            while (i != fin) {
+                System.out.print(cola[i] + " ");
+                i = (i + 1) % tamaño;
+            }
+            System.out.println(cola[fin]);
+        }
+    }
+    
+    public static void main(String[] args) {
+        ColaCircular cola = new ColaCircular(5);
+        cola.enqueue(10);
+        cola.enqueue(20);
+        cola.enqueue(30);
+        cola.mostrar();
+        cola.dequeue();
+        cola.mostrar();
+    }
+}
+    </code></pre>
+
+    <h2>3. Cola Bicolas (Deque)</h2>
+    <p>
+        La **cola bicolas** o **deque** (Double-Ended Queue) es una estructura de datos en la que se pueden insertar y eliminar elementos tanto desde el principio como desde el final de la cola. Esto permite una mayor flexibilidad para manipular los elementos en la cola.
+    </p>
+    <p>
+        <strong>Características:</strong>
+        <ul>
+            <li>Se pueden insertar y eliminar elementos desde ambos extremos.</li>
+            <li>Es útil cuando necesitas acceso rápido a ambos extremos de la cola.</li>
+        </ul>
+    </p>
+    <p>
+        <strong>Ejemplo de uso:</strong> Las colas bicolas se usan en situaciones como la gestión de tareas donde puedes agregar elementos tanto al principio como al final, por ejemplo, en algoritmos de programación de procesos.
+    </p>
+
+    <h3>Ejemplo de Cola Bicolas (Deque) en Java</h3>
+    <pre><code class="language-java">
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class ColaBicolas {
+    public static void main(String[] args) {
+        // Crear una cola bicolas utilizando ArrayDeque
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        // Insertar elementos al final de la cola
+        deque.offer(10);
+        deque.offer(20);
+        deque.offer(30);
+        System.out.println("Cola después de agregar al final: " + deque);
+
+        // Insertar elementos al principio de la cola
+        deque.offerFirst(5);
+        System.out.println("Cola después de agregar al principio: " + deque);
+
+        // Eliminar el primer elemento de la cola
+        deque.poll();
+        System.out.println("Cola después de eliminar desde el frente: " + deque);
+
+        // Eliminar el último elemento de la cola
+        deque.pollLast();
+        System.out.println("Cola después de eliminar desde el final: " + deque);
+    }
+}
+    </code></pre>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las **colas simples**, **circulares** y **bicolas** son variaciones de la estructura de datos cola que permiten adaptarse a diferentes necesidades de programación. 
+        - Las colas simples son ideales para situaciones en las que los elementos deben procesarse en el mismo orden en que se agregaron.
+        - Las colas circulares son útiles cuando se necesita reutilizar el espacio de memoria de manera eficiente, especialmente en aplicaciones con tamaño fijo de cola.
+        - Las colas bicolas permiten una mayor flexibilidad al ofrecer operaciones de inserción y eliminación en ambos extremos de la cola.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representación en Memoria de las Colas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Representación en Memoria de las Colas</h1>
+
+    <p>
+        Las **colas** son una estructura de datos fundamental que sigue el principio **FIFO** (First In, First Out), es decir, el primer elemento en llegar es el primero en salir. Al igual que otras estructuras de datos, las colas se representan en memoria de diferentes maneras dependiendo de cómo se implementen. Vamos a explorar cómo se representan en memoria y cómo se gestionan los elementos dentro de la cola.
+    </p>
+
+    <h2>1. ¿Cómo se Representa una Cola en Memoria?</h2>
+    <p>
+        Las colas pueden implementarse utilizando diferentes enfoques para almacenar sus elementos en la memoria. Generalmente, hay dos formas principales de hacerlo:
+    </p>
+    <ul>
+        <li><strong>Arreglos (Arrays):</strong> Se usa un arreglo para almacenar los elementos de la cola.</li>
+        <li><strong>Listas Enlazadas (Linked Lists):</strong> Se usa una lista enlazada donde cada nodo apunta al siguiente nodo.</li>
+    </ul>
+
+    <h2>2. Implementación de una Cola con Arreglo</h2>
+    <p>
+        En la implementación más simple, una cola se puede representar usando un arreglo de tamaño fijo. En este caso, el arreglo mantiene dos punteros: uno para el **frente** de la cola (el primer elemento) y otro para el **final** de la cola (el último elemento). Los elementos se agregan al final (con **enqueue**) y se eliminan desde el frente (con **dequeue**).
+    </p>
+
+    <p>
+        Sin embargo, en una implementación con arreglo, se enfrenta un desafío cuando el arreglo se llena y los elementos se eliminan desde el frente. Para evitar el desperdicio de espacio, algunos algoritmos implementan una **cola circular**, que utiliza el espacio vacío al principio del arreglo.
+    </p>
+
+    <h3>Ventajas y Desventajas de los Arreglos:</h3>
+    <ul>
+        <li><strong>Ventaja:</strong> El acceso a los elementos en un arreglo es rápido, ya que la memoria está contigua.</li>
+        <li><strong>Desventaja:</strong> No es eficiente si se necesitan redimensionar los arreglos o si se usa mucho espacio vacío.</li>
+    </ul>
+
+    <h2>3. Implementación de una Cola con Lista Enlazada</h2>
+    <p>
+        En lugar de usar un arreglo de tamaño fijo, las colas también pueden implementarse usando una **lista enlazada**. En este caso, cada elemento de la cola es un **nodo** que contiene el valor del elemento y un puntero al siguiente nodo. El primer nodo es el frente de la cola, y el último nodo es el final de la cola.
+    </p>
+    
+    <p>
+        Esta representación permite que la cola crezca dinámicamente, es decir, no hay que preocuparse por un tamaño fijo como en los arreglos. Además, la eliminación de un elemento del frente (operación **dequeue**) y la inserción de un elemento al final (operación **enqueue**) se pueden realizar de forma eficiente sin mover los demás elementos.
+    </p>
+
+    <h3>Ventajas y Desventajas de las Listas Enlazadas:</h3>
+    <ul>
+        <li><strong>Ventaja:</strong> No es necesario predefinir el tamaño de la cola y se aprovecha mejor la memoria.</li>
+        <li><strong>Desventaja:</strong> El acceso aleatorio es más lento que en los arreglos y se necesita más espacio por el puntero adicional en cada nodo.</li>
+    </ul>
+
+    <h2>4. Ejemplo de Representación de una Cola con Arreglo en Java</h2>
+    <p>
+        A continuación, se presenta un ejemplo sencillo de cómo se implementa una cola utilizando un arreglo en Java. Este ejemplo usa una estructura de cola de tamaño fijo.
+    </p>
+    <pre><code class="language-java">
+public class ColaArreglo {
+    private int[] cola;
+    private int frente, fin, tamaño;
+    
+    public ColaArreglo(int tamaño) {
+        this.tamaño = tamaño;
+        this.cola = new int[tamaño];
+        this.frente = 0;
+        this.fin = -1;
+    }
+
+    // Agregar un elemento al final de la cola
+    public void enqueue(int valor) {
+        if (fin < tamaño - 1) {
+            fin++;
+            cola[fin] = valor;
+            System.out.println("Elemento " + valor + " agregado.");
+        } else {
+            System.out.println("Cola llena. No se puede agregar más elementos.");
+        }
+    }
+
+    // Eliminar un elemento del frente de la cola
+    public void dequeue() {
+        if (frente <= fin) {
+            System.out.println("Elemento eliminado: " + cola[frente]);
+            frente++;
+        } else {
+            System.out.println("Cola vacía.");
+        }
+    }
+    
+    public static void main(String[] args) {
+        ColaArreglo cola = new ColaArreglo(5);
+        cola.enqueue(1);
+        cola.enqueue(2);
+        cola.dequeue();
+        cola.enqueue(3);
+        cola.dequeue();
+    }
+}
+    </code></pre>
+
+    <h2>5. Representación de una Cola con Lista Enlazada en Java</h2>
+    <p>
+        Aquí hay un ejemplo de cómo representar una cola utilizando una lista enlazada en Java. En este caso, cada nodo de la lista contiene un valor y un puntero al siguiente nodo.
+    </p>
+    <pre><code class="language-java">
+class Nodo {
+    int valor;
+    Nodo siguiente;
+    
+    public Nodo(int valor) {
+        this.valor = valor;
+        this.siguiente = null;
+    }
+}
+
+public class ColaListaEnlazada {
+    private Nodo frente, fin;
+    
+    public ColaListaEnlazada() {
+        this.frente = this.fin = null;
+    }
+
+    // Agregar un elemento al final de la cola
+    public void enqueue(int valor) {
+        Nodo nuevoNodo = new Nodo(valor);
+        if (fin == null) {
+            frente = fin = nuevoNodo;
+        } else {
+            fin.siguiente = nuevoNodo;
+            fin = nuevoNodo;
+        }
+        System.out.println("Elemento " + valor + " agregado.");
+    }
+
+    // Eliminar un elemento del frente de la cola
+    public void dequeue() {
+        if (frente == null) {
+            System.out.println("Cola vacía.");
+            return;
+        }
+        System.out.println("Elemento eliminado: " + frente.valor);
+        frente = frente.siguiente;
+        if (frente == null) {
+            fin = null;
+        }
+    }
+    
+    public static void main(String[] args) {
+        ColaListaEnlazada cola = new ColaListaEnlazada();
+        cola.enqueue(1);
+        cola.enqueue(2);
+        cola.dequeue();
+        cola.enqueue(3);
+        cola.dequeue();
+    }
+}
+    </code></pre>
+
+    <h2>6. Conclusión</h2>
+    <p>
+        La representación en memoria de las colas varía según cómo se implementen, ya sea utilizando arreglos o listas enlazadas. Las implementaciones con arreglos son simples, pero tienen limitaciones en cuanto a tamaño fijo y eficiencia. Las listas enlazadas, por otro lado, permiten que la cola crezca dinámicamente, pero requieren más memoria debido a los punteros adicionales. Ambas representaciones tienen ventajas y desventajas que deben considerarse según el problema a resolver.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representación en Memoria de una Pila</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Representación en Memoria de una Pila</h1>
+
+    <p>
+        En una pila, los elementos se almacenan de manera lineal, pero con la particularidad de que solo se puede acceder al último elemento agregado (el que está en la cima de la pila). Esta organización en memoria es lo que le da el comportamiento **LIFO** (Last In, First Out).
+    </p>
+
+    <h2>¿Cómo se Representa una Pila en Memoria?</h2>
+    <p>
+        La representación en memoria de una pila generalmente se hace utilizando un arreglo o una lista enlazada. Dependiendo de la implementación, cada nuevo elemento se agrega al final de la estructura (en una lista enlazada) o en la última posición disponible de un arreglo.
+    </p>
+
+    <h3>Representación Usando un Arreglo</h3>
+    <p>
+        En una implementación con arreglo, la pila comienza con una posición vacía en la memoria, y a medida que se agregan elementos (con el método <strong>push</strong>), estos se colocan en la siguiente posición disponible en el arreglo. Cada vez que se elimina un elemento (con el método <strong>pop</strong>), se reduce el tamaño de la pila.
+    </p>
+
+    <h3>Ejemplo Visual de una Pila en Memoria</h3>
+    <p>
+        Imagina una pila que contiene los elementos 10, 20 y 30. Si usamos un arreglo para representarla, se vería algo así:
+    </p>
+
+    <pre><code>
+    Índices:  [0] [1] [2]
+    Pila:     [10] [20] [30]
+    </code></pre>
+
+    <p>
+        Cuando agregamos un nuevo elemento, digamos 40, la pila se verá así:
+    </p>
+
+    <pre><code>
+    Índices:  [0] [1] [2] [3]
+    Pila:     [10] [20] [30] [40]
+    </code></pre>
+
+    <p>
+        Si luego eliminamos el último elemento (40) usando <strong>pop</strong>, la pila volverá a verse así:
+    </p>
+
+    <pre><code>
+    Índices:  [0] [1] [2]
+    Pila:     [10] [20] [30]
+    </code></pre>
+
+    <h3>Representación Usando una Lista Enlazada</h3>
+    <p>
+        En una implementación usando una lista enlazada, cada elemento de la pila es un nodo que contiene el valor y una referencia (puntero) al siguiente nodo. El nodo superior (cima de la pila) es el primer elemento que se agrega, y el siguiente nodo se enlaza al nodo anterior.
+    </p>
+
+    <h3>Ejemplo Visual de una Pila con Lista Enlazada</h3>
+    <p>
+        Si la pila contiene los mismos elementos 10, 20 y 30, se vería de la siguiente manera:
+    </p>
+
+    <pre><code>
+    Pila:     [10] → [20] → [30] → null
+    </code></pre>
+
+    <p>
+        Al agregar el elemento 40, la pila se representaría de esta forma:
+    </p>
+
+    <pre><code>
+    Pila:     [40] → [10] → [20] → [30] → null
+    </code></pre>
+
+    <p>
+        Al eliminar el elemento superior (40), la pila volvería a la forma anterior:
+    </p>
+
+    <pre><code>
+    Pila:     [10] → [20] → [30] → null
+    </code></pre>
+
+    <h2>Ventajas y Desventajas</h2>
+    <p>
+        - **Arreglo**:
+        <ul>
+            <li><strong>Ventaja:</strong> Acceso directo a los elementos mediante índices.</li>
+            <li><strong>Desventaja:</strong> El tamaño de la pila está limitado por el tamaño del arreglo. Si no hay espacio suficiente, se debe redimensionar el arreglo.</li>
+        </ul>
+        - **Lista Enlazada**:
+        <ul>
+            <li><strong>Ventaja:</strong> El tamaño de la pila es dinámico; no hay límite de tamaño más allá de la memoria disponible.</li>
+            <li><strong>Desventaja:</strong> La implementación es más compleja y requiere más memoria para almacenar las referencias (punteros).</li>
+        </ul>
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        La representación en memoria de una pila varía según la implementación. Usar un arreglo o una lista enlazada tiene ventajas y desventajas dependiendo del contexto en que se necesite la pila. Lo importante es entender que la pila sigue el principio **LIFO**, lo que significa que siempre accedemos y eliminamos el último elemento agregado.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

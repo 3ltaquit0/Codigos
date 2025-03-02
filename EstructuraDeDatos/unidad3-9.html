@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones de las Colas</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Aplicaciones de las Colas</h1>
+
+    <p>
+        Las **colas** son estructuras de datos fundamentales que se utilizan en una amplia variedad de aplicaciones. Gracias a su comportamiento **FIFO** (First In, First Out), donde el primer elemento que entra es el primero en salir, son muy útiles para gestionar tareas, procesos y datos en orden.
+    </p>
+
+    <h2>1. Gestión de Tareas en Sistemas Operativos</h2>
+    <p>
+        Una de las aplicaciones más comunes de las colas es en los sistemas operativos, donde se utilizan para gestionar tareas en espera, como la programación de procesos. Los sistemas operativos utilizan colas para manejar las tareas que necesitan ser ejecutadas, asignando cada tarea a un procesador de acuerdo a su orden de llegada. Este modelo garantiza que las tareas se ejecuten de forma ordenada y justa.
+    </p>
+    <p>
+        **Ejemplo**: Si un sistema tiene varios procesos, la CPU ejecutará el primer proceso en la cola y luego el siguiente, siguiendo el principio FIFO. Esto es crucial para mantener la eficiencia y evitar la sobrecarga de procesos.
+    </p>
+
+    <h3>Ejemplo de código en Java</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class GestionDeProcesos {
+    public static void main(String[] args) {
+        Queue<String> procesos = new LinkedList<>();
+
+        // Agregar procesos a la cola
+        procesos.offer("Proceso 1");
+        procesos.offer("Proceso 2");
+        procesos.offer("Proceso 3");
+
+        // Ejecutar los procesos en orden
+        while (!procesos.isEmpty()) {
+            System.out.println("Ejecutando: " + procesos.poll());
+        }
+    }
+}
+    </code></pre>
+
+    <h2>2. Manejo de Impresoras y Recursos Compartidos</h2>
+    <p>
+        Las colas también se utilizan para gestionar recursos compartidos, como impresoras. Cuando varias tareas intentan acceder a una impresora al mismo tiempo, se colocan en una cola de impresión. La impresora procesará las tareas en el orden en que se recibieron, asegurando que cada tarea tenga la oportunidad de ser atendida sin que se mezclen o se pierdan.
+    </p>
+    <p>
+        **Ejemplo**: Si tres usuarios envían trabajos de impresión al mismo tiempo, estos trabajos se colocan en una cola y se imprimen en el orden de llegada. El primer trabajo en entrar será el primero en ser impreso.
+    </p>
+
+    <h3>Ejemplo de código en Java</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ColaDeImpresion {
+    public static void main(String[] args) {
+        Queue<String> colaDeImpresion = new LinkedList<>();
+
+        // Agregar trabajos a la cola de impresión
+        colaDeImpresion.offer("Trabajo 1");
+        colaDeImpresion.offer("Trabajo 2");
+        colaDeImpresion.offer("Trabajo 3");
+
+        // Imprimir los trabajos en orden
+        while (!colaDeImpresion.isEmpty()) {
+            System.out.println("Imprimiendo: " + colaDeImpresion.poll());
+        }
+    }
+}
+    </code></pre>
+
+    <h2>3. Simulación de Eventos en Juegos o Sistemas de Simulación</h2>
+    <p>
+        Las colas también son útiles en simulaciones de eventos, como las que se utilizan en juegos o en simulaciones de sistemas. En estos casos, los eventos se agregan a una cola y se procesan en el orden en que se recibieron, lo que permite simular un flujo de eventos de manera controlada y ordenada.
+    </p>
+    <p>
+        **Ejemplo**: En un juego de video, cuando un jugador realiza varias acciones en un corto periodo, esas acciones se pueden agregar a una cola de eventos y luego procesarse en orden para determinar qué ocurre en el juego.
+    </p>
+
+    <h3>Ejemplo de código en Java</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SimulacionDeEventos {
+    public static void main(String[] args) {
+        Queue<String> eventos = new LinkedList<>();
+
+        // Agregar eventos a la cola
+        eventos.offer("Evento 1");
+        eventos.offer("Evento 2");
+        eventos.offer("Evento 3");
+
+        // Procesar los eventos en orden
+        while (!eventos.isEmpty()) {
+            System.out.println("Procesando: " + eventos.poll());
+        }
+    }
+}
+    </code></pre>
+
+    <h2>4. Sistemas de Mensajería y Notificaciones</h2>
+    <p>
+        Las colas también se usan en sistemas de mensajería y notificaciones. En estos sistemas, los mensajes o notificaciones se agregan a una cola y se entregan a los usuarios en el orden en que fueron recibidos. Este tipo de cola asegura que los usuarios reciban mensajes de manera ordenada y eficiente.
+    </p>
+    <p>
+        **Ejemplo**: Un sistema de correo electrónico puede usar colas para manejar los mensajes de los usuarios, asegurando que los mensajes sean entregados en el orden en que llegaron.
+    </p>
+
+    <h3>Ejemplo de código en Java</h3>
+    <pre><code class="language-java">
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SistemaDeMensajes {
+    public static void main(String[] args) {
+        Queue<String> mensajes = new LinkedList<>();
+
+        // Agregar mensajes a la cola
+        mensajes.offer("Mensaje 1");
+        mensajes.offer("Mensaje 2");
+        mensajes.offer("Mensaje 3");
+
+        // Procesar los mensajes en orden
+        while (!mensajes.isEmpty()) {
+            System.out.println("Entregando: " + mensajes.poll());
+        }
+    }
+}
+    </code></pre>
+
+    <h2>5. Control de Flujo en Redes de Computadoras</h2>
+    <p>
+        En redes de computadoras, las colas son esenciales para manejar los paquetes de datos. Los paquetes de datos que deben ser transmitidos se almacenan en una cola de espera, donde se envían de manera secuencial, según el orden de llegada. Esto ayuda a mantener el flujo controlado y ordenado.
+    </p>
+    <p>
+        **Ejemplo**: En una red, los paquetes de datos que se envían a través de routers se manejan utilizando colas para garantizar que no se pierdan y se envíen en el orden adecuado.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Las colas son estructuras de datos extremadamente útiles en muchas áreas de la programación, especialmente cuando se necesita procesar elementos en el orden en que llegaron. Se utilizan en sistemas operativos, simulaciones, impresión, mensajería y redes, entre otras aplicaciones. El principio FIFO asegura que las tareas se realicen de forma ordenada, sin saltarse ninguna, lo que ayuda a mantener el control y la eficiencia en los sistemas.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

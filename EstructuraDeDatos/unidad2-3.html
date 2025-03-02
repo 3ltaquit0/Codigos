@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Casos Recursivos</title>
+    <link rel="stylesheet" href="estructura.css">
+</head>
+<body>
+
+    <h1>Ejemplos de Casos Recursivos</h1>
+
+    <p>
+        Los casos recursivos son aquellas situaciones en las que una función se llama a sí misma para resolver una tarea más pequeña hasta llegar a un caso base, donde la recursión termina. A continuación, veremos algunos ejemplos comunes de casos recursivos que demuestran cómo resolver problemas mediante la recursividad.
+    </p>
+
+    <h2>1. Factorial de un Número</h2>
+    <p>
+        El **factorial** de un número <code>n</code>, denotado como <code>n!</code>, es el producto de todos los números enteros desde 1 hasta <code>n</code>. 
+        Un procedimiento recursivo es perfecto para calcular el factorial, ya que podemos descomponer el problema en un caso más pequeño: <code>n! = n * (n-1)!</code>. El caso base es cuando <code>n = 1</code>.
+    </p>
+    <pre><code class="language-java">
+public class FactorialRecursivo {
+    // Función recursiva para calcular el factorial de un número
+    public static int factorial(int n) {
+        // Caso base: el factorial de 1 es 1
+        if (n == 1) {
+            return 1;
+        }
+        // Caso recursivo: n * factorial de (n - 1)
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int numero = 5;
+        System.out.println("El factorial de " + numero + " es: " + factorial(numero));
+    }
+}
+    </code></pre>
+    <p>
+        En este ejemplo, la función recursiva <code>factorial</code> calcula el factorial de un número. Si <code>n = 1</code>, la recursión se detiene y devuelve 1. En cada paso, la función se llama a sí misma con <code>n - 1</code>, y el resultado final es el producto de todos los números hasta llegar a 1.
+    </p>
+
+    <h2>2. Secuencia de Fibonacci</h2>
+    <p>
+        La **secuencia de Fibonacci** es una secuencia matemática donde cada número es la suma de los dos números anteriores. La secuencia comienza con 0 y 1, y cada número siguiente se obtiene sumando los dos anteriores. En un procedimiento recursivo, el número en la posición <code>n</code> se puede calcular como: <code>F(n) = F(n-1) + F(n-2)</code>. El caso base es cuando <code>n = 0</code> o <code>n = 1</code>.
+    </p>
+    <pre><code class="language-java">
+public class FibonacciRecursivo {
+    // Función recursiva para calcular el n-ésimo número de Fibonacci
+    public static int fibonacci(int n) {
+        // Caso base: los primeros dos números en la secuencia son 0 y 1
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        // Caso recursivo: la suma de los dos números anteriores
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int n = 6;
+        System.out.println("El número en la posición " + n + " de Fibonacci es: " + fibonacci(n));
+    }
+}
+    </code></pre>
+    <p>
+        Este código muestra cómo calcular un número de Fibonacci utilizando recursividad. La función recursiva <code>fibonacci</code> se llama a sí misma con valores más pequeños hasta alcanzar los casos base (0 o 1), sumando los resultados en cada paso.
+    </p>
+
+    <h2>3. Búsqueda Binaria Recursiva</h2>
+    <p>
+        La **búsqueda binaria** es un algoritmo eficiente para encontrar un elemento en una lista ordenada. La idea es dividir repetidamente el rango de búsqueda a la mitad, lo que lo convierte en un ejemplo de recursividad. Si el elemento se encuentra en el medio, se devuelve el índice; si no, se busca en la mitad superior o inferior de la lista, dependiendo de si el elemento es mayor o menor que el valor central.
+    </p>
+    <pre><code class="language-java">
+public class BusquedaBinariaRecursiva {
+    // Función recursiva para realizar la búsqueda binaria
+    public static int busquedaBinaria(int[] arr, int izquierdo, int derecho, int objetivo) {
+        // Caso base: si el rango de búsqueda es válido
+        if (izquierdo > derecho) {
+            return -1; // Elemento no encontrado
+        }
+
+        // Encuentra el punto medio
+        int medio = izquierdo + (derecho - izquierdo) / 2;
+
+        // Caso base: si el elemento es el del medio
+        if (arr[medio] == objetivo) {
+            return medio;
+        }
+
+        // Si el elemento es mayor que el valor del medio, busca en la mitad superior
+        if (arr[medio] < objetivo) {
+            return busquedaBinaria(arr, medio + 1, derecho, objetivo);
+        }
+        // Si el elemento es menor, busca en la mitad inferior
+        return busquedaBinaria(arr, izquierdo, medio - 1, objetivo);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 3, 5, 7, 9, 11, 13, 15};
+        int objetivo = 7;
+        int resultado = busquedaBinaria(arr, 0, arr.length - 1, objetivo);
+
+        if (resultado == -1) {
+            System.out.println("Elemento no encontrado");
+        } else {
+            System.out.println("Elemento encontrado en el índice: " + resultado);
+        }
+    }
+}
+    </code></pre>
+    <p>
+        En este ejemplo, se utiliza recursividad para implementar la búsqueda binaria. La función <code>busquedaBinaria</code> divide el arreglo en mitades hasta encontrar el elemento o determinar que no está presente.
+    </p>
+
+    <h2>Conclusión</h2>
+    <p>
+        Los ejemplos anteriores muestran cómo la recursividad puede ser utilizada para resolver una variedad de problemas de forma elegante. A través de la descomposición de un problema en subproblemas más pequeños, la recursión permite soluciones compactas y fáciles de entender, aunque es importante tener cuidado con los casos base para evitar ciclos infinitos.
+    </p>
+
+    <div id="buttonContainer">
+        <button id="backButton4">Volver</button>
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>
