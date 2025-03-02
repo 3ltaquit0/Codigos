@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Eventos en Interfaces Gráficas de Usuario</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Manejo de Eventos en Interfaces Gráficas de Usuario</h1>
+        <p>El manejo de eventos es un aspecto esencial en el desarrollo de interfaces gráficas de usuario (GUIs). Permite que las aplicaciones respondan a las acciones del usuario, creando una interacción dinámica y fluida entre la interfaz y el usuario.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es el Manejo de Eventos?</h2>
+            <p>El manejo de eventos se refiere a cómo un programa responde a las interacciones del usuario, como clics de ratón, presionar teclas o mover el ratón. Los eventos se manejan mediante funciones o métodos que se ejecutan en respuesta a una acción del usuario. Los eventos no solo permiten la interactividad, sino que también ayudan a mejorar la experiencia del usuario en las aplicaciones.</p>
+
+            <h3>Proceso Básico del Manejo de Eventos</h3>
+            El proceso de manejo de eventos generalmente sigue estos pasos:
+
+            <ol>
+                <li><strong>Captura del Evento:</strong> El sistema detecta una acción del usuario, como hacer clic en un botón o presionar una tecla.</li>
+                <li><strong>Asignación de un Manejador de Eventos:</strong> Un manejador de eventos (generalmente una función o método) se asocia con el evento específico que se desea manejar.</li>
+                <li><strong>Ejecutar la Acción Asociada:</strong> Cuando el evento se produce, el manejador de eventos ejecuta la acción correspondiente, como mostrar un mensaje, cambiar un valor o actualizar la interfaz.</li>
+            </ol>
+
+            <h3>Métodos para Manejar Eventos</h3>
+            Existen dos formas principales de manejar eventos en los lenguajes de programación:
+            <ul>
+                <li><strong>Enlace Directo (Inline):</strong> El evento se maneja directamente en el HTML o código mediante atributos como `onclick`, `onmouseover`, etc.</li>
+                <li><strong>Delegación de Eventos:</strong> En lugar de asignar un manejador a cada elemento, se asigna a un elemento padre (usualmente el contenedor de los elementos) y se propaga a los hijos, mejorando el rendimiento.</li>
+            </ul>
+
+            <h3>Tipos de Manejadores de Eventos</h3>
+            Los manejadores de eventos pueden ser de diferentes tipos dependiendo de cómo se defina el evento y su ejecución:
+
+            <ul>
+                <li><strong>Funciones Anónimas:</strong> Funciones que se definen directamente dentro de la asignación del manejador, sin necesidad de declararlas previamente.</li>
+                <li><strong>Funciones Nombradas:</strong> Funciones predefinidas que son asociadas al evento.</li>
+                <li><strong>Delegación de Eventos:</strong> Utiliza un solo manejador en un contenedor padre para manejar eventos de múltiples elementos hijos, lo que reduce la cantidad de manejadores individuales.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Manejo de Eventos en Java, Python y C</h2>
+            A continuación, mostramos ejemplos de cómo se manejan los eventos en tres lenguajes populares para crear interfaces gráficas de usuario.
+
+            <h3>Manejo de Eventos en Java</h3>
+            En Java, los eventos se gestionan utilizando los `Listeners`, los cuales son interfaces que se implementan para manejar los eventos. A continuación se muestra un ejemplo de cómo manejar un evento de clic en un botón:
+
+            <pre>
+                <code>
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ManejoEventos {
+    public static void main(String[] args) {
+        // Crear ventana y botón
+        JFrame ventana = new JFrame("Ventana de Evento");
+        JButton boton = new JButton("Haz clic aquí");
+
+        // Asignar un evento de clic al botón
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("¡Botón clickeado!");
+            }
+        });
+
+        // Configurar la ventana
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+
+            <h3>Manejo de Eventos en Python</h3>
+            En Python, utilizando la librería Tkinter, se puede manejar un evento de clic en un botón con la siguiente estructura:
+
+            <pre>
+                <code>
+import tkinter as tk
+
+def on_button_click():
+    print("¡Botón clickeado!")
+
+ventana = tk.Tk()
+ventana.title("Ventana de Evento")
+
+# Crear el botón y asignar el evento
+boton = tk.Button(ventana, text="Haz clic aquí", command=on_button_click)
+boton.pack()
+
+ventana.mainloop()
+                </code>
+            </pre>
+
+            <h3>Manejo de Eventos en C</h3>
+            En C, utilizando GTK, los eventos se manejan con señales. A continuación, un ejemplo de cómo manejar un evento de clic en un botón:
+
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+static void on_button_clicked(GtkWidget *widget, gpointer data) {
+    g_print("¡Botón clickeado!\n");
+}
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+
+    // Conectar el evento de clic del botón
+    g_signal_connect(boton, "clicked", G_CALLBACK(on_button_clicked), NULL);
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+
+    gtk_window_set_title(GTK_WINDOW(ventana), "Ventana de Evento");
+    gtk_window_set_default_size(GTK_WINDOW(ventana), 300, 200);
+    g_signal_connect(ventana, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(ventana);
+    gtk_main();
+
+    return 0;
+}
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>Delegación de Eventos</h2>
+            <p>La delegación de eventos es una técnica avanzada en la cual, en lugar de asignar un manejador de eventos a cada elemento individual, se asigna un solo manejador a un contenedor o elemento padre. Este manejador detecta los eventos de los elementos hijos a través de la propagación de eventos.</p>
+
+            <h3>Ventajas de la Delegación de Eventos</h3>
+            <ul>
+                <li><strong>Mejora el rendimiento:</strong> En lugar de agregar un manejador de eventos a cada elemento hijo, se utiliza uno solo para el contenedor, lo que reduce la cantidad de funciones que el navegador o el sistema debe manejar.</li>
+                <li><strong>Facilita la gestión dinámica de elementos:</strong> Si se agregan nuevos elementos de forma dinámica, el manejador de eventos del contenedor se encargará de los nuevos elementos sin necesidad de volver a asociar los manejadores de eventos a cada uno de ellos.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>El manejo de eventos es una parte crucial en la creación de interfaces gráficas de usuario. Permite que las aplicaciones respondan a las acciones del usuario, como clics de ratón, presionar teclas, entre otras interacciones. Dependiendo del lenguaje de programación, existen diferentes formas de manejar eventos, como el uso de listeners en Java, el uso de funciones de callback en Python y señales en C. Además, la delegación de eventos es una técnica avanzada que mejora el rendimiento al reducir la cantidad de manejadores de eventos asignados a los elementos individuales.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

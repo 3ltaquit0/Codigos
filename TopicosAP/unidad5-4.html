@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo de Aplicaciones Móviles</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Desarrollo de Aplicaciones Móviles</h1>
+        <p>El desarrollo de aplicaciones móviles se ha convertido en una de las áreas más dinámicas de la programación. A medida que la tecnología avanza, se presentan nuevos retos y oportunidades para crear aplicaciones más eficientes, seguras y atractivas. Esta sección aborda los aspectos clave del desarrollo de aplicaciones móviles utilizando lenguajes como **Java**, **Python**, **C** y **Kotlin**.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Plataformas de Desarrollo Móvil</h2>
+            <p>Las aplicaciones móviles pueden desarrollarse principalmente para dos plataformas: Android e iOS. Cada plataforma tiene su propio conjunto de herramientas, lenguajes y convenciones. A continuación, exploraremos cómo los diferentes lenguajes pueden ser utilizados en estas plataformas:</p>
+
+            <ul>
+                <li><strong>Android:</strong> Android es la plataforma móvil más popular y se basa principalmente en **Java** y **Kotlin** para el desarrollo de aplicaciones nativas. Android Studio es la herramienta más comúnmente utilizada para desarrollar aplicaciones Android. Con **Kotlin**, Google ha optimizado y modernizado el proceso de desarrollo, proporcionando un lenguaje más conciso y fácil de mantener que **Java**.</li>
+                <li><strong>iOS:</strong> Para aplicaciones en dispositivos Apple, como iPhone o iPad, se utilizan lenguajes como **Swift** o **Objective-C**. Aunque **Java** y **Kotlin** no son nativos de iOS, pueden ser utilizados indirectamente a través de frameworks multiplataforma.</li>
+                <li><strong>Multiplataforma:</strong> Los frameworks multiplataforma, como **Flutter** (que usa Dart), **React Native** (que usa JavaScript), y **Xamarin** (que usa C#), permiten desarrollar aplicaciones móviles para ambas plataformas (Android e iOS) con un solo código base.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Desarrollo con Java y Kotlin</h2>
+            <p>**Java** ha sido el lenguaje principal para el desarrollo Android durante años, aunque en la actualidad, **Kotlin** ha tomado la delantera como el lenguaje oficial recomendado por Google para el desarrollo Android. Ambos lenguajes se utilizan para escribir aplicaciones que interactúan con la API de Android.</p>
+
+            <h3>Ejemplo de código en Java para Android</h3>
+            <pre>
+                <code>
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "¡Botón presionado!", Toast.LENGTH_SHORT).show();
+        });
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea una actividad en la que se define un botón. Cuando el usuario hace clic en el botón, se muestra un mensaje emergente utilizando un <code>Toast</code>.</p>
+
+            <h3>Ejemplo de código en Kotlin para Android</h3>
+            <pre>
+                <code>
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
+            Toast.makeText(this, "¡Botón presionado!", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>El mismo ejemplo en **Kotlin** tiene una sintaxis más concisa y moderna, sin perder funcionalidad.</p>
+        </section>
+
+        <section>
+            <h2>Desarrollo con Python y C</h2>
+            <p>El desarrollo de aplicaciones móviles con **Python** y **C** no es tan común como con **Java** y **Kotlin**, pero existen herramientas y frameworks que permiten el desarrollo móvil utilizando estos lenguajes.</p>
+
+            <h3>Desarrollo con Python</h3>
+            <p>Python no es ampliamente utilizado para el desarrollo de aplicaciones móviles nativas, pero hay frameworks como **Kivy** y **BeeWare** que permiten desarrollar aplicaciones móviles para múltiples plataformas.</p>
+
+            <h4>Ejemplo con Kivy (Python)</h4>
+            <pre>
+                <code>
+from kivy.app import App
+from kivy.uix.button import Button
+
+class MyApp(App):
+    def build(self):
+        return Button(text='¡Hola, Mundo!')
+
+if __name__ == '__main__':
+    MyApp().run()
+                </code>
+            </pre>
+            <p>Este es un ejemplo simple utilizando **Kivy** en Python, donde se crea una aplicación con un botón que muestra el texto "¡Hola, Mundo!" cuando se ejecuta.</p>
+
+            <h3>Desarrollo con C</h3>
+            <p>**C** es más comúnmente utilizado para desarrollar aplicaciones móviles de bajo nivel o para crear bibliotecas que luego pueden ser integradas en aplicaciones móviles nativas. Aunque no se utiliza de manera directa para desarrollar aplicaciones móviles completas, **C** y **C++** se emplean mucho en el desarrollo de videojuegos móviles debido a su eficiencia y control sobre el hardware.</p>
+        </section>
+
+        <section>
+            <h2>Herramientas y Frameworks para el Desarrollo Móvil</h2>
+            <p>Además de los lenguajes de programación, hay diversas herramientas y frameworks que facilitan el desarrollo de aplicaciones móviles. Algunas de las más populares incluyen:</p>
+
+            <ul>
+                <li><strong>Android Studio:</strong> La IDE oficial para el desarrollo de aplicaciones Android con soporte para **Java** y **Kotlin**. Ofrece herramientas de diseño, depuración y análisis de rendimiento.</li>
+                <li><strong>Xcode:</strong> La IDE oficial para el desarrollo de aplicaciones iOS, que soporta **Swift** y **Objective-C**.</li>
+                <li><strong>Flutter:</strong> Un framework de Google que utiliza **Dart** para crear aplicaciones móviles nativas para Android e iOS con una única base de código.</li>
+                <li><strong>React Native:</strong> Un framework de Facebook que utiliza **JavaScript** para desarrollar aplicaciones móviles nativas para Android e iOS.</li>
+                <li><strong>Unity:</strong> Aunque principalmente utilizado para juegos, **Unity** también se utiliza para crear aplicaciones móviles interactivas, especialmente en 3D, utilizando **C#**.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conclusión</h2>
+            <p>El desarrollo de aplicaciones móviles es una habilidad esencial para cualquier programador. Con lenguajes como **Java**, **Kotlin**, **Python** y **C**, los desarrolladores pueden crear aplicaciones poderosas y escalables para una amplia gama de dispositivos móviles. La elección de la herramienta y el lenguaje depende de la plataforma de destino, los requisitos del proyecto y las preferencias del desarrollador.</p>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción al Acceso a Datos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Introducción al Acceso a Datos</h1>
+        <p>El acceso a datos es un proceso fundamental en el desarrollo de aplicaciones, ya que permite interactuar con bases de datos, archivos o cualquier tipo de almacenamiento persistente. En esta sección, exploraremos cómo acceder, gestionar y manipular datos en diversas plataformas utilizando lenguajes como Java, Python y C.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es el Acceso a Datos?</h2>
+            <p>El acceso a datos es el proceso mediante el cual una aplicación se conecta a una fuente de datos, ya sea una base de datos, un archivo de texto o un sistema de archivos, con el fin de leer, escribir, modificar o eliminar información. Este proceso es clave en muchas aplicaciones, como sistemas de gestión de bases de datos (DBMS), aplicaciones web, y software de análisis de datos.</p>
+            <p>Existen varios métodos para acceder a datos, dependiendo del origen de los mismos. A continuación, veremos los tres casos más comunes:</p>
+            <ul>
+                <li><strong>Acceso a Bases de Datos Relacionales:</strong> Usando SQL y APIs específicas para conectar con bases de datos como MySQL, PostgreSQL o SQL Server.</li>
+                <li><strong>Acceso a Archivos de Texto:</strong> Usando bibliotecas de entrada/salida (I/O) para leer y escribir archivos planos o CSV.</li>
+                <li><strong>Acceso a Sistemas de Archivos:</strong> Utilizando APIs para interactuar con archivos y directorios del sistema operativo.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Acceso a Datos en Java</h2>
+            <p>En Java, el acceso a datos se realiza principalmente a través de JDBC (Java Database Connectivity) para bases de datos o utilizando bibliotecas estándar de I/O para archivos y directorios.</p>
+            <h3>Acceso a Bases de Datos con JDBC</h3>
+            <p>JDBC es una API que permite conectar una aplicación Java con una base de datos relacional. A continuación, se muestra un ejemplo básico de cómo establecer una conexión con una base de datos MySQL:</p>
+            <pre>
+                <code>
+import java.sql.*;
+
+public class ConexionBD {
+    public static void main(String[] args) {
+        try {
+            // Establecer la conexión con la base de datos
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miBaseDeDatos", "usuario", "contraseña");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM empleados");
+
+            // Leer los datos de la base de datos
+            while (rs.next()) {
+                System.out.println("Empleado: " + rs.getString("nombre"));
+            }
+
+            // Cerrar la conexión
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se establece una conexión con una base de datos MySQL, se ejecuta una consulta SQL, y se obtienen los resultados.</p>
+
+            <h3>Acceso a Archivos en Java</h3>
+            <p>Para acceder a archivos de texto o binarios, Java utiliza bibliotecas como <code>File</code>, <code>FileReader</code>, y <code>BufferedReader</code>.</p>
+            <pre>
+                <code>
+import java.io.*;
+
+public class LeerArchivo {
+    public static void main(String[] args) {
+        try {
+            // Leer un archivo de texto
+            BufferedReader br = new BufferedReader(new FileReader("archivo.txt"));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo leer un archivo de texto línea por línea utilizando un <code>BufferedReader</code>.</p>
+        </section>
+
+        <section>
+            <h2>Acceso a Datos en Python</h2>
+            <p>En Python, el acceso a datos se logra mediante varias bibliotecas y módulos. Para bases de datos, se utiliza <code>sqlite3</code> para bases de datos SQLite o bibliotecas como <code>psycopg2</code> para PostgreSQL. Para archivos de texto, se usan funciones de I/O integradas como <code>open()</code>.</p>
+
+            <h3>Acceso a Bases de Datos con SQLite</h3>
+            <p>SQLite es una base de datos liviana que no requiere un servidor. A continuación, un ejemplo de cómo conectar a una base de datos SQLite:</p>
+            <pre>
+                <code>
+import sqlite3
+
+# Conectar a una base de datos SQLite
+conn = sqlite3.connect('mi_base_de_datos.db')
+cursor = conn.cursor()
+
+# Ejecutar una consulta SQL
+cursor.execute("SELECT * FROM empleados")
+
+# Obtener los resultados
+for row in cursor.fetchall():
+    print(row)
+
+# Cerrar la conexión
+conn.close()
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo conectar a una base de datos SQLite, ejecutar una consulta, y leer los resultados.</p>
+
+            <h3>Acceso a Archivos en Python</h3>
+            <p>En Python, puedes utilizar la función <code>open()</code> para abrir archivos y realizar operaciones de lectura y escritura.</p>
+            <pre>
+                <code>
+# Leer un archivo de texto
+with open('archivo.txt', 'r') as archivo:
+    for linea in archivo:
+        print(linea.strip())
+                </code>
+            </pre>
+            <p>El uso de <code>with</code> garantiza que el archivo se cierre automáticamente al finalizar la operación.</p>
+        </section>
+
+        <section>
+            <h2>Acceso a Datos en C</h2>
+            <p>En C, el acceso a datos se realiza a través de bibliotecas estándar de entrada/salida, como <code>stdio.h</code>, para archivos y mediante bibliotecas específicas como <code>mysql.h</code> para bases de datos.</p>
+
+            <h3>Acceso a Bases de Datos con MySQL</h3>
+            <p>En C, se puede utilizar la biblioteca MySQL Connector/C para interactuar con bases de datos MySQL.</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include <mysql/mysql.h>
+
+int main() {
+    MYSQL *conn;
+    MYSQL_RES *res;
+    MYSQL_ROW row;
+
+    conn = mysql_init(NULL);
+
+    // Conectar a la base de datos
+    if (mysql_real_connect(conn, "localhost", "usuario", "contraseña", "miBaseDeDatos", 0, NULL, 0)) {
+        mysql_query(conn, "SELECT * FROM empleados");
+        res = mysql_store_result(conn);
+
+        while ((row = mysql_fetch_row(res))) {
+            printf("Empleado: %s\n", row[0]);
+        }
+
+        mysql_free_result(res);
+    } else {
+        printf("Error de conexión: %s\n", mysql_error(conn));
+    }
+
+    mysql_close(conn);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo conectar a una base de datos MySQL y ejecutar una consulta usando la biblioteca <code>mysql.h</code>.</p>
+
+            <h3>Acceso a Archivos en C</h3>
+            <p>En C, puedes usar funciones como <code>fopen()</code> para abrir un archivo y <code>fgets()</code> o <code>fscanf()</code> para leer datos del archivo.</p>
+            <pre>
+                <code>
+#include <stdio.h>
+
+int main() {
+    FILE *archivo = fopen("archivo.txt", "r");
+    char linea[100];
+
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo\n");
+        return 1;
+    }
+
+    while (fgets(linea, sizeof(linea), archivo)) {
+        printf("%s", linea);
+    }
+
+    fclose(archivo);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo abrir un archivo de texto, leer su contenido línea por línea y mostrarlo en consola.</p>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>El acceso a datos es un aspecto fundamental de la programación moderna, ya que permite que las aplicaciones interactúen con diversas fuentes de datos. Ya sea que estés trabajando con bases de datos relacionales, archivos de texto o sistemas de archivos, cada lenguaje de programación ofrece herramientas y bibliotecas que simplifican este proceso. Al comprender cómo acceder y gestionar datos, los desarrolladores pueden crear aplicaciones más funcionales y eficientes.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

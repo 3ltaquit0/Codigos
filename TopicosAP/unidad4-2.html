@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión a Origen de Datos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Conexión a Origen de Datos</h1>
+        <p>La conexión a un origen de datos es un paso crucial en cualquier aplicación que interactúa con bases de datos o fuentes de datos externas. Este proceso permite que la aplicación obtenga acceso a la información almacenada y pueda realizar operaciones como lecturas, escrituras, actualizaciones y eliminaciones. En esta sección, se analizarán cómo realizar conexiones a diferentes orígenes de datos en lenguajes como Java, Python y C.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Origen de Datos?</h2>
+            <p>Un origen de datos puede ser cualquier fuente de información que una aplicación necesite para interactuar, como una base de datos relacional, un archivo de texto, o una API externa. El proceso de conexión implica establecer un canal de comunicación entre la aplicación y el origen de datos para poder acceder, modificar o eliminar la información almacenada.</p>
+            <p>En este tutorial, cubriremos tres tipos principales de orígenes de datos:</p>
+            <ul>
+                <li><strong>Bases de Datos Relacionales:</strong> Usando tecnologías como MySQL, PostgreSQL o SQLite.</li>
+                <li><strong>Archivos de Texto o Binarios:</strong> Leyendo y escribiendo datos desde y hacia archivos planos o binarios.</li>
+                <li><strong>Servicios Externos/API:</strong> Acceso a servicios web o APIs que proporcionan datos externos a la aplicación.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conexión a Origen de Datos en Java</h2>
+            <p>En Java, la conexión a orígenes de datos relacionales se realiza utilizando JDBC (Java Database Connectivity). JDBC es un conjunto de interfaces que permite que las aplicaciones Java interactúen con bases de datos como MySQL, PostgreSQL, Oracle, entre otras.</p>
+
+            <h3>Conexión a MySQL usando JDBC</h3>
+            <p>Para conectarse a una base de datos MySQL en Java, es necesario tener el controlador JDBC de MySQL instalado y seguir los pasos que se muestran a continuación:</p>
+            <pre>
+                <code>
+import java.sql.*;
+
+public class ConexionMySQL {
+    public static void main(String[] args) {
+        try {
+            // Establecer la conexión con la base de datos
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miBaseDeDatos", "usuario", "contraseña");
+
+            // Crear un Statement
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM empleados");
+
+            // Leer los resultados
+            while (rs.next()) {
+                System.out.println("Empleado: " + rs.getString("nombre"));
+            }
+
+            // Cerrar la conexión
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, la aplicación Java se conecta a una base de datos MySQL y ejecuta una consulta para obtener todos los registros de la tabla "empleados".</p>
+
+            <h3>Conexión a Archivos en Java</h3>
+            <p>Java también permite conectarse a archivos mediante las bibliotecas estándar de entrada y salida. El siguiente ejemplo muestra cómo leer un archivo de texto usando <code>FileReader</code>:</p>
+            <pre>
+                <code>
+import java.io.*;
+
+public class ConexionArchivo {
+    public static void main(String[] args) {
+        try {
+            // Abrir un archivo en modo lectura
+            BufferedReader reader = new BufferedReader(new FileReader("archivo.txt"));
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                System.out.println(linea);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo establecer una conexión con un archivo de texto y leer su contenido línea por línea.</p>
+        </section>
+
+        <section>
+            <h2>Conexión a Origen de Datos en Python</h2>
+            <p>En Python, la conexión a orígenes de datos como bases de datos se realiza mediante bibliotecas como <code>sqlite3</code> para SQLite o <code>psycopg2</code> para PostgreSQL. También se pueden utilizar funciones estándar para conectarse a archivos de texto o binarios.</p>
+
+            <h3>Conexión a SQLite</h3>
+            <p>SQLite es una base de datos ligera que no requiere un servidor y es ideal para aplicaciones locales. A continuación, se muestra cómo establecer una conexión con una base de datos SQLite:</p>
+            <pre>
+                <code>
+import sqlite3
+
+# Conectar a la base de datos SQLite
+conn = sqlite3.connect('mi_base_de_datos.db')
+cursor = conn.cursor()
+
+# Ejecutar una consulta SQL
+cursor.execute("SELECT * FROM empleados")
+
+# Obtener los resultados
+for row in cursor.fetchall():
+    print(row)
+
+# Cerrar la conexión
+conn.close()
+                </code>
+            </pre>
+            <p>En este ejemplo, Python se conecta a una base de datos SQLite, ejecuta una consulta SQL y lee los resultados.</p>
+
+            <h3>Conexión a Archivos en Python</h3>
+            <p>Para leer y escribir archivos en Python, se utiliza la función <code>open()</code>. A continuación se muestra cómo leer un archivo de texto:</p>
+            <pre>
+                <code>
+# Abrir un archivo en modo lectura
+with open("archivo.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())
+                </code>
+            </pre>
+            <p>En este ejemplo, el archivo se abre en modo lectura, y cada línea del archivo se imprime en consola.</p>
+        </section>
+
+        <section>
+            <h2>Conexión a Origen de Datos en C</h2>
+            <p>En C, la conexión a orígenes de datos como bases de datos se realiza a través de bibliotecas específicas como MySQL Connector/C. Para interactuar con archivos, se utilizan las funciones estándar de la biblioteca <code>stdio.h</code>.</p>
+
+            <h3>Conexión a MySQL</h3>
+            <p>Para conectarse a una base de datos MySQL en C, se utiliza la biblioteca <code>mysql.h</code>. A continuación se muestra un ejemplo de conexión:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include <mysql/mysql.h>
+
+int main() {
+    MYSQL *conn;
+    MYSQL_RES *res;
+    MYSQL_ROW row;
+
+    conn = mysql_init(NULL);
+
+    // Conectar a la base de datos
+    if (mysql_real_connect(conn, "localhost", "usuario", "contraseña", "miBaseDeDatos", 0, NULL, 0)) {
+        mysql_query(conn, "SELECT * FROM empleados");
+        res = mysql_store_result(conn);
+
+        while ((row = mysql_fetch_row(res))) {
+            printf("Empleado: %s\n", row[0]);
+        }
+
+        mysql_free_result(res);
+    } else {
+        printf("Error de conexión: %s\n", mysql_error(conn));
+    }
+
+    mysql_close(conn);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se establece una conexión a una base de datos MySQL y se ejecuta una consulta.</p>
+
+            <h3>Conexión a Archivos en C</h3>
+            <p>Para leer y escribir archivos en C, se utilizan funciones como <code>fopen()</code> para abrir archivos y <code>fgets()</code> para leer datos.</p>
+            <pre>
+                <code>
+#include <stdio.h>
+
+int main() {
+    FILE *archivo = fopen("archivo.txt", "r");
+    char linea[100];
+
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo\n");
+        return 1;
+    }
+
+    while (fgets(linea, sizeof(linea), archivo)) {
+        printf("%s", linea);
+    }
+
+    fclose(archivo);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo abrir un archivo de texto y leer su contenido línea por línea en C.</p>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>La conexión a orígenes de datos es un proceso esencial para las aplicaciones que interactúan con bases de datos o archivos. Ya sea que utilices bases de datos como MySQL o SQLite, o accedas a archivos de texto, cada lenguaje de programación ofrece bibliotecas y funciones específicas para facilitar este proceso.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación y Uso de Paquetes/Librerías Definidas por el Usuario</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Creación y Uso de Paquetes/Librerías Definidas por el Usuario</h1>
+        <p>La creación y el uso de paquetes o librerías definidas por el usuario es una práctica fundamental en el desarrollo de software. Permite organizar, reutilizar y compartir código de manera más eficiente. Los paquetes/librerías pueden contener clases, funciones y métodos que facilitan tareas comunes o complejas y se utilizan en múltiples proyectos.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué Son los Paquetes/Librerías Definidas por el Usuario?</h2>
+            <p>Un paquete o librería definida por el usuario es un conjunto de clases, funciones, variables o módulos que un desarrollador crea para encapsular una funcionalidad específica. Estos paquetes/librerías pueden ser reutilizados en diferentes aplicaciones o proyectos sin necesidad de reescribir el código. Al crear paquetes/librerías, los programadores pueden organizar mejor su código y mejorar la modularidad de sus aplicaciones.</p>
+        </section>
+
+        <section>
+            <h2>Creación y Uso de Paquetes/Librerías en Diferentes Lenguajes</h2>
+
+            <h3>Java</h3>
+            En Java, los paquetes se utilizan para agrupar clases relacionadas. Las librerías en Java se crean y utilizan empaquetando un conjunto de clases dentro de un archivo JAR (Java ARchive). Para crear un paquete en Java, solo es necesario usar la palabra clave `package` al principio de un archivo de clase.
+
+            <p>Ejemplo de creación y uso de un paquete en Java:</p>
+            <pre>
+                <code>
+// Crear un paquete llamado "utilidades"
+package utilidades;
+
+// Crear una clase dentro del paquete
+public class Calculadora {
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+}
+                </code>
+            </pre>
+            <p>Para usar este paquete en otro archivo de clase, simplemente se importa con la palabra clave `import`:</p>
+            <pre>
+                <code>
+import utilidades.Calculadora;
+
+public class TestCalculadora {
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+        System.out.println("La suma es: " + calc.sumar(5, 7));
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea un paquete llamado `utilidades`, que contiene una clase `Calculadora`. Esta clase se utiliza luego en otro archivo para sumar dos números.</p>
+
+            <h3>Python</h3>
+            En Python, los paquetes y librerías se definen mediante directorios que contienen archivos `__init__.py`. Este archivo hace que el directorio sea reconocido como un paquete Python. Las librerías pueden contener múltiples módulos (archivos `.py`), y al importar estos módulos, se facilita el uso del código en diferentes proyectos.
+
+            <p>Ejemplo de creación y uso de un paquete en Python:</p>
+            <pre>
+                <code>
+# Crear un archivo llamado calculadora.py
+def sumar(a, b):
+    return a + b
+                </code>
+            </pre>
+            <p>Para crear un paquete, simplemente creamos una carpeta (por ejemplo, `utilidades/`) y dentro de ella colocamos el archivo `calculadora.py` y el archivo `__init__.py` (que puede estar vacío).</p>
+
+            <p>Uso del paquete en otro archivo:</p>
+            <pre>
+                <code>
+from utilidades.calculadora import sumar
+
+print("La suma es:", sumar(3, 5))
+                </code>
+            </pre>
+            <p>Este ejemplo crea un módulo llamado `calculadora.py` y lo coloca dentro de un paquete `utilidades`. Luego, se importa la función `sumar` y se utiliza en otro archivo.</p>
+
+            <h3>C</h3>
+            En C, los paquetes no existen en el sentido convencional. Sin embargo, se pueden crear librerías estáticas (`.a`) o dinámicas (`.so`) que contienen funciones reutilizables. Para organizar el código, se utilizan encabezados (`.h`) y archivos de implementación (`.c`).
+
+            <p>Ejemplo de creación y uso de una librería en C:</p>
+            <pre>
+                <code>
+// archivo calculadora.h
+#ifndef CALCULADORA_H
+#define CALCULADORA_H
+
+int sumar(int a, int b);
+
+#endif
+                </code>
+            </pre>
+            <p>El archivo `calculadora.h` define la interfaz pública de la librería, mientras que en el archivo `calculadora.c` se implementa la función `sumar`:</p>
+            <pre>
+                <code>
+// archivo calculadora.c
+#include "calculadora.h"
+
+int sumar(int a, int b) {
+    return a + b;
+}
+                </code>
+            </pre>
+            <p>Uso de la librería en otro archivo:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include "calculadora.h"
+
+int main() {
+    printf("La suma es: %d\n", sumar(3, 5));
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se define una librería en C con un archivo de encabezado `calculadora.h` y una implementación en `calculadora.c`. Luego, se utiliza la función `sumar` en el archivo `main.c`.</p>
+
+        </section>
+
+        <section>
+            <h2>Ventajas de Crear y Usar Paquetes/Librerías Definidas por el Usuario</h2>
+            <ul>
+                <li><strong>Modularidad:</strong> Permite organizar el código en módulos reutilizables, lo que facilita el mantenimiento y la ampliación del proyecto.</li>
+                <li><strong>Reutilización de Código:</strong> El código encapsulado en librerías puede ser reutilizado en diferentes proyectos sin necesidad de reescribirlo.</li>
+                <li><strong>Distribución de Funcionalidad:</strong> Las librerías pueden ser compartidas con otros desarrolladores, lo que mejora la colaboración y la estandarización de soluciones.</li>
+                <li><strong>Facilita la Depuración:</strong> Los errores en una librería pueden ser corregidos sin afectar el resto del proyecto que la utiliza.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La creación y el uso de paquetes y librerías definidas por el usuario son fundamentales para la organización, reutilización y distribución de código en el desarrollo de software. Los paquetes permiten agrupar código relacionado y hacer que sea accesible en diferentes partes de un proyecto o en diferentes proyectos. Al aprender a crear y usar paquetes y librerías, los desarrolladores pueden mejorar la modularidad de sus aplicaciones y reducir la duplicación de código.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

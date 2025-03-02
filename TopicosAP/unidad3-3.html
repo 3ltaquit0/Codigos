@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación y Control de Hilos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Creación y Control de Hilos</h1>
+        <p>La creación y control de hilos es fundamental para la programación concurrente. Los hilos permiten que las tareas se ejecuten de manera simultánea, mejorando el rendimiento y la capacidad de respuesta de las aplicaciones. Aquí veremos cómo crear y controlar hilos en Java, Python y C, además de cómo gestionar su ejecución y sincronización.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Hilo?</h2>
+            <p>Un hilo es una unidad de ejecución dentro de un programa. Cada hilo puede ejecutar código de manera independiente, y varios hilos pueden ejecutarse al mismo tiempo dentro de un mismo programa. Los hilos pueden compartir recursos como memoria y archivos, lo que les permite trabajar juntos en tareas concurrentes.</p>
+
+            <p>La creación de hilos permite realizar múltiples tareas en paralelo, aprovechando mejor los recursos del sistema y mejorando el rendimiento de las aplicaciones, especialmente en sistemas multicore.</p>
+        </section>
+
+        <section>
+            <h2>Creación y Control de Hilos en Java</h2>
+            <p>En Java, los hilos pueden ser creados de dos maneras: extendiendo la clase <code>Thread</code> o implementando la interfaz <code>Runnable</code>.</p>
+
+            <h3>Creación de Hilos Extendiendo la Clase <code>Thread</code></h3>
+            <p>Al extender la clase <code>Thread</code>, se sobrescribe el método <code>run()</code>, que contiene el código que se ejecutará en el hilo.</p>
+            <pre>
+                <code>
+public class MiHilo extends Thread {
+    @Override
+    public void run() {
+        System.out.println("El hilo está en ejecución.");
+    }
+
+    public static void main(String[] args) {
+        MiHilo hilo = new MiHilo();
+        hilo.start(); // Inicia la ejecución del hilo
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea un hilo que imprime un mensaje en consola cuando se ejecuta.</p>
+
+            <h3>Creación de Hilos Implementando la Interfaz <code>Runnable</code></h3>
+            <p>Otra forma de crear hilos es implementando la interfaz <code>Runnable</code>, que permite que una clase ya existente sea utilizada como hilo sin tener que extender <code>Thread</code>.</p>
+            <pre>
+                <code>
+public class MiHiloRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("El hilo está en ejecución.");
+    }
+
+    public static void main(String[] args) {
+        MiHiloRunnable tarea = new MiHiloRunnable();
+        Thread hilo = new Thread(tarea);
+        hilo.start(); // Inicia la ejecución del hilo
+    }
+}
+                </code>
+            </pre>
+            <p>En este caso, se crea un objeto <code>Runnable</code> y luego se pasa a un objeto <code>Thread</code> para iniciar el hilo.</p>
+
+            <h3>Control de Hilos en Java</h3>
+            <p>Los hilos en Java pueden ser controlados usando métodos como <code>start()</code>, <code>sleep()</code>, <code>join()</code>, entre otros. A continuación, se describen algunos métodos comunes:</p>
+            <ul>
+                <li><strong><code>start()</code></strong>: Inicia la ejecución del hilo.</li>
+                <li><strong><code>sleep()</code></strong>: Suspende la ejecución del hilo durante un tiempo determinado (en milisegundos).</li>
+                <li><strong><code>join()</code></strong>: Hace que el hilo actual espere a que el hilo especificado termine su ejecución.</li>
+                <li><strong><code>isAlive()</code></strong>: Verifica si un hilo está en ejecución.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Creación y Control de Hilos en Python</h2>
+            <p>En Python, los hilos se gestionan mediante el módulo <code>threading</code>, que proporciona la clase <code>Thread</code> para crear y controlar hilos.</p>
+
+            <h3>Creación de Hilos en Python</h3>
+            <pre>
+                <code>
+import threading
+
+def mi_funcion():
+    print("El hilo está en ejecución.")
+
+# Crear el hilo
+hilo = threading.Thread(target=mi_funcion)
+hilo.start()  # Inicia la ejecución del hilo
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea un hilo que ejecuta la función <code>mi_funcion</code> y luego se inicia con <code>start()</code>.</p>
+
+            <h3>Control de Hilos en Python</h3>
+            <p>En Python, algunos métodos importantes para el control de hilos son:</p>
+            <ul>
+                <li><strong><code>start()</code></strong>: Inicia el hilo.</li>
+                <li><strong><code>join()</code></strong>: Bloquea la ejecución del hilo principal hasta que el hilo especificado termine.</li>
+                <li><strong><code>is_alive()</code></strong>: Verifica si el hilo sigue vivo.</li>
+                <li><strong><code>setDaemon()</code></strong>: Establece si el hilo es un hilo demonio, lo que significa que se cerrará automáticamente cuando el hilo principal termine.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Creación y Control de Hilos en C</h2>
+            <p>En C, los hilos se crean utilizando la biblioteca POSIX Threads (pthreads). Para crear hilos, se utiliza la función <code>pthread_create()</code>, y para su control se utilizan varias funciones, como <code>pthread_join()</code> y <code>pthread_exit()</code>.</p>
+
+            <h3>Creación de Hilos en C</h3>
+            <pre>
+                <code>
+#include <pthread.h>
+#include <stdio.h>
+
+void* mi_funcion(void* arg) {
+    printf("El hilo está en ejecución.\n");
+    return NULL;
+}
+
+int main() {
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, mi_funcion, NULL); // Crea el hilo
+    pthread_join(hilo, NULL);  // Espera a que el hilo termine
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea un hilo con <code>pthread_create()</code> y luego se espera a que termine con <code>pthread_join()</code>.</p>
+
+            <h3>Control de Hilos en C</h3>
+            <p>En C, se pueden usar varias funciones para controlar los hilos:</p>
+            <ul>
+                <li><strong><code>pthread_create()</code></strong>: Crea un nuevo hilo.</li>
+                <li><strong><code>pthread_join()</code></strong>: Bloquea el hilo principal hasta que el hilo especificado termine.</li>
+                <li><strong><code>pthread_exit()</code></strong>: Termina la ejecución de un hilo de forma explícita.</li>
+                <li><strong><code>pthread_detach()</code></strong>: Desasocia un hilo, de modo que no es necesario esperar su terminación.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>La creación y control de hilos es esencial en la programación concurrente para mejorar el rendimiento y la eficiencia de las aplicaciones. Cada lenguaje tiene su propia manera de gestionar hilos, pero los principios básicos de creación, control y sincronización son similares en todos ellos. La elección de la herramienta adecuada depende del lenguaje de programación y de los requisitos del sistema donde se ejecuta la aplicación.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

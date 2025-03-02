@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepto de Hilo en Programación Concurrente</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Concepto de Hilo en Programación Concurrente (MultiHilos)</h1>
+        <p>En la programación concurrente, un hilo (thread) es la unidad más pequeña de ejecución dentro de un proceso. Los hilos permiten la ejecución simultánea de varias tareas, lo que mejora la eficiencia y el rendimiento de las aplicaciones al aprovechar mejor los recursos del sistema.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Hilo?</h2>
+            <p>Un hilo es una secuencia de instrucciones que puede ser ejecutada de manera independiente por el sistema operativo. Cada hilo de un proceso comparte el mismo espacio de memoria, pero cada uno tiene su propio contador de programa, registros y pilas de ejecución.</p>
+
+            <p>En un sistema de múltiples hilos, un proceso puede tener múltiples hilos que ejecutan diferentes partes del código simultáneamente, lo que permite que las tareas se realicen de manera más eficiente. Los hilos pueden ejecutarse en paralelo en sistemas con varios núcleos de CPU, o en concurrencia en sistemas con un solo núcleo, alternando entre tareas.</p>
+
+            <p>Los hilos se utilizan en aplicaciones que requieren realizar varias tareas al mismo tiempo, como aplicaciones de servidor que manejan múltiples solicitudes o interfaces gráficas de usuario que necesitan seguir respondiendo mientras realizan cálculos en segundo plano.</p>
+        </section>
+
+        <section>
+            <h2>Características de los Hilos</h2>
+            <ul>
+                <li><strong>Independencia:</strong> Cada hilo se ejecuta de manera independiente, aunque comparta el mismo espacio de memoria que otros hilos del mismo proceso.</li>
+                <li><strong>Concurrencia:</strong> Los hilos permiten la ejecución de tareas simultáneas (en un sistema de múltiples hilos) o intercaladas (en un sistema de un solo hilo).</li>
+                <li><strong>Compartición de recursos:</strong> Los hilos dentro de un mismo proceso comparten recursos como variables globales, pero cada hilo tiene su propio contexto de ejecución.</li>
+                <li><strong>Comunicación:</strong> Los hilos pueden comunicarse entre sí mediante mecanismos de sincronización como semáforos, mutexes y colas.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Hilos en Diferentes Lenguajes</h2>
+
+            <h3>Java</h3>
+            En Java, los hilos se gestionan mediante la clase `Thread` o implementando la interfaz `Runnable`. Un hilo se puede iniciar creando una instancia de la clase `Thread` y luego invocando el método `start()`.
+
+            <p>Ejemplo de creación de un hilo en Java:</p>
+            <pre>
+                <code>
+public class MiHilo extends Thread {
+    public void run() {
+        System.out.println("Este es un hilo en ejecución");
+    }
+
+    public static void main(String[] args) {
+        MiHilo hilo = new MiHilo();
+        hilo.start(); // Inicia el hilo
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, la clase `MiHilo` extiende `Thread` y sobrescribe el método `run()`, que contiene el código que se ejecutará cuando el hilo sea iniciado. El método `start()` lanza el hilo.</p>
+
+            <h3>Python</h3>
+            En Python, se utiliza la librería `threading` para crear y gestionar hilos. Un hilo se crea mediante la clase `Thread` y se inicia con el método `start()`.
+
+            <p>Ejemplo de creación de un hilo en Python:</p>
+            <pre>
+                <code>
+import threading
+
+def mi_hilo():
+    print("Este es un hilo en ejecución")
+
+hilo = threading.Thread(target=mi_hilo)
+hilo.start()  # Inicia el hilo
+                </code>
+            </pre>
+            <p>En este ejemplo, se define una función `mi_hilo()` que será ejecutada por el hilo. Luego, se crea un objeto de la clase `Thread`, pasando la función `mi_hilo` como el argumento `target`. Finalmente, se inicia el hilo con el método `start()`.</p>
+
+            <h3>C</h3>
+            En C, la programación de hilos se realiza mediante bibliotecas de hilos, como `pthreads` (POSIX Threads). Un hilo se crea mediante la función `pthread_create()`.
+
+            <p>Ejemplo de creación de un hilo en C:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include <pthread.h>
+
+void* mi_hilo(void* arg) {
+    printf("Este es un hilo en ejecución\n");
+    return NULL;
+}
+
+int main() {
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, mi_hilo, NULL);  // Inicia el hilo
+    pthread_join(hilo, NULL);  // Espera a que el hilo termine
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se usa `pthread_create()` para crear un hilo y `pthread_join()` para esperar que termine la ejecución del hilo.</p>
+        </section>
+
+        <section>
+            <h2>Ventajas de la Programación con Hilos</h2>
+            <ul>
+                <li><strong>Mejora el rendimiento:</strong> Permite la ejecución paralela de tareas, lo que mejora el rendimiento en sistemas con múltiples núcleos.</li>
+                <li><strong>Responde a eventos de manera eficiente:</strong> En aplicaciones con interfaces gráficas o en servidores, los hilos permiten que la aplicación responda a eventos mientras ejecuta otras tareas.</li>
+                <li><strong>Optimización de recursos:</strong> Los hilos permiten un uso más eficiente de los recursos del sistema, ya que las tareas se pueden dividir entre los núcleos de la CPU.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Desafíos de la Programación con Hilos</h2>
+            <ul>
+                <li><strong>Condiciones de carrera:</strong> Ocurren cuando dos hilos acceden simultáneamente a los mismos recursos sin sincronización adecuada, lo que puede provocar errores o comportamientos inesperados.</li>
+                <li><strong>Sincronización:</strong> Para evitar condiciones de carrera y otros problemas de concurrencia, es necesario sincronizar los hilos mediante mecanismos como mutexes, semáforos y barreras.</li>
+                <li><strong>Complejidad:</strong> La programación con hilos es más compleja que la programación secuencial, ya que implica gestionar el control de los hilos y su comunicación.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>Un hilo es una unidad de ejecución dentro de un proceso que permite ejecutar múltiples tareas de forma concurrente. Los hilos se utilizan ampliamente en programación para mejorar la eficiencia y rendimiento de las aplicaciones. En lenguajes como Java, Python y C, la creación y gestión de hilos es relativamente sencilla, pero requiere atención a los desafíos que presenta la programación concurrente, como la sincronización y las condiciones de carrera.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

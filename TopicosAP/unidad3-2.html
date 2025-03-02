@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación de un Programa de Flujo Único contra uno de Flujo Múltiple</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Comparación de un Programa de Flujo Único contra uno de Flujo Múltiple</h1>
+        <p>En la programación concurrente, los programas de flujo único y flujo múltiple se refieren a cómo se gestionan las tareas dentro de una aplicación. Un programa de flujo único ejecuta una tarea a la vez, mientras que un programa de flujo múltiple permite ejecutar múltiples tareas simultáneamente. Esta comparación es crucial para entender cómo la programación concurrente mejora el rendimiento y la eficiencia en ciertas aplicaciones.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Programa de Flujo Único?</h2>
+            <p>Un programa de flujo único (también conocido como flujo secuencial) ejecuta una tarea tras otra en un solo hilo. En este tipo de programa, las operaciones se realizan de manera lineal y sin ningún tipo de paralelismo. Los recursos del sistema (como el procesador) se utilizan de manera secuencial, lo que puede ser ineficiente cuando se necesitan realizar tareas simultáneas, como el procesamiento de múltiples datos o la interacción con el usuario mientras se ejecutan cálculos en segundo plano.</p>
+
+            <p>Ejemplo de flujo único en Java:</p>
+            <pre>
+                <code>
+public class FlujoUnico {
+    public static void main(String[] args) {
+        System.out.println("Inicio de la tarea 1");
+        // Tarea 1: tarea secuencial
+        System.out.println("Fin de la tarea 1");
+
+        System.out.println("Inicio de la tarea 2");
+        // Tarea 2: tarea secuencial
+        System.out.println("Fin de la tarea 2");
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, las tareas se ejecutan una tras otra en un solo hilo, lo que puede hacer que la aplicación sea más lenta cuando se necesitan realizar tareas en paralelo.</p>
+        </section>
+
+        <section>
+            <h2>¿Qué es un Programa de Flujo Múltiple?</h2>
+            <p>Un programa de flujo múltiple, también conocido como programa multihilo, permite ejecutar varias tareas simultáneamente. Esto se logra mediante la creación de múltiples hilos que se encargan de diferentes tareas de manera concurrente. Los hilos pueden ejecutarse en paralelo (si el sistema tiene varios núcleos de CPU) o de forma intercalada (en un solo núcleo). Los programas de flujo múltiple son más eficientes cuando se manejan múltiples tareas que pueden ejecutarse en paralelo, como cálculos pesados, manejo de múltiples solicitudes o actualizaciones de interfaz de usuario.</p>
+
+            <p>Ejemplo de flujo múltiple en Java:</p>
+            <pre>
+                <code>
+public class FlujoMultiple extends Thread {
+    public void run() {
+        System.out.println("Tarea en ejecución por el hilo: " + Thread.currentThread().getName());
+    }
+
+    public static void main(String[] args) {
+        FlujoMultiple hilo1 = new FlujoMultiple();
+        FlujoMultiple hilo2 = new FlujoMultiple();
+        hilo1.start();  // Inicia el hilo 1
+        hilo2.start();  // Inicia el hilo 2
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se crean dos hilos que ejecutan tareas de manera simultánea. Esto permite que las tareas se realicen más rápido al aprovechar múltiples recursos del sistema.</p>
+        </section>
+
+        <section>
+            <h2>Comparación de Programas de Flujo Único y Múltiple</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Flujo Único</th>
+                        <th>Flujo Múltiple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ejemplo de ejecución</td>
+                        <td>Las tareas se ejecutan secuencialmente.</td>
+                        <td>Las tareas se ejecutan simultáneamente en diferentes hilos.</td>
+                    </tr>
+                    <tr>
+                        <td>Rendimiento</td>
+                        <td>Puede ser más lento cuando se realizan tareas intensivas o concurrentes.</td>
+                        <td>Mejora el rendimiento al ejecutar tareas simultáneamente (en paralelo o intercaladas).</td>
+                    </tr>
+                    <tr>
+                        <td>Complejidad</td>
+                        <td>Menos complejo, ya que solo hay un hilo de ejecución.</td>
+                        <td>Más complejo, ya que se requiere gestionar múltiples hilos y la sincronización entre ellos.</td>
+                    </tr>
+                    <tr>
+                        <td>Uso de recursos</td>
+                        <td>Utiliza solo un hilo y, por tanto, un único recurso de CPU.</td>
+                        <td>Puede aprovechar múltiples núcleos de CPU, utilizando recursos de manera más eficiente.</td>
+                    </tr>
+                    <tr>
+                        <td>Sincronización</td>
+                        <td>No requiere mecanismos de sincronización, ya que solo hay un hilo.</td>
+                        <td>Requiere mecanismos de sincronización (como semáforos, mutexes) para evitar condiciones de carrera y asegurar que los hilos no interfieran entre sí.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Ventajas y Desventajas</h2>
+
+            <h3>Flujo Único</h3>
+            <p>Ventajas:</p>
+            <ul>
+                <li>Fácil de implementar y entender.</li>
+                <li>Menos propenso a errores relacionados con la sincronización.</li>
+                <li>Ideal para tareas simples y con poca necesidad de paralelismo.</li>
+            </ul>
+
+            <p>Desventajas:</p>
+            <ul>
+                <li>No aprovecha la capacidad de sistemas con múltiples núcleos de CPU.</li>
+                <li>Puede resultar ineficiente en aplicaciones que necesitan realizar múltiples tareas de manera concurrente.</li>
+            </ul>
+
+            <h3>Flujo Múltiple</h3>
+            <p>Ventajas:</p>
+            <ul>
+                <li>Mejora el rendimiento en sistemas con múltiples núcleos de CPU.</li>
+                <li>Permite la ejecución simultánea de tareas, mejorando la eficiencia.</li>
+                <li>Ideal para aplicaciones que requieren manejar múltiples tareas al mismo tiempo (como servidores web o aplicaciones interactivas).</li>
+            </ul>
+
+            <p>Desventajas:</p>
+            <ul>
+                <li>Requiere mayor complejidad y cuidado al manejar la sincronización entre hilos.</li>
+                <li>Posibles problemas de concurrencia, como condiciones de carrera, si no se gestionan adecuadamente.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>Los programas de flujo único son adecuados para tareas simples o secuenciales, pero no aprovechan al máximo los recursos de hardware, especialmente en sistemas con múltiples núcleos. Los programas de flujo múltiple, por otro lado, son más eficientes cuando se trata de realizar varias tareas de manera concurrente, pero su complejidad aumenta al tener que gestionar múltiples hilos y la sincronización entre ellos. La elección entre flujo único y flujo múltiple depende de las necesidades de la aplicación y del entorno de ejecución.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

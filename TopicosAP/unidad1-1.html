@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Interfaces Gráficas de Usuario</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Creación de Interfaces Gráficas de Usuario (GUI)</h1>
+        <p>Las interfaces gráficas de usuario (GUI) permiten que los usuarios interactúen con las aplicaciones de manera más intuitiva, utilizando elementos visuales como botones, cuadros de texto, menús y ventanas. En este artículo, exploraremos cómo crear GUIs utilizando tres lenguajes populares: Java, Python y C.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es una Interfaz Gráfica de Usuario?</h2>
+            <p>Una interfaz gráfica de usuario (GUI) es un sistema que permite a los usuarios interactuar con una aplicación a través de elementos visuales y gráficos en lugar de texto o líneas de comandos. Las GUIs están diseñadas para hacer que las aplicaciones sean más accesibles y fáciles de usar. Estas interfaces incluyen botones, campos de texto, listas desplegables, cuadros de diálogo, menús y otras herramientas visuales para interactuar con el software.</p>
+
+            <h3>Componentes Clásicos de una GUI</h3>
+            <ul>
+                <li><strong>Botones:</strong> Permiten a los usuarios ejecutar acciones, como enviar formularios o cerrar ventanas.</li>
+                <li><strong>Campos de texto:</strong> Permiten a los usuarios ingresar información.</li>
+                <li><strong>Listas desplegables:</strong> Ofrecen un conjunto de opciones para seleccionar.</li>
+                <li><strong>Cuadros de diálogo:</strong> Usados para mostrar mensajes o pedir confirmación al usuario.</li>
+                <li><strong>Etiquetas (Labels):</strong> Proveen información al usuario sobre otros componentes.</li>
+            </ul>
+
+            <h3>Beneficios de las GUIs</h3>
+            <p>Las interfaces gráficas ofrecen una experiencia de usuario más atractiva y accesible. A diferencia de las interfaces de línea de comandos (CLI), las GUIs permiten que las personas no técnicas puedan interactuar con el software sin necesidad de conocimientos previos de programación. Además, las GUIs proporcionan retroalimentación visual inmediata, lo que facilita la comprensión de las acciones realizadas por el usuario.</p>
+
+            <h3>Herramientas para Crear GUIs</h3>
+            A lo largo de este artículo, exploraremos cómo crear GUIs en tres lenguajes de programación populares: **Java**, **Python** y **C**. Cada uno de estos lenguajes tiene bibliotecas y frameworks específicos para desarrollar interfaces gráficas, cada uno con sus propias ventajas y desventajas.
+
+        </section>
+
+        <section>
+            <h2>Creación de Interfaces en Java</h2>
+            <p>En Java, dos de las bibliotecas más comunes para crear interfaces gráficas son **Swing** y **JavaFX**. Ambas ofrecen una amplia gama de componentes gráficos, pero JavaFX se recomienda para aplicaciones modernas debido a su soporte para efectos visuales avanzados y su integración con la plataforma Java 8 y posteriores.</p>
+
+            <h3>Java Swing</h3>
+            <p>Swing es una biblioteca de Java que proporciona componentes gráficos como botones, cuadros de texto y ventanas. Aunque Swing ha sido reemplazado parcialmente por JavaFX, sigue siendo una opción válida para crear GUIs simples y fáciles de implementar.</p>
+
+            <h4>Ejemplo Básico de Swing:</h4>
+            <pre>
+                <code>
+import javax.swing.*;
+
+public class MiVentana {
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Mi Ventana");
+        JButton boton = new JButton("Haz clic aquí");
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, hemos creado una ventana simple con un botón. El método `setVisible(true)` asegura que la ventana sea visible en la pantalla.</p>
+
+            <h3>JavaFX</h3>
+            <p>JavaFX es una alternativa más moderna y poderosa a Swing. Ofrece un mayor control sobre los gráficos, el diseño y los efectos visuales. JavaFX es ideal para aplicaciones que requieren un alto rendimiento gráfico.</p>
+
+            <h4>Ejemplo Básico de JavaFX:</h4>
+            <pre>
+                <code>
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+public class MiVentanaJavaFX extends Application {
+    @Override
+    public void start(Stage stage) {
+        Button boton = new Button("Haz clic aquí");
+        boton.setOnAction(e -> System.out.println("¡Botón clickeado!"));
+        
+        Scene scene = new Scene(boton, 300, 200);
+        stage.setTitle("Mi Ventana JavaFX");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+                </code>
+            </pre>
+            <p>Este código crea una ventana con un botón que imprime un mensaje en la consola cuando se hace clic.</p>
+
+        </section>
+
+        <section>
+            <h2>Creación de Interfaces en Python</h2>
+            <p>Python es conocido por su facilidad de uso, y su biblioteca estándar para GUIs es **Tkinter**. Sin embargo, también existen otras bibliotecas como **PyQt** y **Kivy** que ofrecen mayores capacidades para crear interfaces más complejas.</p>
+
+            <h3>Tkinter</h3>
+            <p>Tkinter es la biblioteca de GUIs más utilizada en Python. Es fácil de aprender y suficiente para crear aplicaciones simples y eficaces.</p>
+
+            <h4>Ejemplo Básico de Tkinter:</h4>
+            <pre>
+                <code>
+import tkinter as tk
+
+ventana = tk.Tk()
+ventana.title("Mi Ventana")
+boton = tk.Button(ventana, text="Haz clic aquí")
+boton.pack()
+ventana.mainloop()
+                </code>
+            </pre>
+            <p>En este ejemplo, se crea una ventana con un botón que, al hacer clic, no realiza ninguna acción específica, pero sirve como base para construir interfaces más complejas.</p>
+
+            <h3>PyQt</h3>
+            <p>PyQt es una de las bibliotecas más potentes para crear GUIs en Python. Permite la creación de interfaces de usuario con una amplia gama de componentes, y es ideal para aplicaciones más grandes y complejas.</p>
+
+        </section>
+
+        <section>
+            <h2>Creación de Interfaces en C</h2>
+            <p>En C, la creación de GUIs generalmente se realiza a través de bibliotecas como **GTK** o **Qt**, que permiten crear interfaces gráficas multiplataforma.</p>
+
+            <h3>GTK</h3>
+            <p>GTK (GIMP Toolkit) es una biblioteca de interfaces gráficas que se usa comúnmente en aplicaciones de escritorio en Linux, aunque también es compatible con otros sistemas operativos.</p>
+
+            <h4>Ejemplo Básico de GTK en C:</h4>
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+static void on_button_clicked(GtkWidget *widget, gpointer data) {
+    g_print("¡Botón clickeado!\n");
+}
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+
+    g_signal_connect(boton, "clicked", G_CALLBACK(on_button_clicked), NULL);
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+    gtk_window_set_title(GTK_WINDOW(ventana), "Mi Ventana");
+    gtk_window_set_default_size(GTK_WINDOW(ventana), 300, 200);
+    g_signal_connect(ventana, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(ventana);
+    gtk_main();
+
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, hemos creado una ventana con un botón. Al hacer clic en el botón, se imprime un mensaje en la consola.</p>
+
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>Crear interfaces gráficas de usuario es fundamental para la creación de aplicaciones interactivas y amigables. Ya sea utilizando Java con Swing o JavaFX, Python con Tkinter o PyQt, o C con GTK, cada lenguaje tiene herramientas poderosas que permiten a los desarrolladores crear interfaces eficaces y accesibles. La elección de la herramienta adecuada depende de la complejidad de la aplicación y las necesidades específicas del proyecto.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

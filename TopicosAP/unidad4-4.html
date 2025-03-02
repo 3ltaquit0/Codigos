@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Datos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Visualización de Datos</h1>
+        <p>La visualización de datos es el proceso de representar gráficamente los datos de una manera que facilite su comprensión y análisis. A través de gráficos y diagramas, los usuarios pueden identificar patrones, tendencias y relaciones entre los datos. En esta sección, exploraremos cómo realizar visualización de datos utilizando Java, Python y C.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Visualización de Datos?</h2>
+            <p>La visualización de datos transforma datos complejos en representaciones gráficas como gráficos de barras, líneas, dispersión, mapas y otros. Esta representación ayuda a los usuarios a entender la información de manera más clara y rápida. En el contexto de programación, esto implica el uso de librerías y herramientas para generar estos gráficos en las aplicaciones.</p>
+            <p>Algunas de las formas más comunes de visualización de datos incluyen:</p>
+            <ul>
+                <li><strong>Gráficos de barras:</strong> Para comparar diferentes categorías de datos.</li>
+                <li><strong>Gráficos de líneas:</strong> Para mostrar tendencias a lo largo del tiempo.</li>
+                <li><strong>Diagramas de dispersión:</strong> Para mostrar la relación entre dos variables.</li>
+                <li><strong>Mapas:</strong> Para representar datos geográficos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Visualización de Datos en Java</h2>
+            <p>En Java, se pueden usar bibliotecas como <code>JFreeChart</code> para generar gráficos. A continuación, mostramos cómo generar un gráfico de barras utilizando esta biblioteca.</p>
+
+            <h3>Ejemplo de Gráfico de Barras con JFreeChart</h3>
+            <p>El siguiente código genera un gráfico de barras básico en Java utilizando la biblioteca <code>JFreeChart</code>:</p>
+            <pre>
+                <code>
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
+import javax.swing.*;
+
+public class GraficoBarras {
+    public static void main(String[] args) {
+        // Crear un conjunto de datos
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(5, "Ventas", "Enero");
+        dataset.addValue(3, "Ventas", "Febrero");
+        dataset.addValue(8, "Ventas", "Marzo");
+
+        // Crear el gráfico
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Gráfico de Ventas", // Título
+                "Mes",               // Eje X
+                "Cantidad",          // Eje Y
+                dataset              // Datos
+        );
+
+        // Mostrar el gráfico
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(chartPanel);
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+            <p>Este código crea un gráfico de barras que muestra las ventas mensuales. Utiliza la biblioteca <code>JFreeChart</code>, que es muy popular en Java para la creación de gráficos.</p>
+        </section>
+
+        <section>
+            <h2>Visualización de Datos en Python</h2>
+            <p>En Python, la biblioteca <code>Matplotlib</code> es una de las más utilizadas para la visualización de datos. A continuación, se muestra un ejemplo de cómo generar un gráfico de líneas utilizando esta biblioteca.</p>
+
+            <h3>Ejemplo de Gráfico de Líneas con Matplotlib</h3>
+            <p>El siguiente código genera un gráfico de líneas que muestra la evolución de las ventas mensuales en Python:</p>
+            <pre>
+                <code>
+import matplotlib.pyplot as plt
+
+# Datos de ventas
+meses = ["Enero", "Febrero", "Marzo"]
+ventas = [5, 3, 8]
+
+# Crear gráfico de líneas
+plt.plot(meses, ventas, marker="o")
+
+# Agregar título y etiquetas
+plt.title("Ventas Mensuales")
+plt.xlabel("Mes")
+plt.ylabel("Ventas")
+
+# Mostrar el gráfico
+plt.show()
+                </code>
+            </pre>
+            <p>Este código crea un gráfico de líneas para visualizar las ventas a lo largo de tres meses. Utiliza la función <code>plot()</code> de la biblioteca <code>Matplotlib</code>.</p>
+        </section>
+
+        <section>
+            <h2>Visualización de Datos en C</h2>
+            <p>En C, la visualización de datos no es tan directa como en Java o Python, ya que no existen bibliotecas estándar para gráficos. Sin embargo, se pueden utilizar bibliotecas externas como <code>gnuplot</code> para generar gráficos. A continuación, se muestra cómo utilizar <code>gnuplot</code> para crear un gráfico de barras desde un programa en C.</p>
+
+            <h3>Ejemplo de Gráfico de Barras con Gnuplot en C</h3>
+            <p>El siguiente código escribe datos en un archivo y utiliza <code>gnuplot</code> para crear un gráfico de barras:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    // Crear archivo de datos
+    FILE *file = fopen("datos.dat", "w");
+    if (file == NULL) {
+        printf("Error al abrir el archivo.\n");
+        return 1;
+    }
+
+    // Escribir datos
+    fprintf(file, "Enero 5\n");
+    fprintf(file, "Febrero 3\n");
+    fprintf(file, "Marzo 8\n");
+    fclose(file);
+
+    // Llamar a gnuplot para generar el gráfico
+    system("gnuplot -e \"set terminal png; set output 'grafico.png'; plot 'datos.dat' using 2:xtic(1) with boxes\"");
+
+    printf("Gráfico generado como 'grafico.png'.\n");
+
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este código genera un archivo de datos, luego invoca <code>gnuplot</code> para crear un gráfico de barras que se guarda como una imagen PNG.</p>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>La visualización de datos es esencial para analizar y comunicar información de manera efectiva. En Java, Python y C, se pueden utilizar diferentes bibliotecas para generar gráficos y representar visualmente los datos. Desde gráficos de barras hasta líneas y dispersión, estas bibliotecas permiten a los programadores integrar potentes herramientas de visualización en sus aplicaciones para ayudar a los usuarios a interpretar los datos con mayor facilidad.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

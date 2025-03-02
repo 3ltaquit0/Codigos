@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Componentes Definidos por el Usuario</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Creación de Componentes Definidos por el Usuario</h1>
+        <p>La creación de componentes definidos por el usuario es una técnica que permite personalizar y extender las capacidades de las interfaces gráficas de usuario (GUI). Estos componentes pueden ser tanto visuales como no visuales, lo que significa que pueden tener una representación gráfica (como botones, campos de texto, etc.) o realizar tareas en segundo plano sin mostrar una interfaz directa al usuario.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué Son los Componentes Definidos por el Usuario?</h2>
+            <p>Un componente definido por el usuario es un componente personalizado que el programador crea para satisfacer necesidades específicas en una aplicación. Puede ser un componente visual (como un botón con características personalizadas) o no visual (como un objeto que maneja la lógica de la aplicación sin mostrar ningún gráfico).</p>
+            <p>Estos componentes permiten una mayor flexibilidad en la creación de aplicaciones, ya que los desarrolladores pueden adaptarlos a sus requerimientos sin depender completamente de los componentes prediseñados de las librerías estándar.</p>
+        </section>
+
+        <section>
+            <h2>Creación de Componentes en Diferentes Lenguajes</h2>
+
+            <h3>Java</h3>
+            En Java, los componentes visuales se pueden crear extendiendo clases como `JComponent` o `JButton`, mientras que los componentes no visuales se crean implementando interfaces o clases base. Los componentes visuales pueden ser, por ejemplo, botones, paneles o etiquetas, mientras que los no visuales pueden ser objetos que gestionan la lógica de negocio o la interacción con bases de datos.
+
+            <p>Ejemplo de creación de un componente visual en Java (un botón personalizado):</p>
+            <pre>
+                <code>
+import javax.swing.*;
+import java.awt.*;
+
+class BotonPersonalizado extends JButton {
+    public BotonPersonalizado(String texto) {
+        super(texto);
+        this.setBackground(Color.BLUE);
+        this.setForeground(Color.WHITE);
+        this.setFont(new Font("Arial", Font.BOLD, 14));
+    }
+}
+
+public class VentanaSwing {
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Ventana con Botón Personalizado");
+        BotonPersonalizado boton = new BotonPersonalizado("Haz clic aquí");
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+            <p>Este ejemplo crea un botón personalizado extendiendo la clase `JButton` y modificando su apariencia. Al usar un componente definido por el usuario como este, puedes controlar su estilo y comportamiento de forma más precisa.</p>
+
+            <h3>Python</h3>
+            En Python, la creación de componentes personalizados también es posible utilizando la librería **Tkinter**. Los componentes visuales se pueden crear extendiendo las clases de widgets proporcionadas por Tkinter, mientras que los no visuales pueden ser objetos que gestionan la lógica de la aplicación.
+
+            <p>Ejemplo de creación de un componente visual en Python (un botón personalizado):</p>
+            <pre>
+                <code>
+import tkinter as tk
+
+class BotonPersonalizado(tk.Button):
+    def __init__(self, master=None, **kwargs):
+        super().__init__(master, **kwargs)
+        self.config(bg="blue", fg="white", font=("Arial", 14, "bold"))
+
+ventana = tk.Tk()
+boton = BotonPersonalizado(ventana, text="Haz clic aquí")
+boton.pack()
+ventana.mainloop()
+                </code>
+            </pre>
+            <p>Este código crea una clase `BotonPersonalizado` que extiende `tk.Button` y ajusta su apariencia con propiedades como el color de fondo y la fuente.</p>
+
+            <h3>C</h3>
+            En C, la creación de componentes visuales personalizados es más compleja y requiere el uso de bibliotecas externas como **GTK+** o **SDL**. Los componentes no visuales en C generalmente se gestionan mediante estructuras de datos y funciones personalizadas.
+
+            <p>Ejemplo de creación de un componente visual en C con GTK+ (una ventana con un botón):</p>
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+void on_button_clicked(GtkWidget *widget, gpointer data) {
+    g_print("¡Botón clickeado!\n");
+}
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+    g_signal_connect(boton, "clicked", G_CALLBACK(on_button_clicked), NULL);
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+    gtk_window_set_title(GTK_WINDOW(ventana), "Ventana con botón");
+    gtk_widget_show_all(ventana);
+    gtk_main();
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, GTK+ se utiliza para crear una ventana con un botón. Al hacer clic en el botón, se ejecuta la función `on_button_clicked`, que imprime un mensaje en la consola.</p>
+
+        </section>
+
+        <section>
+            <h2>Componentes No Visuales</h2>
+            Los componentes no visuales en general no tienen una interfaz gráfica, pero realizan tareas importantes en segundo plano. Estos componentes pueden ser, por ejemplo:
+            <ul>
+                <li>Gestores de eventos.</li>
+                <li>Controladores de bases de datos.</li>
+                <li>Operadores de archivos y directorios.</li>
+                <li>Lógica de negocio.</li>
+            </ul>
+            En Java y Python, se pueden crear estos componentes no visuales mediante clases que gestionen procesos o tareas sin la necesidad de que el usuario vea una representación gráfica.
+
+            <h3>Ejemplo de Componente No Visual en Java:</h3>
+            <pre>
+                <code>
+class GestorDeDatos {
+    public void cargarDatos() {
+        // Lógica para cargar datos desde una base de datos
+        System.out.println("Datos cargados");
+    }
+}
+                </code>
+            </pre>
+            <p>En este caso, `GestorDeDatos` es un componente no visual que gestiona la carga de datos desde una base de datos, sin mostrar ningún componente gráfico en la interfaz.</p>
+
+            <h3>Ejemplo de Componente No Visual en Python:</h3>
+            <pre>
+                <code>
+class GestorDeArchivos:
+    def cargar_archivos(self):
+        # Lógica para cargar archivos
+        print("Archivos cargados")
+
+gestor = GestorDeArchivos()
+gestor.cargar_archivos()
+                </code>
+            </pre>
+            <p>En Python, `GestorDeArchivos` es un componente no visual que realiza una tarea (cargar archivos) sin ninguna interfaz gráfica visible para el usuario.</p>
+
+        </section>
+
+        <section>
+            <h2>Ventajas de Crear Componentes Definidos por el Usuario</h2>
+            <ul>
+                <li><strong>Personalización:</strong> Permite crear componentes a medida para satisfacer necesidades específicas que no pueden ser cubiertas por los componentes estándar.</li>
+                <li><strong>Reutilización:</strong> Los componentes personalizados pueden ser reutilizados en diferentes aplicaciones o en distintas partes de la misma aplicación, lo que mejora la eficiencia del desarrollo.</li>
+                <li><strong>Modularidad:</strong> Crear componentes personalizados fomenta el desarrollo modular, lo que facilita el mantenimiento y la extensión del software.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>La creación de componentes definidos por el usuario, tanto visuales como no visuales, permite a los desarrolladores personalizar las aplicaciones de manera eficiente, adaptándose a necesidades específicas. Estos componentes pueden ser reutilizados y mejorados con el tiempo, lo que favorece el desarrollo modular y flexible. Al aprender a crear estos componentes, los programadores adquieren la capacidad de construir aplicaciones más complejas y optimizadas.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

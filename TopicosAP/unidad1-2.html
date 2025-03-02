@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Eventos en la Interfaz Gráfica de Usuario</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Tipos de Eventos en la Interfaz Gráfica de Usuario</h1>
+        <p>En la programación de interfaces gráficas de usuario (GUIs), los eventos son interacciones que el usuario realiza con la interfaz. Estos eventos pueden ser clics de ratón, movimientos del mouse, presionar teclas, entre otros. Es fundamental entender los diferentes tipos de eventos para crear aplicaciones interactivas.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es un Evento?</h2>
+            <p>Un evento es cualquier acción realizada por un usuario que provoca una reacción del sistema. En el contexto de las GUIs, los eventos permiten que la aplicación responda a la interacción del usuario. Estos eventos pueden ser de diferentes tipos según el componente que esté siendo utilizado (botón, teclado, ratón, etc.).</p>
+
+            <h3>Tipos de Eventos</h3>
+            Los eventos se clasifican en varias categorías dependiendo de la interacción del usuario:
+
+            <h4>1. Eventos de Ratón</h4>
+            <p>Los eventos de ratón son aquellos que se generan a partir de la interacción del usuario con el dispositivo de entrada más común en las interfaces gráficas: el ratón. Estos eventos incluyen:</p>
+            <ul>
+                <li><strong>Click:</strong> Ocurre cuando el usuario presiona y suelta el botón del ratón sobre un elemento de la interfaz.</li>
+                <li><strong>Doble click:</strong> Ocurre cuando el usuario hace dos clics rápidos consecutivos sobre un mismo elemento.</li>
+                <li><strong>Movimiento:</strong> Ocurre cuando el ratón se mueve sobre la interfaz.</li>
+                <li><strong>Desplazamiento (Scroll):</strong> Ocurre cuando el usuario mueve la rueda del ratón.</li>
+                <li><strong>Arrastre (Drag):</strong> Ocurre cuando el usuario mantiene presionado un botón del ratón y mueve el ratón.</li>
+            </ul>
+
+            <h4>2. Eventos de Teclado</h4>
+            <p>Los eventos de teclado están relacionados con la interacción del usuario con las teclas del teclado. Algunos de los eventos más comunes son:</p>
+            <ul>
+                <li><strong>Presionar una tecla:</strong> Ocurre cuando el usuario presiona una tecla del teclado.</li>
+                <li><strong>Soltar una tecla:</strong> Ocurre cuando el usuario deja de presionar una tecla.</li>
+                <li><strong>Combinación de teclas:</strong> Se genera cuando el usuario presiona varias teclas simultáneamente (por ejemplo, Ctrl + C para copiar).</li>
+            </ul>
+
+            <h4>3. Eventos de Formulario</h4>
+            <p>En las interfaces gráficas que contienen formularios, los eventos de formulario son fundamentales para la interacción con los campos del formulario. Algunos eventos comunes son:</p>
+            <ul>
+                <li><strong>Envío del formulario:</strong> Ocurre cuando el usuario envía el formulario (por ejemplo, al hacer clic en el botón de "Enviar").</li>
+                <li><strong>Cambio en el valor de un campo:</strong> Ocurre cuando el usuario cambia el valor en un campo de texto, casilla de verificación, lista desplegable, etc.</li>
+                <li><strong>Foco:</strong> Ocurre cuando un campo de formulario recibe o pierde el foco (por ejemplo, cuando el usuario hace clic dentro de un campo de texto).</li>
+            </ul>
+
+            <h4>4. Eventos de Ventana</h4>
+            <p>Los eventos de ventana son aquellos que ocurren en relación con la propia ventana de la aplicación. Estos eventos incluyen:</p>
+            <ul>
+                <li><strong>Carga de la ventana:</strong> Ocurre cuando la ventana de la aplicación se carga y se muestra en la pantalla.</li>
+                <li><strong>Redimensionamiento:</strong> Ocurre cuando el usuario cambia el tamaño de la ventana.</li>
+                <li><strong>Cierre de la ventana:</strong> Ocurre cuando el usuario intenta cerrar la ventana.</li>
+            </ul>
+
+            <h4>5. Eventos de Toque (Touch)</h4>
+            <p>En dispositivos con pantallas táctiles, los eventos de toque son fundamentales. Estos eventos incluyen:</p>
+            <ul>
+                <li><strong>Toque:</strong> Ocurre cuando el usuario toca la pantalla con un dedo o un lápiz óptico.</li>
+                <li><strong>Desplazamiento táctil:</strong> Ocurre cuando el usuario desliza el dedo por la pantalla.</li>
+                <li><strong>Toque múltiple:</strong> Ocurre cuando el usuario toca la pantalla con varios dedos simultáneamente.</li>
+            </ul>
+
+            <h4>6. Eventos de Sistema</h4>
+            <p>Los eventos de sistema son aquellos que están relacionados con el comportamiento del sistema operativo o con la aplicación en general. Algunos ejemplos incluyen:</p>
+            <ul>
+                <li><strong>Minimización o maximización de la ventana:</strong> Ocurre cuando el usuario cambia el estado de la ventana de la aplicación.</li>
+                <li><strong>Eventos de rendimiento:</strong> Ocurren en relación con el rendimiento de la aplicación, como cuando el sistema comienza a sobrecargarse o cuando se libera espacio en memoria.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Manejo de Eventos en Java, Python y C</h2>
+            A continuación, veremos ejemplos básicos de cómo manejar algunos de estos eventos en tres lenguajes populares.
+
+            <h3>Eventos en Java</h3>
+            En Java, podemos manejar los eventos utilizando los `ActionListener` para los botones o `KeyListener` para las teclas, entre otros. Aquí hay un ejemplo de cómo manejar un evento de clic de ratón en un botón:
+
+            <pre>
+                <code>
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MiVentana {
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Mi Ventana");
+        JButton boton = new JButton("Haz clic aquí");
+
+        // Evento de clic en el botón
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("¡Botón clickeado!");
+            }
+        });
+
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+
+            <h3>Eventos en Python</h3>
+            En Python, utilizando Tkinter, podemos manejar eventos de teclado o ratón de la siguiente manera:
+
+            <pre>
+                <code>
+import tkinter as tk
+
+def on_button_click():
+    print("¡Botón clickeado!")
+
+ventana = tk.Tk()
+ventana.title("Mi Ventana")
+boton = tk.Button(ventana, text="Haz clic aquí", command=on_button_click)
+boton.pack()
+ventana.mainloop()
+                </code>
+            </pre>
+
+            <h3>Eventos en C</h3>
+            En C, usando GTK, los eventos se pueden manejar utilizando señales. A continuación, un ejemplo de cómo manejar un evento de clic en un botón:
+
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+static void on_button_clicked(GtkWidget *widget, gpointer data) {
+    g_print("¡Botón clickeado!\n");
+}
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+
+    g_signal_connect(boton, "clicked", G_CALLBACK(on_button_clicked), NULL);
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+    gtk_window_set_title(GTK_WINDOW(ventana), "Mi Ventana");
+    gtk_window_set_default_size(GTK_WINDOW(ventana), 300, 200);
+    g_signal_connect(ventana, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(ventana);
+    gtk_main();
+
+    return 0;
+}
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>Los eventos son una parte esencial de las interfaces gráficas de usuario. Permiten que las aplicaciones respondan a las acciones del usuario, ya sea clics de ratón, teclas presionadas o interacciones con formularios. Comprender los diferentes tipos de eventos y cómo manejarlos correctamente es clave para crear aplicaciones interactivas y fáciles de usar. Dependiendo del lenguaje de programación, existen diferentes métodos y bibliotecas para gestionar estos eventos, como Swing y JavaFX en Java, Tkinter en Python, y GTK en C.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

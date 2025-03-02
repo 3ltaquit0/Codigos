@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de Datos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Manipulación de Datos</h1>
+        <p>La manipulación de datos se refiere al proceso de leer, modificar, almacenar o eliminar datos dentro de una aplicación. Esto es crucial para cualquier tipo de aplicación que interactúe con bases de datos, archivos o cualquier otra fuente de datos. En esta sección, exploraremos cómo manipular datos utilizando Java, Python y C, proporcionando ejemplos de cómo realizar operaciones como inserciones, actualizaciones, eliminaciones y lecturas de datos.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Manipulación de Datos?</h2>
+            <p>La manipulación de datos es el conjunto de técnicas que permiten modificar, procesar o gestionar los datos dentro de una aplicación. Las operaciones más comunes incluyen:</p>
+            <ul>
+                <li><strong>Inserción:</strong> Agregar nuevos datos a la base de datos o archivo.</li>
+                <li><strong>Actualización:</strong> Modificar los datos existentes.</li>
+                <li><strong>Eliminación:</strong> Eliminar datos de la base de datos o archivo.</li>
+                <li><strong>Lectura:</strong> Obtener datos para su visualización o procesamiento.</li>
+            </ul>
+            <p>Estas operaciones son fundamentales para trabajar con bases de datos y otros tipos de almacenamiento de datos. A continuación, exploraremos cómo realizar estas tareas en tres lenguajes populares: Java, Python y C.</p>
+        </section>
+
+        <section>
+            <h2>Manipulación de Datos en Java</h2>
+            <p>En Java, la manipulación de datos generalmente se realiza a través de JDBC (Java Database Connectivity) para bases de datos y con bibliotecas estándar como <code>FileReader</code> y <code>BufferedWriter</code> para archivos.</p>
+
+            <h3>Inserción de Datos en MySQL</h3>
+            <p>Para insertar datos en una base de datos MySQL en Java, se usa el método <code>executeUpdate</code> de JDBC. A continuación, se muestra cómo insertar un nuevo registro en una tabla:</p>
+            <pre>
+                <code>
+import java.sql.*;
+
+public class InsertarDatos {
+    public static void main(String[] args) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miBaseDeDatos", "usuario", "contraseña");
+            String sql = "INSERT INTO empleados (nombre, puesto) VALUES ('Juan Pérez', 'Desarrollador')";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            System.out.println("Datos insertados correctamente.");
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>Este código establece una conexión a una base de datos MySQL y ejecuta una sentencia SQL para insertar datos en la tabla "empleados".</p>
+
+            <h3>Lectura de Datos desde Archivos en Java</h3>
+            <p>Para leer datos desde un archivo, se usa la clase <code>BufferedReader</code>. A continuación, se muestra un ejemplo para leer datos de un archivo de texto:</p>
+            <pre>
+                <code>
+import java.io.*;
+
+public class LeerArchivo {
+    public static void main(String[] args) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("datos.txt"));
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                System.out.println(linea);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+                </code>
+            </pre>
+            <p>Este ejemplo lee el contenido de un archivo de texto línea por línea y lo imprime en consola.</p>
+        </section>
+
+        <section>
+            <h2>Manipulación de Datos en Python</h2>
+            <p>En Python, la manipulación de datos es igualmente sencilla gracias a bibliotecas como <code>sqlite3</code> para bases de datos SQLite y el uso de funciones estándar para trabajar con archivos.</p>
+
+            <h3>Inserción de Datos en SQLite</h3>
+            <p>Para insertar datos en una base de datos SQLite, se utiliza la biblioteca <code>sqlite3</code>. A continuación, se muestra un ejemplo para insertar datos en una tabla:</p>
+            <pre>
+                <code>
+import sqlite3
+
+# Conectar a la base de datos
+conn = sqlite3.connect('mi_base_de_datos.db')
+cursor = conn.cursor()
+
+# Insertar un nuevo registro
+cursor.execute("INSERT INTO empleados (nombre, puesto) VALUES ('Ana Gómez', 'Manager')")
+conn.commit()
+
+print("Datos insertados correctamente.")
+
+# Cerrar la conexión
+conn.close()
+                </code>
+            </pre>
+            <p>Este código establece una conexión a una base de datos SQLite e inserta un nuevo registro en la tabla "empleados".</p>
+
+            <h3>Lectura de Datos desde Archivos en Python</h3>
+            <p>Para leer datos de archivos en Python, se utiliza la función <code>open()</code>. A continuación, se muestra cómo leer los datos de un archivo de texto:</p>
+            <pre>
+                <code>
+# Abrir un archivo en modo lectura
+with open("datos.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())
+                </code>
+            </pre>
+            <p>Este ejemplo lee y muestra el contenido de un archivo de texto.</p>
+        </section>
+
+        <section>
+            <h2>Manipulación de Datos en C</h2>
+            <p>En C, la manipulación de datos se realiza a través de bibliotecas como <code>mysql.h</code> para bases de datos MySQL y funciones estándar como <code>fopen()</code> y <code>fprintf()</code> para trabajar con archivos.</p>
+
+            <h3>Inserción de Datos en MySQL</h3>
+            <p>En C, para insertar datos en una base de datos MySQL, se usa la biblioteca <code>mysql.h</code>. A continuación, se muestra cómo insertar un nuevo registro:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+#include <mysql/mysql.h>
+
+int main() {
+    MYSQL *conn;
+    conn = mysql_init(NULL);
+
+    // Conectar a la base de datos
+    if (mysql_real_connect(conn, "localhost", "usuario", "contraseña", "miBaseDeDatos", 0, NULL, 0)) {
+        // Insertar datos
+        if (mysql_query(conn, "INSERT INTO empleados (nombre, puesto) VALUES ('Carlos Díaz', 'Desarrollador')")) {
+            printf("Error al insertar: %s\n", mysql_error(conn));
+        } else {
+            printf("Datos insertados correctamente.\n");
+        }
+        mysql_close(conn);
+    } else {
+        printf("Error de conexión: %s\n", mysql_error(conn));
+    }
+
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este código establece una conexión a MySQL e inserta un nuevo registro en la tabla "empleados".</p>
+
+            <h3>Lectura de Datos desde Archivos en C</h3>
+            <p>En C, para leer archivos, se usa la función <code>fopen()</code>. A continuación, se muestra cómo leer un archivo de texto línea por línea:</p>
+            <pre>
+                <code>
+#include <stdio.h>
+
+int main() {
+    FILE *archivo = fopen("datos.txt", "r");
+    char linea[100];
+
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo\n");
+        return 1;
+    }
+
+    while (fgets(linea, sizeof(linea), archivo)) {
+        printf("%s", linea);
+    }
+
+    fclose(archivo);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este código lee el contenido de un archivo de texto y lo imprime en la consola.</p>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>La manipulación de datos es fundamental para la mayoría de las aplicaciones que interactúan con bases de datos y archivos. Ya sea que utilices Java, Python o C, cada lenguaje tiene herramientas y bibliotecas que facilitan estas tareas. Es esencial comprender cómo realizar operaciones de inserción, lectura, actualización y eliminación para trabajar eficazmente con datos en tus aplicaciones.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

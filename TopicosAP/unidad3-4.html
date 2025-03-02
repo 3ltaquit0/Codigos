@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincronización de Hilos</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Sincronización de Hilos</h1>
+        <p>La sincronización de hilos es un concepto clave en la programación concurrente. Permite evitar problemas derivados de la ejecución simultánea de múltiples hilos que acceden a recursos compartidos. La sincronización asegura que un solo hilo acceda a un recurso en un momento dado, evitando condiciones de carrera y garantizando la coherencia de los datos.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué es la Sincronización de Hilos?</h2>
+            <p>La sincronización de hilos se refiere a la coordinación de varios hilos que intentan acceder a recursos compartidos para evitar situaciones de conflicto, como las condiciones de carrera. Sin sincronización, los hilos pueden interferir entre sí y causar comportamientos inesperados o errores, especialmente cuando acceden a variables o estructuras de datos compartidas.</p>
+            <p>La sincronización asegura que solo un hilo acceda a un recurso crítico en un momento dado, bloqueando otros hilos hasta que el hilo actual termine su operación.</p>
+        </section>
+
+        <section>
+            <h2>Sincronización de Hilos en Java</h2>
+            <p>En Java, la sincronización de hilos se puede lograr utilizando el modificador <code>synchronized</code> en los métodos o bloques de código que se consideran críticos. Además, Java ofrece la clase <code>ReentrantLock</code> para un control más detallado de la sincronización.</p>
+
+            <h3>Sincronización con <code>synchronized</code></h3>
+            <p>El uso de la palabra clave <code>synchronized</code> garantiza que solo un hilo a la vez pueda ejecutar un bloque de código o un método sincronizado.</p>
+            <pre>
+                <code>
+public class MiHilo extends Thread {
+    private static int contador = 0;
+
+    public synchronized void incrementar() {
+        contador++;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            incrementar();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        MiHilo hilo1 = new MiHilo();
+        MiHilo hilo2 = new MiHilo();
+        hilo1.start();
+        hilo2.start();
+        hilo1.join();
+        hilo2.join();
+        System.out.println("Contador final: " + contador);
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, el método <code>incrementar()</code> está sincronizado, lo que asegura que solo un hilo puede incrementarlo a la vez, evitando una condición de carrera.</p>
+
+            <h3>Uso de <code>ReentrantLock</code></h3>
+            <p>Además del modificador <code>synchronized</code>, Java ofrece la clase <code>ReentrantLock</code>, que proporciona un control más explícito sobre la sincronización.</p>
+            <pre>
+                <code>
+import java.util.concurrent.locks.ReentrantLock;
+
+public class MiHilo extends Thread {
+    private static int contador = 0;
+    private static ReentrantLock lock = new ReentrantLock();
+
+    public void incrementar() {
+        lock.lock(); // Adquirir el bloqueo
+        try {
+            contador++;
+        } finally {
+            lock.unlock(); // Liberar el bloqueo
+        }
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            incrementar();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        MiHilo hilo1 = new MiHilo();
+        MiHilo hilo2 = new MiHilo();
+        hilo1.start();
+        hilo2.start();
+        hilo1.join();
+        hilo2.join();
+        System.out.println("Contador final: " + contador);
+    }
+}
+                </code>
+            </pre>
+            <p>En este caso, se utiliza un <code>ReentrantLock</code> para asegurar que solo un hilo pueda acceder a la sección crítica al mismo tiempo.</p>
+        </section>
+
+        <section>
+            <h2>Sincronización de Hilos en Python</h2>
+            <p>En Python, la sincronización de hilos se logra mediante el uso de bloqueos (locks) proporcionados por el módulo <code>threading</code>. Los bloqueos aseguran que solo un hilo pueda acceder a un recurso compartido a la vez.</p>
+
+            <h3>Sincronización con <code>Lock</code></h3>
+            <p>El módulo <code>threading</code> proporciona la clase <code>Lock</code>, que se utiliza para bloquear y desbloquear recursos compartidos.</p>
+            <pre>
+                <code>
+import threading
+
+# Recurso compartido
+contador = 0
+lock = threading.Lock()
+
+def incrementar():
+    global contador
+    with lock:  # Bloquear el acceso al recurso
+        contador += 1
+
+def hilo():
+    for _ in range(1000):
+        incrementar()
+
+# Crear los hilos
+hilo1 = threading.Thread(target=hilo)
+hilo2 = threading.Thread(target=hilo)
+hilo1.start()
+hilo2.start()
+hilo1.join()
+hilo2.join()
+
+print("Contador final:", contador)
+                </code>
+            </pre>
+            <p>En este ejemplo, se utiliza un <code>Lock</code> para garantizar que solo un hilo incremente el valor de <code>contador</code> a la vez.</p>
+
+            <h3>Otras herramientas de sincronización en Python</h3>
+            <p>Además de los bloqueos, Python ofrece otros mecanismos de sincronización como <code>RLock</code> (bloqueo recursivo), <code>Semaphore</code> y <code>Event</code> para necesidades más específicas de control de concurrencia.</p>
+        </section>
+
+        <section>
+            <h2>Sincronización de Hilos en C</h2>
+            <p>En C, la sincronización de hilos se logra utilizando la biblioteca POSIX Threads (pthreads), que ofrece varios mecanismos de sincronización, como los mutexes y las variables de condición.</p>
+
+            <h3>Sincronización con Mutexes</h3>
+            <p>Un <code>mutex</code> es un tipo especial de variable que se utiliza para proteger una sección crítica, asegurando que solo un hilo pueda ejecutarla a la vez.</p>
+            <pre>
+                <code>
+#include <pthread.h>
+#include <stdio.h>
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int contador = 0;
+
+void* incrementar(void* arg) {
+    pthread_mutex_lock(&mutex);  // Bloquear el acceso
+    contador++;
+    pthread_mutex_unlock(&mutex);  // Liberar el acceso
+    return NULL;
+}
+
+int main() {
+    pthread_t hilo1, hilo2;
+    pthread_create(&hilo1, NULL, incrementar, NULL);
+    pthread_create(&hilo2, NULL, incrementar, NULL);
+    pthread_join(hilo1, NULL);
+    pthread_join(hilo2, NULL);
+    printf("Contador final: %d\n", contador);
+    pthread_mutex_destroy(&mutex); // Destruir el mutex
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, se utiliza un <code>pthread_mutex_t</code> para asegurar que solo un hilo pueda modificar la variable <code>contador</code> a la vez.</p>
+
+            <h3>Sincronización con Variables de Condición</h3>
+            <p>Las variables de condición se utilizan para permitir que un hilo espere hasta que otro hilo realice una acción determinada, lo que es útil en situaciones de sincronización más complejas.</p>
+            <pre>
+                <code>
+#include <pthread.h>
+#include <stdio.h>
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+
+void* incrementar(void* arg) {
+    pthread_mutex_lock(&mutex);
+    while (contador < 10) {
+        pthread_cond_wait(&cond, &mutex);  // Espera a que otro hilo dé una señal
+    }
+    contador++;
+    pthread_mutex_unlock(&mutex);
+    return NULL;
+}
+
+void* señalizar(void* arg) {
+    pthread_mutex_lock(&mutex);
+    contador = 10;
+    pthread_cond_broadcast(&cond);  // Despierta a todos los hilos que están esperando
+    pthread_mutex_unlock(&mutex);
+    return NULL;
+}
+
+int main() {
+    pthread_t hilo1, hilo2;
+    pthread_create(&hilo1, NULL, incrementar, NULL);
+    pthread_create(&hilo2, NULL, señalizar, NULL);
+    pthread_join(hilo1, NULL);
+    pthread_join(hilo2, NULL);
+    printf("Contador final: %d\n", contador);
+    pthread_mutex_destroy(&mutex);
+    pthread_cond_destroy(&cond);
+    return 0;
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, el hilo que incrementa espera a que el hilo señalizador cambie el valor de <code>contador</code> y dé la señal para continuar.</p>
+        </section>
+
+        <section>
+            <h2>Conclusiones</h2>
+            <p>La sincronización de hilos es esencial en la programación concurrente para evitar condiciones de carrera y garantizar que los hilos puedan acceder a recursos compartidos de manera ordenada. Cada lenguaje proporciona herramientas específicas para la sincronización de hilos, como <code>synchronized</code> en Java, <code>Lock</code> en Python y <code>mutexes</code> en C. La elección del mecanismo de sincronización adecuado depende de las necesidades específicas de la aplicación y del entorno en el que se ejecuta.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

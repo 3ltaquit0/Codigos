@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de Librerías Proporcionadas por el Lenguaje</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Uso de Librerías Proporcionadas por el Lenguaje</h1>
+        <p>Las librerías proporcionadas por el lenguaje de programación permiten simplificar el proceso de desarrollo de aplicaciones, especialmente cuando se trata de interfaces gráficas de usuario. Estas librerías contienen funcionalidades integradas para crear componentes gráficos, manejar eventos y realizar otras tareas complejas.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué Son las Librerías Proporcionadas por el Lenguaje?</h2>
+            <p>Las librerías proporcionadas por el lenguaje son conjuntos de funciones, clases o módulos que vienen incluidas con el lenguaje de programación. Estas librerías ofrecen herramientas que facilitan tareas comunes y permiten al desarrollador trabajar de forma más eficiente.</p>
+            <p>En el contexto de la creación de interfaces gráficas de usuario (GUI), cada lenguaje de programación incluye una librería estándar para la construcción de interfaces, lo que facilita la creación de componentes visuales sin necesidad de escribir código complejo desde cero.</p>
+        </section>
+
+        <section>
+            <h2>Uso de Librerías en Diferentes Lenguajes</h2>
+
+            <h3>Java</h3>
+            En Java, la librería estándar más comúnmente utilizada para el desarrollo de interfaces gráficas es **Swing**. Esta librería proporciona una amplia gama de componentes gráficos como botones, campos de texto, menús, cuadros de texto y más. Swing forma parte del paquete `javax.swing`, que permite crear aplicaciones con ventanas de una manera más sencilla.
+
+            <p>Ejemplo de uso de Swing en Java:</p>
+            <pre>
+                <code>
+import javax.swing.*;
+
+public class VentanaSwing {
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Mi ventana de ejemplo");
+        JButton boton = new JButton("Haz clic aquí");
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+            <p>En este ejemplo, la librería Swing se utiliza para crear una ventana con un botón. Al presionar el botón, no se ha definido una acción en este código, pero se puede añadir un manejador de eventos para hacerlo interactivo.</p>
+
+            <h3>Python</h3>
+            Python incluye varias librerías estándar para desarrollar interfaces gráficas, siendo una de las más populares **Tkinter**. Tkinter es una interfaz de Python para la librería GUI de Tcl/Tk, y es simple de usar para crear ventanas, botones, y otros componentes gráficos.
+
+            <p>Ejemplo de uso de Tkinter en Python:</p>
+            <pre>
+                <code>
+import tkinter as tk
+
+ventana = tk.Tk()
+ventana.title("Ventana de Tkinter")
+boton = tk.Button(ventana, text="Haz clic aquí")
+boton.pack()
+ventana.mainloop()
+                </code>
+            </pre>
+            <p>Este código crea una ventana con un botón utilizando Tkinter. La ventana se mostrará y el botón estará disponible para interacción.</p>
+
+            <h3>C</h3>
+            En C, no existe una librería estándar para GUI, pero existen bibliotecas externas como **GTK+** y **SDL** que permiten el desarrollo de interfaces gráficas. Sin embargo, C tiene algunas librerías estándar como `stdio.h` o `stdlib.h`, que son útiles para la gestión de entrada/salida y otras tareas esenciales, aunque no son específicas para GUI.
+
+            <p>Ejemplo de uso básico con GTK+ en C:</p>
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+    g_signal_connect(boton, "clicked", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_window_set_title(GTK_WINDOW(ventana), "Ventana de ejemplo");
+    gtk_widget_show_all(ventana);
+    gtk_main();
+    return 0;
+}
+                </code>
+            </pre>
+            <p>Este ejemplo muestra cómo utilizar GTK+ para crear una ventana con un botón en C. Al hacer clic en el botón, se cerrará la ventana.</p>
+
+        </section>
+
+        <section>
+            <h2>Ventajas del Uso de Librerías Proporcionadas por el Lenguaje</h2>
+            <ul>
+                <li><strong>Simplicidad:</strong> Las librerías estándar proporcionan herramientas listas para usar, lo que hace que el desarrollo sea más rápido y sencillo.</li>
+                <li><strong>Integración:</strong> Estas librerías están integradas de forma nativa con el lenguaje de programación, lo que asegura una compatibilidad fluida y sin necesidad de configuraciones complicadas.</li>
+                <li><strong>Mantenimiento:</strong> Al estar mantenidas por la comunidad o los desarrolladores del lenguaje, las librerías proporcionadas reciben actualizaciones y correcciones de errores periódicas.</li>
+                <li><strong>Documentación y Soporte:</strong> Las librerías del lenguaje suelen estar bien documentadas y tienen una comunidad activa de soporte, lo que facilita su uso y resolución de problemas.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>El uso de librerías proporcionadas por el lenguaje facilita enormemente la creación de aplicaciones gráficas y la gestión de la interacción con el usuario. Ya sea mediante **Swing** en Java, **Tkinter** en Python o **GTK+** en C, los desarrolladores pueden acceder a herramientas listas para usar que permiten crear interfaces gráficas sin la necesidad de comenzar desde cero. Además, el uso de estas librerías permite un desarrollo más eficiente, compatible y mantenible a lo largo del tiempo.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>

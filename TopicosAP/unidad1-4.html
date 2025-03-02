@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Componentes Gráficos de Control</title>
+    <link rel="stylesheet" href="topicos.css"> <!-- Enlace al nuevo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Manejo de Componentes Gráficos de Control en Interfaces de Usuario</h1>
+        <p>El manejo de componentes gráficos de control es fundamental para crear interfaces interactivas y funcionales. Estos componentes permiten la interacción directa del usuario con la aplicación mediante botones, campos de texto, cajas de selección, entre otros.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>¿Qué son los Componentes Gráficos de Control?</h2>
+            <p>Los componentes gráficos de control son elementos dentro de una interfaz gráfica que permiten al usuario interactuar con la aplicación. Estos incluyen botones, cuadros de texto, casillas de verificación, barras de desplazamiento, menús, entre otros. Cada uno de estos componentes tiene un comportamiento específico y es posible asignarles eventos para que respondan a las acciones del usuario.</p>
+
+            <h3>Tipos de Componentes Gráficos de Control</h3>
+            Los principales tipos de componentes gráficos de control son:
+            <ul>
+                <li><strong>Botones:</strong> Permiten realizar una acción cuando el usuario hace clic en ellos.</li>
+                <li><strong>Campos de texto:</strong> Permiten que el usuario ingrese texto, como nombres o contraseñas.</li>
+                <li><strong>Casillas de verificación:</strong> Permiten seleccionar opciones mediante un cuadro que puede estar marcado o desmarcado.</li>
+                <li><strong>Listas desplegables:</strong> Permiten seleccionar una opción de un conjunto de opciones visibles solo cuando se hace clic sobre ellas.</li>
+                <li><strong>Radio buttons:</strong> Permiten seleccionar una opción dentro de un grupo de opciones mutuamente excluyentes.</li>
+                <li><strong>Barra de desplazamiento:</strong> Permiten desplazar contenido dentro de un área específica.</li>
+            </ul>
+
+            <h3>Funcionamiento de los Componentes</h3>
+            Los componentes gráficos funcionan a través de un sistema de eventos y listeners (en el caso de JavaScript, Java y otros lenguajes). Cuando el usuario interactúa con el componente, como hacer clic en un botón o escribir en un campo de texto, se genera un evento que activa una acción o función asociada.
+
+            <p>Por ejemplo, un botón puede ejecutar una función cuando el usuario hace clic en él, mientras que una casilla de verificación puede enviar un valor booleano que indique si está activada o desactivada.</p>
+
+        </section>
+
+        <section>
+            <h2>Manejo de Componentes Gráficos de Control en Java, Python y C</h2>
+            A continuación, se muestran ejemplos de cómo manejar componentes gráficos de control en tres lenguajes populares.
+
+            <h3>Java: Manejo de Botones y Campos de Texto</h3>
+            En Java, utilizando `Swing`, se pueden crear y manejar botones y campos de texto de la siguiente manera:
+
+            <pre>
+                <code>
+import javax.swing.*;
+import java.awt.event.*;
+
+public class ManejoComponentes {
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Ventana de Componentes");
+        JButton boton = new JButton("Haz clic aquí");
+        JTextField campoTexto = new JTextField(20);
+
+        // Manejo del evento de clic en el botón
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String texto = campoTexto.getText();
+                JOptionPane.showMessageDialog(ventana, "Texto ingresado: " + texto);
+            }
+        });
+
+        // Configuración de la ventana
+        ventana.setLayout(new FlowLayout());
+        ventana.add(campoTexto);
+        ventana.add(boton);
+        ventana.setSize(300, 200);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
+    }
+}
+                </code>
+            </pre>
+
+            <h3>Python: Manejo de Botones y Campos de Entrada con Tkinter</h3>
+            En Python, utilizando la librería Tkinter, se pueden manejar botones y campos de texto de la siguiente manera:
+
+            <pre>
+                <code>
+import tkinter as tk
+
+def mostrar_texto():
+    texto = campo_entrada.get()
+    etiqueta.config(text="Texto ingresado: " + texto)
+
+ventana = tk.Tk()
+ventana.title("Ventana de Componentes")
+
+# Crear el campo de texto y el botón
+campo_entrada = tk.Entry(ventana)
+boton = tk.Button(ventana, text="Mostrar texto", command=mostrar_texto)
+
+# Crear etiqueta para mostrar el texto
+etiqueta = tk.Label(ventana, text="")
+
+# Empacar los elementos en la ventana
+campo_entrada.pack()
+boton.pack()
+etiqueta.pack()
+
+ventana.mainloop()
+                </code>
+            </pre>
+
+            <h3>C: Manejo de Botones con GTK</h3>
+            En C, utilizando la librería GTK, se pueden manejar botones y otros componentes gráficos de la siguiente manera:
+
+            <pre>
+                <code>
+#include <gtk/gtk.h>
+
+static void on_button_clicked(GtkWidget *widget, gpointer data) {
+    gtk_label_set_text(GTK_LABEL(data), "¡Botón clickeado!");
+}
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+
+    GtkWidget *ventana = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget *boton = gtk_button_new_with_label("Haz clic aquí");
+    GtkWidget *etiqueta = gtk_label_new("");
+
+    // Conectar el evento de clic del botón
+    g_signal_connect(boton, "clicked", G_CALLBACK(on_button_clicked), etiqueta);
+    gtk_container_add(GTK_CONTAINER(ventana), boton);
+    gtk_container_add(GTK_CONTAINER(ventana), etiqueta);
+
+    gtk_window_set_title(GTK_WINDOW(ventana), "Ventana de Componentes");
+    gtk_window_set_default_size(GTK_WINDOW(ventana), 300, 200);
+    g_signal_connect(ventana, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(ventana);
+    gtk_main();
+
+    return 0;
+}
+                </code>
+            </pre>
+
+        </section>
+
+        <section>
+            <h2>Interactividad y Eventos de Componentes</h2>
+            Los componentes gráficos de control en las aplicaciones modernas permiten la creación de interfaces altamente interactivas. A través de los eventos y sus respectivos manejadores, como los `ActionListeners` en Java o las funciones de callback en Python, el usuario puede interactuar con la aplicación de manera dinámica.
+
+            <h3>Eventos Asociados a Componentes</h3>
+            Algunos eventos comunes asociados a los componentes gráficos de control son:
+
+            <ul>
+                <li><strong>Evento de Clic:</strong> Se dispara cuando el usuario hace clic sobre un botón, una casilla de verificación, etc.</li>
+                <li><strong>Evento de Entrada de Texto:</strong> Se dispara cuando el usuario ingresa texto en un campo de texto o área de texto.</li>
+                <li><strong>Evento de Selección:</strong> Se dispara cuando el usuario selecciona una opción de una lista, radio button o casilla de verificación.</li>
+                <li><strong>Evento de Cambio de Estado:</strong> Se dispara cuando un componente cambia de estado, como un botón de encendido/apagado.</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h2>Resumen</h2>
+            <p>El manejo de componentes gráficos de control es esencial para crear interfaces interactivas y fáciles de usar. Permite a los usuarios interactuar con la aplicación a través de diferentes componentes como botones, campos de texto y menús. La gestión de estos componentes en Java, Python y C es sencilla gracias a las bibliotecas y frameworks que proporcionan los manejadores de eventos necesarios para responder a las acciones del usuario. El diseño adecuado y el manejo correcto de estos componentes son clave para una experiencia de usuario eficiente y fluida.</p>
+        </section>
+    </main>
+
+    <div id="buttonContainer">
+        <button id="backButton5">Volver</button> 
+    </div>
+
+    <script src="../funciones.js"></script>
+
+</body>
+</html>
