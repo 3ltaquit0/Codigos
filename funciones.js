@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const backButton5 = document.getElementById("backButton5");
   if (backButton5) {
       backButton5.addEventListener("click", function () {
-          window.location.href = "../topicosAp.html"; // Adjusted path to index in CodigosMain
+          window.location.href = "../topicosAP.html"; // Adjusted path to index in CodigosMain
       });
 }
 
